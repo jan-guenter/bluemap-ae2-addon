@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "profileId": "megacells",
+  "modId": "megacells",
+  "version": "4.11.0",
+  "artifact": "megacells-4.11.0.jar",
+  "sizeBytes": 1137276,
+  "sha1": "f0b1a44bf30c8a9e14e2fa7fce37360191aa55e8",
+  "sha256": "a386bbf12afb11729b0dcf77f64221893d250f22e6185a4d728b9799b230bc55",
+  "sha512": "1f5c30f5c6516eae20eb3d8502eebc8f3fa43d42815ecd182beea2c244c7dacf450fa0fafa6f6f7ab836d7f68e6de2b2366fbb0eb2938823f3d370217a4e8671",
+  "minecraft": "1.21.1",
+  "neoforge": "21.1.248",
+  "ae2Dependency": "[19.2.15,)",
+  "dependentAe2Profile": {
+    "version": "19.2.17",
+    "artifactSha256": "460d779a0609b81409907d9956de8f6f70a1b0912257e3e5c3c7e75ac9630e95"
+  },
+  "coverageMilestone": "M5-megacells",
+  "acceptance": "implementation-foundation-unreviewed",
+  "distribution": {
+    "curseforgeProjectId": 622112,
+    "curseforgeFileId": 7952621
+  },
+  "sourceCorrelation": {
+    "tier": "T4_EXACT_SOURCE",
+    "tag": "4.11.0",
+    "commit": "f46ab8f9a2c14f0de3e09241241b49fb2d06a81a",
+    "githubReleaseId": 310930428,
+    "releaseJarSizeBytes": 1137276,
+    "releaseJarSha256": "4a89663c36d081094ed1f5d08a64e68c1286821710feb89356701120d66d4762",
+    "sourceJarSizeBytes": 1053132,
+    "sourceJarSha256": "b11b1beabe63be577117ed347a15d979103643cbdc752d67ea90c3e2f0a4ae5b",
+    "correlatedExtractedEntries": 941,
+    "method": "pack-and-release-containers-differ-only-in-zip-metadata; extracted-payload-byte-identical"
+  },
+  "crafting": {
+    "syntheticBlockState": "bluemap_ae2:megacells_crafting",
+    "geometry": "reuse-ae2-crafting-geometry",
+    "supportedBlocks": [
+      {"id": "megacells:mega_crafting_unit", "kind": "unit", "blockEntity": "megacells:mega_crafting_unit"},
+      {"id": "megacells:mega_crafting_accelerator", "kind": "accelerator", "blockEntity": "megacells:mega_crafting_unit"},
+      {"id": "megacells:1m_crafting_storage", "kind": "storage_1k", "blockEntity": "megacells:mega_crafting_storage"},
+      {"id": "megacells:4m_crafting_storage", "kind": "storage_4k", "blockEntity": "megacells:mega_crafting_storage"},
+      {"id": "megacells:16m_crafting_storage", "kind": "storage_16k", "blockEntity": "megacells:mega_crafting_storage"},
+      {"id": "megacells:64m_crafting_storage", "kind": "storage_64k", "blockEntity": "megacells:mega_crafting_storage"},
+      {"id": "megacells:256m_crafting_storage", "kind": "storage_256k", "blockEntity": "megacells:mega_crafting_storage"},
+      {"id": "megacells:mega_crafting_monitor", "kind": "monitor", "blockEntity": "megacells:mega_crafting_monitor"}
+    ],
+    "persistedState": {
+      "allBlocks": ["formed", "powered"],
+      "monitorOnly": ["facing", "spin"],
+      "monitorPaintedColor": "same-ae2-crafting-monitor-block-entity-contract",
+      "displayedStack": "client-stream-only-omitted"
+    },
+    "connectionPolicy": {
+      "connectsToNativeAe2CraftingBlocks": true,
+      "connectsToAllEightMegaCellsCraftingBlocks": true,
+      "unknownOrMalformed": "atomic-original-resource-fallback"
+    },
+    "renderPolicy": "formed-only-static-offline-unknown",
+    "fullSolid": true,
+    "occluding": true,
+    "ownTextureCount": 12,
+    "dependentAe2MonitorTextureCount": 3
+  },
+  "cellDock": {
+    "partId": "megacells:cell_dock",
+    "bodyModel": "megacells:part/cell_dock",
+    "savedNbt": {
+      "retained": ["spin", "cell.id", "cell.count"],
+      "cellComponents": "ignored-for-static-chassis-selection",
+      "priority": "ignored",
+      "visualStateCellId": "client-only-ignored",
+      "visualStateCellStatus": "client-only-ignored"
+    },
+    "cellCatalog": {
+      "path": "cell-models.tsv",
+      "format": "item-id-tab-model-id-tab-chassis-kind-lf",
+      "itemCount": 67,
+      "modelCount": 37,
+      "sizeBytes": 5827,
+      "sha256": "6bd906cf6346041718f4390e9fc2b27c55f2e8ca10938996b63107d54accf6e8"
+    },
+    "transformOrder": "center-translation-then-block-orientation-then-local-translation",
+    "cellAndFirstLedTransform": {
+      "centerTranslation": [0.5, 0.5, 0.5],
+      "orientation": "BlockOrientation.get(SpinMapping.getUpFromSpin(side,spin),side)",
+      "localTranslation": [-0.1875, 0.3125, -0.25]
+    },
+    "secondLedTransform": {
+      "centerTranslation": [0.5, 0.5, 0.5],
+      "orientation": "BlockOrientation.get(side,spin)",
+      "localTranslation": [-0.5, -0.1875, -0.5]
+    },
+    "ledPolicy": "present-cell-static-offline-black",
+    "ledQuadsPerPlacement": 5,
+    "ledPlacementCountWhenOccupied": 2,
+    "nominalTriangles": {
+      "empty": 50,
+      "standardCell": 82,
+      "miscCell": 76
+    },
+    "unknownCellPolicy": "atomic-whole-cable-bus-original-resource-fallback"
+  },
+  "genericParts": [
+    {
+      "id": "megacells:decompression_module",
+      "persistedSpin": false,
+      "cableConnectionLength": 3,
+      "facadeCutout16": [3, 13],
+      "staticOfflineModels": ["megacells:part/decompression_module"]
+    },
+    {
+      "id": "megacells:cable_mega_interface",
+      "persistedSpin": false,
+      "cableConnectionLength": 4,
+      "facadeCutout16": [2, 14],
+      "staticOfflineModels": ["megacells:part/mega_interface", "ae2:part/interface_off"]
+    },
+    {
+      "id": "megacells:cable_mega_pattern_provider",
+      "persistedSpin": false,
+      "cableConnectionLength": 4,
+      "facadeCutout16": [2, 14],
+      "staticOfflineModels": ["megacells:part/mega_pattern_provider", "ae2:part/interface_off"]
+    }
+  ],
+  "excludedConditionalPart": {
+    "id": "megacells:cable_mega_emc_interface",
+    "reason": "AppliedE absent from exact All the Mons 1.2.0 runtime"
+  },
+  "resourcePartitions": {
+    "crafting": {
+      "path": "required-crafting-resources.tsv",
+      "pathCount": 28,
+      "totalBytes": 4905,
+      "manifestSha256": "e3655fdfc8905f7f640c567a76ac5e3dfc11325da7ab3d04fc6c5f5d13a902d5"
+    },
+    "cellDock": {
+      "path": "required-cell-dock-resources.tsv",
+      "pathCount": 43,
+      "totalBytes": 64165,
+      "manifestSha256": "c4dd824ba7ac773289ef74a83a7316123fb46a99a8616372da233cb188b42f25"
+    },
+    "genericParts": {
+      "path": "required-generic-part-resources.tsv",
+      "pathCount": 11,
+      "totalBytes": 4928,
+      "manifestSha256": "67286ce5df3fe3fdee769b236efefc2e0aa4b07f1f82a441329b67697e68996d"
+    },
+    "dependentAe2": {
+      "path": "required-dependent-ae2-resources.tsv",
+      "pathCount": 7,
+      "totalBytes": 2979,
+      "manifestSha256": "627c7dc0fae67cbc58d1481130215fdc43c89ffbdbd422b2fa1bd7434a9f8c02"
+    },
+    "combinedOwn": {
+      "pathCount": 82,
+      "totalBytes": 73998
+    }
+  },
+  "otherMegaCellsWorldVisuals": {
+    "wholeBlocks": "stock-json-models-no-custom-renderer",
+    "nativeDriveAndExtendedDriveCells": "reuse-cell-model-catalog-in-existing-drive-renderers",
+    "customRendererScopeBeyondThisProfile": "none-proven"
+  }
+}

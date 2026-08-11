@@ -1,0 +1,493 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+  packages: write
+  attestations: write
+  id-token: write
+
+env:
+  PROMOTION_JAVA_VERSION: '21.0.12+8'
+
+concurrency:
+  # Every version updates the same artifact-root maven-metadata.xml.
+  group: release-maven-${{ github.repository }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - name: Check out tagged source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Verify release identity
+        run: |
+          version="$(sed -n 's/^addon_version=//p' gradle.properties)"
+          test -n "${version}"
+          if [[ "${version}" == *-SNAPSHOT ]]; then
+            echo "Release versions must not end in -SNAPSHOT" >&2
+            exit 1
+          fi
+          test "${GITHUB_REF_NAME}" = "v${version}"
+          git fetch --no-tags origin main:refs/remotes/origin/main
+          git merge-base --is-ancestor "${GITHUB_SHA}" refs/remotes/origin/main
+          echo "VERSION=${version}" >> "${GITHUB_ENV}"
+
+      - name: Check out exact BlueMap backport
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: jan-guenter/BlueMap
+          ref: 9be321df995a1103808621d529eb72773e719d4d
+          path: .ci/bluemap
+          submodules: recursive
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Verify exact detached BlueMap build identity
+        run: |
+          git -C .ci/bluemap fetch --force --tags origin
+          git -C .ci/bluemap/api fetch --force --tags origin
+          test "$(git -C .ci/bluemap rev-parse --abbrev-ref HEAD)" = "HEAD"
+          test "$(git -C .ci/bluemap rev-parse HEAD)" = \
+            "9be321df995a1103808621d529eb72773e719d4d"
+          test "$(git -C .ci/bluemap describe --exact-match --tags HEAD)" = \
+            "v5.22-agent.backport-5.22-mc1.21.1-2"
+          test "$(git -C .ci/bluemap/api describe --tags --abbrev=0)" = "v2.8.0"
+
+      - name: Set up exact promotion Java 21
+        uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5.7.0
+        with:
+          distribution: temurin
+          java-version: ${{ env.PROMOTION_JAVA_VERSION }}
+
+      - name: Set up Python 3.13
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.13'
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@9c971963bec38e04b3d30dcc455b5382be2fdbfb # v6.3.0
+        with:
+          cache-provider: basic
+          cache-read-only: true
+          validate-wrappers: true
+
+      - name: Verify gallery, evidence analyzer, and provenance inputs
+        run: |
+          python3 gallery/generate.py --check
+          python3 -m unittest discover -s tools/tests -p 'test_*.py' -v
+          python3 -m json.tool tools/analyzer-upstreams.json >/dev/null
+          python3 -m json.tool provenance/upstreams.json >/dev/null
+          (cd gallery && sha256sum --check SHA256SUMS)
+          gallery/package.sh "${RUNNER_TEMP}/gallery-first.zip"
+          gallery/package.sh "${RUNNER_TEMP}/gallery-second.zip"
+          cmp "${RUNNER_TEMP}/gallery-first.zip" \
+            "${RUNNER_TEMP}/gallery-second.zip"
+
+      - name: Acquire exact pinned verifier inputs
+        run: |
+          evidence_dir="${RUNNER_TEMP}/pinned-evidence"
+          mkdir -p "${evidence_dir}"
+          download() {
+            local output_path="$1"
+            local url="$2"
+            curl --fail --location --retry 3 --retry-all-errors \
+              --output "${output_path}" "${url}"
+          }
+          download \
+            "${evidence_dir}/appliedenergistics2-19.2.17.jar" \
+            "https://repo1.maven.org/maven2/org/appliedenergistics/appliedenergistics2/19.2.17/appliedenergistics2-19.2.17.jar"
+          download \
+            "${evidence_dir}/appliedenergistics2-19.2.17-sources.jar" \
+            "https://repo1.maven.org/maven2/org/appliedenergistics/appliedenergistics2/19.2.17/appliedenergistics2-19.2.17-sources.jar"
+          download \
+            "${evidence_dir}/AppliedFlux-1.21-2.1.5-neoforge.jar" \
+            "https://mediafilez.forgecdn.net/files/8204/513/AppliedFlux-1.21-2.1.5-neoforge.jar"
+          download \
+            "${evidence_dir}/merequester-neoforge-1.21.1-1.4.3.jar" \
+            "https://cdn.modrinth.com/data/E6BFl96N/versions/Zf5HhnF1/merequester-neoforge-1.21.1-1.4.3.jar"
+          download \
+            "${evidence_dir}/megacells-4.11.0.jar" \
+            "https://mediafilez.forgecdn.net/files/7952/621/megacells-4.11.0.jar"
+          download \
+            "${evidence_dir}/expandedae-2.1.1.jar" \
+            "https://cdn.modrinth.com/data/ayN3DZKb/versions/Iw2gl7Lb/expandedae-2.1.1.jar"
+          download \
+            "${evidence_dir}/AdvancedAE-1.6.11-1.21.1.jar" \
+            "https://cdn.modrinth.com/data/rxYaglEe/versions/lHSZ2gYI/AdvancedAE-1.6.11-1.21.1.jar"
+          download \
+            "${evidence_dir}/ExtendedAE-1.21-2.2.33-neoforge.jar" \
+            "https://github.com/GlodBlock/ExtendedAE/releases/download/1.21-2.2.33-neoforge/ExtendedAE-1.21-2.2.33-neoforge.jar"
+          download \
+            "${evidence_dir}/AdvancedAE-1.6.12-1.21.1.jar" \
+            "https://cdn.modrinth.com/data/rxYaglEe/versions/ablTMAjP/AdvancedAE-1.6.12-1.21.1.jar"
+          download \
+            "${evidence_dir}/ExtendedAE-1.21-2.2.35-neoforge.jar" \
+            "https://github.com/GlodBlock/ExtendedAE/releases/download/1.21-2.2.35-neoforge/ExtendedAE-1.21-2.2.35-neoforge.jar"
+          download \
+            "${evidence_dir}/athena-neoforge-1.21.1-4.0.6.jar" \
+            "https://cdn.modrinth.com/data/b1ZV3DIJ/versions/dJgL278E/athena-neoforge-1.21.1-4.0.6.jar"
+          download \
+            "${evidence_dir}/Glassential-renewed-1.21.1-3.4.5.jar" \
+            "https://cdn.modrinth.com/data/kc9FSsYx/versions/ZU9ErRM9/Glassential-renewed-1.21.1-3.4.5.jar"
+          download \
+            "${evidence_dir}/bluemap-5.22-agent.backport-5.22-mc1.21.1-2-neoforge.jar" \
+            "https://github.com/jan-guenter/BlueMap/releases/download/v5.22-agent.backport-5.22-mc1.21.1-2/bluemap-5.22-agent.backport-5.22-mc1.21.1-2-neoforge.jar"
+          download \
+            "${evidence_dir}/minecraft-1.21.1-client.jar" \
+            "https://piston-data.mojang.com/v1/objects/30c73b1c5da787909b2f73340419fdf13b9def88/client.jar"
+          (
+            cd "${evidence_dir}"
+            sha256sum --check <<'SHA256SUMS'
+          460d779a0609b81409907d9956de8f6f70a1b0912257e3e5c3c7e75ac9630e95  appliedenergistics2-19.2.17.jar
+          d2f451203cb61c2d21fae52c683083d2f72441ca7d26725f4df5934290492e6a  appliedenergistics2-19.2.17-sources.jar
+          57e6a2c0f38e660c9e8416f9081d8c515f5ad096d6793d7b7f039e8e210d245b  AppliedFlux-1.21-2.1.5-neoforge.jar
+          68f3c861a802d48afeb6e3a48e8ee4f8633904340ac3f89f17493dc84490e385  merequester-neoforge-1.21.1-1.4.3.jar
+          a386bbf12afb11729b0dcf77f64221893d250f22e6185a4d728b9799b230bc55  megacells-4.11.0.jar
+          f39c0eb9c6271f54a44ffee092a29520f53000d1005849e6afada3ad9dffba14  expandedae-2.1.1.jar
+          891e1f8ee0f3ac1bbce03fc2848b761f9c52bea4533eb3419ae849582e15ced7  AdvancedAE-1.6.11-1.21.1.jar
+          6652ed1ea4b71f585d48c05a195a77594a7a2bd1ecea0fc805db2122aafad734  ExtendedAE-1.21-2.2.33-neoforge.jar
+          a01d9718667ac13899013e91c5b0b7708b9b9db1da9b8e380772dde54bbe8f41  AdvancedAE-1.6.12-1.21.1.jar
+          14a2860fa2c747e9dda2279b8933fac6311fecfee166c765171022b902591c65  ExtendedAE-1.21-2.2.35-neoforge.jar
+          43699885bbce3343916d4c5c4940cf0e3f9f6f02fdeb46e8655e121b42282ec5  athena-neoforge-1.21.1-4.0.6.jar
+          1f0c8f7533bf3b2002575219ba795fd32a44cc5085c2710624ebbf69e6121471  Glassential-renewed-1.21.1-3.4.5.jar
+          749f7647fa29764cea113114a7ab3259271bab3da22720989f2bd9fd1f3ba150  bluemap-5.22-agent.backport-5.22-mc1.21.1-2-neoforge.jar
+          499f6897d1837516680f3114072d8106e11c9adcd933fe5cf051b551089b0c99  minecraft-1.21.1-client.jar
+          SHA256SUMS
+          )
+
+      - name: Build, test, and verify reproducibility
+        run: |
+          gradle_args=(
+            --no-daemon
+            -PbluemapSourcePath=.ci/bluemap
+            -Pae2Jar="${RUNNER_TEMP}/pinned-evidence/appliedenergistics2-19.2.17.jar"
+            -Pae2SourcesJar="${RUNNER_TEMP}/pinned-evidence/appliedenergistics2-19.2.17-sources.jar"
+            -PmegaCellsJar="${RUNNER_TEMP}/pinned-evidence/megacells-4.11.0.jar"
+            -PexpandedAeJar="${RUNNER_TEMP}/pinned-evidence/expandedae-2.1.1.jar"
+            -PadvancedAeJar="${RUNNER_TEMP}/pinned-evidence/AdvancedAE-1.6.11-1.21.1.jar"
+            -PextendedAeJar="${RUNNER_TEMP}/pinned-evidence/ExtendedAE-1.21-2.2.33-neoforge.jar"
+            -PnativeStructuralAdvancedAeJar="${RUNNER_TEMP}/pinned-evidence/AdvancedAE-1.6.12-1.21.1.jar"
+            -PnativeStructuralExtendedAeJar="${RUNNER_TEMP}/pinned-evidence/ExtendedAE-1.21-2.2.35-neoforge.jar"
+            -PnativeStructuralGlassentialJar="${RUNNER_TEMP}/pinned-evidence/Glassential-renewed-1.21.1-3.4.5.jar"
+            -PnativeStructuralBlueMapJar="${RUNNER_TEMP}/pinned-evidence/bluemap-5.22-agent.backport-5.22-mc1.21.1-2-neoforge.jar"
+            -PminecraftClientJar="${RUNNER_TEMP}/pinned-evidence/minecraft-1.21.1-client.jar"
+            -Pm45AppFluxJar="${RUNNER_TEMP}/pinned-evidence/AppliedFlux-1.21-2.1.5-neoforge.jar"
+            -Pm45MeRequesterJar="${RUNNER_TEMP}/pinned-evidence/merequester-neoforge-1.21.1-1.4.3.jar"
+            -Pm45ExpandedAeJar="${RUNNER_TEMP}/pinned-evidence/expandedae-2.1.1.jar"
+            -Pm45MegaCellsJar="${RUNNER_TEMP}/pinned-evidence/megacells-4.11.0.jar"
+            -Pm45AdvancedAeJar="${RUNNER_TEMP}/pinned-evidence/AdvancedAE-1.6.12-1.21.1.jar"
+            -Pm45AthenaJar="${RUNNER_TEMP}/pinned-evidence/athena-neoforge-1.21.1-4.0.6.jar"
+            -Pm45ExtendedAeJar="${RUNNER_TEMP}/pinned-evidence/ExtendedAE-1.21-2.2.35-neoforge.jar"
+            -PreleaseTag="${GITHUB_REF_NAME}"
+          )
+          tasks=(
+            clean
+            check
+            build
+            generatePomFileForAddonPublication
+            generateMetadataFileForAddonPublication
+            verifyPublicationPom
+            verifyPinnedArtifact
+            verifyExtendedAePinnedArtifact
+            verifyQuartzGlassPinnedArtifact
+            verifyCraftingPinnedArtifact
+            verifyQuantumBridgePinnedArtifact
+            verifyM3CompletionPinnedArtifact
+            verifyNativeStructuralPinnedArtifact
+            verifyM45PinnedArtifacts
+            verifyReleaseMetadata
+            verifyReleaseCandidate
+          )
+          ./gradlew "${gradle_args[@]}" "${tasks[@]}"
+          cp "build/libs/bluemap-ae2-addon-${VERSION}.jar" \
+            "${RUNNER_TEMP}/first-build.jar"
+          cp "build/libs/bluemap-ae2-addon-${VERSION}-sources.jar" \
+            "${RUNNER_TEMP}/first-build-sources.jar"
+          cp build/publications/addon/pom-default.xml \
+            "${RUNNER_TEMP}/first-build.pom"
+          cp build/publications/addon/module.json \
+            "${RUNNER_TEMP}/first-build.module.json"
+          ./gradlew "${gradle_args[@]}" "${tasks[@]}"
+          cmp "${RUNNER_TEMP}/first-build.jar" \
+            "build/libs/bluemap-ae2-addon-${VERSION}.jar"
+          cmp "${RUNNER_TEMP}/first-build-sources.jar" \
+            "build/libs/bluemap-ae2-addon-${VERSION}-sources.jar"
+          cmp "${RUNNER_TEMP}/first-build.pom" \
+            build/publications/addon/pom-default.xml
+          cmp "${RUNNER_TEMP}/first-build.module.json" \
+            build/publications/addon/module.json
+          test -s build/publications/addon/pom-default.xml
+          test -s build/publications/addon/module.json
+          unzip -p "build/libs/bluemap-ae2-addon-${VERSION}.jar" \
+            META-INF/bluemap-ae2/upstreams.json | \
+            cmp - provenance/upstreams.json
+
+      - name: Prepare release bundle
+        run: |
+          mkdir release
+          cp "build/libs/bluemap-ae2-addon-${VERSION}.jar" release/
+          cp "build/libs/bluemap-ae2-addon-${VERSION}-sources.jar" release/
+          cp build/publications/addon/pom-default.xml \
+            "release/bluemap-ae2-addon-${VERSION}.pom"
+          cp build/publications/addon/module.json \
+            "release/bluemap-ae2-addon-${VERSION}.module.json"
+          cp "release-candidates/${VERSION}.json" \
+            "release/bluemap-ae2-addon-${VERSION}-release-candidate.json"
+          cd release
+          sha256sum -- ./* > SHA256SUMS
+
+      - name: Inspect immutable Maven version
+        id: maven
+        env:
+          GITHUB_ACTOR: ${{ github.actor }}
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          repository="https://maven.pkg.github.com/jan-guenter/bluemap-ae2-addon/io/github/jan-guenter/bluemap-ae2-addon"
+          version_repository="${repository}/${VERSION}"
+          local_files=(
+            "build/libs/bluemap-ae2-addon-${VERSION}.jar"
+            "build/libs/bluemap-ae2-addon-${VERSION}-sources.jar"
+            build/publications/addon/pom-default.xml
+            build/publications/addon/module.json
+          )
+          remote_files=(
+            "bluemap-ae2-addon-${VERSION}.jar"
+            "bluemap-ae2-addon-${VERSION}-sources.jar"
+            "bluemap-ae2-addon-${VERSION}.pom"
+            "bluemap-ae2-addon-${VERSION}.module"
+          )
+          existing="${RUNNER_TEMP}/existing-maven"
+          mkdir -p "${existing}"
+          fetch_file() {
+            local remote_path="$1"
+            local output_path="$2"
+            curl --silent --show-error --location \
+              --user "${GITHUB_ACTOR}:${GITHUB_TOKEN}" \
+              --output "${output_path}" \
+              --write-out '%{http_code}' \
+              "${remote_path}"
+          }
+          verify_checksums() {
+            local source_file="$1"
+            local remote_path="$2"
+            local label="$3"
+            local algorithm
+            for algorithm in sha1 md5; do
+              local checksum_file="${existing}/${label}.${algorithm}"
+              local status
+              status="$(fetch_file \
+                "${remote_path}.${algorithm}" "${checksum_file}")"
+              if [[ "${status}" != 200 ]]; then
+                echo "Missing ${algorithm} checksum for ${label}" >&2
+                exit 1
+              fi
+              local expected
+              expected="$("${algorithm}sum" "${source_file}" | cut -d ' ' -f 1)"
+              local actual
+              actual="$(tr -d '[:space:]' < "${checksum_file}")"
+              if [[ "${actual}" != "${expected}" ]]; then
+                echo "Invalid ${algorithm} checksum for ${label}" >&2
+                exit 1
+              fi
+            done
+          }
+          verify_checksum_absence() {
+            local remote_path="$1"
+            local label="$2"
+            local algorithm
+            for algorithm in sha1 md5; do
+              local status
+              status="$(fetch_file \
+                "${remote_path}.${algorithm}" \
+                "${existing}/${label}.${algorithm}.absent")"
+              if [[ "${status}" != 404 ]]; then
+                echo "Orphaned ${algorithm} checksum for ${label}" >&2
+                exit 1
+              fi
+            done
+          }
+          present=0
+          missing=0
+          for index in "${!local_files[@]}"; do
+            status="$(fetch_file \
+              "${version_repository}/${remote_files[index]}" \
+              "${existing}/${remote_files[index]}")"
+            case "${status}" in
+              200)
+                cmp "${local_files[index]}" \
+                  "${existing}/${remote_files[index]}"
+                verify_checksums \
+                  "${local_files[index]}" \
+                  "${version_repository}/${remote_files[index]}" \
+                  "${remote_files[index]}"
+                present=$((present + 1))
+                ;;
+              404)
+                verify_checksum_absence \
+                  "${version_repository}/${remote_files[index]}" \
+                  "${remote_files[index]}"
+                missing=$((missing + 1))
+                ;;
+              *)
+                echo "Unexpected Maven registry status ${status}" >&2
+                exit 1
+                ;;
+            esac
+          done
+          metadata="${existing}/maven-metadata.xml"
+          metadata_status="$(fetch_file \
+            "${repository}/maven-metadata.xml" "${metadata}")"
+          metadata_version='absent'
+          case "${metadata_status}" in
+            200)
+              verify_checksums \
+                "${metadata}" \
+                "${repository}/maven-metadata.xml" \
+                maven-metadata.xml
+              metadata_version="$(python3 -c '
+          import sys
+          import xml.etree.ElementTree as ET
+
+          versions = [
+              element.text
+              for element in ET.parse(sys.argv[1]).findall(
+                  "./versioning/versions/version"
+              )
+          ]
+          count = versions.count(sys.argv[2])
+          if count > 1:
+              raise SystemExit("duplicate version in Maven metadata")
+          print("present" if count == 1 else "absent")
+          ' "${metadata}" "${VERSION}")"
+              ;;
+            404)
+              verify_checksum_absence \
+                "${repository}/maven-metadata.xml" \
+                maven-metadata.xml
+              ;;
+            *)
+              echo "Unexpected Maven metadata status ${metadata_status}" >&2
+              exit 1
+              ;;
+          esac
+          if (( present == ${#local_files[@]} )); then
+            if [[ "${metadata_version}" != present ]]; then
+              echo 'Maven payloads exist without completed root metadata.' >&2
+              exit 1
+            fi
+            echo 'publish=false' >> "${GITHUB_OUTPUT}"
+            echo 'The complete immutable Maven version already exists and is exact.'
+          elif (( missing == ${#local_files[@]} )) && \
+              [[ "${metadata_version}" == absent ]]; then
+            echo 'publish=true' >> "${GITHUB_OUTPUT}"
+            echo 'The Maven version is absent and may be published once.'
+          else
+            echo 'The immutable Maven transaction is partial or inconsistent.' >&2
+            exit 1
+          fi
+
+      - name: Create draft GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          notes="Exact-version All the Mons 1.2.0 M0-M5 review candidate for AE2 19.2.17, the seven pinned M4/M5 extension inputs, and the Java 21 Minecraft 1.21.1 BlueMap 5.22 backport. Coverage is limited to the documented static profiles; this is not a general AE2 compatibility claim, an acceptance claim, or a production recommendation."
+          if gh release view "${GITHUB_REF_NAME}" >/dev/null 2>&1; then
+            test "$(gh release view "${GITHUB_REF_NAME}" \
+              --json isDraft --jq '.isDraft')" = true
+            gh release edit "${GITHUB_REF_NAME}" \
+              --draft \
+              --title "BlueMap AE2 Add-on ${VERSION}" \
+              --verify-tag
+            gh release upload "${GITHUB_REF_NAME}" release/* --clobber
+          else
+            gh release create "${GITHUB_REF_NAME}" release/* \
+              --draft \
+              --generate-notes \
+              --notes "${notes}" \
+              --title "BlueMap AE2 Add-on ${VERSION}" \
+              --verify-tag
+          fi
+
+      - name: Verify exact draft release assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          expected=(
+            SHA256SUMS
+            "bluemap-ae2-addon-${VERSION}-release-candidate.json"
+            "bluemap-ae2-addon-${VERSION}-sources.jar"
+            "bluemap-ae2-addon-${VERSION}.jar"
+            "bluemap-ae2-addon-${VERSION}.module.json"
+            "bluemap-ae2-addon-${VERSION}.pom"
+          )
+          mapfile -t actual < <(gh release view "${GITHUB_REF_NAME}" \
+            --json assets --jq '.assets[].name' | LC_ALL=C sort)
+          if ! diff -u \
+              <(printf '%s\n' "${expected[@]}" | LC_ALL=C sort) \
+              <(printf '%s\n' "${actual[@]}"); then
+            echo 'Draft Release asset allowlist mismatch.' >&2
+            exit 1
+          fi
+          downloaded="${RUNNER_TEMP}/draft-assets"
+          mkdir -p "${downloaded}"
+          gh release download "${GITHUB_REF_NAME}" --dir "${downloaded}"
+          for asset in release/*; do
+            cmp "${asset}" "${downloaded}/$(basename "${asset}")"
+          done
+
+      - name: Attest release JARs
+        uses: actions/attest-build-provenance@0f67c3f4856b2e3261c31976d6725780e5e4c373 # v4.1.1
+        with:
+          subject-path: release/*.jar
+
+      - name: Publish Maven package
+        if: steps.maven.outputs.publish == 'true'
+        env:
+          GITHUB_ACTOR: ${{ github.actor }}
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          ./gradlew --no-daemon \
+            -PbluemapSourcePath=.ci/bluemap \
+            "-PreleaseTag=${GITHUB_REF_NAME}" \
+            verifyReleaseCandidate \
+            publishAddonPublicationToGitHubPackagesRepository
+
+      - name: Reverify and publish GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          expected=(
+            SHA256SUMS
+            "bluemap-ae2-addon-${VERSION}-release-candidate.json"
+            "bluemap-ae2-addon-${VERSION}-sources.jar"
+            "bluemap-ae2-addon-${VERSION}.jar"
+            "bluemap-ae2-addon-${VERSION}.module.json"
+            "bluemap-ae2-addon-${VERSION}.pom"
+          )
+          mapfile -t actual < <(gh release view "${GITHUB_REF_NAME}" \
+            --json assets --jq '.assets[].name' | LC_ALL=C sort)
+          diff -u \
+            <(printf '%s\n' "${expected[@]}" | LC_ALL=C sort) \
+            <(printf '%s\n' "${actual[@]}")
+          downloaded="${RUNNER_TEMP}/final-draft-assets"
+          mkdir -p "${downloaded}"
+          gh release download "${GITHUB_REF_NAME}" --dir "${downloaded}"
+          for asset in release/*; do
+            cmp "${asset}" "${downloaded}/$(basename "${asset}")"
+          done
+          if [[ "${VERSION}" == *-* ]]; then
+            gh release edit "${GITHUB_REF_NAME}" --draft=false --prerelease
+          else
+            gh release edit "${GITHUB_REF_NAME}" --draft=false --latest
+          fi

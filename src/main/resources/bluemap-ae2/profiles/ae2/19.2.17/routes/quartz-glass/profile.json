@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "profileId": "ae2-quartz-glass",
+  "modId": "ae2",
+  "version": "19.2.17",
+  "artifact": "appliedenergistics2-19.2.17.jar",
+  "sizeBytes": 8230896,
+  "sha1": "49c18d6a4af487957d7e5a6ad5dcbf71090b8e14",
+  "sha256": "460d779a0609b81409907d9956de8f6f70a1b0912257e3e5c3c7e75ac9630e95",
+  "sha512": "55edfd948366aff620881e0625e48c333a2cb847e73249bc0b588efbc4b86709992a8ffbca97ea387e270df4186fe7f74ee2f27b739f1c952e932becfb9dea33",
+  "minecraft": "1.21.1",
+  "neoforge": "21.1.234",
+  "coverageMilestone": "M3c",
+  "runtimeAcceptance": "not-yet-runtime-validated",
+  "humanAcceptance": "pending",
+  "supportedBlocks": [
+    {
+      "id": "ae2:quartz_glass",
+      "lightEmission": 0
+    },
+    {
+      "id": "ae2:quartz_vibrant_glass",
+      "lightEmission": 15
+    }
+  ],
+  "syntheticBlockState": "bluemap_ae2:quartz_glass",
+  "persistedState": {
+    "properties": "forbidden",
+    "blockEntity": "none"
+  },
+  "connectionPolicy": {
+    "directNeighborAxes": 6,
+    "sameFamilyBlocks": [
+      "ae2:quartz_glass",
+      "ae2:quartz_vibrant_glass"
+    ],
+    "mutualAppearanceRequiredByClient": true,
+    "crossModAppearance": "unsupported-treated-disconnected",
+    "malformedNativeOrMissingNeighbor": "atomic-original-resource-fallback"
+  },
+  "randomPolicy": {
+    "positionSeed": "minecraft-blockstate-seed-java-overflow",
+    "generator": "LegacyRandomSource",
+    "faceCallsReseeded": true,
+    "drawsPerVisibleFace": 3,
+    "textureIndex": "(draw0+draw2)%4",
+    "uvCrop": "u=draw0/16,v=draw1/16;halve-both-when-index<2"
+  },
+  "renderPolicy": {
+    "layer": "cutout",
+    "ambientOcclusion": false,
+    "directionalShade": false,
+    "tintIndex": -1,
+    "baseTextureCount": 4,
+    "frameTextureCount": 15
+  },
+  "textures": [
+    "ae2:block/glass/quartz_glass_a",
+    "ae2:block/glass/quartz_glass_b",
+    "ae2:block/glass/quartz_glass_c",
+    "ae2:block/glass/quartz_glass_d",
+    "ae2:block/glass/quartz_glass_frame0001",
+    "ae2:block/glass/quartz_glass_frame0010",
+    "ae2:block/glass/quartz_glass_frame0011",
+    "ae2:block/glass/quartz_glass_frame0100",
+    "ae2:block/glass/quartz_glass_frame0101",
+    "ae2:block/glass/quartz_glass_frame0110",
+    "ae2:block/glass/quartz_glass_frame0111",
+    "ae2:block/glass/quartz_glass_frame1000",
+    "ae2:block/glass/quartz_glass_frame1001",
+    "ae2:block/glass/quartz_glass_frame1010",
+    "ae2:block/glass/quartz_glass_frame1011",
+    "ae2:block/glass/quartz_glass_frame1100",
+    "ae2:block/glass/quartz_glass_frame1101",
+    "ae2:block/glass/quartz_glass_frame1110",
+    "ae2:block/glass/quartz_glass_frame1111"
+  ],
+  "resourcePartition": {
+    "pathCount": 22,
+    "blockstateCount": 2,
+    "modelCount": 1,
+    "textureCount": 19,
+    "totalBytes": 4187,
+    "manifestFormat": "path-tab-bytes-tab-sha256-lf",
+    "manifestSha256": "b51c708e7c4d26093c1b6f85b88d0be50572d3cfa76dbf802720f6ad79c7a7fa",
+    "textureManifestSha256": "65005c9b76800cdeba5c4598472a44dea131c9974672f89bf421452755fefb6a",
+    "canonicalFormat": "sha256-tab-bytes-tab-path-lf",
+    "canonicalManifestSha256": "3704e90b1c8ec9ee5a7d7215995869500b50c9b61a797584f6732713dab7103d",
+    "canonicalTextureManifestSha256": "f9373f23e0924f6f2e7315ffb42f4d12b01d6d81b4996651917b865166d04e15"
+  },
+  "requiredResourcesManifestSha256": "b51c708e7c4d26093c1b6f85b88d0be50572d3cfa76dbf802720f6ad79c7a7fa"
+}

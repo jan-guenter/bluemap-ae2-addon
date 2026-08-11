@@ -1,0 +1,2032 @@
+{
+  "schema_version": 1,
+  "project_license": "LGPL-3.0-only",
+  "source_use_lane": "adapted-source",
+  "baseline": {
+    "pack": "All the Mons 1.2.0",
+    "pack_commit": "c7bb230f21d14d26859d0b92548f089b3a493ad9",
+    "minecraft": "1.21.1",
+    "neoforge": "21.1.248",
+    "java": 21
+  },
+  "current_m45_closure": {
+    "milestones": [
+      "M4",
+      "M5"
+    ],
+    "status": "implemented-local-review-candidate",
+    "acceptance": {
+      "exact_artifact_and_resource_gate": "passed",
+      "technical_acceptance": "pending",
+      "runtime_lifecycle": "pending",
+      "human_visual_acceptance": "pending",
+      "publication": "not-authorized"
+    },
+    "verification": {
+      "script": "tools/verify_m45_artifacts.py",
+      "artifact_count": 8,
+      "extension_artifact_count": 7,
+      "route_count": 8,
+      "resource_manifest_count": 11,
+      "resource_row_reference_count": 375,
+      "resource_row_reference_bytes": 192033,
+      "mega_cell_catalog_rows": 67
+    },
+    "artifacts": {
+      "ae2": {
+        "mod_id": "ae2",
+        "version": "19.2.17",
+        "file_name": "appliedenergistics2-19.2.17.jar",
+        "size": 8230896,
+        "sha1": "49c18d6a4af487957d7e5a6ad5dcbf71090b8e14",
+        "sha256": "460d779a0609b81409907d9956de8f6f70a1b0912257e3e5c3c7e75ac9630e95",
+        "sha512": "55edfd948366aff620881e0625e48c333a2cb847e73249bc0b588efbc4b86709992a8ffbca97ea387e270df4186fe7f74ee2f27b739f1c952e932becfb9dea33",
+        "source": {
+          "tag": "neoforge/v19.2.17",
+          "commit": "79ee2c704ad62941a426c26b1cb1f76ef5b2ee5a",
+          "correlation": "T4_SOURCE_CORRELATED"
+        },
+        "declared_license": "LGPL-3.0-or-later",
+        "bundled": false
+      },
+      "appflux": {
+        "mod_id": "appflux",
+        "version": "1.21-2.1.5-neoforge",
+        "file_name": "AppliedFlux-1.21-2.1.5-neoforge.jar",
+        "size": 345117,
+        "sha1": "a98eeadf414e6b3f6878324a3fbdee3fa5fcdadf",
+        "sha256": "57e6a2c0f38e660c9e8416f9081d8c515f5ad096d6793d7b7f039e8e210d245b",
+        "sha512": "27bb367ad2f6695a485e11bf6e9567a86eb2d817194f5bdb381d1e493c345e0055eefb727308ca28fd27cf170d4303788c22681c349065515841cfe7a8c4b01b",
+        "source": {
+          "repository": "https://github.com/GlodBlock/ExtendedAE.git",
+          "branch": "appflux/1.21.1-neoforge",
+          "commit": "474bd48230de391bca29b0bfd9d6bd5410c4ec79",
+          "correlation": "official-version-branch-reference-not-immutable"
+        },
+        "declared_license": "LGPL-3.0",
+        "bundled": false
+      },
+      "merequester": {
+        "mod_id": "merequester",
+        "version": "1.21.1-1.4.3",
+        "file_name": "merequester-neoforge-1.21.1-1.4.3.jar",
+        "size": 184517,
+        "sha1": "b0a801e9b7af930da5f58176156d58c26f6232b1",
+        "sha256": "68f3c861a802d48afeb6e3a48e8ee4f8633904340ac3f89f17493dc84490e385",
+        "sha512": "4411670eaea8403414c773646cb9498291e843ba995100c4fca4ab53d5ab3aa0cbf913921403c8af1d32b67ab940bac8c8a16a910069f6f7e2902e42e11f66b7",
+        "source": {
+          "repository": "https://github.com/AlmostReliable/merequester.git",
+          "tag": "v1.21.1-neoforge-1.4.3",
+          "commit": "fce75946bbb00c7a4705cb114d1423a284fb112a",
+          "correlation": "exact-tag-and-byte-identical-release-asset"
+        },
+        "declared_license": "GNU Lesser General Public License v3.0",
+        "bundled": false
+      },
+      "expandedae": {
+        "mod_id": "expandedae",
+        "version": "2.1.1",
+        "file_name": "expandedae-2.1.1.jar",
+        "size": 496713,
+        "sha1": "c4db013f83e569b016da329b3ddc9c14acc75d7d",
+        "sha256": "f39c0eb9c6271f54a44ffee092a29520f53000d1005849e6afada3ad9dffba14",
+        "sha512": "5d6b0c7430d6f1f2bdb2cb38832ee27d0b28402d16171a9fe746d0275ba54c288405b64b9ad269c010aadd729e82ddeb61b9550c0361c6e1ece2c0bdc77a4b23",
+        "source": {
+          "correlation": "exact-jar-bytecode-only-no-matching-immutable-source-tag"
+        },
+        "declared_license": "GNU Lesser General Public License v3.0",
+        "bundled": false
+      },
+      "megacells": {
+        "mod_id": "megacells",
+        "version": "4.11.0",
+        "file_name": "megacells-4.11.0.jar",
+        "size": 1137276,
+        "sha1": "f0b1a44bf30c8a9e14e2fa7fce37360191aa55e8",
+        "sha256": "a386bbf12afb11729b0dcf77f64221893d250f22e6185a4d728b9799b230bc55",
+        "sha512": "1f5c30f5c6516eae20eb3d8502eebc8f3fa43d42815ecd182beea2c244c7dacf450fa0fafa6f6f7ab836d7f68e6de2b2366fbb0eb2938823f3d370217a4e8671",
+        "source": {
+          "tag": "4.11.0",
+          "commit": "f46ab8f9a2c14f0de3e09241241b49fb2d06a81a",
+          "release_jar_size": 1137276,
+          "release_jar_sha256": "4a89663c36d081094ed1f5d08a64e68c1286821710feb89356701120d66d4762",
+          "source_jar_size": 1053132,
+          "source_jar_sha256": "b11b1beabe63be577117ed347a15d979103643cbdc752d67ea90c3e2f0a4ae5b",
+          "correlated_payload_entries": 941,
+          "correlation": "t4-tag-commit-release-source-plus-byte-identical-extracted-payload"
+        },
+        "declared_license": "LGPLv3.0",
+        "bundled": false
+      },
+      "advancedae": {
+        "mod_id": "advanced_ae",
+        "version": "1.6.12-1.21.1",
+        "file_name": "AdvancedAE-1.6.12-1.21.1.jar",
+        "size": 4791255,
+        "sha1": "9358ccfa5477c7ab1c5ffab6c831e105fe46ecc3",
+        "sha256": "a01d9718667ac13899013e91c5b0b7708b9b9db1da9b8e380772dde54bbe8f41",
+        "sha512": "ab61c57355649a967a0bcf6b9413cd6b62728d26e914543b3231eea33bde5571536bd589ae1ac026d46799711508c942284c3419e19ff5d5bf80f1045442f33a",
+        "source": {
+          "correlation": "exact-jar-authoritative-no-artifact-correlated-immutable-source"
+        },
+        "declared_license": "LGPL-3.0",
+        "bundled": false
+      },
+      "athena": {
+        "mod_id": "athena",
+        "version": "4.0.6",
+        "file_name": "athena-neoforge-1.21.1-4.0.6.jar",
+        "size": 99944,
+        "sha1": "4bcbdf388bd5e387beca7c627224aac33584b55b",
+        "sha256": "43699885bbce3343916d4c5c4940cf0e3f9f6f02fdeb46e8655e121b42282ec5",
+        "sha512": "ab40a306a26ce834daae921a1e87768cd2538a4bfe27a4480f97af854084cc334e7416b1bd0b7583834a32a86951283f29fd4b1df7b98a967a6b26a3ec05e2cf",
+        "source": {
+          "correlation": "exact-pack-artifact-only-no-source-correlation-claimed"
+        },
+        "declared_license": "MIT",
+        "bundled": false
+      },
+      "extendedae": {
+        "mod_id": "extendedae",
+        "version": "1.21-2.2.35-neoforge",
+        "file_name": "ExtendedAE-1.21-2.2.35-neoforge.jar",
+        "size": 5578031,
+        "sha1": "e3521ca2567fabe0f0131cc923ec94dd99d6fa7b",
+        "sha256": "14a2860fa2c747e9dda2279b8933fac6311fecfee166c765171022b902591c65",
+        "sha512": "e5b76a50802087d999bf6c113bc635e8ade9f20e06f4d3276a144f4eaa3090fc3b6c67b9b6a1f7d0d036e48e69f601114a0cc92c5a8d45953f895718f806348c",
+        "source": {
+          "tag": "1.21-2.2.35-neoforge",
+          "commit": "3776bc854458301bbcc9a44a8238d70a0e3dc00d",
+          "correlation": "exact-tag-source-correlated"
+        },
+        "declared_license": "LGPL-3.0",
+        "bundled": false
+      }
+    },
+    "routes": [
+      {
+        "route_id": "appflux",
+        "milestone": "M4",
+        "artifact_keys": [
+          "appflux"
+        ],
+        "coverage": {
+          "ordinary_json_blocks": 2,
+          "neutral_face_parts": 1,
+          "drive_cell_items": 20,
+          "drive_cell_models": 10,
+          "drive_hosts": [
+            "ae2:drive",
+            "extendedae:ex_drive"
+          ]
+        },
+        "resource_partition_keys": [
+          "appflux"
+        ],
+        "core_dependencies": [
+          "ae2"
+        ],
+        "failure_boundary": "route-local-atomic-stock-fallback"
+      },
+      {
+        "route_id": "merequester",
+        "milestone": "M4",
+        "artifact_keys": [
+          "merequester"
+        ],
+        "coverage": {
+          "requester_blocks": 1,
+          "requester_block_variants": 24,
+          "neutral_terminal_parts": 1,
+          "namespaced_z_normalization": true
+        },
+        "resource_partition_keys": [
+          "merequester"
+        ],
+        "core_dependencies": [
+          "ae2"
+        ],
+        "failure_boundary": "route-local-atomic-stock-fallback"
+      },
+      {
+        "route_id": "expandedae",
+        "milestone": "M4",
+        "artifact_keys": [
+          "expandedae"
+        ],
+        "coverage": {
+          "registered_blocks": 24,
+          "supported_visual_blocks": 23,
+          "formed_crafting_blocks": 21,
+          "ordinary_json_blocks": 1,
+          "namespaced_z_blocks": 1,
+          "neutral_face_parts": 2,
+          "explicit_original_resource_fallback_blocks": 1
+        },
+        "resource_partition_keys": [
+          "expandedae"
+        ],
+        "core_dependencies": [
+          "ae2"
+        ],
+        "failure_boundary": "route-local-atomic-stock-fallback"
+      },
+      {
+        "route_id": "megacells",
+        "milestone": "M5",
+        "artifact_keys": [
+          "megacells"
+        ],
+        "coverage": {
+          "formed_crafting_blocks": 8,
+          "cell_dock_parts": 1,
+          "cell_items": 67,
+          "cell_models": 37,
+          "generic_face_parts": 3,
+          "drive_hosts": [
+            "ae2:drive",
+            "extendedae:ex_drive"
+          ],
+          "other_whole_blocks": "stock-json-models"
+        },
+        "resource_partition_keys": [
+          "megacells-crafting",
+          "megacells-cell-dock",
+          "megacells-generic-parts",
+          "megacells-dependent-ae2"
+        ],
+        "core_dependencies": [
+          "ae2"
+        ],
+        "failure_boundary": "route-local-atomic-stock-fallback"
+      },
+      {
+        "route_id": "advanced-ae-quantum",
+        "milestone": "M5",
+        "artifact_keys": [
+          "advancedae"
+        ],
+        "coverage": {
+          "quantum_blocks": 8,
+          "complete_topology": "3x3x3",
+          "render_policy": "static-unpowered-light-zero-non-emissive-frame-zero"
+        },
+        "resource_partition_keys": [
+          "advancedae-quantum"
+        ],
+        "core_dependencies": [
+          "ae2"
+        ],
+        "failure_boundary": "route-local-atomic-stock-fallback"
+      },
+      {
+        "route_id": "advanced-ae-athena",
+        "milestone": "M5",
+        "artifact_keys": [
+          "advancedae",
+          "athena"
+        ],
+        "coverage": {
+          "connected_blocks": 1,
+          "connect_policy": "whole-blockstate-identity",
+          "animation_policy": "static-frame-zero"
+        },
+        "resource_partition_keys": [
+          "advancedae-athena"
+        ],
+        "core_dependencies": [
+          "ae2"
+        ],
+        "failure_boundary": "route-local-atomic-stock-fallback"
+      },
+      {
+        "route_id": "extendedae-matrix",
+        "milestone": "M5",
+        "artifact_keys": [
+          "extendedae"
+        ],
+        "coverage": {
+          "assembler_matrix_blocks": 6,
+          "connected_glass_blocks": 1,
+          "render_policy": "static-unpowered-preserve-formed-and-shape"
+        },
+        "resource_partition_keys": [
+          "extendedae-m5"
+        ],
+        "route_resource_split": {
+          "path_count": 28,
+          "total_bytes": 5659,
+          "canonical_rows_sha256": "9583d114d964226e93e87c48c2dfe536a8e02ffd580651c14f8803f0306a8e95"
+        },
+        "core_dependencies": [
+          "ae2"
+        ],
+        "failure_boundary": "route-local-atomic-stock-fallback"
+      },
+      {
+        "route_id": "extendedae-planes",
+        "milestone": "M5",
+        "artifact_keys": [
+          "extendedae"
+        ],
+        "coverage": {
+          "plane_parts": 2,
+          "connection_masks": 16,
+          "render_policy": "static-off-no-spin-preserve-connections"
+        },
+        "resource_partition_keys": [
+          "extendedae-m5"
+        ],
+        "route_resource_split": {
+          "own_path_count": 10,
+          "own_total_bytes": 1513,
+          "own_canonical_rows_sha256": "cb5d37571fdac17508897b828a2982020158761e1a539adc370a2d0b4f653180",
+          "dependent_ae2_path_count": 2,
+          "dependent_ae2_total_bytes": 846,
+          "dependent_ae2_canonical_rows_sha256": "36c3d2872c18ab2f3e38aa3b13f8318f722ad2f25be4e8c6015347a5d3d44c5b"
+        },
+        "core_dependencies": [
+          "ae2",
+          "ae2-cable-bus-structural"
+        ],
+        "failure_boundary": "route-local-atomic-stock-fallback"
+      }
+    ],
+    "retained_current_route": {
+      "profile_id": "extendedae",
+      "coverage": "exact-20-slot-extended-drive-static-offline-unknown",
+      "artifact_key": "extendedae",
+      "resource_partition_key": "extendedae-drive-folded"
+    },
+    "resource_partitions": {
+      "appflux": {
+        "path": "src/main/resources/bluemap-ae2/profiles/appflux/1.21-2.1.5-neoforge/required-resources.tsv",
+        "artifact_key": "appflux",
+        "path_count": 19,
+        "total_bytes": 10540,
+        "manifest_sha256": "64e9a03558a0c281b7ad7620826fca1a765d0f4d6d49f160e017f046999eb351"
+      },
+      "merequester": {
+        "path": "src/main/resources/bluemap-ae2/profiles/merequester/1.21.1-1.4.3/required-resources.tsv",
+        "artifact_key": "merequester",
+        "path_count": 12,
+        "total_bytes": 9295,
+        "manifest_sha256": "87c29f3e83e7bc8013f960cdcb79898ed640762481ed579a5e80bfc5323fd4c5"
+      },
+      "expandedae": {
+        "path": "src/main/resources/bluemap-ae2/profiles/expandedae/2.1.1/required-resources.tsv",
+        "artifact_key": "expandedae",
+        "path_count": 142,
+        "total_bytes": 46365,
+        "manifest_sha256": "4b144ee2867c96e09b6c1872e3123b218f243df427c5b535714156c6194e1501"
+      },
+      "megacells-crafting": {
+        "path": "src/main/resources/bluemap-ae2/profiles/megacells/4.11.0/required-crafting-resources.tsv",
+        "artifact_key": "megacells",
+        "path_count": 28,
+        "total_bytes": 4905,
+        "manifest_sha256": "e3655fdfc8905f7f640c567a76ac5e3dfc11325da7ab3d04fc6c5f5d13a902d5"
+      },
+      "megacells-cell-dock": {
+        "path": "src/main/resources/bluemap-ae2/profiles/megacells/4.11.0/required-cell-dock-resources.tsv",
+        "artifact_key": "megacells",
+        "path_count": 43,
+        "total_bytes": 64165,
+        "manifest_sha256": "c4dd824ba7ac773289ef74a83a7316123fb46a99a8616372da233cb188b42f25"
+      },
+      "megacells-generic-parts": {
+        "path": "src/main/resources/bluemap-ae2/profiles/megacells/4.11.0/required-generic-part-resources.tsv",
+        "artifact_key": "megacells",
+        "path_count": 11,
+        "total_bytes": 4928,
+        "manifest_sha256": "67286ce5df3fe3fdee769b236efefc2e0aa4b07f1f82a441329b67697e68996d"
+      },
+      "megacells-dependent-ae2": {
+        "path": "src/main/resources/bluemap-ae2/profiles/megacells/4.11.0/required-dependent-ae2-resources.tsv",
+        "artifact_key": "ae2",
+        "path_count": 7,
+        "total_bytes": 2979,
+        "manifest_sha256": "627c7dc0fae67cbc58d1481130215fdc43c89ffbdbd422b2fa1bd7434a9f8c02"
+      },
+      "advancedae-quantum": {
+        "path": "src/main/resources/bluemap-ae2/profiles/advancedae/1.6.12/quantum-required-resources.tsv",
+        "artifact_key": "advancedae",
+        "path_count": 48,
+        "total_bytes": 24053,
+        "manifest_sha256": "727e64ee6da127b637e7ae7ee8b99a0bcc87eb047b2f0b15467be6a4fc9c800f"
+      },
+      "advancedae-athena": {
+        "path": "src/main/resources/bluemap-ae2/profiles/advancedae/1.6.12/athena-required-resources.tsv",
+        "artifact_key": "advancedae",
+        "semantic_dependency_artifact_key": "athena",
+        "path_count": 12,
+        "total_bytes": 4389,
+        "manifest_sha256": "feffb74dcbceeb483c9a52d028e6e464a4080e73b976deac310ddcf996387e62"
+      },
+      "extendedae-drive-folded": {
+        "path": "src/main/resources/bluemap-ae2/profiles/extendedae/1.21-2.2.33-neoforge/required-resources.tsv",
+        "artifact_key": "extendedae",
+        "identity_proof": "all-15-m3b-resources-byte-identical-in-exact-2.2.35-artifact",
+        "path_count": 15,
+        "total_bytes": 13242,
+        "manifest_sha256": "5e72f79f45a3b120a89cf8b7a1fa15ce41bebaae62a63c6f3305ef40bd5d24ee"
+      },
+      "extendedae-m5": {
+        "path": "src/main/resources/bluemap-ae2/profiles/extendedae/1.21-2.2.35-neoforge/m5-required-resources.tsv",
+        "artifact_key": "extendedae",
+        "path_count": 38,
+        "total_bytes": 7172,
+        "manifest_sha256": "518a608d2b60eba9ed084fd66d017bcfefa1de2f090d5a9ea13a6433b76bc0b1",
+        "combined_with_drive_path_count": 53,
+        "combined_with_drive_total_bytes": 20414,
+        "combined_with_drive_rows_sha256": "9b7a212beddd3ca7e9921d7d4563dfbd452255cd6b0dad8ac0464fd8cffc4c65"
+      }
+    },
+    "redistribution": "All upstream artifacts, resources, classes and sources remain operator-installed and are not bundled.",
+    "historical_record_boundary": "The older top-level M0-M3f audit objects remain only because existing exact evidence and verifier contracts refer to them; they are not the current All the Mons 1.2.0 target."
+  },
+  "shared_component_decision": {
+    "adr": "docs/ADR-0002-M2-FACADE-MATERIAL-BOUNDARY.md",
+    "recorded_on": "2026-08-07",
+    "status": "design-and-provenance-only",
+    "neutral_scope": [
+      "normalized block-state value contract",
+      "opaque static material-resolution outcome",
+      "atomic fallback specification",
+      "independently authored development-only test vectors"
+    ],
+    "family_private_scope": "AE2 facade clipping, aperture, stilt, join, topology, and occlusion algorithms",
+    "production_runtime": "deferred until a third consumer passes a separate promotion ADR"
+  },
+  "ae2": {
+    "repository": "https://github.com/AppliedEnergistics/Applied-Energistics-2",
+    "evidence_tier": "T4_SOURCE_CORRELATED",
+    "version": "19.2.17",
+    "distribution": {
+      "modrinth_version_id": "kfyIqgJ6",
+      "curseforge_project_id": 223794,
+      "curseforge_file_id": 7027323
+    },
+    "runtime_artifact": {
+      "file_name": "appliedenergistics2-19.2.17.jar",
+      "size": 8230896,
+      "class_file_major": 65,
+      "sha1": "49c18d6a4af487957d7e5a6ad5dcbf71090b8e14",
+      "sha256": "460d779a0609b81409907d9956de8f6f70a1b0912257e3e5c3c7e75ac9630e95",
+      "sha512": "55edfd948366aff620881e0625e48c333a2cb847e73249bc0b588efbc4b86709992a8ffbca97ea387e270df4186fe7f74ee2f27b739f1c952e932becfb9dea33",
+      "origin": "Exact All the Mons 1.2.0 runtime artifact, byte-identical to the historical 1.1.1 artifact and Maven Central publication",
+      "maven_url": "https://repo1.maven.org/maven2/org/appliedenergistics/appliedenergistics2/19.2.17/appliedenergistics2-19.2.17.jar",
+      "bundled": false
+    },
+    "source": {
+      "tag": "neoforge/v19.2.17",
+      "commit": "79ee2c704ad62941a426c26b1cb1f76ef5b2ee5a",
+      "tree": "dddf19d03c68dcbfd4ada9f950fce88cfc24dafb",
+      "committed_at": "2025-09-24T01:17:28+02:00",
+      "license": "LGPL-3.0-or-later",
+      "official_sources_artifact": {
+        "file_name": "appliedenergistics2-19.2.17-sources.jar",
+        "size": 3814167,
+        "sha1": "260a230e9fa1b4885489f7f58b30c19226093a52",
+        "sha256": "d2f451203cb61c2d21fae52c683083d2f72441ca7d26725f4df5934290492e6a",
+        "sha512": "c7feaf57a7f56b76dc019519b84cf4e0718cc334827c0497f17dd65921e723a2b98f9a072807a46f2c7e3431be71eeec3bdea9a990b661076af849e3d7ef2c34",
+        "maven_url": "https://repo1.maven.org/maven2/org/appliedenergistics/appliedenergistics2/19.2.17/appliedenergistics2-19.2.17-sources.jar",
+        "bundled": false
+      },
+      "correlation": "The nine M0-critical files, ten M3e quantum-bridge files, and thirty M3f completion-route files in the official Maven sources JAR are byte-identical to the audited exact-tag checkout. M1 cable behavior, the M2 terminal, orientation, facade, persistence and material behavior, the M3a drive profile catalog, the M3c quartz-glass dynamic model and connection rules, the M3d formed-crafting model, persistence, connection and solid-block rules, the M3e quantum model, saved/transient state boundary and multiblock rules, and the M3f paint, spatial-pylon, Sky Stone chest, crank, and inscriber behavior are additionally locked to the exact-tag blobs listed here. The runtime JAR is byte-identical to the official Maven runtime publication; source blob and runtime class digests do not constitute a complete reproducible-build claim.",
+      "source_blobs": {
+        "src/main/java/appeng/client/render/cablebus/CableBuilder.java": "9f5a97105e2023729e255287297b01483aac7e64",
+        "src/main/java/appeng/client/render/cablebus/CubeBuilder.java": "68121a4fe898ee79354c5ab310797a7d8ee29e24",
+        "src/main/java/appeng/client/render/cablebus/CableBusBakedModel.java": "f550a9a0512e2f1a054313b9d7a5afb1673f5947",
+        "src/main/java/appeng/client/render/cablebus/CableCoreType.java": "024a64c668bc688bfd6abc17ed1cdd1245be0834",
+        "src/main/java/appeng/client/render/cablebus/CableBusRenderState.java": "cfc4bda5d555dd249ea85ba4208682a37a56ff74",
+        "src/main/java/appeng/client/render/cablebus/SmartCableTextures.java": "284bee65086fb37b8e4b9a1dd54056da2851556c",
+        "src/main/java/appeng/api/util/AEColor.java": "8d7ed0e831a4f5c3571cab176c52b77537e53496",
+        "src/main/java/appeng/api/util/AECableType.java": "97f0fa6e55b2a3dcbdf69d7b9c5b61847573b923",
+        "src/main/java/appeng/api/util/AECableVariant.java": "9e85c9d01735010e1101d0f002704e31094a8683",
+        "src/main/java/appeng/api/util/AECableSize.java": "cf500d925f29e9b2355c01ade7fe7e95ddaf7420",
+        "src/main/java/appeng/core/definitions/AEParts.java": "fa2bcff0c00b0266973101d5ba8ab6a023d15bc4",
+        "src/main/java/appeng/parts/CableBusContainer.java": "57beee88069a620103687bc6b3c3c896aba9f1fc",
+        "src/main/java/appeng/blockentity/networking/CableBusBlockEntity.java": "25eb32b12b6ad8b33cf181b107c86aec5ad1280a",
+        "src/main/java/appeng/parts/AEBasePart.java": "4cd406ee24173bfc1f0e1b4a2314d1d653be5e4b",
+        "src/main/java/appeng/parts/networking/CablePart.java": "d3fe8470a61927b18704253c11f61814f58a58e6",
+        "src/main/java/appeng/parts/networking/GlassCablePart.java": "7492232cf5d5597741a388efa7074c96f6a49724",
+        "src/main/java/appeng/parts/networking/CoveredCablePart.java": "60937400271a64d8218c902fdb73f55a0728584d",
+        "src/main/java/appeng/parts/networking/SmartCablePart.java": "77c609e9f0602e8bc96f47385758bd7efefe20c6",
+        "src/main/java/appeng/parts/networking/DenseCablePart.java": "52d56990e2a2ef04a993971244ece598bf813014",
+        "src/main/java/appeng/parts/networking/CoveredDenseCablePart.java": "431724e9a65ee715641e46bb01aee86825ff5a96",
+        "src/main/java/appeng/parts/networking/SmartDenseCablePart.java": "1bcbc6895b5a83103e09ed978cb61f1fde4b1560",
+        "src/main/java/appeng/me/InWorldGridNode.java": "6887b55e1b2ad21d5c6827827b4f810ae3c0cfd2",
+        "src/main/java/appeng/hooks/VisualStateSaving.java": "2c3f1e59b6e667bc3d549af85da5ff7985ae7655",
+        "src/main/java/appeng/mixins/StructureTemplateMixin.java": "dd32cac861aeaab806e51197aeb62c73f9498e0e",
+        "src/main/java/appeng/api/orientation/BlockOrientation.java": "cc5e1ad2c7da391a87e7d1c25f53bbe81b1059ac",
+        "src/main/java/appeng/client/render/cablebus/QuadRotator.java": "7f0617c845c6f947912efb4ac109b2330302abc5",
+        "src/main/java/appeng/parts/PartModel.java": "4a080605ea5417aa4077e4b96449d4821a957ffd",
+        "src/main/java/appeng/parts/reporting/AbstractTerminalPart.java": "e89bc96e628542a7c43874ec0b04670fdea245d1",
+        "src/main/java/appeng/parts/reporting/ItemTerminalPart.java": "dc44224b2b8a097cc594896994f5526d0ae26445",
+        "src/main/java/appeng/facade/FacadeContainer.java": "70a76f094c5dbe688d1b9164522d66dc8d097503",
+        "src/main/java/appeng/facade/FacadePart.java": "ec4931e7ff6fe09ece09cfa5454f34c17bc849a8",
+        "src/main/java/appeng/items/parts/FacadeItem.java": "992d00f30f0f30da3112b1bcfd39669a43befbde",
+        "src/main/java/appeng/api/client/StorageCellModels.java": "0f5a71231914969df9c01776436fa405131309d0",
+        "src/main/java/appeng/api/ids/AEItemIds.java": "52799e530de8ddbdde357339e2ad6727aa640bff",
+        "src/main/java/appeng/init/internal/InitStorageCells.java": "61e7648e2b3a52d46c9b27a3cb1ff7320017b8f2",
+        "src/main/java/appeng/decorative/solid/QuartzGlassBlock.java": "aa32019eb12c58e6ba7e6427bfcc75e567056725",
+        "src/main/java/appeng/decorative/solid/QuartzLampBlock.java": "df6d99789799b562271ec66cbec998b5b56d4691",
+        "src/main/java/appeng/decorative/solid/GlassState.java": "a304e9744f4cf500a76689622004342fb985789d",
+        "src/main/java/appeng/client/render/model/GlassModel.java": "f990aa0568489ef6d1d2e9cb7717d0645fa4d2cf",
+        "src/main/java/appeng/client/render/model/GlassBakedModel.java": "53fee2661e8d8d3e69b8eed8596e69edbcf89c3d",
+        "src/main/java/appeng/client/render/model/RenderHelper.java": "a2b5d5dfc5d058a297974784db743fc2308e323a",
+        "src/main/java/appeng/init/client/InitBuiltInModels.java": "6169f3763658d7910ecc4aa4acd8f468a564dd46",
+        "src/main/java/appeng/hooks/BuiltInModelHooks.java": "08d1790ee9d35330bfd8614ea31761ec2c347514",
+        "src/main/java/appeng/mixins/ModelBakeryMixin.java": "387b5037bba79de55f99091f109e207d5b61bd5d",
+        "src/main/java/appeng/core/definitions/AEBlocks.java": "c01cc90e07aa2107afb1ef036d501dd428ecf65e",
+        "src/main/java/appeng/core/AppEngClient.java": "aa129b164031c4be6a87c2156f774db05f39cb06",
+        "src/main/java/appeng/block/AEBaseBlock.java": "aed79adfe188a42268a3e69401033d36b6320d65",
+        "src/main/java/appeng/block/crafting/AbstractCraftingUnitBlock.java": "341e7029b2194d4b30cc71f04cd13a20f832fdef",
+        "src/main/java/appeng/block/crafting/CraftingUnitBlock.java": "035e3d036d7ec9bde2769a10252608c8b7aae057",
+        "src/main/java/appeng/block/crafting/CraftingMonitorBlock.java": "c18fca3c59b48f0ed8cf31bc9690852313254d53",
+        "src/main/java/appeng/blockentity/crafting/CraftingBlockEntity.java": "3a64e61b569793917807c2080163dcf540195042",
+        "src/main/java/appeng/blockentity/crafting/CraftingMonitorBlockEntity.java": "69a627e39c5163036a3b5087e6d615628b480616",
+        "src/main/java/appeng/client/render/crafting/AbstractCraftingUnitModelProvider.java": "2928a2e7a4d2bf38a302383e998b32ce065c63e0",
+        "src/main/java/appeng/client/render/crafting/CraftingCubeBakedModel.java": "791cf84d404e00ee9d5aa8bf22728604670749a5",
+        "src/main/java/appeng/client/render/crafting/CraftingUnitModelProvider.java": "51c4cc4712f30cfc959dff32a1f7fd1924f71ea6",
+        "src/main/java/appeng/client/render/crafting/LightBakedModel.java": "f6f62b268c25fbbdc1ae8c8f1480e71718b68694",
+        "src/main/java/appeng/client/render/crafting/MonitorBakedModel.java": "cc32274c3542f4ca4fc27238a1f113b51fed7b6a",
+        "src/main/java/appeng/client/render/crafting/UnitBakedModel.java": "f6a0562d6a3a3b744889949d46bb5c3d25321157",
+        "src/main/java/appeng/me/cluster/implementations/CraftingCPUCalculator.java": "65b844f682a79e6a7d36d9be7576027c5094a46f",
+        "src/main/java/appeng/block/qnb/QnbFormedBakedModel.java": "bb77320d0c0429a2725e7f7c29f7e81cd08d1ec6",
+        "src/main/java/appeng/block/qnb/QnbFormedModel.java": "96e9e177fbbca2c306fe62ce2e7cfd471a263ac0",
+        "src/main/java/appeng/block/qnb/QnbFormedState.java": "d4cc38a6c32b7c50e70569f6092c751a53c7fd74",
+        "src/main/java/appeng/block/qnb/QuantumBaseBlock.java": "a908e93b7ea7a41e33b2c921f09dd92507e8ba50",
+        "src/main/java/appeng/block/qnb/QuantumLinkChamberBlock.java": "07d36b0f1d2b868751696982a1fa940abd426ac3",
+        "src/main/java/appeng/block/qnb/QuantumRingBlock.java": "0c44161a98e37dc3618608c14e1f1fcd46e464ca",
+        "src/main/java/appeng/blockentity/qnb/QuantumBridgeBlockEntity.java": "cc903a2d3450c80367bb7eee71f8f5bfd233c095",
+        "src/main/java/appeng/me/cluster/implementations/QuantumCalculator.java": "2313c9143ba8092c3950297361ca0671573bde27",
+        "src/main/java/appeng/me/cluster/implementations/QuantumCluster.java": "01f0edccc0dca3ae5577769243cf877739bb1911",
+        "src/main/java/appeng/server/testplots/QnbTestPlots.java": "8233958f86977f227ee6d05c70b73aa955b228b1",
+        "src/main/java/appeng/block/paint/PaintSplotches.java": "036ed76adf24a5a47cdf86b69da21e1700df7d06",
+        "src/main/java/appeng/block/paint/PaintSplotchesBakedModel.java": "44ea107db0aae8d5addc789ff1ad8f8707a8f1a3",
+        "src/main/java/appeng/block/paint/PaintSplotchesBlock.java": "9ac8e23702883adf1c5cef8310730376b9c26b36",
+        "src/main/java/appeng/block/paint/PaintSplotchesModel.java": "bae6ea114713d4667eb1424f9c34c7d61bca2706",
+        "src/main/java/appeng/blockentity/misc/PaintSplotchesBlockEntity.java": "401b48d593a6063fabd309dfe228df2b85c1e7ed",
+        "src/main/java/appeng/helpers/Splotch.java": "4d0c01e38a81a71333ed2faee8ab789eea685f27",
+        "src/main/java/appeng/block/spatial/SpatialPylonBlock.java": "320463a24f81c943bfec9f2f3c3d8e70b8fafe49",
+        "src/main/java/appeng/blockentity/spatial/SpatialPylonBlockEntity.java": "7f3ff5c4f7a71765db9217352fc0da2fac63e55e",
+        "src/main/java/appeng/client/render/tesr/spatial/SpatialPylonBakedModel.java": "0d86728df3158e788bab5e97fe53a10d1639fef3",
+        "src/main/java/appeng/client/render/tesr/spatial/SpatialPylonModel.java": "2c2d8623b25091a6fde3012691bd44ae255c05e3",
+        "src/main/java/appeng/client/render/tesr/spatial/SpatialPylonTextureType.java": "fdc6524f2949ff618a0661e443d927186ab1f0c7",
+        "src/main/java/appeng/me/cluster/implementations/SpatialPylonCalculator.java": "c6c7652e801f6353ca728d9c55b0fa90ab7c5647",
+        "src/main/java/appeng/me/cluster/implementations/SpatialPylonCluster.java": "38ee78acb0edbd8d79e1c190062945997ff578f3",
+        "src/main/java/appeng/me/cluster/MBCalculator.java": "73ccf49bcb242c1555b801684bdc69513a1c6543",
+        "src/main/java/appeng/me/service/SpatialPylonService.java": "7fccadfeef49f1a86fd8b4ddad462fe127600be6",
+        "src/main/java/appeng/block/storage/SkyChestBlock.java": "a46760f6317fe4eb6fd86bf42b31aa6ab12516df",
+        "src/main/java/appeng/blockentity/storage/SkyChestBlockEntity.java": "ea339e8ac9e831f4c601642e60099e3d6a6728e9",
+        "src/main/java/appeng/client/render/tesr/SkyChestTESR.java": "b01b77f602d0a664f1be82651d368e5708eaae7d",
+        "src/main/java/appeng/block/misc/CrankBlock.java": "c7a415b5d44f297d085039a735769a26330da90d",
+        "src/main/java/appeng/blockentity/misc/CrankBlockEntity.java": "7f53ce14f7c8157a5adabc3a89ccb3790eb78f26",
+        "src/main/java/appeng/client/render/tesr/CrankRenderer.java": "797de87a4d88d0b24e7a954f9f9e4a4057616543",
+        "src/main/java/appeng/block/misc/InscriberBlock.java": "220f28e7b9659d32da5f0f3e1622cbb638231233",
+        "src/main/java/appeng/blockentity/misc/InscriberBlockEntity.java": "e9eb845dd435e05bcd37c952e2c42faf529d5867",
+        "src/main/java/appeng/client/render/tesr/InscriberTESR.java": "47390f57aeca0576ad78ba4d282fd9b7ee5430a3",
+        "src/main/java/appeng/core/definitions/AEBlockEntities.java": "dc9c147c8ac8af1c3b87b69abbad6b26aeeaf7ef",
+        "src/main/java/appeng/client/render/cablebus/FacadeBuilder.java": "6dcd513dd3a4d1c0ec91627f72730b4fd48cc585",
+        "src/main/java/appeng/client/render/cablebus/FacadeRenderState.java": "e248a6cd84cfcda7ea6a781bc5c7782d67ea452f",
+        "src/main/java/appeng/client/render/cablebus/FacadeBlockAccess.java": "14eae3726a84ea9220e4be7336ee5db0229c2b72",
+        "src/main/java/appeng/parts/BusCollisionHelper.java": "99b633ca3ccedd533e3ceba2ddea2b44c6d8f2de",
+        "src/main/java/appeng/parts/reporting/AbstractReportingPart.java": "6ee8566e2d2959d01acd9c06d2e50190e71a7710",
+        "src/main/java/appeng/parts/misc/CableAnchorPart.java": "43b1f60c04ae810cfa73b15f731ba0d6132c0763",
+        "src/main/java/appeng/block/networking/CableBusBlock.java": "59dbf7fda7fdc0c6974bfa553f643df6f3bbb481",
+        "src/main/java/appeng/thirdparty/codechicken/lib/model/pipeline/transformers/QuadClamper.java": "248d50503e16d986ff634b4a12f6d4b53003b5a4",
+        "src/main/java/appeng/thirdparty/codechicken/lib/model/pipeline/transformers/QuadReInterpolator.java": "e61518e7581bb7d68c694c82c95fed8ada9df81c",
+        "src/main/java/appeng/thirdparty/codechicken/lib/math/InterpHelper.java": "0db91b05a4a863ad1c1f3df8e1dad64433edf756",
+        "src/main/java/appeng/thirdparty/codechicken/lib/model/pipeline/transformers/QuadFaceStripper.java": "567339f1fa6bb6da67c08eb02c2a3cb6c8a212c4",
+        "src/main/java/appeng/thirdparty/codechicken/lib/model/pipeline/transformers/QuadCornerKicker.java": "5be45971f33fee3a3718a04483cdd45c1a80577e",
+        "src/generated/resources/data/ae2/tags/block/whitelisted/facades.json": "30d3c5110843ea53327bdfd74eea24fdbf17ee6e",
+        "LICENSE": "99ef9e2a1a13b4695ec3b69601f760c83bf858b5"
+      }
+    },
+    "required_resources": {
+      "manifest_path": "src/main/resources/bluemap-ae2/profiles/ae2/19.2.17/required-resources.sha256",
+      "entry_count": 196,
+      "metadata_and_dispatch_entries": 4,
+      "corroborating_model_entries": 34,
+      "runtime_texture_entries": 158,
+      "manifest_sha256": "408297def444f1392b7b87fdc4b8520099513b4c57c63a4176b808ce61b4e1be",
+      "texture_manifest_sha256": "c0e66d75cad06649b021f8a9073629d6619050c4f69e78c522b6fa32fb232242",
+      "partitions": {
+        "m0_through_m2_core": {
+          "entry_count": 170,
+          "runtime_texture_entries": 148,
+          "manifest_sha256": "4f783945d92be446c8e5939f9455b24f9d463cb39f6b4e35e76c9b6fb713b3c2",
+          "texture_manifest_sha256": "e40a9bc4942d8999d825f42bce94947079948d74024f4f1a078cc55252d81d33"
+        },
+        "m3a_drive": {
+          "entry_count": 26,
+          "runtime_texture_entries": 10,
+          "manifest_sha256": "a8d10416d0fce66d8a91ce9e0dc93a83d2f552da8762a0a90e183dc58f6745cf"
+        }
+      }
+    },
+    "m3a_drive_profile_audit": {
+      "status": "exact profile, resource contract, technical lifecycle, and human visual acceptance complete for the exact M3a artifact",
+      "recorded_on": "2026-08-07",
+      "runtime_jar_sha256": "460d779a0609b81409907d9956de8f6f70a1b0912257e3e5c3c7e75ac9630e95",
+      "source_commit": "79ee2c704ad62941a426c26b1cb1f76ef5b2ee5a",
+      "accepted_artifact": {
+        "size": 259005,
+        "sha256": "55a11805373aebfde821e5009723ec7d672fb290127dbc60131ffa344c99518a",
+        "accepted_on": "2026-08-07",
+        "scope": "M3a native ae2:drive gallery and bounded behavior only"
+      },
+      "supported_design_boundary": {
+        "block_id": "ae2:drive",
+        "slot_count": 10,
+        "explicit_cell_item_ids": 21,
+        "generic_cell_item_ids": ["ae2:matter_cannon", "ae2:color_applicator"],
+        "occupied_model_count": 12,
+        "led_policy": "static-offline-unknown",
+        "unknown_cell_policy": "atomic-whole-block-original-resource-fallback"
+      },
+      "runtime_class_sha256": {
+        "appeng/api/client/StorageCellModels.class": "828878f8561265c7e9c37ef17a2446e437d183021ad68f404e5525bda07b5219",
+        "appeng/api/ids/AEItemIds.class": "120f7c98f95e75890e2c0652acae2a38cdb168071e9aec921cba3ccae0f3b774",
+        "appeng/init/internal/InitStorageCells.class": "ada98913fe54ea9dbee8504746a9fefe5387755ab9a37b29b3cccd755253e50b"
+      },
+      "runtime_resource_closure": {
+        "entry_count": 26,
+        "blockstate_entries": 1,
+        "model_entries": 15,
+        "texture_entries": 10,
+        "manifest_sha256": "a8d10416d0fce66d8a91ce9e0dc93a83d2f552da8762a0a90e183dc58f6745cf",
+        "asset_use": "Identifiers and digests only; operator-installed assets are not bundled"
+      }
+    },
+    "m3c_quartz_glass_profile_audit": {
+      "status": "exact renderer, profile, clean reproducible artifact, technical lifecycle, and human visual acceptance complete for M3c",
+      "recorded_on": "2026-08-08",
+      "runtime_jar_sha256": "460d779a0609b81409907d9956de8f6f70a1b0912257e3e5c3c7e75ac9630e95",
+      "source_commit": "79ee2c704ad62941a426c26b1cb1f76ef5b2ee5a",
+      "profile_id": "ae2-quartz-glass",
+      "accepted_evidence": {
+        "accepted_on": "2026-08-08",
+        "artifact": {
+          "size": 375558,
+          "sha256": "4c1b557ae4c79c738005b74e2f0c89ca4fbe503dd6ef0ba614fae34d8e449d47"
+        },
+        "schema_6_gallery": {
+          "size": 38929,
+          "sha256": "0839009fe6a4f4785f864f33bc97fef28b8418f077d5d66a20efc3e8eeb4edab"
+        },
+        "map_archive": {
+          "size": 20376253,
+          "sha256": "3fb5fb174f23c0f2d8ce9f98e8c12feb8b12c444060e35b9d8e0036d8ec165e5"
+        },
+        "scope": "M3c native quartz-glass route and bounded gallery only"
+      },
+      "supported_design_boundary": {
+        "block_ids": ["ae2:quartz_glass", "ae2:quartz_vibrant_glass"],
+        "block_state_properties": "none",
+        "block_entity_data": "none",
+        "direct_neighbor_axes": 6,
+        "same_family_blocks": ["ae2:quartz_glass", "ae2:quartz_vibrant_glass"],
+        "cross_mod_appearance": "unsupported-treated-disconnected",
+        "malformed_native_or_missing_neighbor": "atomic-original-resource-fallback",
+        "render_layer": "cutout",
+        "ambient_occlusion": false,
+        "vibrant_light_emission": 15
+      },
+      "runtime_class_sha256": {
+        "appeng/decorative/solid/QuartzGlassBlock.class": "bb465d3b32a4ca4ec8f2356bbd99937f2d5d66cfe99e581608cbec5b35012205",
+        "appeng/decorative/solid/QuartzLampBlock.class": "ce00695e6c01578f787c8e409375f80f15ccdcba213f5311b8d2d68f2d56b7e5",
+        "appeng/decorative/solid/GlassState.class": "2ad93080f06f5fb51084c3ccfe8f06f3c1d7e58e4b43df9c52071b8089de5b67",
+        "appeng/client/render/model/GlassModel.class": "ef8258c23aefad903ce5a3b0814022120476a5430907aae1ff7dde00227d390d",
+        "appeng/client/render/model/GlassBakedModel.class": "c348b7f6610f825aa5184679baf52f29a2ac590c257fcc44bcfbe1da0e564c24",
+        "appeng/client/render/model/RenderHelper.class": "a634cc4a75389f426a5e48f87f16ad333381afa05aab30a92b29c76c9d966eee",
+        "appeng/init/client/InitBuiltInModels.class": "4dc64e570af985893039fe8519c3295ed5330f995984d48bb6b67d5b67978341",
+        "appeng/hooks/BuiltInModelHooks.class": "90da9249c096d2fad66f3b926f502cfb01f64303a25c1e664728e7002a50e416",
+        "appeng/mixins/ModelBakeryMixin.class": "0fd8071529619f52b94805e614e417825994db9e1011d0e23e01396fd5bfc5cf",
+        "appeng/core/definitions/AEBlocks.class": "1b882d6be449388cdaa838b235c0dc646ca205fae5c92d811278bca3c5b13afb",
+        "appeng/core/AppEngClient.class": "d8c952a6ab7845c7341b1427ec94c7319a95908c4be035f14ef81a798ec179c8"
+      },
+      "runtime_resource_closure": {
+        "manifest_path": "src/main/resources/bluemap-ae2/profiles/ae2/19.2.17/routes/quartz-glass/required-resources.tsv",
+        "profile_path": "src/main/resources/bluemap-ae2/profiles/ae2/19.2.17/routes/quartz-glass/profile.json",
+        "entry_count": 22,
+        "blockstate_entries": 2,
+        "model_entries": 1,
+        "runtime_texture_entries": 19,
+        "total_bytes": 4187,
+        "manifest_format": "path-tab-bytes-tab-sha256-lf",
+        "manifest_sha256": "b51c708e7c4d26093c1b6f85b88d0be50572d3cfa76dbf802720f6ad79c7a7fa",
+        "texture_manifest_sha256": "65005c9b76800cdeba5c4598472a44dea131c9974672f89bf421452755fefb6a",
+        "canonical_manifest_format": "sha256-tab-bytes-tab-path-lf",
+        "canonical_manifest_sha256": "3704e90b1c8ec9ee5a7d7215995869500b50c9b61a797584f6732713dab7103d",
+        "canonical_texture_manifest_sha256": "f9373f23e0924f6f2e7315ffb42f4d12b01d6d81b4996651917b865166d04e15",
+        "profile_sha256": "548e5bc00ef07c6d6b93b346422b596882ec11ca03de006065fa45fecb991200",
+        "accepted_main_profile_sha256": "2c27976a718834dbc97b3eb7cac6543c4ad2a966737c7bccbadb2b1c39c837e8",
+        "accepted_main_manifest_sha256": "408297def444f1392b7b87fdc4b8520099513b4c57c63a4176b808ce61b4e1be",
+        "asset_use": "Identifiers, byte sizes and digests only; operator-installed AE2 assets are not bundled"
+      },
+      "synthetic_validation": {
+        "status": "passed",
+        "gallery_schema": 6,
+        "gallery_scope": "representative",
+        "case_count": 11,
+        "anchor_count": 47,
+        "triangle_count": 776,
+        "selected_resource_count": 19,
+        "java_connection_mask_count": 64
+      },
+      "known_limitations": {
+        "appearance_proxies": "BlueMap does not expose Minecraft getAppearance; known non-native neighbors, including appearance proxies, are treated as disconnected",
+        "directional_lighting": "BlueMap 5.22 PRBM has no BakedQuad shade flag, so it cannot encode AE2 GlassBakedModel shade=false and no pixel-identical directional-lighting claim is made",
+        "particles": "Client particle and item rendering are outside this world-block renderer"
+      },
+      "asset_licensing": {
+        "models_and_textures": "CC-BY-NC-SA-3.0",
+        "use": "Operator-installed resources only; no model, texture, capture, or precomputed mesh is redistributed"
+      }
+    },
+    "m3d_crafting_profile_audit": {
+      "status": "exact renderer, profile, clean reproducible artifact, technical lifecycle, and human visual acceptance complete for M3d",
+      "recorded_on": "2026-08-08",
+      "runtime_jar_sha256": "460d779a0609b81409907d9956de8f6f70a1b0912257e3e5c3c7e75ac9630e95",
+      "source_commit": "79ee2c704ad62941a426c26b1cb1f76ef5b2ee5a",
+      "profile_id": "ae2-crafting",
+      "accepted_evidence": {
+        "accepted_on": "2026-08-08",
+        "artifact": {
+          "size": 448915,
+          "sha256": "ca057f025338150255ea916402c08bc8b614f9398a063e7433bbe468808c93ee"
+        },
+        "schema_7_gallery": {
+          "size": 44201,
+          "sha256": "4a18b45f2c03c8d1d3c49a731df2c2503745952faccf9ba06ec8f301909b81f3"
+        },
+        "map_archive": {
+          "size": 20417822,
+          "sha256": "672cdffaf5135f34c4b10c24638056540dcaadbb5fd2d78b3096897436d8a2c6"
+        },
+        "scope": "M3d native formed-crafting route and bounded gallery only"
+      },
+      "supported_design_boundary": {
+        "block_ids": [
+          "ae2:crafting_unit",
+          "ae2:crafting_accelerator",
+          "ae2:1k_crafting_storage",
+          "ae2:4k_crafting_storage",
+          "ae2:16k_crafting_storage",
+          "ae2:64k_crafting_storage",
+          "ae2:256k_crafting_storage",
+          "ae2:crafting_monitor"
+        ],
+        "formed_state": "required true for the custom route; unformed blocks retain stock BlueMap models",
+        "powered_state": "required boolean",
+        "direct_neighbor_axes": 6,
+        "native_connector_count": 8,
+        "monitor_orientation": ["facing", "spin"],
+        "monitor_block_entity_retained": ["paintedColor"],
+        "monitor_painted_color_ordinals": "0-through-16; missing maps to transparent ordinal 16",
+        "monitor_displayed_item": "client-stream-only and deliberately omitted",
+        "block_properties": {
+          "formed": {"full_solid": true, "occluding": true},
+          "unformed": {"full_solid": true, "occluding": true}
+        },
+        "unknown_or_malformed_native": "atomic-original-resource-fallback",
+        "compatible_but_unsupported_extension": "atomic-original-resource-fallback",
+        "unknown_non_native": "disconnected"
+      },
+      "runtime_class_sha256": {
+        "appeng/client/render/crafting/CraftingCubeBakedModel.class": "c2d28cf704d1765bf063495d011ce5ae8925aa0003b0c71c39e2ce4ed5fcd124",
+        "appeng/client/render/crafting/UnitBakedModel.class": "810683548a6662ef95123f9711df81b8cbb7c0ecf74bb24a12bac942aae251fe",
+        "appeng/client/render/crafting/LightBakedModel.class": "dab88c09606426823435819725b47c8e91998d4a6f691f87e7f32a606f34d669",
+        "appeng/client/render/crafting/MonitorBakedModel.class": "2837cd33bb090c13608bdc5044e3a38e561d9a51b6a289a88ebc950bdbf5511d",
+        "appeng/client/render/crafting/CraftingUnitModelProvider.class": "63910490b139af9c9008c98ca12af658c474efb92aeb137d20b7fc05f7685904",
+        "appeng/client/render/cablebus/CubeBuilder.class": "5b7cd4efccaa90f3a539a6a7a30c3d5fbb931858e5363cb539b0d72e446f90db",
+        "appeng/blockentity/crafting/CraftingBlockEntity.class": "2d6d6ccd633e5d61d9c064c04bb7c301758632304bb62bf529c8ceb916057d0c",
+        "appeng/blockentity/crafting/CraftingMonitorBlockEntity.class": "a491e419fa5221fcc203e789a7e8cd13f1bb1f303c6fbb5cd5ac7e7c9fa557f5",
+        "appeng/me/cluster/implementations/CraftingCPUCalculator.class": "12ab79b576575aea98d481c23c796257ff8057d36f3a1e6f5e95770a921c8d24",
+        "appeng/block/crafting/AbstractCraftingUnitBlock.class": "f921dcc4dcc734b13c6712a3bd47674a4ff4ae75233806b2a6ae4ed6fab08408",
+        "appeng/block/crafting/CraftingUnitBlock.class": "3847db3fc763d6a523296790d3c7c70f047d8b5eb28955e4aa0b2c38f636ba84",
+        "appeng/block/crafting/CraftingMonitorBlock.class": "4574fb72d321455e99adf3916d1ed1e95e44624ed1d6634fdaa554b3d982c943",
+        "appeng/core/definitions/AEBlocks.class": "1b882d6be449388cdaa838b235c0dc646ca205fae5c92d811278bca3c5b13afb",
+        "appeng/block/AEBaseBlock.class": "dcfd04cbaee52d7c7e6854a36e291ccbbc77eaaa53577960bce68fc29d16dfd2"
+      },
+      "runtime_resource_closure": {
+        "manifest_path": "src/main/resources/bluemap-ae2/profiles/ae2/19.2.17/routes/crafting/required-resources.tsv",
+        "profile_path": "src/main/resources/bluemap-ae2/profiles/ae2/19.2.17/routes/crafting/profile.json",
+        "entry_count": 30,
+        "blockstate_entries": 8,
+        "formed_model_entries": 7,
+        "runtime_texture_entries": 15,
+        "total_bytes": 6177,
+        "monitor_formed_model": "client-built-in and absent from the runtime resource archive",
+        "manifest_format": "path-tab-bytes-tab-sha256-lf",
+        "manifest_sha256": "dc474ba6ce7c4c2d53778827b1c1f9b4994594ea984ed7a2cbd62c40e1bc1183",
+        "texture_manifest_sha256": "a9a2a1ed912f562362d581cbd219b40afd4c884452a0c64cee3d015dfdc81620",
+        "profile_sha256": "676f63473b4827bb952a7c1f3fb457a6a03c3bfd0fb4b29a122b9f57468ba0f7",
+        "frozen_accepted_output_sha256": {
+          "ae2_main_profile": "2c27976a718834dbc97b3eb7cac6543c4ad2a966737c7bccbadb2b1c39c837e8",
+          "ae2_main_196_resource_manifest": "408297def444f1392b7b87fdc4b8520099513b4c57c63a4176b808ce61b4e1be",
+          "m3c_profile": "548e5bc00ef07c6d6b93b346422b596882ec11ca03de006065fa45fecb991200",
+          "m3c_manifest": "b51c708e7c4d26093c1b6f85b88d0be50572d3cfa76dbf802720f6ad79c7a7fa",
+          "extendedae_profile": "eab467f46c27974e1f7d54fe749366b92eacd8d63d57bad1e8f3e452d82ad1df",
+          "extendedae_manifest": "5e72f79f45a3b120a89cf8b7a1fa15ce41bebaae62a63c6f3305ef40bd5d24ee"
+        },
+        "asset_use": "Identifiers, byte sizes and digests only; operator-installed AE2 assets are not bundled"
+      },
+      "extension_connector_evidence": {
+        "policy": "Only exact pack artifacts proven to construct AE2 CraftingUnitBlock or CraftingMonitorBlock are admitted to the closed compatible-but-unsupported set",
+        "compatible_but_unsupported_count": 29,
+        "megacells": {
+          "version": "4.11.0",
+          "artifact_size": 1137276,
+          "artifact_sha1": "f0b1a44bf30c8a9e14e2fa7fce37360191aa55e8",
+          "artifact_sha256": "a386bbf12afb11729b0dcf77f64221893d250f22e6185a4d728b9799b230bc55",
+          "definition_class": "gripe/_90/megacells/definition/MEGABlocks.class",
+          "definition_class_sha256": "2cd93e8c40c27c1123d724214f8b51e8c58aa95faf44bf9cead50d0ba20e40f9",
+          "construction_proof": "constructs AE2 CraftingUnitBlock and CraftingMonitorBlock",
+          "connector_ids": [
+            "megacells:mega_crafting_unit",
+            "megacells:mega_crafting_accelerator",
+            "megacells:mega_crafting_monitor",
+            "megacells:1m_crafting_storage",
+            "megacells:4m_crafting_storage",
+            "megacells:16m_crafting_storage",
+            "megacells:64m_crafting_storage",
+            "megacells:256m_crafting_storage"
+          ],
+          "bundled": false
+        },
+        "expandedae": {
+          "version": "2.1.1",
+          "artifact_size": 496713,
+          "artifact_sha1": "c4db013f83e569b016da329b3ddc9c14acc75d7d",
+          "artifact_sha256": "f39c0eb9c6271f54a44ffee092a29520f53000d1005849e6afada3ad9dffba14",
+          "definition_class": "lu/kolja/expandedae/definition/ExpBlocks.class",
+          "definition_class_sha256": "a0974082fac7050bcc26174c64ea40755d9e9c15d14fd170879b3e28cab6d371",
+          "construction_proof": "constructs AE2 CraftingUnitBlock",
+          "connector_ids": [
+            "expandedae:exp_crafting_unit",
+            "expandedae:exp_crafting_accelerator_2",
+            "expandedae:exp_crafting_accelerator_4",
+            "expandedae:exp_crafting_accelerator_8",
+            "expandedae:exp_crafting_accelerator_16",
+            "expandedae:exp_crafting_accelerator_32",
+            "expandedae:exp_crafting_accelerator_64",
+            "expandedae:exp_crafting_accelerator_128",
+            "expandedae:exp_crafting_accelerator_256",
+            "expandedae:exp_crafting_accelerator_512",
+            "expandedae:exp_crafting_accelerator_1k",
+            "expandedae:exp_crafting_accelerator_2k",
+            "expandedae:exp_crafting_accelerator_4k",
+            "expandedae:exp_crafting_accelerator_8k",
+            "expandedae:exp_crafting_accelerator_16k",
+            "expandedae:exp_crafting_accelerator_32k",
+            "expandedae:exp_crafting_accelerator_64k",
+            "expandedae:exp_crafting_accelerator_128k",
+            "expandedae:exp_crafting_accelerator_256k",
+            "expandedae:exp_crafting_accelerator_512k",
+            "expandedae:exp_crafting_accelerator_1m"
+          ],
+          "bundled": false
+        },
+        "verified_outside_native_connector_contract": {
+          "advanced_ae": {
+            "version": "1.6.11-1.21.1",
+            "artifact_size": 4797100,
+            "artifact_sha1": "0af8033f7291b9f5062b229053e16b439a906db9",
+            "artifact_sha256": "891e1f8ee0f3ac1bbce03fc2848b761f9c52bea4533eb3419ae849582e15ced7",
+            "audited_base_class": "net/pedroksl/advanced_ae/common/blocks/AAEAbstractCraftingUnitBlock.class",
+            "audited_base_class_sha256": "de6cb2f4b716c0114791797203f6db325eaf07833ebb4ad5166844b9a852e06c",
+            "reason": "uses AEBaseEntityBlock rather than AE2 AbstractCraftingUnitBlock and exact class scan found no AE2 native crafting-class marker",
+            "bundled": false
+          },
+          "extendedae": {
+            "version": "1.21-2.2.33-neoforge",
+            "artifact_size": 5573972,
+            "artifact_sha1": "e87867bffee36a28f9f4493f7bb7e7a5109a480f",
+            "artifact_sha256": "6652ed1ea4b71f585d48c05a195a77594a7a2bd1ecea0fc805db2122aafad734",
+            "reason": "exact class scan found no AE2 AbstractCraftingUnitBlock, CraftingUnitBlock, or CraftingMonitorBlock marker",
+            "bundled": false
+          }
+        }
+      },
+      "asset_licensing": {
+        "models_and_textures": "CC-BY-NC-SA-3.0",
+        "use": "Operator-installed resources only; no model, texture, class, source, capture, or precomputed mesh is redistributed"
+      }
+    },
+    "m3e_quantum_bridge_profile_audit": {
+      "status": "exact renderer, fail-closed route, profile, clean reproducible artifact, technical lifecycle, and human visual acceptance complete for M3e",
+      "recorded_on": "2026-08-08",
+      "profile_id": "ae2-quantum-bridge",
+      "implementation_gates": {
+        "renderer_and_route": "local-exact-implementation-complete",
+        "synthetic_block_state": "complete",
+        "schema8_gallery_analyzer": "synthetic-gates-complete",
+        "ambient_occlusion": "enabled-neighbor-derived",
+        "world_light": "host-derived",
+        "technical_runtime_lifecycle": "accepted",
+        "human_acceptance": "accepted"
+      },
+      "accepted_evidence": {
+        "accepted_on": "2026-08-08",
+        "artifact": {
+          "size": 513674,
+          "sha256": "98ff55eaba609fc894b01e0c4d922b47f1871c324945f88f7a34864cf48b124f",
+          "alias": "ae2-addon-m3e-accepted.jar"
+        },
+        "schema_8_gallery": {
+          "size": 45009,
+          "sha256": "498bac2f82b78451eb24da416ded1d625e5785cc5d3e5910b4c34bfecc05c390",
+          "alias": "ae2-m3e-gallery-accepted.zip"
+        },
+        "map_archive": {
+          "size": 20424799,
+          "sha256": "9e145fffbe87205651ed7cc6b4cb706b7dcbe394ac26e7ce2eb1d6d55ea411a7",
+          "alias": "ae2-m3e-enabled-accepted-map-2026-08-08.tar.gz"
+        },
+        "scope": "M3e native quantum-bridge route and bounded gallery only"
+      },
+      "runtime_artifact": {
+        "size": 8230896,
+        "sha256": "460d779a0609b81409907d9956de8f6f70a1b0912257e3e5c3c7e75ac9630e95",
+        "bundled": false
+      },
+      "source_artifact": {
+        "tag": "neoforge/v19.2.17",
+        "commit": "79ee2c704ad62941a426c26b1cb1f76ef5b2ee5a",
+        "size": 3814167,
+        "sha256": "d2f451203cb61c2d21fae52c683083d2f72441ca7d26725f4df5934290492e6a",
+        "audited_file_count": 10,
+        "bundled": false
+      },
+      "supported_design_boundary": {
+        "block_ids": ["ae2:quantum_link", "ae2:quantum_ring"],
+        "block_entity_id": "ae2:quantum_ring",
+        "saved_block_state": {
+          "formed": "required true for the custom route",
+          "waterlogged": "required boolean"
+        },
+        "block_entity_render_fields": "none; inventory, quantum-storage and proxy data ignored",
+        "client_stream_only": ["constructed role", "corner", "powered"],
+        "topology": "one isolated 3x3x1 plane in XY, XZ or YZ; link center and eight rings",
+        "roles": "one center, four corners and four edges",
+        "power_policy": "static-off-unknown; light overlays excluded",
+        "particle_policy": "excluded",
+        "invalid_or_ambiguous": "atomic-original-resource-fallback",
+        "extension_interaction": "native block IDs only; no extension connector compatibility claim"
+      },
+      "runtime_class_sha256": {
+        "appeng/block/qnb/QnbFormedBakedModel.class": "8f70836cc8176971da98f8a9083a19e81402bf5ce03b876d69ebe875b084c79b",
+        "appeng/block/qnb/QnbFormedModel.class": "a78d5c92a199ff86e5acfb01ba61ec3e0a4d056563911ad78f76b879cc9fe9d0",
+        "appeng/block/qnb/QnbFormedState.class": "ef7f4feae3c195377dd3aab83d5696a121b92afb5f48760b275ec83a166edaae",
+        "appeng/block/qnb/QuantumBaseBlock.class": "2291eb7de33359b5720d3a7c18c3842f1324f3b12db4064b4e910926fc541027",
+        "appeng/block/qnb/QuantumLinkChamberBlock.class": "8192c87899e2eb5204e6ee541781c3aed7698abf97041cb4b66b48366e7bf408",
+        "appeng/block/qnb/QuantumRingBlock.class": "a0503866192a2ce9c673dd326d07b4266680c7c8de52852360ec9e31ab0d1490",
+        "appeng/blockentity/qnb/QuantumBridgeBlockEntity.class": "dbe33a976b94735580752ad8eab1e252862a59c22e9c42969da84c7bbf94c74b",
+        "appeng/me/cluster/implementations/QuantumCalculator.class": "dcdb05f98dc4bddb8dc9544d0225a889e7184200f61ae44ee6ce254e5c091f6b",
+        "appeng/me/cluster/implementations/QuantumCluster.class": "2ee1973b616c663ffd725a0fba83d1a6ca6b293ace093c8c908eee2f6188096f",
+        "appeng/client/render/cablebus/CubeBuilder.class": "5b7cd4efccaa90f3a539a6a7a30c3d5fbb931858e5363cb539b0d72e446f90db",
+        "appeng/core/definitions/AEBlocks.class": "1b882d6be449388cdaa838b235c0dc646ca205fae5c92d811278bca3c5b13afb",
+        "appeng/init/client/InitBuiltInModels.class": "4dc64e570af985893039fe8519c3295ed5330f995984d48bb6b67d5b67978341"
+      },
+      "runtime_resource_closure": {
+        "manifest_path": "src/main/resources/bluemap-ae2/profiles/ae2/19.2.17/routes/quantum-bridge/required-resources.tsv",
+        "profile_path": "src/main/resources/bluemap-ae2/profiles/ae2/19.2.17/routes/quantum-bridge/profile.json",
+        "entry_count": 13,
+        "route_only_entry_count": 11,
+        "shared_main_resource_count": 2,
+        "blockstate_entries": 2,
+        "model_entries": 3,
+        "source_texture_entries": 6,
+        "texture_metadata_entries": 2,
+        "emitted_off_texture_entries": 4,
+        "total_bytes": 3798,
+        "manifest_format": "path-tab-bytes-tab-sha256-lf",
+        "manifest_sha256": "717eed1ada75fb43c1324792c147cd8c2308d8c73ee82bf52d8de6bad4f74ed9",
+        "profile_sha256": "21afa152e3f56d8bdde9f602748c0efbca52a2c55d5dd7a836adca267c65480e",
+        "asset_use": "Identifiers, byte sizes and digests only; operator-installed AE2 assets are not bundled"
+      },
+      "frozen_accepted_output_sha256": {
+        "ae2_main_profile": "2c27976a718834dbc97b3eb7cac6543c4ad2a966737c7bccbadb2b1c39c837e8",
+        "ae2_main_196_resource_manifest": "408297def444f1392b7b87fdc4b8520099513b4c57c63a4176b808ce61b4e1be",
+        "m3c_profile": "548e5bc00ef07c6d6b93b346422b596882ec11ca03de006065fa45fecb991200",
+        "m3c_manifest": "b51c708e7c4d26093c1b6f85b88d0be50572d3cfa76dbf802720f6ad79c7a7fa",
+        "extendedae_profile": "eab467f46c27974e1f7d54fe749366b92eacd8d63d57bad1e8f3e452d82ad1df",
+        "extendedae_manifest": "5e72f79f45a3b120a89cf8b7a1fa15ce41bebaae62a63c6f3305ef40bd5d24ee",
+        "m3d_profile": "676f63473b4827bb952a7c1f3fb457a6a03c3bfd0fb4b29a122b9f57468ba0f7",
+        "m3d_manifest": "dc474ba6ce7c4c2d53778827b1c1f9b4994594ea984ed7a2cbd62c40e1bc1183"
+      },
+      "asset_licensing": {
+        "models_and_textures": "CC-BY-NC-SA-3.0",
+        "use": "Operator-installed resources only; no model, texture, class, source, capture, or precomputed mesh is redistributed"
+      }
+    },
+    "m3f_completion_profile_audit": {
+      "status": "exact local renderer, fail-closed route, profile, resource, runtime/source, schema-9 gallery, technical lifecycle, and human visual acceptance complete for M3f",
+      "recorded_on": "2026-08-09",
+      "profile_id": "ae2-m3-completion",
+      "implementation_gates": {
+        "renderer_and_route": "local-exact-implementation-complete",
+        "synthetic_block_states": "complete",
+        "schema9_gallery_analyzer": "synthetic-gates-complete",
+        "bounded_invalid_pylon_component_projection": "complete",
+        "per_block_atomic_fallback": "complete",
+        "technical_runtime_lifecycle": "accepted",
+        "human_acceptance": "accepted"
+      },
+      "accepted_evidence": {
+        "accepted_on": "2026-08-09",
+        "artifact": {
+          "size": 623591,
+          "sha256": "ca67c0fc433e43f8e0801ed8d2cccfe47aae317fbc329c099bc8cd741ec3b42b"
+        },
+        "schema_9_gallery": {
+          "size": 49679,
+          "sha256": "21ceec072cc3263a41bdb81874e897d48d5a1ce5e1c7d3ac3c0de3063818ee6c"
+        },
+        "schema_9_cases": {
+          "size": 3314082,
+          "sha256": "75e6ba2f40631a95f20cfa00d7ca952e521bc2c7a4eb155926334a223a945f3a"
+        },
+        "map_archive": {
+          "size": 20450880,
+          "sha256": "e66abf203481c5df0fa0fc0062c414876f9ef6428cd637de0795f821496c51a9"
+        }
+      },
+      "runtime_artifact": {
+        "size": 8230896,
+        "sha256": "460d779a0609b81409907d9956de8f6f70a1b0912257e3e5c3c7e75ac9630e95",
+        "bundled": false
+      },
+      "source_artifact": {
+        "tag": "neoforge/v19.2.17",
+        "commit": "79ee2c704ad62941a426c26b1cb1f76ef5b2ee5a",
+        "size": 3814167,
+        "sha256": "d2f451203cb61c2d21fae52c683083d2f72441ca7d26725f4df5934290492e6a",
+        "audited_file_count": 30,
+        "bundled": false
+      },
+      "supported_design_boundary": {
+        "block_ids": [
+          "ae2:paint",
+          "ae2:sky_stone_chest",
+          "ae2:smooth_sky_stone_chest",
+          "ae2:crank",
+          "ae2:inscriber",
+          "ae2:spatial_pylon"
+        ],
+        "block_entity_ids": [
+          "ae2:paint",
+          "ae2:sky_chest",
+          "ae2:crank",
+          "ae2:inscriber",
+          "ae2:spatial_pylon"
+        ],
+        "paint": "persisted dots byte array; strict 1-through-21 splotches; 2 triangles per splotch; malformed or zero-count data falls back atomically",
+        "sky_stone_chests": "two native block IDs; static closed pose; inventory and lid animation excluded",
+        "crank": "six-way block orientation; static neutral zero-degree handle; interaction rotation excluded",
+        "inscriber": "facing, spin and waterlogged block state; stock casing plus neutral structural stamps; contents, items, processing and smash animation excluded",
+        "spatial_pylon": "uncached native axis-line scan: isolated, one positive-axis start, one negative-axis end, or two opposite same-axis middle; a bounded locally invalid bend or branch component renders the AE2 unformed NONE role with BASE plus DIM materials",
+        "spatial_pylon_axis_scan_bounds": {
+          "maximum_axis_line_pylons": 256,
+          "bounded_locally_invalid_component": "bounded-locally-invalid-component-unformed-base-plus-dim",
+          "missing_malformed_or_capped": "atomic-original-resource-fallback"
+        },
+        "spatial_pylon_authority": "bounded local non-authoritative topology; global cluster validity beyond the bounded local component, online state and power not claimed; static-offline-unknown materials",
+        "particles": "excluded",
+        "extension_interaction": "native block IDs only; no extension connector compatibility claim"
+      },
+      "runtime_class_sha256": {
+        "appeng/block/paint/PaintSplotches.class": "35508b7a7426201d09df82529621da236db4f63058d9df758be8536e73b73e30",
+        "appeng/block/paint/PaintSplotchesBakedModel.class": "68ad0fe5b6601c9ad0bdb2b98ec9e7dfd39bbf7e5d10d195075a4211378d972c",
+        "appeng/block/paint/PaintSplotchesBlock.class": "2d349a59a7c128371ca8ae1ef85a3ea619900fcfb7d837a514203e2d4b522427",
+        "appeng/block/paint/PaintSplotchesModel.class": "b438964401920ac778df5f17eab86c72568065923613641cd07a5e14519b8674",
+        "appeng/blockentity/misc/PaintSplotchesBlockEntity.class": "7847f9cd2e0dfe6e20efcfa27c9c70d1862bf957b46bd2b2da3d75c2f7b9218d",
+        "appeng/helpers/Splotch.class": "b280f37c4a3b992b6f4962e7748185a175f9bc2638b66ae53bdeb30904270958",
+        "appeng/block/spatial/SpatialPylonBlock.class": "ad426acb5d9e34b179478229f870292ffd01f035385316f6321937775fdd1da4",
+        "appeng/blockentity/spatial/SpatialPylonBlockEntity.class": "b78700ef03ece7d863c655f5f22f9829cba124b73d81c1835197bdc4c477f893",
+        "appeng/client/render/tesr/spatial/SpatialPylonBakedModel.class": "cd212436d4e10ca8f8a36f776965d51ad3b80bdfcf889575e1f3daca52a1d552",
+        "appeng/client/render/tesr/spatial/SpatialPylonModel.class": "0a8abaaad5fdbb4749f30ad078887ef3967f6dba8ee552dfe57a718de6b363d6",
+        "appeng/client/render/tesr/spatial/SpatialPylonTextureType.class": "07d71645f638e1e2a22da325122412b14f7852f7723b8557734c08b64fa03f24",
+        "appeng/me/cluster/implementations/SpatialPylonCalculator.class": "db6a1c7e442ba67fdc1cb4db47fd0b9ddb3e6624fd194ea0fab691ac489dd168",
+        "appeng/me/cluster/implementations/SpatialPylonCluster.class": "c87fdaadf5e8ea963a0bdb798fc31a6e7a644e365fcf537bc3d6fab86aff74d9",
+        "appeng/me/cluster/MBCalculator.class": "a06d61bf4443de04769998a0294127209c578a8dc1a858a441709486c2b07cba",
+        "appeng/me/service/SpatialPylonService.class": "d8d7f78555cfe77ea7cfd2c838cb06f6202a94e9bcca5edacf3c47d39f3e71eb",
+        "appeng/block/storage/SkyChestBlock.class": "59117a5efe4c082dbf9c4e2b4e2c0388eef6293011f9a1b7d9218584ac095a60",
+        "appeng/blockentity/storage/SkyChestBlockEntity.class": "efe4462edfa0b89ca6064e830d2e5f9931de164ef0bd97bfb62af940029c7b7a",
+        "appeng/client/render/tesr/SkyChestTESR.class": "6ed715db1e9009ff2312e4fc863a6fd2adb525736231e322937d52e181fef3ab",
+        "appeng/block/misc/CrankBlock.class": "be3c8f3d7d73bfc7e801ef66fe0b46fec5e2bd5ef08a6b6d91e2933e8bd5f44a",
+        "appeng/blockentity/misc/CrankBlockEntity.class": "6eab6d38bd91cb3fca99a5bec44201759cc7dc18a50962cc11a32b09e368cd46",
+        "appeng/client/render/tesr/CrankRenderer.class": "dead2d7edde004ed0f84fb7fb89fbe0e886dce36a0d73c01b3f46db323667c4d",
+        "appeng/block/misc/InscriberBlock.class": "b84e655ced087399130981feb13ad5668dac5b2689138e89b14ecc312b5d706c",
+        "appeng/blockentity/misc/InscriberBlockEntity.class": "8fb4a5b9440811fba3468853918e8b4df5b385cbca3164cb9211307950a92466",
+        "appeng/client/render/tesr/InscriberTESR.class": "d697a877d973951efc5724a5224ff682343bf27e139a5c02421cfda3e61fcda5",
+        "appeng/client/render/cablebus/CubeBuilder.class": "5b7cd4efccaa90f3a539a6a7a30c3d5fbb931858e5363cb539b0d72e446f90db",
+        "appeng/api/orientation/BlockOrientation.class": "1a47c706e3d1659a2cbaea229dc367698d96bfd752a171b6ea627262fa352186",
+        "appeng/core/AppEngClient.class": "d8c952a6ab7845c7341b1427ec94c7319a95908c4be035f14ef81a798ec179c8",
+        "appeng/core/definitions/AEBlocks.class": "1b882d6be449388cdaa838b235c0dc646ca205fae5c92d811278bca3c5b13afb",
+        "appeng/core/definitions/AEBlockEntities.class": "54bd311db893bb10b44f8244e27b1da4afa27a3ab1219da3c0c3c255c0ff9fce",
+        "appeng/init/client/InitBuiltInModels.class": "4dc64e570af985893039fe8519c3295ed5330f995984d48bb6b67d5b67978341"
+      },
+      "runtime_resource_closure": {
+        "manifest_path": "src/main/resources/bluemap-ae2/profiles/ae2/19.2.17/routes/m3-completion/required-resources.tsv",
+        "profile_path": "src/main/resources/bluemap-ae2/profiles/ae2/19.2.17/routes/m3-completion/profile.json",
+        "entry_count": 33,
+        "blockstate_entries": 6,
+        "model_entries": 8,
+        "texture_entries": 19,
+        "source_texture_entries": 17,
+        "emitted_static_texture_entries": 15,
+        "fallback_only_texture_entries": 2,
+        "total_bytes": 22491,
+        "accepted_profile_overlap_count": 0,
+        "manifest_format": "path-tab-bytes-tab-sha256-lf",
+        "manifest_sha256": "3faf7f29e2878f5525541bad855cbc66b6d45786dc8fc6ee29a6fbbf4878cca1",
+        "source_texture_manifest_sha256": "030ebfafeeef07005946fcf5abf7b28365ec02001273b4bedcaa26b41f8de395",
+        "emitted_static_texture_manifest_sha256": "4652a3110adac720845b559b990dabd32e55887d43bc113f85856052bd0a8a05",
+        "fallback_texture_manifest_sha256": "aaff6681328dfc441a01f5a014182e914a82598395b7a594809b4652281a1146",
+        "profile_sha256": "281a335d3024ebbb97c6268e768826c467d6f7ea660989fd3dae204c6c03abf3",
+        "asset_use": "Identifiers, byte sizes and digests only; operator-installed AE2 assets are not bundled"
+      },
+      "frozen_accepted_output_sha256": {
+        "ae2_main_profile": "2c27976a718834dbc97b3eb7cac6543c4ad2a966737c7bccbadb2b1c39c837e8",
+        "ae2_main_196_resource_manifest": "408297def444f1392b7b87fdc4b8520099513b4c57c63a4176b808ce61b4e1be",
+        "m3c_profile": "548e5bc00ef07c6d6b93b346422b596882ec11ca03de006065fa45fecb991200",
+        "m3c_manifest": "b51c708e7c4d26093c1b6f85b88d0be50572d3cfa76dbf802720f6ad79c7a7fa",
+        "extendedae_profile": "eab467f46c27974e1f7d54fe749366b92eacd8d63d57bad1e8f3e452d82ad1df",
+        "extendedae_manifest": "5e72f79f45a3b120a89cf8b7a1fa15ce41bebaae62a63c6f3305ef40bd5d24ee",
+        "m3d_profile": "676f63473b4827bb952a7c1f3fb457a6a03c3bfd0fb4b29a122b9f57468ba0f7",
+        "m3d_manifest": "dc474ba6ce7c4c2d53778827b1c1f9b4994594ea984ed7a2cbd62c40e1bc1183",
+        "m3e_profile": "21afa152e3f56d8bdde9f602748c0efbca52a2c55d5dd7a836adca267c65480e",
+        "m3e_manifest": "717eed1ada75fb43c1324792c147cd8c2308d8c73ee82bf52d8de6bad4f74ed9"
+      },
+      "asset_licensing": {
+        "models_and_textures": "CC-BY-NC-SA-3.0",
+        "use": "Operator-installed resources only; no model, texture, class, source, capture, or precomputed mesh is redistributed"
+      }
+    },
+    "s1_native_structural_profile_audit": {
+      "status": "exact profile, catalog, resource-closure, runtime/source, frozen-baseline, packaging, reproducible-build, technical lifecycle, and owner BlueMap visual acceptance complete for the exact S1 artifact set on All the Mons 1.2.0",
+      "recorded_on": "2026-08-11",
+      "profile_id": "ae2-cable-bus-structural",
+      "schema_version": 10,
+      "pack_context": {
+        "name": "All the Mons",
+        "version": "1.2.0",
+        "commit": "c7bb230f21d14d26859d0b92548f089b3a493ad9",
+        "minecraft": "1.21.1",
+        "neoforge": "21.1.248"
+      },
+      "full_pack_override_evidence": {
+        "scope": "current-s1-full-pack-resource-override",
+        "pack": {
+          "name": "All the Mons",
+          "version": "1.2.0",
+          "commit": "c7bb230f21d14d26859d0b92548f089b3a493ad9"
+        },
+        "mod": {
+          "id": "glassential",
+          "version": "3.4.5"
+        },
+        "distribution": {
+          "provider": "CurseForge",
+          "project_id": 945149,
+          "file_id": 8440850
+        },
+        "artifact": {
+          "file_name": "Glassential-renewed-1.21.1-3.4.5.jar",
+          "size_bytes": 702249,
+          "sha1": "3a08f59f0930c8123fa1aacdfa0ba9fbdbb6e342",
+          "sha256": "1f0c8f7533bf3b2002575219ba795fd32a44cc5085c2710624ebbf69e6121471",
+          "sha512": "62ccb9057aab96ba656ec8ce357977360c1cc7761fedd7ac995a40b1f16e389c75d753746840b11d30077b6b896938246fb281ec481e560a05084e22098c31d8",
+          "bundled": false
+        },
+        "resources": [
+          {
+            "role": "minecraft-glass-model-override",
+            "path": "assets/minecraft/models/block/glass.json",
+            "size_bytes": 192,
+            "sha256": "dc3cf6fdf740fceb4d2224dcb4132ab103617d0b904fcbbf6b48dbee0ecc9e4e"
+          },
+          {
+            "role": "glassential-glass-texture",
+            "path": "assets/glassential/textures/block/glass.png",
+            "size_bytes": 1041,
+            "sha256": "0a5534e6eb350dbce3670d9a4bc98f98ef20fb0747068d374f3529842b902370"
+          },
+          {
+            "role": "fusion-non-animation-metadata",
+            "path": "assets/glassential/textures/block/glass.png.mcmeta",
+            "size_bytes": 97,
+            "sha256": "23117542de8eb132a734e588a7cac393e7d8375632e4df56cf31010a8360c719"
+          }
+        ],
+        "semantic_metadata": {
+          "fusion": {
+            "type": "connecting",
+            "layout": "full",
+            "render_type": "cutout"
+          },
+          "render_type": "cutout",
+          "blue_map522_non_animation_mcmeta_policy": "ignored-by-resource-loader;not-an-animation-contract",
+          "operator_installed_resources": true
+        },
+        "acceptance": {
+          "exact_artifact_and_resource_verification": "passed",
+          "fresh_unmodified_client_visual": "pending"
+        }
+      },
+      "current_host_evidence": {
+        "scope": "current-s1-canonical-bluemap-host",
+        "release": {
+          "provider": "GitHub",
+          "tag": "v5.22-agent.backport-5.22-mc1.21.1-2",
+          "git_commit": "9be321df995a1103808621d529eb72773e719d4d"
+        },
+        "artifact": {
+          "file_name": "bluemap-5.22-agent.backport-5.22-mc1.21.1-2-neoforge.jar",
+          "size_bytes": 6467235,
+          "sha1": "eb1d3311da2caa5eeff03dfb3e4d1d26c73f71c7",
+          "sha256": "749f7647fa29764cea113114a7ab3259271bab3da22720989f2bd9fd1f3ba150",
+          "sha512": "8d7ae9caef2069866e8dba9c1d6d3710948f9efe60f1fd89679784349f89196dbb6c015de195dbc4208a6f822c60c06d1f051b6e30e3c14162f075c09385dc26",
+          "bundled": false
+        },
+        "implementation": {
+          "mod_id": "bluemap",
+          "version": "5.22-agent.backport-5.22-mc1.21.1-2",
+          "display_test": "IGNORE_SERVER_VERSION",
+          "minecraft_version_range": "[1.21.1,1.21.2)",
+          "neo_forge_version_range": "[21.1.248,21.2)"
+        },
+        "embedded_evidence": [
+          {
+            "role": "neoforge-mod-metadata",
+            "path": "META-INF/neoforge.mods.toml",
+            "size_bytes": 560,
+            "sha256": "5e83eef29bbad4ec1f65f39f5b1c40f3012101e0afef64785424254213876d31"
+          },
+          {
+            "role": "bluemap-implementation-version",
+            "path": "de/bluecolored/bluemap/version.json",
+            "size_bytes": 110,
+            "sha256": "a047fa2144d7f08ee50c30600a13f80041fe9b63042a2519b358e9f3ccb68c29"
+          }
+        ],
+        "acceptance": {
+          "exact_artifact_and_embedded_metadata_verification": "passed",
+          "deployment": "operator-installed-not-bundled"
+        }
+      },
+      "runtime_artifact": {
+        "size": 8230896,
+        "sha256": "460d779a0609b81409907d9956de8f6f70a1b0912257e3e5c3c7e75ac9630e95",
+        "bundled": false
+      },
+      "source_artifact": {
+        "tag": "neoforge/v19.2.17",
+        "commit": "79ee2c704ad62941a426c26b1cb1f76ef5b2ee5a",
+        "size": 3814167,
+        "sha256": "d2f451203cb61c2d21fae52c683083d2f72441ca7d26725f4df5934290492e6a",
+        "audited_class_count": 82,
+        "source_marker_file_count": 80,
+        "verification": "exact whole-artifact identity plus required runtime-class/source-path and source-marker closure",
+        "bundled": false
+      },
+      "catalog": {
+        "native_face_part_count": 29,
+        "spin_capable_part_count": 9,
+        "spin_ignored_part_count": 20,
+        "smart_core_part_count": 2,
+        "plane_connection_mask_count": 16,
+        "part_collision_policy_count": 29,
+        "orientation_state_count": 336,
+        "orientation_formula": "20*6+9*6*4",
+        "native_endpoint_count": 30,
+        "native_endpoint_state_schema_count": 30,
+        "native_endpoint_state_combination_count": 534,
+        "native_endpoint_state_side_combination_count": 3204,
+        "facade_whitelist_explicit_block_count": 24,
+        "facade_whitelist_optional_tag_count": 1,
+        "facade_whitelist_neutral_default_state_count": 24,
+        "facade_whitelist_state_schema_count": 24,
+        "facade_whitelist_state_combination_count": 554,
+        "facade_whitelist_solid_render_true_state_count": 551,
+        "facade_whitelist_same_state_skip_rendering_true_state_count": 3,
+        "facade_whitelist_same_state_skip_rendering_count": 24,
+        "facade_ordinary_skip_rendering_control_count": 3,
+        "native_facade_neutral_resource_pin_count": 11,
+        "known_unsupported_compatible_endpoint_count": 67,
+        "known_unsupported_compatible_endpoint_artifact_counts": {
+          "expandedae-2.1.1": 24,
+          "megacells-4.11.0": 11,
+          "advanced_ae-1.6.12-1.21.1": 12,
+          "extendedae-1.21-2.2.35-neoforge": 20
+        },
+        "endpoint_cable_type_counts": {
+          "SMART": 18,
+          "COVERED": 9,
+          "DENSE_SMART": 3
+        },
+        "endpoint_side_rule_counts": {
+          "ALL": 12,
+          "BACK": 2,
+          "NO_FRONT": 3,
+          "FRONT_BACK": 1,
+          "PUSH_DIRECTION": 1,
+          "FORMED_CRAFTING": 8,
+          "FORMED_QUANTUM": 2,
+          "VALID_STRAIGHT_PYLON": 1
+        },
+        "dense_capable_face_parts": [
+          "ae2:cable_anchor"
+        ],
+        "identity_source": "generated schema-10 profile contains the exact ordered part/model/group and endpoint/class/serialized-block-entity-ID/AECableType/side-state-topology catalogs"
+      },
+      "static_policy": {
+        "transient_state": "static-off-inactive-unlocked",
+        "facades": "all six masks and each per-instance valid static BlockState material",
+        "facade_mask_count": 64,
+        "facade_support_set": "all 24 explicit whitelist families plus a bounded static full-cube-witness material lane; optional #c:glass_blocks and ordinary FacadeItem-eligible states require one live unrotated 0..16 six-face full-cube witness, while bounded additional static elements and multipart source quads remain admitted subject to the UV, tint, weighted-variant and semantic-resource gates; otherwise-valid complex static models fall back atomically; the 11 AE2-native neutral resource pins are not the complete support set",
+        "facade_tint": "zero or one distinct nonnegative source tint index is accepted; untinted layers may coexist; shared tinted layers use the host block-color calculator; mixed nonnegative tint indexes fall back atomically",
+        "facade_uv_reinterpolation": "QuadReInterpolator projects both source and post-clamp/post-corner-kick vertices onto the nominal-face dx/dy axes before InterpHelper bilinear interpolation; the bounded host lane requires an exact complete projected InterpHelper grid and falls back atomically instead of substituting a 3D planar solve",
+        "facade_cardinal_variant_transform": "exact signed-permutation quarter-turn blockstate variant geometry/vector and uvlock coordinate transforms avoid host floating-point matrix drift before the source-exact InterpHelper grid check",
+        "facade_weighted_variants": "exact minecraft:stone retains the frozen M2 geometry-and-material BlueMap position projection and does not claim pixel-identical client-randomized mirrored/rotated UVs; every other weighted set must collapse across all alternatives to one bounded static geometry/material/UV descriptor or fall back atomically",
+        "facade_neutral_solid_render": "exact pinned BlockState.isSolidRender for all 24 explicit whitelist neutral/default states; false only for ae2:quartz_glass, ae2:quartz_vibrant_glass and minecraft:honey_block; minecraft:soul_sand is true because its occlusion shape is full despite its 14/16 collision height",
+        "facade_whitelist_state_validation": "all 24 explicit whitelist families require the exact complete persisted property key set and source-declared value domains before rendering; the 13 vanilla families preserve valid states, the 11 AE2-native families apply the declared static normalization, and missing, extra or out-of-domain properties fall back atomically",
+        "facade_whitelist_state_classification": "BlockState.isSolidRender and same-state BlockState.skipRendering are family-invariant across all 554 valid explicit-whitelist states; booleans carried by the neutral/default row apply to the whole family, and any classification drift falls back atomically",
+        "facade_skip_rendering": "exact same-state BlockState.skipRendering table for all 24 explicit whitelist IDs is true only for both AE2 quartz-glass families and minecraft:honey_block; AE2 quartz glass additionally skips cross-family quartz/vibrant pairs with equal render shape; exact gallery controls are minecraft:glass=true, minecraft:oak_log=false and minecraft:oak_leaves=false; other ordinary/tag materials use the bounded BlueMap cullingIdentical plus exact-state host projection",
+        "facade_corner_kick_units": "QuadCornerKicker EPSILON is 0.00001 block units; runtime FacadeGeometry compares 0.00016 sixteenth units; PRBM analyzer positions remain block units and compare 0.00001",
+        "native_facade_normalization": "controller normalizes to offline/block; crafting families normalize formed/powered false; monitor preserves any valid facing and normalizes formed/powered false plus spin 0; unknown, extra or malformed properties fall back atomically",
+        "facade_cutout": "union of every installed oriented part collision box intersecting the current facade slab; the same-side short cable anchor does not intersect its facade; Minecraft AABB normalizes each generated strip endpoint pair with min/max, so transparent inset plus a boundary-reaching cutout can reverse endpoints and still yields a normalized strip rather than a degenerate strip",
+        "plane_connection_coordinate_spaces": "PlaneConnections bits are logical front-view up8/right4/down2/left1; PlaneBakedModel uses the separately preserved visual-local minX=right/maxX=left/minY=down/maxY=up table before QuadRotator maps it into installed-world space; PlaneConnectionHelper collision boxes use the exact face-aware BusCollisionHelper installed-face-local table, and bounds are never reused across those coordinate spaces",
+        "facade_directional_shade": "source BakedQuad shade is semantic-hash locked and shade=false remains eligible; BlueMap 5.22 PRBM has no per-quad shade channel, so directional shade is an accepted host-projection limitation rather than a pixel-exact claim",
+        "facade_ambient_occlusion_direction": "BlueMap ResourceModelRenderer uses source faceDir rotated only by the blockstate variant for AO neighbor lookup; element rotation affects vertices and nominal geometry but not AO direction; runtime uses the retained layer lightFace rather than quad nominal face",
+        "structural_map_color_illumination": "BlueMap map-color illumination uses original center and outward world light only; element lightEmission affects emitted triangle blocklight but does not brighten map color",
+        "quartz_facade": "facade-aware connected GlassState observes six neighbor positions including neighbor cable-bus facade appearance through RENDERING_FACADE_DIRECTION; another facade on the same cable bus is not a GlassState input, while local perpendicular facades separately affect FacadeBuilder mask/inset; both quartz and vibrant facade quads emit 0 even though the vibrant source block light level is 15",
+        "attached_devices": "30 native endpoints requiring the exact serialized block-entity ID and source-declared persisted side/state/topology rule before AECableType minimum local/endpoint connection family",
+        "endpoint_state_validation": "all 30 endpoints require the exact complete persisted BlockState key set and each serialized value to be inside its source-declared domain; missing, extra or invalid properties use malformed-native atomic fallback even for ALL side rules",
+        "known_extension_grid_node_hosts": "67 exact block/serialized-BE pairs across four pack-pinned artifacts force compatible UNKNOWN atomic original-resource fallback until their independent extension routes land; a catalog block with missing or wrong BE is malformed UNKNOWN but is not admitted compatible; an unrelated block carrying a catalog BE remains disconnected",
+        "fallback": "missing, malformed, capped, transient-only, or unsupported observations use atomic original-resource fallback",
+        "excluded": "machine contents, held items, fluids, live activity and accurate Drive LED states"
+      },
+      "known_extension_endpoint_artifacts": [
+        {
+          "id": "expandedae-2.1.1",
+          "file_name": "expandedae-2.1.1.jar",
+          "size": 496713,
+          "sha256": "f39c0eb9c6271f54a44ffee092a29520f53000d1005849e6afada3ad9dffba14",
+          "endpoint_count": 24,
+          "bundled": false
+        },
+        {
+          "id": "megacells-4.11.0",
+          "file_name": "megacells-4.11.0.jar",
+          "size": 1137276,
+          "sha256": "a386bbf12afb11729b0dcf77f64221893d250f22e6185a4d728b9799b230bc55",
+          "endpoint_count": 11,
+          "bundled": false
+        },
+        {
+          "id": "advanced_ae-1.6.12-1.21.1",
+          "file_name": "AdvancedAE-1.6.12-1.21.1.jar",
+          "size": 4791255,
+          "sha1": "9358ccfa5477c7ab1c5ffab6c831e105fe46ecc3",
+          "sha256": "a01d9718667ac13899013e91c5b0b7708b9b9db1da9b8e380772dde54bbe8f41",
+          "sha512": "ab61c57355649a967a0bcf6b9413cd6b62728d26e914543b3231eea33bde5571536bd589ae1ac026d46799711508c942284c3419e19ff5d5bf80f1045442f33a",
+          "endpoint_count": 12,
+          "bundled": false
+        },
+        {
+          "id": "extendedae-1.21-2.2.35-neoforge",
+          "file_name": "ExtendedAE-1.21-2.2.35-neoforge.jar",
+          "size": 5578031,
+          "sha1": "e3521ca2567fabe0f0131cc923ec94dd99d6fa7b",
+          "sha256": "14a2860fa2c747e9dda2279b8933fac6311fecfee166c765171022b902591c65",
+          "sha512": "e5b76a50802087d999bf6c113bc635e8ade9f20e06f4d3276a144f4eaa3090fc3b6c67b9b6a1f7d0d036e48e69f601114a0cc92c5a8d45953f895718f806348c",
+          "source_tag": "1.21-2.2.35-neoforge",
+          "source_commit": "3776bc854458301bbcc9a44a8238d70a0e3dc00d",
+          "endpoint_count": 20,
+          "bundled": false
+        }
+      ],
+      "known_extension_registry_evidence": {
+        "expandedae-2.1.1": [
+          "lu/kolja/expandedae/definition/ExpBlocks.class",
+          "lu/kolja/expandedae/definition/ExpBlockEntities.class"
+        ],
+        "megacells-4.11.0": [
+          "gripe/_90/megacells/definition/MEGABlocks.class",
+          "gripe/_90/megacells/definition/MEGABlockEntities.class"
+        ],
+        "advanced_ae-1.6.12-1.21.1": [
+          "net/pedroksl/advanced_ae/common/definitions/AAEBlocks.class",
+          "net/pedroksl/advanced_ae/common/definitions/AAEBlockEntities.class"
+        ],
+        "extendedae-1.21-2.2.35-neoforge": [
+          "com/glodblock/github/extendedae/common/EAESingletons.class"
+        ]
+      },
+      "runtime_resource_closure": {
+        "profile_path": "src/main/resources/bluemap-ae2/profiles/ae2/19.2.17/routes/cable-bus-structural/profile.json",
+        "checksum_manifest_path": "src/main/resources/bluemap-ae2/profiles/ae2/19.2.17/routes/cable-bus-structural/required-resources.sha256",
+        "sizes_manifest_path": "src/main/resources/bluemap-ae2/profiles/ae2/19.2.17/routes/cable-bus-structural/required-resources.tsv",
+        "direct_neutral_model_roots": 41,
+        "transitive_json_entries": 43,
+        "png_entries": 56,
+        "entry_count": 99,
+        "total_bytes": 51306,
+        "checksum_manifest_format": "sha256-two-spaces-path-lf",
+        "checksum_manifest_sha256": "ae89e4fc3356503cc76ea92ac9cb11ade296551c9cca85cd583ffddbbe35bd76",
+        "sizes_manifest_format": "path-tab-bytes-tab-sha256-lf",
+        "sizes_manifest_sha256": "a79e93baef3f5d923730686fcc4de05ec30c8b7765aef8b32aaf871f9c4f3869",
+        "profile_sha256": "f6fa515b4e17205a019d57f253d5e71017ea20e75b8f0c333aa587afd0d0f353",
+        "live_semantic_gate": {
+          "model_count": 43,
+          "model_sha256": "aefa42ad8427e8f2ac5b9f1c88807c978617d6ff70768a32223616b970b54251",
+          "decoded_texture_count": 56,
+          "decoded_texture_and_animation_meta_sha256": "1bee2b2917edf3d1eb9ee24505f47a7377665da753f107ec1af9170d783bc833",
+          "policy": "higher-priority same-count geometry, UV, material, pixel, dimension or animation drift forces atomic original-resource fallback"
+        },
+        "quartz_facade_dependency": {
+          "profile_id": "ae2-quartz-glass",
+          "profile_sha256": "548e5bc00ef07c6d6b93b346422b596882ec11ca03de006065fa45fecb991200",
+          "resource_manifest_sha256": "b51c708e7c4d26093c1b6f85b88d0be50572d3cfa76dbf802720f6ad79c7a7fa",
+          "texture_count": 19,
+          "texture_manifest_sha256": "65005c9b76800cdeba5c4598472a44dea131c9974672f89bf421452755fefb6a",
+          "decoded_texture_and_animation_meta_sha256": "c51ced2667879b8b298400c81805cf7d4459b5ac88c36350bca7bb6ca2bfef50"
+        },
+        "asset_use": "Identifiers, byte sizes and digests only; operator-installed AE2 assets are not bundled"
+      },
+      "frozen_accepted_baseline": {
+        "accepted_artifact_milestones": [
+          "M0",
+          "M1",
+          "M2",
+          "M3a",
+          "M3b",
+          "M3c",
+          "M3d",
+          "M3e",
+          "M3f"
+        ],
+        "gallery_schema_versions": [
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "generated_output_count": 12,
+        "identity_source": "generated schema-10 profile and verifier exact SHA-256 tables"
+      },
+      "asset_licensing": {
+        "models_and_textures": "CC-BY-NC-SA-3.0",
+        "use": "Operator-installed resources only; no model, texture, source, class, capture, or precomputed mesh is redistributed"
+      }
+    },
+    "m2_terminal_audit": {
+      "status": "source, bytecode and resource audit complete; local implementation candidate awaiting isolated runtime and human visual acceptance",
+      "recorded_on": "2026-08-07",
+      "runtime_jar_sha256": "460d779a0609b81409907d9956de8f6f70a1b0912257e3e5c3c7e75ac9630e95",
+      "source_commit": "79ee2c704ad62941a426c26b1cb1f76ef5b2ee5a",
+      "supported_design_boundary": {
+        "part_id": "ae2:terminal",
+        "persisted_spin_values": [0, 1, 2, 3],
+        "static_pose": "idle-off-unknown",
+        "models": [
+          "ae2:part/display_base",
+          "ae2:part/terminal_off",
+          "ae2:part/display_status_off"
+        ],
+        "unsupported_policy": "atomic whole-block direct original-resource fallback"
+      },
+      "runtime_class_sha256": {
+        "appeng/api/orientation/BlockOrientation.class": "1a47c706e3d1659a2cbaea229dc367698d96bfd752a171b6ea627262fa352186",
+        "appeng/client/render/cablebus/QuadRotator.class": "07109b0479bfedc00d4015beb42be6f25e99c908bed95f29d5fb05ec534a6360",
+        "appeng/parts/PartModel.class": "9304c127da82346d633d771a66e3d71d02bcf907ce9a0f40c3ffec9051542581",
+        "appeng/parts/reporting/AbstractReportingPart.class": "ca1a67d95fe8b5d0cca1cabd9c014182f8c5de2e634db40973c7cfe199a31b13",
+        "appeng/parts/reporting/AbstractTerminalPart.class": "6b4b2ab2f517c2b777aa93b627ef93df979ecfb91ff7294f588e4aaf0dec6ad1",
+        "appeng/parts/reporting/ItemTerminalPart.class": "0c3eb458e074d742b5743225c59249d4d3c702f8017add7f58e90397110f86aa"
+      },
+      "runtime_resource_closure": {
+        "manifest_path": "src/main/resources/bluemap-ae2/profiles/ae2/19.2.17/required-resources.sha256",
+        "model_entries": [
+          "assets/ae2/models/part/display_base.json",
+          "assets/ae2/models/part/display_off.json",
+          "assets/ae2/models/part/display_status_off.json",
+          "assets/ae2/models/part/terminal_off.json"
+        ],
+        "texture_entry_count": 8
+      }
+    },
+    "m2_facade_audit": {
+      "status": "source-and-resource audit complete; local M2 implementation candidate exists but runtime validation, visual comparison, and human acceptance remain separate gates",
+      "recorded_on": "2026-08-07",
+      "runtime_jar_sha256": "460d779a0609b81409907d9956de8f6f70a1b0912257e3e5c3c7e75ac9630e95",
+      "source_commit": "79ee2c704ad62941a426c26b1cb1f76ef5b2ee5a",
+      "supported_design_boundary": {
+        "facade_count": 1,
+        "block_state": {
+          "Name": "minecraft:stone",
+          "Properties": "absent",
+          "unknown_fields": "rejected"
+        },
+        "material": "one effective opaque, non-animated, non-emissive full-cube stone material",
+        "unsupported_policy": "atomic whole-block direct original-resource fallback"
+      },
+      "runtime_class_sha256": {
+        "appeng/facade/FacadeContainer.class": "07b1a2e39e7c83edf7870a60b2d2e0a55c25e54865be522a88802d4e6133ddd0",
+        "appeng/facade/FacadePart.class": "fa5bcb8a7ea53ab7b571aac65e22408a9caa6ff55b056cba7bdafd8f6698ebe9",
+        "appeng/items/parts/FacadeItem.class": "36cd3e9ae09d8f3d1d1cc364c56ab8a57edebc6f605f9a15582cd62055aa2bc0",
+        "appeng/client/render/cablebus/FacadeBuilder.class": "ee53cd76db139e1314c608db0ff6d4e62c14fbb5ac8374c9ae1cff184e551252",
+        "appeng/client/render/cablebus/FacadeRenderState.class": "e09c98bd066e5f9aa49d76807fc51b964c843e7199ae2e35198604b3dd1afd76",
+        "appeng/client/render/cablebus/FacadeBlockAccess.class": "5b95372129aa01cc5d0e7f0bc37a785faad55e930d5eb45ea2bb854b754f1ebd",
+        "appeng/client/render/cablebus/CableBusBakedModel.class": "a7bbdc350955a3654963fa89cbf0eac72252ed2374079c19965512d646f1d77d",
+        "appeng/parts/CableBusContainer.class": "710656bd6f44415cd3b7eeb5ce7fe72ab3fe15ea28a2c06218fc853a6acd7095",
+        "appeng/parts/BusCollisionHelper.class": "3a5cd6f17cd4bd4b656a70e28e547239f9766076c22e30448764428ee491b54c",
+        "appeng/parts/reporting/AbstractReportingPart.class": "ca1a67d95fe8b5d0cca1cabd9c014182f8c5de2e634db40973c7cfe199a31b13",
+        "appeng/parts/misc/CableAnchorPart.class": "6d7eccc1de8235605b92f4ae4c524572c0251b9344615b7bb5cf80a00a5a8127",
+        "appeng/block/networking/CableBusBlock.class": "7b64635d06a0ab2bf8b562894746c866f466ee58dcfde5ea618ce3031e886569",
+        "appeng/thirdparty/codechicken/lib/model/pipeline/transformers/QuadClamper.class": "1c81c617a25ad735d9a0670fc392f569d86deb020316c90df65a48f28407e369",
+        "appeng/thirdparty/codechicken/lib/model/pipeline/transformers/QuadReInterpolator.class": "3b84902e767981bb68cb113eac35ff6a0b1bb58213b40b752916ff5ef6339fcd",
+        "appeng/thirdparty/codechicken/lib/model/pipeline/transformers/QuadFaceStripper.class": "81272121c5ea382fdc016f3c8f62823552db98477832064eaef4a2f0c98328d7",
+        "appeng/thirdparty/codechicken/lib/model/pipeline/transformers/QuadCornerKicker.class": "c38054b8944cf54563e0e1917af1d851dc53691c29de5a406408d9fa8f933edf"
+      },
+      "runtime_resource_sha256": {
+        "assets/ae2/blockstates/cable_bus.json": "32fe3ae039325fa7ed69e0475ce3a8ba20655f123032b9adb5725b636e6ff277",
+        "assets/ae2/models/block/cable_bus.json": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "assets/ae2/models/part/cable_anchor_short.json": "d24f0f9f02bdb31589d843a2cfade5f25519d5769f44e7157a453592c632acb9",
+        "assets/ae2/textures/part/cable_anchor.png": "34fa4349df6e0ce4a7830cdd459e671242a3fd2eafe14b598daa8a77a352c27c",
+        "assets/ae2/models/part/translucent_facade.json": "377ffcbd5f7177b21cecd6435d44264aa0cc63098b5a03721ec5bf2d169d0a66",
+        "assets/ae2/textures/part/translucent_facade.png": "07bbbd6247af59d151f8925f4ade7502d372f5cb80ef9f3d927a2c5f95951d0e",
+        "data/ae2/tags/block/whitelisted/facades.json": "4ff52f9d8670417406c29430f754305198ba8ab855ca34336962d6d24cf49f82"
+      },
+      "source_licenses": {
+        "ae2_facade_and_cable_bus_sources": "LGPL-3.0-or-later",
+        "vendored_codechicken_quad_transform_sources": "LGPL-2.1-or-later"
+      },
+      "asset_licensing": {
+        "ae2_models_and_textures": "CC-BY-NC-SA-3.0",
+        "ae2_text": "CC0-1.0",
+        "facade_whitelist_tag": "Evidence only; no separate redistribution classification asserted",
+        "use": "Identifiers and digests only; operator-installed assets are resolved at runtime and are not bundled"
+      }
+    },
+    "asset_license": "CC-BY-NC-SA-3.0",
+    "asset_use": "Texture identifiers are resolved against the operator-installed exact AE2 resource pack at runtime. No AE2 texture, model, capture, precomputed mesh, binary or source archive is bundled."
+  },
+  "extendedae": {
+    "repository": "https://github.com/GlodBlock/ExtendedAE",
+    "evidence_tier": "T4_SOURCE_CORRELATED",
+    "version": "1.21-2.2.33-neoforge",
+    "runtime_artifact": {
+      "file_name": "ExtendedAE-1.21-2.2.33-neoforge.jar",
+      "size": 5573972,
+      "class_file_major": 65,
+      "sha1": "e87867bffee36a28f9f4493f7bb7e7a5109a480f",
+      "sha256": "6652ed1ea4b71f585d48c05a195a77594a7a2bd1ecea0fc805db2122aafad734",
+      "sha512": "a61c6f606b5d0a27857b55b8fc6a670352d91f19d2a2dadd2d650f08ae6682f437e7b18a80c5e26122bbf7b70b007851f1aaa90442fce16d8729c71c1ec10225",
+      "origin": "Exact All the Mons 1.1.1 runtime artifact independently matched to the fresh Prism instance",
+      "declared_license": "LGPL-3.0",
+      "bundled": false
+    },
+    "source": {
+      "tag": "1.21-2.2.33-neoforge",
+      "commit": "90005ee29839fb9fa83bbe6544919c722f8b0dc6",
+      "tree": "423ab7862162557605939c1d8c2a9811c4163922",
+      "committed_at": "2026-06-18T22:28:25+08:00",
+      "declared_license": "LGPL-3.0",
+      "license_file": "LICENSE.txt",
+      "license_file_blob": "0a041280bd00a9d068f503b8ee7ce35214bd24a1",
+      "license_file_sha256": "e3a994d82e644b03a792a930f574002658412f62407f5fee083f2555c5f23118",
+      "correlation": "The exact-tag Ex Drive JSON resources match the exact runtime artifact semantically; line endings account for the observed textual differences and the base model is byte-identical. Exact runtime class and resource digests remain the primary implementation evidence; this is not a complete reproducible-build claim.",
+      "source_blobs": {
+        "src/main/java/com/glodblock/github/extendedae/common/blocks/BlockExDrive.java": "aaf715191ba7d2dd54a6d3327126a9091bbdd4cb",
+        "src/main/java/com/glodblock/github/extendedae/common/tileentities/TileExDrive.java": "0f9dccccae80868920d8b8b12097b99a7f3303bc",
+        "src/main/java/com/glodblock/github/extendedae/client/model/ExDriveModel.java": "084af35d485bfca2160ad3314b72ec506b834a0b",
+        "src/main/java/com/glodblock/github/extendedae/client/model/ExDriveBakedModel.java": "f54c4ed52edfd3d7bdbd640c6de49a3bcd49c711",
+        "src/main/java/com/glodblock/github/extendedae/client/render/tesr/ExDriveTESR.java": "0cbe5f3a262f95c51cf0422de8f273660c8c0a00",
+        "src/main/java/com/glodblock/github/extendedae/util/Ae2Reflect.java": "9e89a05232d59367f32d0a28f4d963a3f781852c",
+        "src/main/java/com/glodblock/github/extendedae/common/items/ItemInfinityCell.java": "d536fc235eaf00fe4196a70af9a243885b9dc9d8",
+        "src/main/java/com/glodblock/github/extendedae/common/items/ItemVoidCell.java": "1b9b76482150a5103d4fd85665bd79b21893d8d6",
+        "src/main/java/com/glodblock/github/extendedae/common/EAERegistryHandler.java": "ea8f6ea8f8d5341fc5b6f05f1f85639b72c46a8c",
+        "src/main/java/com/glodblock/github/extendedae/common/EAESingletons.java": "9d6ce90f5120d973c8e132f1d3df2908ee33c6e5",
+        "src/main/java/com/glodblock/github/extendedae/client/ClientRegistryHandler.java": "f989eb32ba885d2a351f86b1d5443ad17b527589",
+        "src/main/java/com/glodblock/github/extendedae/xmod/kjs/InfinityCellBuilder.java": "0632f994fc23669b605f743efe1816fc1c0deb5f",
+        "LICENSE.txt": "0a041280bd00a9d068f503b8ee7ce35214bd24a1"
+      }
+    },
+    "required_resources": {
+      "manifest_path": "src/main/resources/bluemap-ae2/profiles/extendedae/1.21-2.2.33-neoforge/required-resources.tsv",
+      "profile_path": "src/main/resources/bluemap-ae2/profiles/extendedae/1.21-2.2.33-neoforge/profile.json",
+      "entry_count": 15,
+      "blockstate_entries": 1,
+      "model_entries": 6,
+      "runtime_texture_entries": 8,
+      "total_bytes": 13242,
+      "manifest_format": "path-tab-bytes-tab-sha256-lf",
+      "manifest_sha256": "5e72f79f45a3b120a89cf8b7a1fa15ce41bebaae62a63c6f3305ef40bd5d24ee",
+      "texture_manifest_sha256": "b3de9aede1d2fb8854925a11397009d7458084071d5d5acc293913e27d29b75e",
+      "profile_sha256": "eab467f46c27974e1f7d54fe749366b92eacd8d63d57bad1e8f3e452d82ad1df",
+      "dependent_ae2_m3a_drive_partition": {
+        "entry_count": 26,
+        "runtime_texture_entries": 10,
+        "manifest_sha256": "a8d10416d0fce66d8a91ce9e0dc93a83d2f552da8762a0a90e183dc58f6745cf"
+      },
+      "asset_use": "Identifiers, byte sizes and digests only; operator-installed ExtendedAE and AE2 assets are not bundled"
+    },
+    "m3b_ex_drive_profile_audit": {
+      "status": "exact profile, resource contract, technical lifecycle, and human visual acceptance complete for the exact M3b artifact",
+      "recorded_on": "2026-08-07",
+      "accepted_artifact": {
+        "size": 323416,
+        "sha256": "f02123cb602bb7b6466d1529c5518e45862f53f413ce9a75ecc067d1a30607d1",
+        "accepted_on": "2026-08-07",
+        "scope": "M3b ExtendedAE ex_drive gallery and bounded behavior only"
+      },
+      "supported_design_boundary": {
+        "block_id": "extendedae:ex_drive",
+        "slot_count": 20,
+        "front_slot_count": 10,
+        "back_slot_count": 10,
+        "dependent_ae2_item_ids": 23,
+        "extendedae_builtin_item_ids": 3,
+        "supported_item_ids": 26,
+        "occupied_model_count": 15,
+        "led_source": "POSITION_COLOR without a texture",
+        "led_material_proxy": "ae2:block/drive/drive_front",
+        "led_policy": "static-offline-unknown",
+        "unknown_cell_policy": "atomic-whole-block-original-resource-fallback",
+        "dynamic_kubejs_and_other_extension_cells": "unsupported atomic whole-block fallback"
+      },
+      "runtime_class_sha256": {
+        "com/glodblock/github/extendedae/ExtendedAE.class": "ed358c4fd21d6915f3e19c9feb6b808b639daab156b167028f199aaeded778be",
+        "com/glodblock/github/extendedae/common/blocks/BlockExDrive.class": "1f4250c4b8c7e9ba7acf549685d424903ab495d857ccff824713193a9bd6edd6",
+        "com/glodblock/github/extendedae/common/tileentities/TileExDrive.class": "ccc61d335fe28af8604be7260b2c90d03a560b79910bb443a11afbdc2e4308ee",
+        "com/glodblock/github/extendedae/client/model/ExDriveModel.class": "e8784bdbc9bdded9d282e3a37efc93709b09a3f05a667940bbe2e589d55c42b9",
+        "com/glodblock/github/extendedae/client/model/ExDriveBakedModel.class": "8d462181d268eac2799ca3f692823eccd63dbba39013d463ffa11568ecf840a0",
+        "com/glodblock/github/extendedae/client/render/tesr/ExDriveTESR.class": "81d1f833360f064baca1b2b57e3083c339f7ea63f4d9c2526014f45dc5b55153",
+        "com/glodblock/github/extendedae/util/Ae2Reflect.class": "c38cf68d252aba1a106cf6bd8f0c74c48983c9a7afe3d815748128f596710147",
+        "com/glodblock/github/extendedae/common/EAERegistryHandler.class": "7b5fdbb89f7dc865d68ba514edca063ef0e51af9778fa49baeeca1edd97112cd",
+        "com/glodblock/github/extendedae/common/EAESingletons.class": "e952379744bb43f07182ba961b3ca8569f8491275ab9eb76c9fcec74920d6d13",
+        "com/glodblock/github/extendedae/client/ClientRegistryHandler.class": "872dd3a9e6b18ae817bdf06a400448f8fffbfeb4b2ed08acb43eef25b29bbb04"
+      }
+    },
+    "declared_license": "LGPL-3.0",
+    "asset_attribution": "ExtendedAE credits Sea_Kerman for models and Ridanisaurus for the new textures",
+    "asset_use": "No ExtendedAE class, source, model, texture, captured mesh or JAR is bundled; runtime resources remain operator installed"
+  },
+  "minecraft_resource_evidence": {
+    "version": "1.21.1",
+    "artifact": {
+      "file_name": "minecraft_1.21.1_client.jar",
+      "size": 26836906,
+      "official_sha1": "30c73b1c5da787909b2f73340419fdf13b9def88",
+      "sha256": "499f6897d1837516680f3114072d8106e11c9adcd933fe5cf051b551089b0c99",
+      "sha512": "a63c09e9b8cfe80bd5815c88818291d54cbe7c9ffcd806be6365376e865c44d5aa85e8348467e6ded8f4d9722047d3c5b075f755047a982c2e75223d2b9f68ac",
+      "bundled": false
+    },
+    "purpose": "Exact plain-stone model/material evidence for M2 and pinned Minecraft state semantics for the S1 facade boundary",
+    "s1_facade_neutral_state_probe": {
+      "explicit_whitelist_count": 24,
+      "method": "source-lock the exact Minecraft 1.21.1 and AE2 19.2.17 BlockState.isSolidRender, occlusion-shape and same-state BlockState.skipRendering implementations; verify family invariance across the complete 554-state schema Cartesian closure",
+      "profile_path": "src/main/resources/bluemap-ae2/profiles/ae2/19.2.17/routes/cable-bus-structural/profile.json",
+      "solid_render_true_count": 21,
+      "solid_render_false_ids": [
+        "ae2:quartz_glass",
+        "ae2:quartz_vibrant_glass",
+        "minecraft:honey_block"
+      ],
+      "same_state_skip_rendering_true_count": 3,
+      "state_schema_count": 24,
+      "valid_state_combination_count": 554,
+      "family_classification_invariant": true,
+      "solid_render_true_state_count": 551,
+      "solid_render_false_state_count": 3,
+      "same_state_skip_rendering_true_state_count": 3,
+      "state_schema_policy": "exact complete persisted property key sets and source-declared value domains; missing, extra or out-of-domain properties fall back atomically",
+      "same_state_skip_rendering_true_ids": [
+        "ae2:quartz_glass",
+        "ae2:quartz_vibrant_glass",
+        "minecraft:honey_block"
+      ],
+      "quartz_cross_family_rule": "true for any two AE2 QuartzGlassBlock families with equal render shape",
+      "ordinary_gallery_controls": {
+        "minecraft:glass": true,
+        "minecraft:oak_log": false,
+        "minecraft:oak_leaves": false
+      },
+      "exact_client_class_sha256": {
+        "net.minecraft.world.phys.AABB (ewx.class)": "766a779b2e0057559aa39390fe1ff5716bab33ba69d7c450ff120ae664d76435",
+        "net.minecraft.world.level.block.Block (dfy.class)": "b58f93af515b4b28f67e4bef77d9cfa69306243ee1787e6dfbc99bf066e639a6",
+        "net.minecraft.world.level.block.HalfTransparentBlock (djo.class)": "435813820f1800e410372ddf482fd53c33376728a4cb7d8774f5a94366fa350c",
+        "net.minecraft.world.level.block.TransparentBlock (dol.class)": "a3327749f85774f510ab8c0dbc56cfcd62303b9be9f4654a1371f2021ec88f56",
+        "net.minecraft.world.level.block.HoneyBlock (djs.class)": "af8c5a34d5f4d3d66d7a870875d439776acb019600a07952f72018192b7a8509",
+        "net.minecraft.world.level.block.LeavesBlock (dki.class)": "8bca51038f4553ae764fe763bbd29d0c353e95d46662849f2174adb397db5067"
+      },
+      "aabb_endpoint_normalization": "the exact AABB six-double constructor applies Math.min and Math.max independently to each endpoint pair",
+      "soul_sand_note": "true: full occlusion shape despite 14/16 collision height",
+      "bundled": false
+    },
+    "resource_sha256": {
+      "assets/minecraft/blockstates/barrel.json": "d8e00576b5f85f83a42b7b31dc177e0add02cf2204fa441c0fe31cbd6d70dcca",
+      "assets/minecraft/blockstates/bee_nest.json": "09ee024cc05e40767c3e88776e336396a71b146a7fb93f64ba1860aa6a107853",
+      "assets/minecraft/blockstates/beehive.json": "c4c438bb21bf78f5bdc8835daf852c2f2040e3f96872fe4488d2710a6abfc8ae",
+      "assets/minecraft/blockstates/blast_furnace.json": "265ec5f30fa65bdaff6867bbad8de73e0a1b21ea12a33da5b771f889e4ac7dcc",
+      "assets/minecraft/blockstates/chiseled_bookshelf.json": "7f3f363d1e155d92d08916d8f08de670e269ae4a05fce0844c8bcd6930e8d098",
+      "assets/minecraft/blockstates/crafter.json": "dfa8af74cd96d1d6f2086a63fab3402864497d7f436ba469b34be58924f1edfa",
+      "assets/minecraft/blockstates/dispenser.json": "fc1ba39eb47f31285b5d1c9f729fabf5ad9832d8b8f6b1f510d3c870f6e6bfd8",
+      "assets/minecraft/blockstates/dropper.json": "c763060c1946a3031cdf6e68ab98db7d81d83c364b0ad4da54fdf055225753c3",
+      "assets/minecraft/blockstates/furnace.json": "aedb43571027a5dea15ba9cbfc05f0327af3048de70b72c3cd67c851839bb284",
+      "assets/minecraft/blockstates/honey_block.json": "780ffcffff91d90efe172f2f1f200a06dcbe885fe5316d16bebf72bae2ef7c44",
+      "assets/minecraft/blockstates/jukebox.json": "8002563a048d4a5afb22d44692ca1a38e114ef95a3ccd24f02b9e0fd02b693d5",
+      "assets/minecraft/blockstates/sculk_catalyst.json": "0e6c7b956647211dea0d7ce46e9e111296dd985c51d58a3c094630850b764504",
+      "assets/minecraft/blockstates/soul_sand.json": "6a0ea83a331843c30e21f8d7ea9252c429c4093b6222b60e62e8ab47ca802ef8",
+      "assets/minecraft/blockstates/stone.json": "34476f2bb98e7abec029c07c3cbfd8ba3a0141c0df3f02ff255018dbec625bbc",
+      "assets/minecraft/models/block/stone.json": "c0734082e7f1e2f44809737b2fbe1136fc7304bde7232e45fbe921884a4a327e",
+      "assets/minecraft/models/block/stone_mirrored.json": "f6127c3048b1812b664209825271553c71c2b2dae9d6a19933702b6fdbe34370",
+      "assets/minecraft/models/block/cube_all.json": "be3205d629ffb9e03834c3d1d083f8a2c62e9f9ae80820755129408634e9144a",
+      "assets/minecraft/models/block/cube_mirrored_all.json": "eb0682e3126d537e8a15af343bc40e32339baa63f4f541143ed969e25e9231e0",
+      "assets/minecraft/models/block/cube.json": "3e4aacd02e816aeba38f83076596e18ded4cf49c01e17c62d1fce79850ffb84e",
+      "assets/minecraft/models/block/cube_mirrored.json": "e0a7b21709196c8641177e68a0a5e2a25d1de8f82e7ece75120dd38ed5d7a0fa",
+      "assets/minecraft/models/block/block.json": "3ef6c442f1ab55d2a57fa58e28bb831268159052659f12b453b637b31ded1da8",
+      "assets/minecraft/textures/block/stone.png": "33ac70ba8cb701087642a12c5fd29c1ba3006dc4730e9b014ed3a19ce7cdda7b"
+    },
+    "license_note": "Mojang/Microsoft content under their terms; identifiers and cryptographic digests are evidence only and no resource bytes are bundled"
+  },
+  "bluemap": {
+    "repository": "https://github.com/BlueMap-Minecraft/BlueMap",
+    "backport_repository": "https://github.com/jan-guenter/BlueMap",
+    "upstream_version": "5.22",
+    "upstream_commit": "fe5115d5548a30d34175b8e0449aaca280af199f",
+    "backport_version": "5.22-agent.backport-5.22-mc1.21.1-2",
+    "backport_commit": "9be321df995a1103808621d529eb72773e719d4d",
+    "api_commit": "285c9a60eff3ac2b0cab308ce1058d1565be0971",
+    "license": "MIT",
+    "bundled": false,
+    "source_blobs": {
+      "common/src/main/java/de/bluecolored/bluemap/common/addons/AddonLoader.java": "538b66f064f4d25c1b03655144afcae5b0b5c3e8",
+      "core/src/main/java/de/bluecolored/bluemap/core/map/hires/block/BlockRenderer.java": "787b1b9d2f8f597f789aa92bb7bfe77e9ecf2b95",
+      "core/src/main/java/de/bluecolored/bluemap/core/map/hires/block/BlockRendererType.java": "134e2b8fd834bd8ab0aa5e8f33ab6c1a86315c7d",
+      "core/src/main/java/de/bluecolored/bluemap/core/map/hires/block/ResourceModelRenderer.java": "d997f8926a71c0f689839a4d883c1f8a913df926",
+      "core/src/main/java/de/bluecolored/bluemap/core/resources/pack/resourcepack/ResourcePack.java": "ed6923e373301744f12866ecd998e14a65893e65",
+      "core/src/main/java/de/bluecolored/bluemap/core/resources/pack/resourcepack/ResourcePackExtension.java": "299528bce583f8a15e403ed08ac02e2fd5d707d9",
+      "core/src/main/java/de/bluecolored/bluemap/core/resources/pack/ResourcePool.java": "e80593721a5459648045704e879f1e857c327161",
+      "core/src/main/java/de/bluecolored/bluemap/core/resources/pack/resourcepack/model/Model.java": "8ef68e461588ade32c99d9739630e819da88550b",
+      "core/src/main/java/de/bluecolored/bluemap/core/resources/pack/resourcepack/blockstate/VariantSet.java": "360301580ada0abb77b32fe371b55f617b58c5ae",
+      "core/src/main/java/de/bluecolored/bluemap/core/resources/pack/resourcepack/texture/Texture.java": "10b6b7ed17fafd012db460cd7d22fc549bfb1ff2",
+      "core/src/main/java/de/bluecolored/bluemap/core/map/TextureGallery.java": "6197684b916551eeb8e10703e8b8378a9543fd51",
+      "core/src/main/java/de/bluecolored/bluemap/core/util/Registry.java": "a8807ae482749c54635f34a79abb38283a240257",
+      "core/src/main/java/de/bluecolored/bluemap/core/world/mca/MCAUtil.java": "b27c679573a377b32637558cdd635c20560ebbd6",
+      "core/src/main/java/de/bluecolored/bluemap/core/world/mca/blockentity/BlockEntityType.java": "161bd03def799acaba4ca3315ccb91adbe9fade3"
+    }
+  },
+  "local_adaptations": [
+    {
+      "local": "tools/ae2_m3_completion_contract.py, tools/generate_ae2_m3_completion_profile.py, tools/verify_m3_completion_artifact.py, src/main/java/io/github/janguenter/bluemap/ae2/profile/Ae219217M3CompletionProfile.java, and the M3f completion implementation files under activation, model, and adapter/bluemap522",
+      "upstream_files": [
+        "src/main/java/appeng/block/paint/PaintSplotches.java",
+        "src/main/java/appeng/block/paint/PaintSplotchesBakedModel.java",
+        "src/main/java/appeng/block/paint/PaintSplotchesBlock.java",
+        "src/main/java/appeng/block/paint/PaintSplotchesModel.java",
+        "src/main/java/appeng/blockentity/misc/PaintSplotchesBlockEntity.java",
+        "src/main/java/appeng/helpers/Splotch.java",
+        "src/main/java/appeng/block/spatial/SpatialPylonBlock.java",
+        "src/main/java/appeng/blockentity/spatial/SpatialPylonBlockEntity.java",
+        "src/main/java/appeng/client/render/tesr/spatial/SpatialPylonBakedModel.java",
+        "src/main/java/appeng/client/render/tesr/spatial/SpatialPylonModel.java",
+        "src/main/java/appeng/client/render/tesr/spatial/SpatialPylonTextureType.java",
+        "src/main/java/appeng/me/cluster/implementations/SpatialPylonCalculator.java",
+        "src/main/java/appeng/me/cluster/implementations/SpatialPylonCluster.java",
+        "src/main/java/appeng/me/cluster/MBCalculator.java",
+        "src/main/java/appeng/me/service/SpatialPylonService.java",
+        "src/main/java/appeng/block/storage/SkyChestBlock.java",
+        "src/main/java/appeng/blockentity/storage/SkyChestBlockEntity.java",
+        "src/main/java/appeng/client/render/tesr/SkyChestTESR.java",
+        "src/main/java/appeng/block/misc/CrankBlock.java",
+        "src/main/java/appeng/blockentity/misc/CrankBlockEntity.java",
+        "src/main/java/appeng/client/render/tesr/CrankRenderer.java",
+        "src/main/java/appeng/block/misc/InscriberBlock.java",
+        "src/main/java/appeng/blockentity/misc/InscriberBlockEntity.java",
+        "src/main/java/appeng/client/render/tesr/InscriberTESR.java",
+        "src/main/java/appeng/client/render/cablebus/CubeBuilder.java",
+        "src/main/java/appeng/api/orientation/BlockOrientation.java",
+        "src/main/java/appeng/core/AppEngClient.java",
+        "src/main/java/appeng/core/definitions/AEBlocks.java",
+        "src/main/java/appeng/core/definitions/AEBlockEntities.java",
+        "src/main/java/appeng/init/client/InitBuiltInModels.java"
+      ],
+      "modification": "Exact M3f fail-closed route and disjoint 33-resource partition for persisted paint splotches, static closed native Sky Stone chests, neutral crank and inscriber structure, and static/offline spatial-pylon roles inferred with an uncached native-axis-line scan capped at 256 pylons. Fully observed invalid bend or branch components render AE2's unformed NONE role with BASE-plus-DIM materials; missing, malformed, or capped observations use per-block atomic original-resource fallback. Machine contents, items, fluids, animation, particles, pylon global validity, online state, power, and extension connectors are excluded. No third-party class, model, texture, binary, source, capture, or precomputed mesh is bundled.",
+      "modified_on": "2026-08-09",
+      "spdx": "LGPL-3.0-only",
+      "upstream_license_note": "AE2 implementation sources are LGPL-3.0-or-later. Models and textures remain operator-installed CC BY-NC-SA 3.0 resources and are referenced only by identifiers, byte sizes, and digests."
+    },
+    {
+      "local": "tools/ae2_crafting_contract.py, tools/generate_ae2_crafting_profile.py, tools/verify_crafting_artifact.py, src/main/java/io/github/janguenter/bluemap/ae2/profile/Ae219217CraftingProfile.java, and the M3d crafting implementation files under activation, model, and adapter/bluemap522",
+      "upstream_files": [
+        "src/main/java/appeng/block/AEBaseBlock.java",
+        "src/main/java/appeng/block/crafting/AbstractCraftingUnitBlock.java",
+        "src/main/java/appeng/block/crafting/CraftingUnitBlock.java",
+        "src/main/java/appeng/block/crafting/CraftingMonitorBlock.java",
+        "src/main/java/appeng/blockentity/crafting/CraftingBlockEntity.java",
+        "src/main/java/appeng/blockentity/crafting/CraftingMonitorBlockEntity.java",
+        "src/main/java/appeng/client/render/crafting/AbstractCraftingUnitModelProvider.java",
+        "src/main/java/appeng/client/render/crafting/CraftingCubeBakedModel.java",
+        "src/main/java/appeng/client/render/crafting/CraftingUnitModelProvider.java",
+        "src/main/java/appeng/client/render/crafting/LightBakedModel.java",
+        "src/main/java/appeng/client/render/crafting/MonitorBakedModel.java",
+        "src/main/java/appeng/client/render/crafting/UnitBakedModel.java",
+        "src/main/java/appeng/me/cluster/implementations/CraftingCPUCalculator.java"
+      ],
+      "modification": "Exact M3d formed-crafting profile and disjoint 30-resource partition for eight native AE2 crafting blocks, six-neighbor topology, formed/powered state, monitor orientation and painted-color retention, client-stream-only displayed-item omission, force-solid/occluding block properties, and atomic fallback. Exact pack bytecode admits 8 MEGA Cells 4.11.0 and 21 Expanded AE 2.1.1 native-subclass IDs only as compatible-but-unsupported connectors; Advanced AE and ExtendedAE are explicitly excluded. No third-party class, model, texture, binary, source, capture, or precomputed mesh is bundled.",
+      "modified_on": "2026-08-08",
+      "spdx": "LGPL-3.0-only",
+      "upstream_license_note": "AE2 implementation sources, MEGA Cells, Expanded AE, Advanced AE and ExtendedAE declare LGPLv3-family terms. The local adaptation remains LGPL-3.0-only; upstream assets and exact evidence artifacts remain operator installed and are referenced only by identifiers, byte sizes, and digests."
+    },
+    {
+      "local": "tools/ae2_quartz_glass_contract.py, tools/verify_quartz_glass_artifact.py, src/main/java/io/github/janguenter/bluemap/ae2/profile/Ae219217QuartzGlassProfile.java, and the M3c quartz-glass implementation files under activation, model, and adapter/bluemap522",
+      "upstream_files": [
+        "src/main/java/appeng/decorative/solid/QuartzGlassBlock.java",
+        "src/main/java/appeng/decorative/solid/QuartzLampBlock.java",
+        "src/main/java/appeng/decorative/solid/GlassState.java",
+        "src/main/java/appeng/client/render/model/GlassModel.java",
+        "src/main/java/appeng/client/render/model/GlassBakedModel.java",
+        "src/main/java/appeng/client/render/model/RenderHelper.java",
+        "src/main/java/appeng/init/client/InitBuiltInModels.java",
+        "src/main/java/appeng/hooks/BuiltInModelHooks.java",
+        "src/main/java/appeng/mixins/ModelBakeryMixin.java"
+      ],
+      "modification": "Exact M3c renderer/profile and disjoint 22-resource partition for ae2:quartz_glass and ae2:quartz_vibrant_glass, six-neighbor topology, position-seeded texture selection, cutout rendering, no-AO attributes, and atomic fallback only for missing or malformed native neighbor data. BlueMap cannot query Minecraft getAppearance, so known cross-mod appearance proxies are treated as disconnected. BlueMap 5.22 PRBM cannot encode AE2's shade=false quad flag, so pixel-identical directional lighting and client particles are outside the claim. No AE2 class, model, texture, binary, source, capture, or precomputed mesh is bundled.",
+      "modified_on": "2026-08-07",
+      "spdx": "LGPL-3.0-only",
+      "upstream_license_note": "AE2 implementation sources are LGPL-3.0-or-later. Models and textures remain operator-installed CC BY-NC-SA 3.0 resources and are referenced only by identifiers, byte sizes, and digests."
+    },
+    {
+      "local": "tools/extendedae_contract.py, tools/verify_extendedae_artifact.py, src/main/java/io/github/janguenter/bluemap/ae2/profile/extendedae, and the ExtendedAe implementation files under activation, model, and adapter/bluemap522",
+      "upstream_files": [
+        "src/main/java/com/glodblock/github/extendedae/common/blocks/BlockExDrive.java",
+        "src/main/java/com/glodblock/github/extendedae/common/tileentities/TileExDrive.java",
+        "src/main/java/com/glodblock/github/extendedae/client/model/ExDriveModel.java",
+        "src/main/java/com/glodblock/github/extendedae/client/model/ExDriveBakedModel.java",
+        "src/main/java/com/glodblock/github/extendedae/client/render/tesr/ExDriveTESR.java",
+        "src/main/java/com/glodblock/github/extendedae/common/EAERegistryHandler.java",
+        "src/main/java/com/glodblock/github/extendedae/common/EAESingletons.java"
+      ],
+      "modification": "Exact M3b Ex Drive identity, disjoint 15-resource partition, twenty-slot two-sided layout, three built-in ExtendedAE cell mappings, dependency on the already pinned 23-item AE2 Drive catalog, static offline-unknown LED policy and atomic fallback for dynamic or unknown cells. No ExtendedAE class, model, texture, binary or source is bundled.",
+      "modified_on": "2026-08-07",
+      "spdx": "LGPL-3.0-only",
+      "upstream_license_note": "ExtendedAE declares LGPL-3.0 and includes the GNU LGPL version 3 text. The local adaptation remains under this project's LGPL-3.0-only license; upstream assets remain operator installed."
+    },
+    {
+      "local": "tools/ae2_m1_contract.py and src/main/java/io/github/janguenter/bluemap/ae2/profile/Ae219217Profile.java",
+      "upstream_files": [
+        "src/main/java/appeng/api/client/StorageCellModels.java",
+        "src/main/java/appeng/api/ids/AEItemIds.java",
+        "src/main/java/appeng/init/internal/InitStorageCells.java"
+      ],
+      "modification": "Exact M3a drive resource partition, bounded 23-item-to-12-model catalog, ten-slot identity, static offline-unknown LED policy and unknown extension-item atomic fallback. Models and textures remain operator installed and are referenced only by identifier and digest.",
+      "modified_on": "2026-08-07",
+      "spdx": "LGPL-3.0-only",
+      "upstream_license_note": "AE2 InitStorageCells is LGPL-3.0-or-later; StorageCellModels and AEItemIds are MIT. Complete notices are retained."
+    },
+    {
+      "local": "src/main/java/io/github/janguenter/bluemap/ae2/model",
+      "upstream_files": [
+        "src/main/java/appeng/client/render/cablebus/CableBuilder.java",
+        "src/main/java/appeng/client/render/cablebus/CubeBuilder.java",
+        "src/main/java/appeng/client/render/cablebus/CableBusBakedModel.java",
+        "src/main/java/appeng/client/render/cablebus/CableCoreType.java",
+        "src/main/java/appeng/client/render/cablebus/CableBusRenderState.java",
+        "src/main/java/appeng/client/render/cablebus/SmartCableTextures.java",
+        "src/main/java/appeng/api/util/AEColor.java",
+        "src/main/java/appeng/api/util/AECableType.java",
+        "src/main/java/appeng/api/util/AECableVariant.java",
+        "src/main/java/appeng/api/util/AECableSize.java",
+        "src/main/java/appeng/core/definitions/AEParts.java",
+        "src/main/java/appeng/parts/networking/CablePart.java",
+        "src/main/java/appeng/parts/networking/GlassCablePart.java",
+        "src/main/java/appeng/parts/networking/CoveredCablePart.java",
+        "src/main/java/appeng/parts/networking/SmartCablePart.java",
+        "src/main/java/appeng/parts/networking/DenseCablePart.java",
+        "src/main/java/appeng/parts/networking/CoveredDenseCablePart.java",
+        "src/main/java/appeng/parts/networking/SmartDenseCablePart.java"
+      ],
+      "modification": "Bounded neutral geometry, exact 85-ID color/family catalog, cable compatibility matrix, family-specific core/arm/straight rules and static zero-channel smart overlays; no AE2 class, model or texture is bundled.",
+      "modified_on": "2026-08-04",
+      "spdx": "LGPL-3.0-only",
+      "upstream_license_note": "AE2 implementation sources are LGPL-3.0-or-later; the referenced AEColor and AECable API sources are MIT. Complete notices are retained."
+    },
+    {
+      "local": "src/main/java/io/github/janguenter/bluemap/ae2/model/CableBusDecoder.java and src/main/java/io/github/janguenter/bluemap/ae2/adapter/bluemap522/Ae2CableBusBlockEntityData.java",
+      "upstream_files": [
+        "src/main/java/appeng/parts/CableBusContainer.java",
+        "src/main/java/appeng/blockentity/networking/CableBusBlockEntity.java",
+        "src/main/java/appeng/parts/AEBasePart.java",
+        "src/main/java/appeng/me/InWorldGridNode.java",
+        "src/main/java/appeng/hooks/VisualStateSaving.java",
+        "src/main/java/appeng/mixins/StructureTemplateMixin.java",
+        "src/main/java/appeng/facade/FacadeContainer.java"
+      ],
+      "modification": "Reduced persisted-data decoder retaining the recognized center part, bounded face-part direct ID and byte spin, and bounded facade block-state value. The exact M2 allowlist accepts only ae2:terminal and one same-face canonical minecraft:stone facade; malformed or unsupported values conservatively delegate the whole block.",
+      "modified_on": "2026-08-07",
+      "spdx": "LGPL-3.0-only"
+    },
+    {
+      "local": "src/main/java/io/github/janguenter/bluemap/ae2/model/PartOrientation.java, src/main/java/io/github/janguenter/bluemap/ae2/model/FacadeGeometry.java, and the M2 paths in src/main/java/io/github/janguenter/bluemap/ae2/adapter/bluemap522",
+      "upstream_files": [
+        "src/main/java/appeng/api/orientation/BlockOrientation.java",
+        "src/main/java/appeng/client/render/cablebus/QuadRotator.java",
+        "src/main/java/appeng/client/render/cablebus/CableBusBakedModel.java",
+        "src/main/java/appeng/client/render/cablebus/FacadeBuilder.java",
+        "src/main/java/appeng/facade/FacadeContainer.java",
+        "src/main/java/appeng/parts/PartModel.java",
+        "src/main/java/appeng/parts/BusCollisionHelper.java",
+        "src/main/java/appeng/parts/reporting/AbstractReportingPart.java",
+        "src/main/java/appeng/parts/reporting/AbstractTerminalPart.java",
+        "src/main/java/appeng/parts/reporting/ItemTerminalPart.java"
+      ],
+      "modification": "Bounded direct-ID/byte-spin and canonical block-state projections, exact reporting-part orientation, idle/off terminal model composition, constrained cable arms, one same-face four-strip plain-stone facade, effective resource classification, and atomic whole-block fallback. No AE2 or Minecraft model, texture, class, source, or captured mesh is bundled.",
+      "modified_on": "2026-08-07",
+      "spdx": "LGPL-3.0-only",
+      "upstream_license_note": "AE2 terminal, cable-bus and facade implementation sources are LGPL-3.0-or-later; the adapted family-local implementation remains LGPL-3.0-only. Operator-installed AE2 and Minecraft resources are referenced only by identifiers and verified digests."
+    },
+    {
+      "local": "tools/ae2_native_structural_contract.py, tools/generate_ae2_native_structural_profile.py, tools/verify_native_structural_artifact.py, and src/main/java/io/github/janguenter/bluemap/ae2/profile/Ae219217NativeStructuralProfile.java",
+      "upstream_files": [
+        "src/main/java/appeng/api/ids/AEPartIds.java",
+        "src/main/java/appeng/api/util/AECableType.java",
+        "src/main/java/appeng/blockentity/grid/AENetworkedBlockEntity.java",
+        "src/main/java/appeng/client/render/cablebus/CableBusBakedModel.java",
+        "src/main/java/appeng/client/render/cablebus/CableBusRenderState.java",
+        "src/main/java/appeng/client/render/cablebus/FacadeBuilder.java",
+        "src/main/java/appeng/client/render/cablebus/FacadeRenderState.java",
+        "src/main/java/appeng/client/render/cablebus/QuadRotator.java",
+        "src/main/java/appeng/core/definitions/AEBlockEntities.java",
+        "src/main/java/appeng/core/definitions/AEParts.java",
+        "src/main/java/appeng/decorative/solid/QuartzGlassBlock.java",
+        "src/main/java/appeng/items/parts/FacadeItem.java",
+        "src/main/java/appeng/parts/BusCollisionHelper.java",
+        "src/main/java/appeng/parts/CableBusContainer.java",
+        "src/main/java/appeng/parts/PartModel.java",
+        "src/main/java/appeng/parts/automation/PlaneBakedModel.java",
+        "src/main/java/appeng/parts/automation/PlaneConnectionHelper.java",
+        "src/main/java/appeng/parts/automation/PlaneConnections.java",
+        "src/main/java/appeng/parts/automation/PlaneModels.java",
+        "src/main/java/appeng/parts/p2p/P2PModels.java",
+        "src/main/java/appeng/parts/reporting/AbstractReportingPart.java",
+        "src/main/java/appeng/thirdparty/codechicken/lib/math/InterpHelper.java",
+        "src/main/java/appeng/thirdparty/codechicken/lib/model/pipeline/transformers/QuadCornerKicker.java",
+        "src/main/java/appeng/thirdparty/codechicken/lib/model/pipeline/transformers/QuadReInterpolator.java"
+      ],
+      "modification": "Exact S1 native structural catalog for 29 face parts, nine reporting spins, one dense-capable anchor, 30 attached-device endpoints, all facade masks and static per-instance BlockState materials, exact logical PlaneConnections, PlaneBakedModel visual-local/QuadRotator world, face-aware BusCollisionHelper collision/cutout, UV, corner, and skip-rendering policies, plus a deterministic 99-resource operator-installed closure and missing/malformed/capped atomic fallback. No AE2 or Minecraft model, texture, source, class, capture or mesh is bundled.",
+      "modified_on": "2026-08-09",
+      "spdx": "LGPL-3.0-only",
+      "upstream_license_note": "AE2 cable-bus, facade, part and block-entity implementation sources are LGPL-3.0-or-later; AECableType and AEPartIds are MIT. Complete notices are retained, and upstream assets remain operator-installed."
+    },
+    {
+      "local": "src/main/java/io/github/janguenter/bluemap/ae2/adapter/bluemap522",
+      "upstream_files": [
+        "common/src/main/java/de/bluecolored/bluemap/common/addons/AddonLoader.java",
+        "core/src/main/java/de/bluecolored/bluemap/core/map/hires/block/BlockRenderer.java",
+        "core/src/main/java/de/bluecolored/bluemap/core/map/hires/block/BlockRendererType.java",
+        "core/src/main/java/de/bluecolored/bluemap/core/map/hires/block/ResourceModelRenderer.java",
+        "core/src/main/java/de/bluecolored/bluemap/core/resources/pack/resourcepack/ResourcePack.java",
+        "core/src/main/java/de/bluecolored/bluemap/core/resources/pack/resourcepack/ResourcePackExtension.java",
+        "core/src/main/java/de/bluecolored/bluemap/core/util/Registry.java",
+        "core/src/main/java/de/bluecolored/bluemap/core/world/mca/MCAUtil.java",
+        "core/src/main/java/de/bluecolored/bluemap/core/world/mca/blockentity/BlockEntityType.java"
+      ],
+      "modification": "Adapted exact-ABI registration, resource-routing, ambient-occlusion, map-color and direct original-resource-fallback patterns into a project-local adapter. BlueMap classes and binaries are not bundled; its complete MIT notice is retained.",
+      "modified_on": "2026-08-03",
+      "spdx": "LGPL-3.0-only",
+      "upstream_license_note": "The local adapter is distributed under LGPL-3.0-only; adapted BlueMap portions are MIT and the complete MIT notice is retained."
+    }
+  ],
+  "non_bundled_dependencies": [
+    {
+      "name": "BlueNBT",
+      "version": "3.5.1",
+      "license": "MIT"
+    },
+    {
+      "name": "JetBrains Java Annotations",
+      "version": "23.0.0",
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "JUnit Jupiter",
+      "version": "5.11.4",
+      "license": "EPL-2.0"
+    },
+    {
+      "name": "Checkstyle",
+      "version": "10.18.2",
+      "license": "LGPL-2.1-or-later"
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "profileId": "expandedae",
+  "modId": "expandedae",
+  "version": "2.1.1",
+  "artifact": "expandedae-2.1.1.jar",
+  "sizeBytes": 496713,
+  "sha1": "c4db013f83e569b016da329b3ddc9c14acc75d7d",
+  "sha256": "f39c0eb9c6271f54a44ffee092a29520f53000d1005849e6afada3ad9dffba14",
+  "sha512": "5d6b0c7430d6f1f2bdb2cb38832ee27d0b28402d16171a9fe746d0275ba54c288405b64b9ad269c010aadd729e82ddeb61b9550c0361c6e1ece2c0bdc77a4b23",
+  "minecraft": "1.21.1",
+  "neoforge": "21.1.248",
+  "coverageMilestone": "M4",
+  "source": {
+    "correlation": "exact-jar-bytecode-only-no-matching-immutable-source-tag"
+  },
+  "dependentAe2Profile": {
+    "version": "19.2.17",
+    "mechanisms": [
+      "crafting-cube-mesh",
+      "neutral-face-part",
+      "neutral-display-part",
+      "namespaced-z-normalization"
+    ]
+  },
+  "worldVisuals": {
+    "registeredBlockCount": 24,
+    "supportedVisualBlockCount": 23,
+    "craftingBlocks": {
+      "blockCount": 21,
+      "unitId": "expandedae:exp_crafting_unit",
+      "acceleratorTiers": [
+        "2", "4", "8", "16", "32", "64", "128", "256", "512",
+        "1k", "2k", "4k", "8k", "16k", "32k", "64k", "128k",
+        "256k", "512k", "1m"
+      ],
+      "formedProperty": "formed",
+      "sharedBlockEntityId": "expandedae:exp_cpus",
+      "coreKindMapping": {
+        "exp_crafting_unit": "UNIT",
+        "exp_crafting_accelerator_*": "ACCELERATOR"
+      },
+      "dynamicTextureCount": 25
+    },
+    "ordinaryJsonBlocks": ["expandedae:exp_pattern_provider"],
+    "namespacedZBlocks": ["expandedae:exp_io_port"],
+    "ioPort": {
+      "variantCount": 48,
+      "properties": ["facing", "powered", "spin"],
+      "namespacedZKey": "ae2:z"
+    },
+    "parts": {
+      "expandedae:exp_pattern_provider_part": {
+        "supportsSpin": false,
+        "neutralModelStack": [
+          "expandedae:part/exp_pattern_provider_base",
+          "ae2:part/interface_off"
+        ]
+      },
+      "expandedae:exp_encoding_terminal": {
+        "supportsSpin": true,
+        "persistedSpinRange": [0, 3],
+        "neutralModelStack": [
+          "ae2:part/display_base",
+          "expandedae:part/exp_encoding_terminal_off",
+          "ae2:part/display_status_off"
+        ]
+      }
+    },
+    "upstreamVisualUnavailable": {
+      "blockId": "expandedae:colorable_drive",
+      "blockEntityId": "expandedae:colorable_drive",
+      "colorBlockstateRange": [0, 16],
+      "colorNbtKey": "color",
+      "reason": "exact-jar-has-no-blockstate-model-texture-or-client-renderer",
+      "policy": "original-resource-fallback-no-invented-appearance"
+    }
+  },
+  "resourcePartition": {
+    "pathCount": 142,
+    "blockstateCount": 23,
+    "modelCount": 49,
+    "textureAndMetadataCount": 70,
+    "totalBytes": 46365,
+    "manifestFormat": "path-tab-bytes-tab-sha256-lf",
+    "manifestSha256": "4b144ee2867c96e09b6c1872e3123b218f243df427c5b535714156c6194e1501"
+  },
+  "failurePolicy": "disable-expandedae-profile-only-and-preserve-ae2-and-other-extension-routes"
+}

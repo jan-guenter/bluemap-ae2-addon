@@ -1,0 +1,273 @@
+{
+  "schema_version": 1,
+  "authority": {
+    "ae2_version": "19.2.17",
+    "source_commit": "79ee2c704ad62941a426c26b1cb1f76ef5b2ee5a",
+    "role": "source-derived-acceptance-before-runtime-regression-oracle"
+  },
+  "facades": {
+    "thin_thickness_blocks": 0.0605,
+    "part_cutout_sixteenths": {
+      "ae2:quartz_fiber": [6, 6, 10, 10],
+      "ae2:toggle_bus": [6, 6, 10, 10],
+      "ae2:import_bus": [4, 4, 12, 12],
+      "ae2:export_bus": [6, 6, 10, 10],
+      "ae2:level_emitter": [7, 7, 9, 9],
+      "ae2:terminal": [2, 2, 14, 14]
+    },
+    "same_face_cable_anchor": {
+      "facade_triangle_count": 12,
+      "model": "ae2:part/cable_anchor_short",
+      "model_bounds_sixteenths": [7, 7, 1, 9, 9, 6],
+      "cutout": false
+    },
+    "transparent_perpendicular_opaque_inset": "one-thin-thickness",
+  "opaque_inner_corner_kick": {
+    "distance": "one-thin-thickness",
+    "three_plane_match_epsilon": 0.00001,
+    "epsilon_coordinate_units": "prbm-blocks"
+  },
+    "opaque_face_stripper": "exact-post-clamp-bound-equality-no-epsilon",
+    "shade_host_projection": "source-bit-bound-but-not-encoded-in-prbm",
+  "shade_false_eligibility": "accepted-not-fallback",
+  "ambient_occlusion_direction": "BlueMap-ResourceModelRenderer-source-faceDir-rotated-by-blockstate-variant-only;element-rotation-affects-vertices-not-AO-direction;runtime-uses-layer-lightFace-not-quad-nominal-face",
+  "map_color_illumination": "BlueMap-map-color-illumination-uses-original-center-and-outward-world-light-only;element-lightEmission-affects-triangle-blocklight-not-map-color-brightness",
+  "vibrant_quartz_facade_blocklight_raw_i8": 0,
+  "fully_surrounded_quartz": {
+    "facade_triangle_count": 0,
+    "short_stilt_triangle_count": 72,
+    "cable_triangle_count": 12,
+    "remains_custom": true
+  },
+  "adjacent_cull": {
+      "positive": "same-state-glass-omits-original-outward-face-before-clamp",
+      "negative": "same-state-oak-log-retains-original-outward-face"
+    },
+    "uv": "baked-face-and-variant-transform-reinterpolated-after-clamp",
+    "cardinal_variant_transform": "exact-signed-permutation-quarter-turn-blockstate-variant-and-uvlock-coordinate-transforms;avoids-host-float-matrix-drift-before-source-exact-InterpHelper-grid"
+  },
+  "facade_whitelist": {
+    "full_source_id_count": 24,
+    "state_schema_count": 24,
+    "state_schema_policy": "all-24-explicit-whitelist-families-require-exact-complete-persisted-property-key-set-and-value-domains;13-vanilla-families-preserve-valid-state;11-ae2-native-families-apply-declared-static-normalization;extra-missing-or-invalid-properties-atomic-original-resource-fallback",
+    "state_contract_sha256": "ec3423ebbd53eacf06cef8a53c1d085cad3ae654c45b6aecea177caa40bc60a8",
+    "state_cartesian_count": 554,
+    "state_classification_policy": "solidRender-and-same-state-skipRendering-family-invariant-across-all-554-valid-explicit-whitelist-states;neutral-default-row-booleans-apply-to-whole-family;classification-drift-atomic-original-resource-fallback",
+    "solid_render_true_cartesian_count": 551,
+    "same_state_skip_rendering_true_cartesian_count": 3,
+    "state_counts": {
+      "ae2:quartz_glass": 1,
+      "ae2:quartz_vibrant_glass": 1,
+      "minecraft:chiseled_bookshelf": 256,
+      "minecraft:jukebox": 2,
+      "minecraft:furnace": 8,
+      "minecraft:blast_furnace": 8,
+      "minecraft:dropper": 12,
+      "minecraft:dispenser": 12,
+      "minecraft:crafter": 48,
+      "minecraft:barrel": 12,
+      "minecraft:bee_nest": 24,
+      "minecraft:beehive": 24,
+      "minecraft:sculk_catalyst": 2,
+      "minecraft:soul_sand": 1,
+      "minecraft:honey_block": 1,
+      "ae2:controller": 18,
+      "ae2:1k_crafting_storage": 4,
+      "ae2:4k_crafting_storage": 4,
+      "ae2:16k_crafting_storage": 4,
+      "ae2:64k_crafting_storage": 4,
+      "ae2:256k_crafting_storage": 4,
+      "ae2:crafting_monitor": 96,
+      "ae2:crafting_unit": 4,
+      "ae2:crafting_accelerator": 4
+    },
+    "solid_render": {
+      "ae2:quartz_glass": false,
+      "ae2:quartz_vibrant_glass": false,
+      "minecraft:chiseled_bookshelf": true,
+      "minecraft:jukebox": true,
+      "minecraft:furnace": true,
+      "minecraft:blast_furnace": true,
+      "minecraft:dropper": true,
+      "minecraft:dispenser": true,
+      "minecraft:crafter": true,
+      "minecraft:barrel": true,
+      "minecraft:bee_nest": true,
+      "minecraft:beehive": true,
+      "minecraft:sculk_catalyst": true,
+      "minecraft:soul_sand": true,
+      "minecraft:honey_block": false,
+      "ae2:controller": true,
+      "ae2:1k_crafting_storage": true,
+      "ae2:4k_crafting_storage": true,
+      "ae2:16k_crafting_storage": true,
+      "ae2:64k_crafting_storage": true,
+      "ae2:256k_crafting_storage": true,
+      "ae2:crafting_monitor": true,
+      "ae2:crafting_unit": true,
+      "ae2:crafting_accelerator": true
+    },
+    "same_state_skip_rendering": {
+      "ae2:quartz_glass": true,
+      "ae2:quartz_vibrant_glass": true,
+      "minecraft:chiseled_bookshelf": false,
+      "minecraft:jukebox": false,
+      "minecraft:furnace": false,
+      "minecraft:blast_furnace": false,
+      "minecraft:dropper": false,
+      "minecraft:dispenser": false,
+      "minecraft:crafter": false,
+      "minecraft:barrel": false,
+      "minecraft:bee_nest": false,
+      "minecraft:beehive": false,
+      "minecraft:sculk_catalyst": false,
+      "minecraft:soul_sand": false,
+      "minecraft:honey_block": true,
+      "ae2:controller": false,
+      "ae2:1k_crafting_storage": false,
+      "ae2:4k_crafting_storage": false,
+      "ae2:16k_crafting_storage": false,
+      "ae2:64k_crafting_storage": false,
+      "ae2:256k_crafting_storage": false,
+      "ae2:crafting_monitor": false,
+      "ae2:crafting_unit": false,
+      "ae2:crafting_accelerator": false
+    },
+    "ordinary_same_state_skip_rendering_controls": {
+      "minecraft:glass": true,
+      "minecraft:oak_log": false,
+      "minecraft:oak_leaves": false
+    },
+    "physically_represented": [
+      "ae2:quartz_glass",
+      "ae2:quartz_vibrant_glass",
+      "ae2:controller",
+      "ae2:1k_crafting_storage",
+      "ae2:4k_crafting_storage",
+      "ae2:16k_crafting_storage",
+      "ae2:64k_crafting_storage",
+      "ae2:256k_crafting_storage",
+      "ae2:crafting_monitor",
+      "ae2:crafting_unit",
+      "ae2:crafting_accelerator",
+      "minecraft:chiseled_bookshelf",
+      "minecraft:furnace",
+      "minecraft:soul_sand",
+      "minecraft:honey_block"
+    ],
+    "java_exhaustive_only": [
+      "minecraft:jukebox",
+      "minecraft:blast_furnace",
+      "minecraft:dropper",
+      "minecraft:dispenser",
+      "minecraft:crafter",
+      "minecraft:barrel",
+      "minecraft:bee_nest",
+      "minecraft:beehive",
+      "minecraft:sculk_catalyst"
+    ],
+    "crafting_monitor_normalization": {
+      "input": {"facing": "east", "formed": "true", "powered": "true", "spin": "3"},
+      "output": {"facing": "east", "formed": "false", "powered": "false", "spin": "0"}
+    }
+  },
+  "endpoint_state_schemas": {
+    "state_cartesian_count": 534,
+    "state_side_cartesian_count": 3204,
+    "state_counts": {
+      "inscriber": 48,
+      "wireless_access_point": 36,
+      "charger": 24,
+      "quantum_ring": 4,
+      "quantum_link": 4,
+      "spatial_pylon": 2,
+      "spatial_io_port": 48,
+      "spatial_anchor": 12,
+      "controller": 18,
+      "drive": 24,
+      "chest": 48,
+      "interface": 1,
+      "io_port": 48,
+      "energy_acceptor": 1,
+      "crystal_resonance_generator": 12,
+      "vibration_chamber": 48,
+      "growth_accelerator": 12,
+      "energy_cell": 5,
+      "dense_energy_cell": 5,
+      "creative_energy_cell": 1,
+      "crafting_unit": 4,
+      "crafting_accelerator": 4,
+      "1k_crafting_storage": 4,
+      "4k_crafting_storage": 4,
+      "16k_crafting_storage": 4,
+      "64k_crafting_storage": 4,
+      "256k_crafting_storage": 4,
+      "crafting_monitor": 96,
+      "pattern_provider": 7,
+      "molecular_assembler": 2
+    }
+  },
+  "planes": {
+    "base_box_sixteenths": [1, 1, 0, 15, 15, 1],
+    "mask_bits": {"up": 8, "right": 4, "down": 2, "left": 1},
+    "visual_x_extension": {"min": "right-bit-4", "max": "left-bit-1"},
+    "facade_collision_x_extension": {"min": "left-bit-1", "max": "right-bit-4"},
+    "transparent_boundary_aabb_normalization": {
+      "installed_face": "up",
+      "plane_mask": 8,
+      "transparent_facade": "up",
+      "opaque_perpendicular_facade": "north",
+      "normalized_axis": "z",
+      "normalized_strip_bounds_blocks": [0.0, 0.0605],
+      "source_constructor": "minecraft-aabb-min-max-normalizes-reversed-endpoints"
+    },
+    "triangle_count": 14,
+    "material_triangles": {
+      "front": 2,
+      "ae2:part/plane_sides": 8,
+      "ae2:part/transition_plane_back": 4
+    },
+    "ambient_occlusion_raw_u8": 255,
+    "blocklight_raw_i8": 0,
+    "sunlight_raw_i8": 15
+  },
+  "p2p_frequency": {
+    "quad_offsets_sixteenths": [[3, 11, 2], [11, 11, 2], [3, 3, 2], [11, 3, 2]],
+    "pixel_axes_coordinates_sixteenths": [3, 4, 5, 11, 12, 13],
+    "cube_count": 16,
+    "triangle_count": 192,
+    "nibble_order": [12, 8, 4, 0],
+    "inactive_black_variant_scale": 0.3,
+    "frequency_0x1234_inactive_rgb_u8": {
+      "1": [37, 37, 37],
+      "2": [23, 23, 23],
+      "3": [5, 5, 5],
+      "4": [23, 57, 23]
+    },
+    "ambient_occlusion_raw_u8": 255,
+    "blocklight_raw_i8": 0,
+    "sunlight_raw_i8": 15
+  },
+  "smart_core_parts": ["ae2:level_emitter", "ae2:energy_level_emitter"],
+  "opposite_endpoint_straights": {
+    "directions": ["west", "east"],
+    "families": {
+      "covered": {"triangle_count": 12, "cross_sixteenths": [5, 11]},
+      "smart": {"triangle_count": 36, "cross_sixteenths": [5, 11]},
+      "dense_smart": {"triangle_count": 36, "cross_sixteenths": [3, 13]}
+    },
+    "facades_are_attachments": false,
+    "cable_anchor_requires_connection": false,
+    "other_face_parts_block_straight": true,
+    "machine_collars": false
+  },
+  "oak_log": {
+    "variants": {
+      "axis=x": {"model": "minecraft:block/oak_log_horizontal", "x": 90, "y": 90},
+      "axis=y": {"model": "minecraft:block/oak_log"},
+      "axis=z": {"model": "minecraft:block/oak_log_horizontal", "x": 90}
+    },
+    "end_texture": "minecraft:block/oak_log_top",
+    "side_texture": "minecraft:block/oak_log"
+  }
+}

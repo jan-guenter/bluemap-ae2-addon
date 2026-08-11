@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "": {
+      "renderer": "bluemap_ae2:drive",
+      "model": "bluemap:block/missing"
+    }
+  }
+}

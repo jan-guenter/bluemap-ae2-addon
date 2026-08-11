@@ -1,0 +1,1032 @@
+{
+  "cases": [
+    {
+      "anchors": [
+        {
+          "block_id": "ae2:cable_bus",
+          "cable_id": "ae2:fluix_glass_cable",
+          "position": {
+            "x": 216,
+            "y": 100,
+            "z": 226
+          }
+        }
+      ],
+      "case_id": "ae2-m1-02",
+      "fixture_blocks": [
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 215,
+            "y": 99,
+            "z": 225
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 215,
+            "y": 99,
+            "z": 226
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 215,
+            "y": 99,
+            "z": 227
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 216,
+            "y": 99,
+            "z": 225
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 216,
+            "y": 99,
+            "z": 226
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 216,
+            "y": 99,
+            "z": 227
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 217,
+            "y": 99,
+            "z": 225
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 217,
+            "y": 99,
+            "z": 226
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 217,
+            "y": 99,
+            "z": 227
+          }
+        },
+        {
+          "block_id": "ae2:energy_acceptor",
+          "expected_block_entity_id": "ae2:energy_acceptor",
+          "expected_state": {},
+          "position": {
+            "x": 217,
+            "y": 100,
+            "z": 226
+          }
+        }
+      ]
+    },
+    {
+      "anchors": [
+        {
+          "block_id": "ae2:cable_bus",
+          "cable_id": "ae2:fluix_smart_dense_cable",
+          "position": {
+            "x": 222,
+            "y": 100,
+            "z": 226
+          }
+        }
+      ],
+      "case_id": "ae2-m1-03",
+      "fixture_blocks": [
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 221,
+            "y": 99,
+            "z": 225
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 221,
+            "y": 99,
+            "z": 226
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 221,
+            "y": 99,
+            "z": 227
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 222,
+            "y": 99,
+            "z": 225
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 222,
+            "y": 99,
+            "z": 226
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 222,
+            "y": 99,
+            "z": 227
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 223,
+            "y": 99,
+            "z": 225
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 223,
+            "y": 99,
+            "z": 226
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 223,
+            "y": 99,
+            "z": 227
+          }
+        },
+        {
+          "block_id": "ae2:controller",
+          "expected_block_entity_id": "ae2:controller",
+          "expected_state": {
+            "state": "offline",
+            "type": "block"
+          },
+          "position": {
+            "x": 223,
+            "y": 100,
+            "z": 226
+          }
+        }
+      ]
+    },
+    {
+      "anchors": [
+        {
+          "block_id": "ae2:cable_bus",
+          "cable_id": "ae2:fluix_glass_cable",
+          "face_parts": [
+            {
+              "direction": "north",
+              "id": "ae2:cable_anchor"
+            }
+          ],
+          "position": {
+            "x": 210,
+            "y": 100,
+            "z": 248
+          }
+        }
+      ],
+      "case_id": "ae2-m2-06",
+      "fixture_blocks": [
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 209,
+            "y": 99,
+            "z": 247
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 209,
+            "y": 99,
+            "z": 248
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 209,
+            "y": 99,
+            "z": 249
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 210,
+            "y": 99,
+            "z": 247
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 210,
+            "y": 99,
+            "z": 248
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 210,
+            "y": 99,
+            "z": 249
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 211,
+            "y": 99,
+            "z": 247
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 211,
+            "y": 99,
+            "z": 248
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 211,
+            "y": 99,
+            "z": 249
+          }
+        }
+      ]
+    },
+    {
+      "anchors": [
+        {
+          "block_id": "ae2:cable_bus",
+          "cable_id": "ae2:fluix_glass_cable",
+          "face_parts": [
+            {
+              "direction": "north",
+              "id": "ae2:monitor",
+              "spin": 0
+            }
+          ],
+          "position": {
+            "x": 213,
+            "y": 100,
+            "z": 248
+          }
+        }
+      ],
+      "case_id": "ae2-m2-07",
+      "fixture_blocks": [
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 212,
+            "y": 99,
+            "z": 247
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 212,
+            "y": 99,
+            "z": 248
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 212,
+            "y": 99,
+            "z": 249
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 213,
+            "y": 99,
+            "z": 247
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 213,
+            "y": 99,
+            "z": 248
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 213,
+            "y": 99,
+            "z": 249
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 214,
+            "y": 99,
+            "z": 247
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 214,
+            "y": 99,
+            "z": 248
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 214,
+            "y": 99,
+            "z": 249
+          }
+        }
+      ]
+    },
+    {
+      "anchors": [
+        {
+          "block_id": "ae2:cable_bus",
+          "cable_id": null,
+          "face_parts": [
+            {
+              "direction": "north",
+              "id": "ae2:terminal",
+              "spin": 0
+            }
+          ],
+          "position": {
+            "x": 219,
+            "y": 100,
+            "z": 248
+          }
+        }
+      ],
+      "case_id": "ae2-m2-09",
+      "fixture_blocks": [
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 218,
+            "y": 99,
+            "z": 247
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 218,
+            "y": 99,
+            "z": 248
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 218,
+            "y": 99,
+            "z": 249
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 219,
+            "y": 99,
+            "z": 247
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 219,
+            "y": 99,
+            "z": 248
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 219,
+            "y": 99,
+            "z": 249
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 220,
+            "y": 99,
+            "z": 247
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 220,
+            "y": 99,
+            "z": 248
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 220,
+            "y": 99,
+            "z": 249
+          }
+        }
+      ]
+    },
+    {
+      "anchors": [
+        {
+          "block_id": "ae2:cable_bus",
+          "cable_id": "ae2:fluix_glass_cable",
+          "facades": [
+            {
+              "block_state": {
+                "Name": "minecraft:stone"
+              },
+              "direction": "south"
+            }
+          ],
+          "position": {
+            "x": 222,
+            "y": 100,
+            "z": 248
+          }
+        }
+      ],
+      "case_id": "ae2-m2-10",
+      "fixture_blocks": [
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 221,
+            "y": 99,
+            "z": 247
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 221,
+            "y": 99,
+            "z": 248
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 221,
+            "y": 99,
+            "z": 249
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 222,
+            "y": 99,
+            "z": 247
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 222,
+            "y": 99,
+            "z": 248
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 222,
+            "y": 99,
+            "z": 249
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 223,
+            "y": 99,
+            "z": 247
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 223,
+            "y": 99,
+            "z": 248
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 223,
+            "y": 99,
+            "z": 249
+          }
+        }
+      ]
+    },
+    {
+      "anchors": [
+        {
+          "block_id": "ae2:cable_bus",
+          "cable_id": "ae2:fluix_glass_cable",
+          "facades": [
+            {
+              "block_state": {
+                "Name": "minecraft:glass"
+              },
+              "direction": "south"
+            }
+          ],
+          "face_parts": [
+            {
+              "direction": "south",
+              "id": "ae2:terminal",
+              "spin": 0
+            }
+          ],
+          "position": {
+            "x": 225,
+            "y": 100,
+            "z": 248
+          }
+        }
+      ],
+      "case_id": "ae2-m2-11",
+      "fixture_blocks": [
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 224,
+            "y": 99,
+            "z": 247
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 224,
+            "y": 99,
+            "z": 248
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 224,
+            "y": 99,
+            "z": 249
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 225,
+            "y": 99,
+            "z": 247
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 225,
+            "y": 99,
+            "z": 248
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 225,
+            "y": 99,
+            "z": 249
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 226,
+            "y": 99,
+            "z": 247
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 226,
+            "y": 99,
+            "z": 248
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 226,
+            "y": 99,
+            "z": 249
+          }
+        }
+      ]
+    },
+    {
+      "anchors": [
+        {
+          "block_id": "ae2:cable_bus",
+          "cable_id": "ae2:fluix_glass_cable",
+          "facades": [
+            {
+              "block_state": {
+                "Name": "minecraft:oak_log",
+                "Properties": {
+                  "axis": "y"
+                }
+              },
+              "direction": "south"
+            }
+          ],
+          "face_parts": [
+            {
+              "direction": "south",
+              "id": "ae2:terminal",
+              "spin": 0
+            }
+          ],
+          "position": {
+            "x": 228,
+            "y": 100,
+            "z": 248
+          }
+        }
+      ],
+      "case_id": "ae2-m2-12",
+      "fixture_blocks": [
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 227,
+            "y": 99,
+            "z": 247
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 227,
+            "y": 99,
+            "z": 248
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 227,
+            "y": 99,
+            "z": 249
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 228,
+            "y": 99,
+            "z": 247
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 228,
+            "y": 99,
+            "z": 248
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 228,
+            "y": 99,
+            "z": 249
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 229,
+            "y": 99,
+            "z": 247
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 229,
+            "y": 99,
+            "z": 248
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 229,
+            "y": 99,
+            "z": 249
+          }
+        }
+      ]
+    },
+    {
+      "anchors": [
+        {
+          "block_id": "ae2:cable_bus",
+          "cable_id": "ae2:fluix_glass_cable",
+          "facades": [
+            {
+              "block_state": {
+                "Name": "minecraft:stone"
+              },
+              "direction": "north"
+            },
+            {
+              "block_state": {
+                "Name": "minecraft:stone"
+              },
+              "direction": "south"
+            }
+          ],
+          "face_parts": [
+            {
+              "direction": "north",
+              "id": "ae2:terminal",
+              "spin": 0
+            },
+            {
+              "direction": "south",
+              "id": "ae2:terminal",
+              "spin": 1
+            }
+          ],
+          "position": {
+            "x": 231,
+            "y": 100,
+            "z": 248
+          }
+        }
+      ],
+      "case_id": "ae2-m2-13",
+      "fixture_blocks": [
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 230,
+            "y": 99,
+            "z": 247
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 230,
+            "y": 99,
+            "z": 248
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 230,
+            "y": 99,
+            "z": 249
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 231,
+            "y": 99,
+            "z": 247
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 231,
+            "y": 99,
+            "z": 248
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 231,
+            "y": 99,
+            "z": 249
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 232,
+            "y": 99,
+            "z": 247
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 232,
+            "y": 99,
+            "z": 248
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 232,
+            "y": 99,
+            "z": 249
+          }
+        }
+      ]
+    },
+    {
+      "anchors": [
+        {
+          "block_id": "ae2:cable_bus",
+          "cable_id": "ae2:fluix_glass_cable",
+          "facades": [
+            {
+              "block_state": {
+                "Name": "minecraft:stone"
+              },
+              "direction": "south"
+            }
+          ],
+          "face_parts": [
+            {
+              "direction": "north",
+              "id": "ae2:terminal",
+              "spin": 1
+            },
+            {
+              "direction": "south",
+              "id": "ae2:terminal",
+              "spin": 0
+            }
+          ],
+          "position": {
+            "x": 234,
+            "y": 100,
+            "z": 248
+          }
+        }
+      ],
+      "case_id": "ae2-m2-14",
+      "fixture_blocks": [
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 233,
+            "y": 99,
+            "z": 247
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 233,
+            "y": 99,
+            "z": 248
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 233,
+            "y": 99,
+            "z": 249
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 234,
+            "y": 99,
+            "z": 247
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 234,
+            "y": 99,
+            "z": 248
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 234,
+            "y": 99,
+            "z": 249
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 235,
+            "y": 99,
+            "z": 247
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 235,
+            "y": 99,
+            "z": 248
+          }
+        },
+        {
+          "block_id": "minecraft:smooth_stone",
+          "position": {
+            "x": 235,
+            "y": 99,
+            "z": 249
+          }
+        }
+      ]
+    }
+  ],
+  "coverage_id": "s1-native-structural-legacy-upgrades",
+  "profile_id": "ae2-cable-bus-structural",
+  "schema_version": 1,
+  "source_schema9": {
+    "cases_sha256": "75e6ba2f40631a95f20cfa00d7ca952e521bc2c7a4eb155926334a223a945f3a",
+    "cases_size_bytes": 3314082,
+    "gallery_sha256": "21ceec072cc3263a41bdb81874e897d48d5a1ce5e1c7d3ac3c0de3063818ee6c",
+    "gallery_size_bytes": 49679,
+    "signature_schema_version": 9
+  },
+  "synthetic_world": {
+    "anchor_block_state": "ae2:cable_bus[light_level=0,waterlogged=false]",
+    "biome": "minecraft:plains",
+    "blocklight": 0,
+    "sunlight": 15,
+    "support_block_state": "minecraft:smooth_stone",
+    "support_patch": "complete-3x3-plane-one-block-below-each-anchor"
+  }
+}

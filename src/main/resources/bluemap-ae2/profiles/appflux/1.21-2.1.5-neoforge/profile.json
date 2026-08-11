@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "profileId": "appflux",
+  "modId": "appflux",
+  "version": "1.21-2.1.5-neoforge",
+  "artifact": "AppliedFlux-1.21-2.1.5-neoforge.jar",
+  "sizeBytes": 345117,
+  "sha1": "a98eeadf414e6b3f6878324a3fbdee3fa5fcdadf",
+  "sha256": "57e6a2c0f38e660c9e8416f9081d8c515f5ad096d6793d7b7f039e8e210d245b",
+  "sha512": "27bb367ad2f6695a485e11bf6e9567a86eb2d817194f5bdb381d1e493c345e0055eefb727308ca28fd27cf170d4303788c22681c349065515841cfe7a8c4b01b",
+  "minecraft": "1.21.1",
+  "neoforge": "21.1.248",
+  "coverageMilestone": "M4",
+  "source": {
+    "repository": "https://github.com/GlodBlock/ExtendedAE.git",
+    "branch": "appflux/1.21.1-neoforge",
+    "commit": "474bd48230de391bca29b0bfd9d6bd5410c4ec79",
+    "correlation": "official-version-branch-reference-not-immutable"
+  },
+  "dependentAe2Profile": {
+    "version": "19.2.17",
+    "mechanisms": ["native-drive", "neutral-face-part"]
+  },
+  "worldVisuals": {
+    "ordinaryJsonBlocks": [
+      "appflux:charged_redstone_block",
+      "appflux:flux_accessor"
+    ],
+    "facePart": {
+      "itemId": "appflux:part_flux_accessor",
+      "model": "appflux:part/flux_accessor",
+      "supportsSpin": false,
+      "visuallyIgnoredNbtKeys": ["fast"]
+    },
+    "driveCells": {
+      "normalItemCount": 10,
+      "portableItemCount": 10,
+      "modelCount": 10,
+      "tiers": [
+        "1k", "4k", "16k", "64k", "256k",
+        "1m", "4m", "16m", "64m", "256m"
+      ]
+    }
+  },
+  "resourcePartition": {
+    "pathCount": 19,
+    "totalBytes": 10540,
+    "manifestFormat": "path-tab-bytes-tab-sha256-lf",
+    "manifestSha256": "64e9a03558a0c281b7ad7620826fca1a765d0f4d6d49f160e017f046999eb351"
+  },
+  "failurePolicy": "disable-appflux-profile-only-and-preserve-stock-fallback"
+}

@@ -1,0 +1,148 @@
+{
+  "anchors": {
+    "210 100 248": {
+      "geometry_signature": "b92c5699cc3e5f788b0153c1a02473f65cf3194652527bffbeb76c357829faed",
+      "material_triangles": {
+        "ae2:part/cable/core/glass/transparent": 12,
+        "ae2:part/cable_anchor": 12
+      },
+      "nonlighting_attribute_signature": "40208de2e552c0366bd06bc3a1dcec94c3d56bc183b6ba12130530fb9f943513",
+      "triangle_count": 24
+    },
+    "213 100 248": {
+      "geometry_signature": "3f73888628a58ba03a398eabc33a8ff363e3e89ddbf70c8e245fcbec077eb3c3",
+      "material_triangles": {
+        "ae2:part/cable/core/glass/transparent": 12,
+        "ae2:part/cable/glass/transparent": 12,
+        "ae2:part/monitor_back_no_status": 12,
+        "ae2:part/monitor_front": 2,
+        "ae2:part/monitor_light": 2,
+        "ae2:part/monitor_sides": 8
+      },
+      "nonlighting_attribute_signature": "3670f6b9a8cb887ca80522bd2a5179e0d8ab61a69baf020032d6401e590cbf84",
+      "triangle_count": 48
+    },
+    "216 100 226": {
+      "geometry_signature": "062859cadfccf60041f253f6fa88d6d5d3e63bde82caac0640ab533541cf4a1c",
+      "material_triangles": {
+        "ae2:part/cable/core/glass/transparent": 12,
+        "ae2:part/cable/glass/transparent": 10
+      },
+      "nonlighting_attribute_signature": "e3dc3d6652c24c2ac9f652dbe8f4fef96af57bc5b34aef095450b2e789d794f1",
+      "triangle_count": 22
+    },
+    "219 100 248": {
+      "geometry_signature": "234ca79bf877448efd10fe47afb38226c5000bee7ca46f501642fcb839de0d8d",
+      "material_triangles": {
+        "ae2:part/monitor_back": 4,
+        "ae2:part/monitor_front": 2,
+        "ae2:part/monitor_sides": 8,
+        "ae2:part/monitor_sides_status": 8,
+        "ae2:part/monitor_sides_status_off": 16,
+        "ae2:part/terminal_bright": 2,
+        "ae2:part/terminal_dark": 2,
+        "ae2:part/terminal_medium": 2
+      },
+      "nonlighting_attribute_signature": "8857b16989a870cfc7a583b43fc0539dfbb0db984b133a4843f89c0248541249",
+      "triangle_count": 44
+    },
+    "222 100 226": {
+      "geometry_signature": "d3056df18640f0c5f7d295bb15d1455d01e3fa98a6fb2bad1b8ed9aff889968d",
+      "material_triangles": {
+        "ae2:part/cable/core/dense_smart/transparent": 12,
+        "ae2:part/cable/dense_smart/channels_00": 10,
+        "ae2:part/cable/dense_smart/channels_10": 10,
+        "ae2:part/cable/dense_smart/transparent": 10
+      },
+      "nonlighting_attribute_signature": "6659a960734308ecc9929e980584b2d8d1bd82cefd1a6cfa030773d952f7f14a",
+      "triangle_count": 42
+    },
+    "222 100 248": {
+      "geometry_signature": "832d2456aee77a9d5404cf67d8767a0ec762be8a8b14e74d2a0de9a56383d55e",
+      "material_triangles": {
+        "ae2:part/cable/core/glass/transparent": 12,
+        "ae2:part/cable_anchor": 12,
+        "minecraft:block/stone": 12
+      },
+      "nonlighting_attribute_signature": "cc53b95430650c567d1c3b97abe06c1cea39af13cb3308cab5fff70d591c300c",
+      "triangle_count": 36
+    },
+    "225 100 248": {
+      "geometry_signature": "7cc6f8ec75bea4152da0d0b948a6371ed8cfbf3c4a93440392b98b780832d32c",
+      "material_triangles": {
+        "ae2:part/cable/core/glass/transparent": 12,
+        "ae2:part/cable/glass/transparent": 12,
+        "ae2:part/monitor_back": 4,
+        "ae2:part/monitor_front": 2,
+        "ae2:part/monitor_sides": 8,
+        "ae2:part/monitor_sides_status": 8,
+        "ae2:part/monitor_sides_status_off": 16,
+        "ae2:part/terminal_bright": 2,
+        "ae2:part/terminal_dark": 2,
+        "ae2:part/terminal_medium": 2,
+        "glassential:block/glass": 48
+      },
+      "nonlighting_attribute_signature": "1e1dde28b216ada6b9e9bd02c8143ab3a3ef55e61de4cfcfd2e9fda65c02c596",
+      "triangle_count": 116
+    },
+    "228 100 248": {
+      "geometry_signature": "84f30095f0d87529f6378b093b9369bd89ecd088cdf7094b96137993fa910bdc",
+      "material_triangles": {
+        "ae2:part/cable/core/glass/transparent": 12,
+        "ae2:part/cable/glass/transparent": 12,
+        "ae2:part/monitor_back": 4,
+        "ae2:part/monitor_front": 2,
+        "ae2:part/monitor_sides": 8,
+        "ae2:part/monitor_sides_status": 8,
+        "ae2:part/monitor_sides_status_off": 16,
+        "ae2:part/terminal_bright": 2,
+        "ae2:part/terminal_dark": 2,
+        "ae2:part/terminal_medium": 2,
+        "minecraft:block/oak_log": 32,
+        "minecraft:block/oak_log_top": 16
+      },
+      "nonlighting_attribute_signature": "f1e9d0cb5feda454a06609b3d912907d2466e91885eaed7721830dd1bf36defa",
+      "triangle_count": 116
+    },
+    "231 100 248": {
+      "geometry_signature": "84ad29e1ad6aef896aa55f2e85e8f3d9e54057f702fc908a39daff48e2a94e34",
+      "material_triangles": {
+        "ae2:part/cable/core/glass/transparent": 12,
+        "ae2:part/cable/glass/transparent": 24,
+        "ae2:part/monitor_back": 8,
+        "ae2:part/monitor_front": 4,
+        "ae2:part/monitor_sides": 16,
+        "ae2:part/monitor_sides_status": 16,
+        "ae2:part/monitor_sides_status_off": 32,
+        "ae2:part/terminal_bright": 4,
+        "ae2:part/terminal_dark": 4,
+        "ae2:part/terminal_medium": 4,
+        "minecraft:block/stone": 96
+      },
+      "nonlighting_attribute_signature": "a008ec358ea300e861857032a71e49cfda28cb5c68364d7986f533763a583dbe",
+      "triangle_count": 220
+    },
+    "234 100 248": {
+      "geometry_signature": "a16cb3aa527ea752247be82a8b7dcd1dc8afa0d5f8dcdc188e163d0b1c34df1f",
+      "material_triangles": {
+        "ae2:part/cable/core/glass/transparent": 12,
+        "ae2:part/cable/glass/transparent": 24,
+        "ae2:part/monitor_back": 8,
+        "ae2:part/monitor_front": 4,
+        "ae2:part/monitor_sides": 16,
+        "ae2:part/monitor_sides_status": 16,
+        "ae2:part/monitor_sides_status_off": 32,
+        "ae2:part/terminal_bright": 4,
+        "ae2:part/terminal_dark": 4,
+        "ae2:part/terminal_medium": 4,
+        "minecraft:block/stone": 48
+      },
+      "nonlighting_attribute_signature": "08293da8fe0a1139db6ba3489d8f07408b89e5364237ca4de1ade552adc1707c",
+      "triangle_count": 172
+    }
+  },
+  "coverage_id": "s1-native-structural-legacy-upgrades",
+  "profile_id": "ae2-cable-bus-structural",
+  "schema_version": 2,
+  "signature_schema_version": 10
+}

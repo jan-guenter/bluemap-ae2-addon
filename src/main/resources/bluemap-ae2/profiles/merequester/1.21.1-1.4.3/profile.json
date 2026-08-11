@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "profileId": "merequester",
+  "modId": "merequester",
+  "version": "1.21.1-1.4.3",
+  "artifact": "merequester-neoforge-1.21.1-1.4.3.jar",
+  "sizeBytes": 184517,
+  "sha1": "b0a801e9b7af930da5f58176156d58c26f6232b1",
+  "sha256": "68f3c861a802d48afeb6e3a48e8ee4f8633904340ac3f89f17493dc84490e385",
+  "sha512": "4411670eaea8403414c773646cb9498291e843ba995100c4fca4ab53d5ab3aa0cbf913921403c8af1d32b67ab940bac8c8a16a910069f6f7e2902e42e11f66b7",
+  "minecraft": "1.21.1",
+  "neoforge": "21.1.248",
+  "coverageMilestone": "M4",
+  "source": {
+    "repository": "https://github.com/AlmostReliable/merequester.git",
+    "tag": "v1.21.1-neoforge-1.4.3",
+    "commit": "fce75946bbb00c7a4705cb114d1423a284fb112a",
+    "correlation": "exact-tag-and-byte-identical-release-asset"
+  },
+  "dependentAe2Profile": {
+    "version": "19.2.17",
+    "mechanisms": ["neutral-display-part", "namespaced-z-normalization"]
+  },
+  "worldVisuals": {
+    "requesterBlock": {
+      "blockId": "merequester:requester",
+      "blockEntityId": "merequester:requester",
+      "variantCount": 24,
+      "properties": ["active", "facing", "spin"],
+      "horizontalVariantCount": 8,
+      "verticalVariantCount": 16,
+      "namespacedZVariantCount": 12,
+      "namespacedZKey": "ae2:z"
+    },
+    "terminalPart": {
+      "itemId": "merequester:requester_terminal",
+      "persistedSpinRange": [0, 3],
+      "statusPolicy": "static-offline-unknown",
+      "neutralModelStack": [
+        "ae2:part/display_base",
+        "merequester:part/requester_terminal_off",
+        "ae2:part/display_status_off"
+      ]
+    }
+  },
+  "resourcePartition": {
+    "pathCount": 12,
+    "totalBytes": 9295,
+    "manifestFormat": "path-tab-bytes-tab-sha256-lf",
+    "manifestSha256": "87c29f3e83e7bc8013f960cdcb79898ed640762481ed579a5e80bfc5323fd4c5"
+  },
+  "failurePolicy": "disable-merequester-profile-only-and-preserve-stock-fallback"
+}

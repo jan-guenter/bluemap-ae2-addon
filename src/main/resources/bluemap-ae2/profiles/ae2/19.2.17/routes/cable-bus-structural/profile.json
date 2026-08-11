@@ -1,0 +1,3802 @@
+{
+  "schemaVersion": 10,
+  "profileId": "ae2-cable-bus-structural",
+  "routeResourceRoot": "bluemap-ae2/profiles/ae2/19.2.17/routes/cable-bus-structural",
+  "modId": "ae2",
+  "version": "19.2.17",
+  "artifact": "appliedenergistics2-19.2.17.jar",
+  "sizeBytes": 8230896,
+  "sha1": "49c18d6a4af487957d7e5a6ad5dcbf71090b8e14",
+  "sha256": "460d779a0609b81409907d9956de8f6f70a1b0912257e3e5c3c7e75ac9630e95",
+  "sha512": "55edfd948366aff620881e0625e48c333a2cb847e73249bc0b588efbc4b86709992a8ffbca97ea387e270df4186fe7f74ee2f27b739f1c952e932becfb9dea33",
+  "source": {
+    "tag": "neoforge/v19.2.17",
+    "commit": "79ee2c704ad62941a426c26b1cb1f76ef5b2ee5a",
+    "artifact": "appliedenergistics2-19.2.17-sources.jar",
+    "sizeBytes": 3814167,
+    "sha1": "260a230e9fa1b4885489f7f58b30c19226093a52",
+    "sha256": "d2f451203cb61c2d21fae52c683083d2f72441ca7d26725f4df5934290492e6a",
+    "sha512": "c7feaf57a7f56b76dc019519b84cf4e0718cc334827c0497f17dd65921e723a2b98f9a072807a46f2c7e3431be71eeec3bdea9a990b661076af849e3d7ef2c34"
+  },
+  "pack": {
+    "name": "All the Mons",
+    "version": "1.2.0",
+    "commit": "c7bb230f21d14d26859d0b92548f089b3a493ad9"
+  },
+  "minecraft": "1.21.1",
+  "neoforge": "21.1.248",
+  "coverageMilestone": "S1",
+  "buildAcceptance": "local-build-candidate",
+  "runtimeAcceptance": "technical-lifecycle-pending",
+  "humanAcceptance": "pending",
+  "nativeFaceParts": [
+    {
+      "id": "ae2:quartz_fiber",
+      "group": "network",
+      "sourceClass": "appeng.parts.networking.QuartzFiberPart",
+      "neutralModels": [
+        "ae2:part/quartz_fiber"
+      ],
+      "spin": "ignored",
+      "denseCenter": false
+    },
+    {
+      "id": "ae2:toggle_bus",
+      "group": "redstone",
+      "sourceClass": "appeng.parts.misc.ToggleBusPart",
+      "neutralModels": [
+        "ae2:part/toggle_bus_base",
+        "ae2:part/toggle_bus_status_off"
+      ],
+      "spin": "ignored",
+      "denseCenter": false
+    },
+    {
+      "id": "ae2:inverted_toggle_bus",
+      "group": "redstone",
+      "sourceClass": "appeng.parts.misc.InvertedToggleBusPart",
+      "neutralModels": [
+        "ae2:part/inverted_toggle_bus_base",
+        "ae2:part/toggle_bus_status_off"
+      ],
+      "spin": "ignored",
+      "denseCenter": false
+    },
+    {
+      "id": "ae2:cable_anchor",
+      "group": "structural",
+      "sourceClass": "appeng.parts.misc.CableAnchorPart",
+      "neutralModels": [
+        "ae2:part/cable_anchor",
+        "ae2:part/cable_anchor_short"
+      ],
+      "spin": "ignored",
+      "denseCenter": true
+    },
+    {
+      "id": "ae2:monitor",
+      "group": "panel",
+      "sourceClass": "appeng.parts.reporting.PanelPart",
+      "neutralModels": [
+        "ae2:part/monitor_base",
+        "ae2:part/monitor_bright_off"
+      ],
+      "spin": "persisted-byte-0-through-3",
+      "denseCenter": false
+    },
+    {
+      "id": "ae2:semi_dark_monitor",
+      "group": "panel",
+      "sourceClass": "appeng.parts.reporting.SemiDarkPanelPart",
+      "neutralModels": [
+        "ae2:part/monitor_base",
+        "ae2:part/monitor_medium_off"
+      ],
+      "spin": "persisted-byte-0-through-3",
+      "denseCenter": false
+    },
+    {
+      "id": "ae2:dark_monitor",
+      "group": "panel",
+      "sourceClass": "appeng.parts.reporting.DarkPanelPart",
+      "neutralModels": [
+        "ae2:part/monitor_base",
+        "ae2:part/monitor_dark_off"
+      ],
+      "spin": "persisted-byte-0-through-3",
+      "denseCenter": false
+    },
+    {
+      "id": "ae2:storage_bus",
+      "group": "bus",
+      "sourceClass": "appeng.parts.storagebus.StorageBusPart",
+      "neutralModels": [
+        "ae2:part/storage_bus_base",
+        "ae2:part/storage_bus_off"
+      ],
+      "spin": "ignored",
+      "denseCenter": false
+    },
+    {
+      "id": "ae2:import_bus",
+      "group": "bus",
+      "sourceClass": "appeng.parts.automation.ImportBusPart",
+      "neutralModels": [
+        "ae2:part/import_bus_base",
+        "ae2:part/import_bus_off"
+      ],
+      "spin": "ignored",
+      "denseCenter": false
+    },
+    {
+      "id": "ae2:export_bus",
+      "group": "bus",
+      "sourceClass": "appeng.parts.automation.ExportBusPart",
+      "neutralModels": [
+        "ae2:part/export_bus_base",
+        "ae2:part/export_bus_off"
+      ],
+      "spin": "ignored",
+      "denseCenter": false
+    },
+    {
+      "id": "ae2:level_emitter",
+      "group": "emitter",
+      "sourceClass": "appeng.parts.automation.StorageLevelEmitterPart",
+      "neutralModels": [
+        "ae2:part/level_emitter_base_off",
+        "ae2:part/level_emitter_status_off"
+      ],
+      "spin": "ignored",
+      "denseCenter": false
+    },
+    {
+      "id": "ae2:energy_level_emitter",
+      "group": "emitter",
+      "sourceClass": "appeng.parts.automation.EnergyLevelEmitterPart",
+      "neutralModels": [
+        "ae2:part/level_emitter_base_off",
+        "ae2:part/level_emitter_status_off"
+      ],
+      "spin": "ignored",
+      "denseCenter": false
+    },
+    {
+      "id": "ae2:annihilation_plane",
+      "group": "plane",
+      "sourceClass": "appeng.parts.automation.AnnihilationPlanePart",
+      "neutralModels": [
+        "ae2:part/transition_plane_off",
+        "ae2:part/annihilation_plane"
+      ],
+      "spin": "ignored",
+      "denseCenter": false
+    },
+    {
+      "id": "ae2:formation_plane",
+      "group": "plane",
+      "sourceClass": "appeng.parts.automation.FormationPlanePart",
+      "neutralModels": [
+        "ae2:part/transition_plane_off",
+        "ae2:part/formation_plane"
+      ],
+      "spin": "ignored",
+      "denseCenter": false
+    },
+    {
+      "id": "ae2:pattern_encoding_terminal",
+      "group": "terminal",
+      "sourceClass": "appeng.parts.encoding.PatternEncodingTerminalPart",
+      "neutralModels": [
+        "ae2:part/display_base",
+        "ae2:part/display_status_off",
+        "ae2:part/pattern_encoding_terminal_off"
+      ],
+      "spin": "persisted-byte-0-through-3",
+      "denseCenter": false
+    },
+    {
+      "id": "ae2:crafting_terminal",
+      "group": "terminal",
+      "sourceClass": "appeng.parts.reporting.CraftingTerminalPart",
+      "neutralModels": [
+        "ae2:part/display_base",
+        "ae2:part/display_status_off",
+        "ae2:part/crafting_terminal_off"
+      ],
+      "spin": "persisted-byte-0-through-3",
+      "denseCenter": false
+    },
+    {
+      "id": "ae2:terminal",
+      "group": "terminal",
+      "sourceClass": "appeng.parts.reporting.ItemTerminalPart",
+      "neutralModels": [
+        "ae2:part/display_base",
+        "ae2:part/display_status_off",
+        "ae2:part/terminal_off"
+      ],
+      "spin": "persisted-byte-0-through-3",
+      "denseCenter": false
+    },
+    {
+      "id": "ae2:storage_monitor",
+      "group": "monitor",
+      "sourceClass": "appeng.parts.reporting.StorageMonitorPart",
+      "neutralModels": [
+        "ae2:part/display_base",
+        "ae2:part/display_status_off",
+        "ae2:part/storage_monitor_off"
+      ],
+      "spin": "persisted-byte-0-through-3",
+      "denseCenter": false
+    },
+    {
+      "id": "ae2:conversion_monitor",
+      "group": "monitor",
+      "sourceClass": "appeng.parts.reporting.ConversionMonitorPart",
+      "neutralModels": [
+        "ae2:part/display_base",
+        "ae2:part/display_status_off",
+        "ae2:part/conversion_monitor_off"
+      ],
+      "spin": "persisted-byte-0-through-3",
+      "denseCenter": false
+    },
+    {
+      "id": "ae2:cable_pattern_provider",
+      "group": "service",
+      "sourceClass": "appeng.parts.crafting.PatternProviderPart",
+      "neutralModels": [
+        "ae2:part/pattern_provider_base",
+        "ae2:part/interface_off"
+      ],
+      "spin": "ignored",
+      "denseCenter": false
+    },
+    {
+      "id": "ae2:cable_interface",
+      "group": "service",
+      "sourceClass": "appeng.parts.misc.InterfacePart",
+      "neutralModels": [
+        "ae2:part/interface_base",
+        "ae2:part/interface_off"
+      ],
+      "spin": "ignored",
+      "denseCenter": false
+    },
+    {
+      "id": "ae2:pattern_access_terminal",
+      "group": "terminal",
+      "sourceClass": "appeng.parts.reporting.PatternAccessTerminalPart",
+      "neutralModels": [
+        "ae2:part/display_base",
+        "ae2:part/display_status_off",
+        "ae2:part/pattern_access_terminal_off"
+      ],
+      "spin": "persisted-byte-0-through-3",
+      "denseCenter": false
+    },
+    {
+      "id": "ae2:cable_energy_acceptor",
+      "group": "network",
+      "sourceClass": "appeng.parts.networking.EnergyAcceptorPart",
+      "neutralModels": [
+        "ae2:part/energy_acceptor"
+      ],
+      "spin": "ignored",
+      "denseCenter": false
+    },
+    {
+      "id": "ae2:me_p2p_tunnel",
+      "group": "p2p",
+      "sourceClass": "appeng.parts.p2p.MEP2PTunnelPart",
+      "neutralModels": [
+        "ae2:part/p2p/p2p_tunnel_status_off",
+        "ae2:part/p2p/p2p_tunnel_frequency",
+        "ae2:part/p2p/p2p_tunnel_me"
+      ],
+      "spin": "ignored",
+      "denseCenter": false
+    },
+    {
+      "id": "ae2:redstone_p2p_tunnel",
+      "group": "p2p",
+      "sourceClass": "appeng.parts.p2p.RedstoneP2PTunnelPart",
+      "neutralModels": [
+        "ae2:part/p2p/p2p_tunnel_status_off",
+        "ae2:part/p2p/p2p_tunnel_frequency",
+        "ae2:part/p2p/p2p_tunnel_redstone"
+      ],
+      "spin": "ignored",
+      "denseCenter": false
+    },
+    {
+      "id": "ae2:item_p2p_tunnel",
+      "group": "p2p",
+      "sourceClass": "appeng.parts.p2p.ItemP2PTunnelPart",
+      "neutralModels": [
+        "ae2:part/p2p/p2p_tunnel_status_off",
+        "ae2:part/p2p/p2p_tunnel_frequency",
+        "ae2:part/p2p/p2p_tunnel_items"
+      ],
+      "spin": "ignored",
+      "denseCenter": false
+    },
+    {
+      "id": "ae2:fluid_p2p_tunnel",
+      "group": "p2p",
+      "sourceClass": "appeng.parts.p2p.FluidP2PTunnelPart",
+      "neutralModels": [
+        "ae2:part/p2p/p2p_tunnel_status_off",
+        "ae2:part/p2p/p2p_tunnel_frequency",
+        "ae2:part/p2p/p2p_tunnel_fluids"
+      ],
+      "spin": "ignored",
+      "denseCenter": false
+    },
+    {
+      "id": "ae2:fe_p2p_tunnel",
+      "group": "p2p",
+      "sourceClass": "appeng.parts.p2p.FEP2PTunnelPart",
+      "neutralModels": [
+        "ae2:part/p2p/p2p_tunnel_status_off",
+        "ae2:part/p2p/p2p_tunnel_frequency",
+        "ae2:part/p2p/p2p_tunnel_fe"
+      ],
+      "spin": "ignored",
+      "denseCenter": false
+    },
+    {
+      "id": "ae2:light_p2p_tunnel",
+      "group": "p2p",
+      "sourceClass": "appeng.parts.p2p.LightP2PTunnelPart",
+      "neutralModels": [
+        "ae2:part/p2p/p2p_tunnel_status_off",
+        "ae2:part/p2p/p2p_tunnel_frequency",
+        "ae2:part/p2p/p2p_tunnel_light"
+      ],
+      "spin": "ignored",
+      "denseCenter": false
+    }
+  ],
+  "nativeEndpoints": [
+    {
+      "id": "ae2:inscriber",
+      "blockEntityClass": "appeng.blockentity.misc.InscriberBlockEntity",
+      "blockEntityId": "ae2:inscriber",
+      "cableType": "COVERED",
+      "sideRule": "NO_FRONT",
+      "stateProperties": {
+        "facing": [
+          "down",
+          "up",
+          "north",
+          "south",
+          "west",
+          "east"
+        ],
+        "spin": [
+          "0",
+          "1",
+          "2",
+          "3"
+        ],
+        "waterlogged": [
+          "false",
+          "true"
+        ]
+      },
+      "blockstateSha256": "4ec6c21834e68f179c252bf22aeb8f8f67d57ef057eb8bde57f65f576e0885f2",
+      "topologyClass": "native-grid-node-host"
+    },
+    {
+      "id": "ae2:wireless_access_point",
+      "blockEntityClass": "appeng.blockentity.networking.WirelessAccessPointBlockEntity",
+      "blockEntityId": "ae2:wireless_access_point",
+      "cableType": "SMART",
+      "sideRule": "BACK",
+      "stateProperties": {
+        "facing": [
+          "down",
+          "up",
+          "north",
+          "south",
+          "west",
+          "east"
+        ],
+        "state": [
+          "off",
+          "on",
+          "has_channel"
+        ],
+        "waterlogged": [
+          "false",
+          "true"
+        ]
+      },
+      "blockstateSha256": "05c09f9e0bcb7a09ee8f2566a2eb3f885549df2765f624c7c44fed87eee6cf6e",
+      "topologyClass": "native-grid-node-host"
+    },
+    {
+      "id": "ae2:charger",
+      "blockEntityClass": "appeng.blockentity.misc.ChargerBlockEntity",
+      "blockEntityId": "ae2:charger",
+      "cableType": "COVERED",
+      "sideRule": "NO_FRONT",
+      "stateProperties": {
+        "facing": [
+          "down",
+          "up",
+          "north",
+          "south",
+          "west",
+          "east"
+        ],
+        "spin": [
+          "0",
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "blockstateSha256": "83ebcbf59495865f7302e58292f81b83231016b1fce15515ccc10cb158f73d76",
+      "topologyClass": "native-grid-node-host"
+    },
+    {
+      "id": "ae2:quantum_ring",
+      "blockEntityClass": "appeng.blockentity.qnb.QuantumBridgeBlockEntity",
+      "blockEntityId": "ae2:quantum_ring",
+      "cableType": "DENSE_SMART",
+      "sideRule": "FORMED_QUANTUM",
+      "stateProperties": {
+        "formed": [
+          "false",
+          "true"
+        ],
+        "waterlogged": [
+          "false",
+          "true"
+        ]
+      },
+      "blockstateSha256": "3db38f2e82cd1a9e1e2e45cb078d09f0d01507750cd895615bb9a7f722f27c50",
+      "topologyClass": "native-grid-node-host"
+    },
+    {
+      "id": "ae2:quantum_link",
+      "blockEntityClass": "appeng.blockentity.qnb.QuantumBridgeBlockEntity",
+      "blockEntityId": "ae2:quantum_ring",
+      "cableType": "DENSE_SMART",
+      "sideRule": "FORMED_QUANTUM",
+      "stateProperties": {
+        "formed": [
+          "false",
+          "true"
+        ],
+        "waterlogged": [
+          "false",
+          "true"
+        ]
+      },
+      "blockstateSha256": "156f0aeafca2763f1e3fccadd342c08da7870bcb3aa8f176127a2a3502b3aa7d",
+      "topologyClass": "native-grid-node-host"
+    },
+    {
+      "id": "ae2:spatial_pylon",
+      "blockEntityClass": "appeng.blockentity.spatial.SpatialPylonBlockEntity",
+      "blockEntityId": "ae2:spatial_pylon",
+      "cableType": "SMART",
+      "sideRule": "VALID_STRAIGHT_PYLON",
+      "stateProperties": {
+        "powered_on": [
+          "false",
+          "true"
+        ]
+      },
+      "blockstateSha256": "a3c18208840e313823afc7198e8d74da9b1e65e78dffdc6327f53d2b70e678c9",
+      "topologyClass": "native-grid-node-host"
+    },
+    {
+      "id": "ae2:spatial_io_port",
+      "blockEntityClass": "appeng.blockentity.spatial.SpatialIOPortBlockEntity",
+      "blockEntityId": "ae2:spatial_io_port",
+      "cableType": "SMART",
+      "sideRule": "ALL",
+      "stateProperties": {
+        "facing": [
+          "down",
+          "up",
+          "north",
+          "south",
+          "west",
+          "east"
+        ],
+        "powered": [
+          "false",
+          "true"
+        ],
+        "spin": [
+          "0",
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "blockstateSha256": "fd2ff71aef6d77ea08dcd5aa80d7972f802a7d2ecf788cf45dbc26ade51fd542",
+      "topologyClass": "native-grid-node-host"
+    },
+    {
+      "id": "ae2:spatial_anchor",
+      "blockEntityClass": "appeng.blockentity.spatial.SpatialAnchorBlockEntity",
+      "blockEntityId": "ae2:spatial_anchor",
+      "cableType": "SMART",
+      "sideRule": "ALL",
+      "stateProperties": {
+        "facing": [
+          "down",
+          "up",
+          "north",
+          "south",
+          "west",
+          "east"
+        ],
+        "powered": [
+          "false",
+          "true"
+        ]
+      },
+      "blockstateSha256": "38019a1eda66fef56bf493d818fe3452cbd8367f57fecf29acbe80f7d430837f",
+      "topologyClass": "native-grid-node-host"
+    },
+    {
+      "id": "ae2:controller",
+      "blockEntityClass": "appeng.blockentity.networking.ControllerBlockEntity",
+      "blockEntityId": "ae2:controller",
+      "cableType": "DENSE_SMART",
+      "sideRule": "ALL",
+      "stateProperties": {
+        "state": [
+          "offline",
+          "online",
+          "conflicted"
+        ],
+        "type": [
+          "block",
+          "column_x",
+          "column_y",
+          "column_z",
+          "inside_a",
+          "inside_b"
+        ]
+      },
+      "blockstateSha256": "693d04c733b47e4159052d0843256fa7520bbc1984b6d9e454bec976a73d2ca8",
+      "topologyClass": "native-grid-node-host"
+    },
+    {
+      "id": "ae2:drive",
+      "blockEntityClass": "appeng.blockentity.storage.DriveBlockEntity",
+      "blockEntityId": "ae2:drive",
+      "cableType": "SMART",
+      "sideRule": "NO_FRONT",
+      "stateProperties": {
+        "facing": [
+          "down",
+          "up",
+          "north",
+          "south",
+          "west",
+          "east"
+        ],
+        "spin": [
+          "0",
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "blockstateSha256": "b69d86cf730369715ad51f23793efb9b6910ec9760d4ab40029e128046d204ce",
+      "topologyClass": "native-grid-node-host"
+    },
+    {
+      "id": "ae2:chest",
+      "blockEntityClass": "appeng.blockentity.storage.MEChestBlockEntity",
+      "blockEntityId": "ae2:chest",
+      "cableType": "SMART",
+      "sideRule": "ALL",
+      "stateProperties": {
+        "facing": [
+          "down",
+          "up",
+          "north",
+          "south",
+          "west",
+          "east"
+        ],
+        "lights_on": [
+          "false",
+          "true"
+        ],
+        "spin": [
+          "0",
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "blockstateSha256": "c628dab804fe28fa813fef46ddcf2e4f5f13192e63cea2a7f8b8dcc3d0810ed0",
+      "topologyClass": "native-grid-node-host"
+    },
+    {
+      "id": "ae2:interface",
+      "blockEntityClass": "appeng.blockentity.misc.InterfaceBlockEntity",
+      "blockEntityId": "ae2:interface",
+      "cableType": "SMART",
+      "sideRule": "ALL",
+      "stateProperties": {},
+      "blockstateSha256": "1bc532291c1343d076662eb69d6913953b27f91ce5d722a5b78c6095f56167ee",
+      "topologyClass": "native-grid-node-host"
+    },
+    {
+      "id": "ae2:io_port",
+      "blockEntityClass": "appeng.blockentity.storage.IOPortBlockEntity",
+      "blockEntityId": "ae2:io_port",
+      "cableType": "SMART",
+      "sideRule": "ALL",
+      "stateProperties": {
+        "facing": [
+          "down",
+          "up",
+          "north",
+          "south",
+          "west",
+          "east"
+        ],
+        "powered": [
+          "false",
+          "true"
+        ],
+        "spin": [
+          "0",
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "blockstateSha256": "601dccfb290cfd7f70c2f1e0662082e4f17c10ecfec3857b55f96db13113dbcf",
+      "topologyClass": "native-grid-node-host"
+    },
+    {
+      "id": "ae2:energy_acceptor",
+      "blockEntityClass": "appeng.blockentity.networking.EnergyAcceptorBlockEntity",
+      "blockEntityId": "ae2:energy_acceptor",
+      "cableType": "COVERED",
+      "sideRule": "ALL",
+      "stateProperties": {},
+      "blockstateSha256": "ee3ffe5a1fc5269a13b4474bd23ef8f98869a528bda2287ba849ca4fd4f14a7c",
+      "topologyClass": "native-grid-node-host"
+    },
+    {
+      "id": "ae2:crystal_resonance_generator",
+      "blockEntityClass": "appeng.blockentity.networking.CrystalResonanceGeneratorBlockEntity",
+      "blockEntityId": "ae2:crystal_resonance_generator",
+      "cableType": "SMART",
+      "sideRule": "BACK",
+      "stateProperties": {
+        "facing": [
+          "down",
+          "up",
+          "north",
+          "south",
+          "west",
+          "east"
+        ],
+        "waterlogged": [
+          "false",
+          "true"
+        ]
+      },
+      "blockstateSha256": "11d0a847d7abfb1db1acb8a748a3203aa7af9b76ff4c194c288ddc29d131229d",
+      "topologyClass": "native-grid-node-host"
+    },
+    {
+      "id": "ae2:vibration_chamber",
+      "blockEntityClass": "appeng.blockentity.misc.VibrationChamberBlockEntity",
+      "blockEntityId": "ae2:vibration_chamber",
+      "cableType": "COVERED",
+      "sideRule": "ALL",
+      "stateProperties": {
+        "active": [
+          "false",
+          "true"
+        ],
+        "facing": [
+          "down",
+          "up",
+          "north",
+          "south",
+          "west",
+          "east"
+        ],
+        "spin": [
+          "0",
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "blockstateSha256": "6555d07d339d0fd2af34f5b7f4fbf574313df8701544bdb2e4189a17dcc3038c",
+      "topologyClass": "native-grid-node-host"
+    },
+    {
+      "id": "ae2:growth_accelerator",
+      "blockEntityClass": "appeng.blockentity.misc.GrowthAcceleratorBlockEntity",
+      "blockEntityId": "ae2:growth_accelerator",
+      "cableType": "COVERED",
+      "sideRule": "FRONT_BACK",
+      "stateProperties": {
+        "facing": [
+          "down",
+          "up",
+          "north",
+          "south",
+          "west",
+          "east"
+        ],
+        "powered": [
+          "false",
+          "true"
+        ]
+      },
+      "blockstateSha256": "57cd5e8741a98c81b4db43bd796beaae8e9f1f227c9eeac03164b6552e8f1212",
+      "topologyClass": "native-grid-node-host"
+    },
+    {
+      "id": "ae2:energy_cell",
+      "blockEntityClass": "appeng.blockentity.networking.EnergyCellBlockEntity",
+      "blockEntityId": "ae2:energy_cell",
+      "cableType": "COVERED",
+      "sideRule": "ALL",
+      "stateProperties": {
+        "fullness": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      "blockstateSha256": "2e285ec4568671ea1185c70c6f38ab3a943cf24dcdd7847fe0886871409ea0fa",
+      "topologyClass": "native-grid-node-host"
+    },
+    {
+      "id": "ae2:dense_energy_cell",
+      "blockEntityClass": "appeng.blockentity.networking.EnergyCellBlockEntity",
+      "blockEntityId": "ae2:dense_energy_cell",
+      "cableType": "COVERED",
+      "sideRule": "ALL",
+      "stateProperties": {
+        "fullness": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      "blockstateSha256": "357108af0d785e58fea6240d4cba13e81b686caadaab974fcf30c0ea99ca616d",
+      "topologyClass": "native-grid-node-host"
+    },
+    {
+      "id": "ae2:creative_energy_cell",
+      "blockEntityClass": "appeng.blockentity.networking.CreativeEnergyCellBlockEntity",
+      "blockEntityId": "ae2:creative_energy_cell",
+      "cableType": "COVERED",
+      "sideRule": "ALL",
+      "stateProperties": {},
+      "blockstateSha256": "e924240fd1c63be2a7033f764213c9d0f3d8cab2269d7e73dc1f7abadb18de80",
+      "topologyClass": "native-grid-node-host"
+    },
+    {
+      "id": "ae2:crafting_unit",
+      "blockEntityClass": "appeng.blockentity.crafting.CraftingBlockEntity",
+      "blockEntityId": "ae2:crafting_unit",
+      "cableType": "SMART",
+      "sideRule": "FORMED_CRAFTING",
+      "stateProperties": {
+        "formed": [
+          "false",
+          "true"
+        ],
+        "powered": [
+          "false",
+          "true"
+        ]
+      },
+      "blockstateSha256": "b33f03d38953281265d6196e2a9f2494974275901b570f390ebf40fa3a338ece",
+      "topologyClass": "native-grid-node-host"
+    },
+    {
+      "id": "ae2:crafting_accelerator",
+      "blockEntityClass": "appeng.blockentity.crafting.CraftingBlockEntity",
+      "blockEntityId": "ae2:crafting_unit",
+      "cableType": "SMART",
+      "sideRule": "FORMED_CRAFTING",
+      "stateProperties": {
+        "formed": [
+          "false",
+          "true"
+        ],
+        "powered": [
+          "false",
+          "true"
+        ]
+      },
+      "blockstateSha256": "f2b8fd7efa88b37968f55d8169eee48d84c1c673b5b2201719037771d5e18918",
+      "topologyClass": "native-grid-node-host"
+    },
+    {
+      "id": "ae2:1k_crafting_storage",
+      "blockEntityClass": "appeng.blockentity.crafting.CraftingBlockEntity",
+      "blockEntityId": "ae2:crafting_storage",
+      "cableType": "SMART",
+      "sideRule": "FORMED_CRAFTING",
+      "stateProperties": {
+        "formed": [
+          "false",
+          "true"
+        ],
+        "powered": [
+          "false",
+          "true"
+        ]
+      },
+      "blockstateSha256": "9a1f6383cd3b54a8361cefc46740ddbee587ce79baefccb6ad6de6355833a603",
+      "topologyClass": "native-grid-node-host"
+    },
+    {
+      "id": "ae2:4k_crafting_storage",
+      "blockEntityClass": "appeng.blockentity.crafting.CraftingBlockEntity",
+      "blockEntityId": "ae2:crafting_storage",
+      "cableType": "SMART",
+      "sideRule": "FORMED_CRAFTING",
+      "stateProperties": {
+        "formed": [
+          "false",
+          "true"
+        ],
+        "powered": [
+          "false",
+          "true"
+        ]
+      },
+      "blockstateSha256": "dd4210a4c0fc5b0eb7f524571f20b7e1a92c438bc68df7324cb26c939c726abc",
+      "topologyClass": "native-grid-node-host"
+    },
+    {
+      "id": "ae2:16k_crafting_storage",
+      "blockEntityClass": "appeng.blockentity.crafting.CraftingBlockEntity",
+      "blockEntityId": "ae2:crafting_storage",
+      "cableType": "SMART",
+      "sideRule": "FORMED_CRAFTING",
+      "stateProperties": {
+        "formed": [
+          "false",
+          "true"
+        ],
+        "powered": [
+          "false",
+          "true"
+        ]
+      },
+      "blockstateSha256": "8e04febb39f74e1bb1061f9fee979be9cc4923bf14cc5a5d619cf6e681d506a4",
+      "topologyClass": "native-grid-node-host"
+    },
+    {
+      "id": "ae2:64k_crafting_storage",
+      "blockEntityClass": "appeng.blockentity.crafting.CraftingBlockEntity",
+      "blockEntityId": "ae2:crafting_storage",
+      "cableType": "SMART",
+      "sideRule": "FORMED_CRAFTING",
+      "stateProperties": {
+        "formed": [
+          "false",
+          "true"
+        ],
+        "powered": [
+          "false",
+          "true"
+        ]
+      },
+      "blockstateSha256": "d8a1b0f2f21c2f05cd959f03213d0434c6bb41e27d5591d0c3c532aea142eb7f",
+      "topologyClass": "native-grid-node-host"
+    },
+    {
+      "id": "ae2:256k_crafting_storage",
+      "blockEntityClass": "appeng.blockentity.crafting.CraftingBlockEntity",
+      "blockEntityId": "ae2:crafting_storage",
+      "cableType": "SMART",
+      "sideRule": "FORMED_CRAFTING",
+      "stateProperties": {
+        "formed": [
+          "false",
+          "true"
+        ],
+        "powered": [
+          "false",
+          "true"
+        ]
+      },
+      "blockstateSha256": "3458c6e521a76f7a0761c7efe956cc587826cfdd40d1f7c6284100990fb68905",
+      "topologyClass": "native-grid-node-host"
+    },
+    {
+      "id": "ae2:crafting_monitor",
+      "blockEntityClass": "appeng.blockentity.crafting.CraftingMonitorBlockEntity",
+      "blockEntityId": "ae2:crafting_monitor",
+      "cableType": "SMART",
+      "sideRule": "FORMED_CRAFTING",
+      "stateProperties": {
+        "facing": [
+          "down",
+          "up",
+          "north",
+          "south",
+          "west",
+          "east"
+        ],
+        "formed": [
+          "false",
+          "true"
+        ],
+        "powered": [
+          "false",
+          "true"
+        ],
+        "spin": [
+          "0",
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "blockstateSha256": "157e2a326b835180b369874b5f6978fab7c6796293945f85a971ac3f5b1cf2b7",
+      "topologyClass": "native-grid-node-host"
+    },
+    {
+      "id": "ae2:pattern_provider",
+      "blockEntityClass": "appeng.blockentity.crafting.PatternProviderBlockEntity",
+      "blockEntityId": "ae2:pattern_provider",
+      "cableType": "SMART",
+      "sideRule": "PUSH_DIRECTION",
+      "stateProperties": {
+        "push_direction": [
+          "down",
+          "up",
+          "north",
+          "south",
+          "west",
+          "east",
+          "all"
+        ]
+      },
+      "blockstateSha256": "1b8e3a67480db0dec346477a67e026798b7287db7b48b4242f58d405035b0b83",
+      "topologyClass": "native-grid-node-host"
+    },
+    {
+      "id": "ae2:molecular_assembler",
+      "blockEntityClass": "appeng.blockentity.crafting.MolecularAssemblerBlockEntity",
+      "blockEntityId": "ae2:molecular_assembler",
+      "cableType": "COVERED",
+      "sideRule": "ALL",
+      "stateProperties": {
+        "powered": [
+          "false",
+          "true"
+        ]
+      },
+      "blockstateSha256": "136857cc899a24bcca0b730790da3128a74c9e8196028a264e32e5e1582183a0",
+      "topologyClass": "native-grid-node-host"
+    }
+  ],
+  "knownUnsupportedCompatibleEndpoints": {
+    "policy": "unknown-atomic-original-resource-fallback",
+    "count": 67,
+    "artifacts": [
+      {
+        "id": "expandedae-2.1.1",
+        "fileName": "expandedae-2.1.1.jar",
+        "sizeBytes": 496713,
+        "sha1": "c4db013f83e569b016da329b3ddc9c14acc75d7d",
+        "sha256": "f39c0eb9c6271f54a44ffee092a29520f53000d1005849e6afada3ad9dffba14",
+        "sha512": "5d6b0c7430d6f1f2bdb2cb38832ee27d0b28402d16171a9fe746d0275ba54c288405b64b9ad269c010aadd729e82ddeb61b9550c0361c6e1ece2c0bdc77a4b23",
+        "endpointCount": 24
+      },
+      {
+        "id": "megacells-4.11.0",
+        "fileName": "megacells-4.11.0.jar",
+        "sizeBytes": 1137276,
+        "sha1": "f0b1a44bf30c8a9e14e2fa7fce37360191aa55e8",
+        "sha256": "a386bbf12afb11729b0dcf77f64221893d250f22e6185a4d728b9799b230bc55",
+        "sha512": "1f5c30f5c6516eae20eb3d8502eebc8f3fa43d42815ecd182beea2c244c7dacf450fa0fafa6f6f7ab836d7f68e6de2b2366fbb0eb2938823f3d370217a4e8671",
+        "endpointCount": 11
+      },
+      {
+        "id": "advanced_ae-1.6.12-1.21.1",
+        "fileName": "AdvancedAE-1.6.12-1.21.1.jar",
+        "sizeBytes": 4791255,
+        "sha1": "9358ccfa5477c7ab1c5ffab6c831e105fe46ecc3",
+        "sha256": "a01d9718667ac13899013e91c5b0b7708b9b9db1da9b8e380772dde54bbe8f41",
+        "sha512": "ab61c57355649a967a0bcf6b9413cd6b62728d26e914543b3231eea33bde5571536bd589ae1ac026d46799711508c942284c3419e19ff5d5bf80f1045442f33a",
+        "endpointCount": 12
+      },
+      {
+        "id": "extendedae-1.21-2.2.35-neoforge",
+        "fileName": "ExtendedAE-1.21-2.2.35-neoforge.jar",
+        "sizeBytes": 5578031,
+        "sha1": "e3521ca2567fabe0f0131cc923ec94dd99d6fa7b",
+        "sha256": "14a2860fa2c747e9dda2279b8933fac6311fecfee166c765171022b902591c65",
+        "sha512": "e5b76a50802087d999bf6c113bc635e8ade9f20e06f4d3276a144f4eaa3090fc3b6c67b9b6a1f7d0d036e48e69f601114a0cc92c5a8d45953f895718f806348c",
+        "source": {
+          "tag": "1.21-2.2.35-neoforge",
+          "commit": "3776bc854458301bbcc9a44a8238d70a0e3dc00d"
+        },
+        "endpointCount": 20
+      }
+    ],
+    "entries": [
+      {
+        "id": "expandedae:exp_pattern_provider",
+        "blockEntityId": "expandedae:exp_pattern_provider",
+        "artifact": "expandedae-2.1.1",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "expandedae:exp_io_port",
+        "blockEntityId": "expandedae:exp_io_port",
+        "artifact": "expandedae-2.1.1",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "expandedae:colorable_drive",
+        "blockEntityId": "expandedae:colorable_drive",
+        "artifact": "expandedae-2.1.1",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "expandedae:exp_crafting_unit",
+        "blockEntityId": "expandedae:exp_cpus",
+        "artifact": "expandedae-2.1.1",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "expandedae:exp_crafting_accelerator_2",
+        "blockEntityId": "expandedae:exp_cpus",
+        "artifact": "expandedae-2.1.1",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "expandedae:exp_crafting_accelerator_4",
+        "blockEntityId": "expandedae:exp_cpus",
+        "artifact": "expandedae-2.1.1",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "expandedae:exp_crafting_accelerator_8",
+        "blockEntityId": "expandedae:exp_cpus",
+        "artifact": "expandedae-2.1.1",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "expandedae:exp_crafting_accelerator_16",
+        "blockEntityId": "expandedae:exp_cpus",
+        "artifact": "expandedae-2.1.1",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "expandedae:exp_crafting_accelerator_32",
+        "blockEntityId": "expandedae:exp_cpus",
+        "artifact": "expandedae-2.1.1",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "expandedae:exp_crafting_accelerator_64",
+        "blockEntityId": "expandedae:exp_cpus",
+        "artifact": "expandedae-2.1.1",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "expandedae:exp_crafting_accelerator_128",
+        "blockEntityId": "expandedae:exp_cpus",
+        "artifact": "expandedae-2.1.1",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "expandedae:exp_crafting_accelerator_256",
+        "blockEntityId": "expandedae:exp_cpus",
+        "artifact": "expandedae-2.1.1",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "expandedae:exp_crafting_accelerator_512",
+        "blockEntityId": "expandedae:exp_cpus",
+        "artifact": "expandedae-2.1.1",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "expandedae:exp_crafting_accelerator_1k",
+        "blockEntityId": "expandedae:exp_cpus",
+        "artifact": "expandedae-2.1.1",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "expandedae:exp_crafting_accelerator_2k",
+        "blockEntityId": "expandedae:exp_cpus",
+        "artifact": "expandedae-2.1.1",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "expandedae:exp_crafting_accelerator_4k",
+        "blockEntityId": "expandedae:exp_cpus",
+        "artifact": "expandedae-2.1.1",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "expandedae:exp_crafting_accelerator_8k",
+        "blockEntityId": "expandedae:exp_cpus",
+        "artifact": "expandedae-2.1.1",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "expandedae:exp_crafting_accelerator_16k",
+        "blockEntityId": "expandedae:exp_cpus",
+        "artifact": "expandedae-2.1.1",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "expandedae:exp_crafting_accelerator_32k",
+        "blockEntityId": "expandedae:exp_cpus",
+        "artifact": "expandedae-2.1.1",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "expandedae:exp_crafting_accelerator_64k",
+        "blockEntityId": "expandedae:exp_cpus",
+        "artifact": "expandedae-2.1.1",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "expandedae:exp_crafting_accelerator_128k",
+        "blockEntityId": "expandedae:exp_cpus",
+        "artifact": "expandedae-2.1.1",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "expandedae:exp_crafting_accelerator_256k",
+        "blockEntityId": "expandedae:exp_cpus",
+        "artifact": "expandedae-2.1.1",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "expandedae:exp_crafting_accelerator_512k",
+        "blockEntityId": "expandedae:exp_cpus",
+        "artifact": "expandedae-2.1.1",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "expandedae:exp_crafting_accelerator_1m",
+        "blockEntityId": "expandedae:exp_cpus",
+        "artifact": "expandedae-2.1.1",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "megacells:mega_energy_cell",
+        "blockEntityId": "megacells:mega_energy_cell",
+        "artifact": "megacells-4.11.0",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "megacells:mega_crafting_unit",
+        "blockEntityId": "megacells:mega_crafting_unit",
+        "artifact": "megacells-4.11.0",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "megacells:mega_crafting_accelerator",
+        "blockEntityId": "megacells:mega_crafting_unit",
+        "artifact": "megacells-4.11.0",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "megacells:1m_crafting_storage",
+        "blockEntityId": "megacells:mega_crafting_storage",
+        "artifact": "megacells-4.11.0",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "megacells:4m_crafting_storage",
+        "blockEntityId": "megacells:mega_crafting_storage",
+        "artifact": "megacells-4.11.0",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "megacells:16m_crafting_storage",
+        "blockEntityId": "megacells:mega_crafting_storage",
+        "artifact": "megacells-4.11.0",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "megacells:64m_crafting_storage",
+        "blockEntityId": "megacells:mega_crafting_storage",
+        "artifact": "megacells-4.11.0",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "megacells:256m_crafting_storage",
+        "blockEntityId": "megacells:mega_crafting_storage",
+        "artifact": "megacells-4.11.0",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "megacells:mega_crafting_monitor",
+        "blockEntityId": "megacells:mega_crafting_monitor",
+        "artifact": "megacells-4.11.0",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "megacells:mega_interface",
+        "blockEntityId": "megacells:mega_interface",
+        "artifact": "megacells-4.11.0",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "megacells:mega_pattern_provider",
+        "blockEntityId": "megacells:mega_pattern_provider",
+        "artifact": "megacells-4.11.0",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "advanced_ae:quantum_unit",
+        "blockEntityId": "advanced_ae:quantum_core",
+        "artifact": "advanced_ae-1.6.12-1.21.1",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "advanced_ae:quantum_core",
+        "blockEntityId": "advanced_ae:quantum_core",
+        "artifact": "advanced_ae-1.6.12-1.21.1",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "advanced_ae:data_entangler",
+        "blockEntityId": "advanced_ae:quantum_core",
+        "artifact": "advanced_ae-1.6.12-1.21.1",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "advanced_ae:quantum_storage_128",
+        "blockEntityId": "advanced_ae:quantum_core",
+        "artifact": "advanced_ae-1.6.12-1.21.1",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "advanced_ae:quantum_storage_256",
+        "blockEntityId": "advanced_ae:quantum_core",
+        "artifact": "advanced_ae-1.6.12-1.21.1",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "advanced_ae:quantum_accelerator",
+        "blockEntityId": "advanced_ae:quantum_core",
+        "artifact": "advanced_ae-1.6.12-1.21.1",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "advanced_ae:quantum_multi_threader",
+        "blockEntityId": "advanced_ae:quantum_core",
+        "artifact": "advanced_ae-1.6.12-1.21.1",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "advanced_ae:quantum_structure",
+        "blockEntityId": "advanced_ae:quantum_core",
+        "artifact": "advanced_ae-1.6.12-1.21.1",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "advanced_ae:adv_pattern_provider",
+        "blockEntityId": "advanced_ae:adv_pattern_provider",
+        "artifact": "advanced_ae-1.6.12-1.21.1",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "advanced_ae:small_adv_pattern_provider",
+        "blockEntityId": "advanced_ae:small_adv_pattern_provider",
+        "artifact": "advanced_ae-1.6.12-1.21.1",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "advanced_ae:reaction_chamber",
+        "blockEntityId": "advanced_ae:reaction_chamber",
+        "artifact": "advanced_ae-1.6.12-1.21.1",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "advanced_ae:quantum_crafter",
+        "blockEntityId": "advanced_ae:quantum_craft",
+        "artifact": "advanced_ae-1.6.12-1.21.1",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "extendedae:crystal_assembler",
+        "blockEntityId": "extendedae:crystal_assembler",
+        "artifact": "extendedae-1.21-2.2.35-neoforge",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "extendedae:ex_pattern_provider",
+        "blockEntityId": "extendedae:ex_pattern_provider",
+        "artifact": "extendedae-1.21-2.2.35-neoforge",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "extendedae:ex_interface",
+        "blockEntityId": "extendedae:ex_interface",
+        "artifact": "extendedae-1.21-2.2.35-neoforge",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "extendedae:wireless_connect",
+        "blockEntityId": "extendedae:wireless_connect",
+        "artifact": "extendedae-1.21-2.2.35-neoforge",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "extendedae:ex_drive",
+        "blockEntityId": "extendedae:ex_drive",
+        "artifact": "extendedae-1.21-2.2.35-neoforge",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "extendedae:ex_molecular_assembler",
+        "blockEntityId": "extendedae:ex_molecular_assembler",
+        "artifact": "extendedae-1.21-2.2.35-neoforge",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "extendedae:ex_inscriber",
+        "blockEntityId": "extendedae:ex_inscriber",
+        "artifact": "extendedae-1.21-2.2.35-neoforge",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "extendedae:ex_charger",
+        "blockEntityId": "extendedae:ex_charger",
+        "artifact": "extendedae-1.21-2.2.35-neoforge",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "extendedae:crystal_fixer",
+        "blockEntityId": "extendedae:crystal_fixer",
+        "artifact": "extendedae-1.21-2.2.35-neoforge",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "extendedae:caner",
+        "blockEntityId": "extendedae:caner",
+        "artifact": "extendedae-1.21-2.2.35-neoforge",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "extendedae:ex_io_port",
+        "blockEntityId": "extendedae:ex_io_port",
+        "artifact": "extendedae-1.21-2.2.35-neoforge",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "extendedae:circuit_cutter",
+        "blockEntityId": "extendedae:circuit_cutter",
+        "artifact": "extendedae-1.21-2.2.35-neoforge",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "extendedae:oversize_interface",
+        "blockEntityId": "extendedae:oversize_interface",
+        "artifact": "extendedae-1.21-2.2.35-neoforge",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "extendedae:assembler_matrix_frame",
+        "blockEntityId": "extendedae:assembler_matrix_frame",
+        "artifact": "extendedae-1.21-2.2.35-neoforge",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "extendedae:assembler_matrix_wall",
+        "blockEntityId": "extendedae:assembler_matrix_wall",
+        "artifact": "extendedae-1.21-2.2.35-neoforge",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "extendedae:assembler_matrix_glass",
+        "blockEntityId": "extendedae:assembler_matrix_glass",
+        "artifact": "extendedae-1.21-2.2.35-neoforge",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "extendedae:assembler_matrix_pattern",
+        "blockEntityId": "extendedae:assembler_matrix_pattern",
+        "artifact": "extendedae-1.21-2.2.35-neoforge",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "extendedae:assembler_matrix_crafter",
+        "blockEntityId": "extendedae:assembler_matrix_crafter",
+        "artifact": "extendedae-1.21-2.2.35-neoforge",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "extendedae:assembler_matrix_speed",
+        "blockEntityId": "extendedae:assembler_matrix_speed",
+        "artifact": "extendedae-1.21-2.2.35-neoforge",
+        "policy": "unknown-atomic-original-resource-fallback"
+      },
+      {
+        "id": "extendedae:wireless_hub",
+        "blockEntityId": "extendedae:wireless_hub",
+        "artifact": "extendedae-1.21-2.2.35-neoforge",
+        "policy": "unknown-atomic-original-resource-fallback"
+      }
+    ],
+    "representativeControl": {
+      "blockId": "expandedae:exp_io_port",
+      "blockEntityId": "expandedae:exp_io_port",
+      "artifact": "expandedae-2.1.1",
+      "properties": {
+        "facing": "north",
+        "powered": "false",
+        "spin": "0"
+      },
+      "blockstateSha256": "9880448f15a4372dbfdda591d3728518df3433e7e5886cbe0b4366d74b55a76d",
+      "endpointOffsetFromCable": "east",
+      "contactSide": "west",
+      "connectionEvidence": "ExpIOPortBlockEntity-subclasses-AE2-IOPortBlockEntity-all-sides-grid-node",
+      "expectedBranch": "unknown-atomic-original-resource-fallback"
+    }
+  },
+  "endpointSidePolicy": {
+    "serializedBlockEntityId": "exact-required",
+    "persistedBlockState": "exact-complete-key-set-and-serialized-value-domain-required",
+    "stateSchemaCount": 30,
+    "stateCartesianCount": 534,
+    "stateSideCartesianCount": 3204,
+    "blockstateResourceDigestCount": 30,
+    "unknownBlockEntityStateOrTopology": "missing-malformed-or-capped-atomic-original-resource-fallback",
+    "branchPolicies": {
+      "malformedNativeEndpoint": "malformed-native-endpoint-atomic-original-resource-fallback",
+      "knownExtensionExactBlockAndBlockEntity": "unknown-atomic-original-resource-fallback",
+      "knownExtensionBlockWithMissingOrWrongBlockEntity": "malformed-known-extension-observation-atomic-original-resource-fallback",
+      "unrelatedBlockWithCatalogBlockEntity": "disconnected",
+      "unrelatedNonNativeBlockEntity": "disconnected"
+    },
+    "ruleKindCount": 8,
+    "ruleCounts": {
+      "ALL": 12,
+      "BACK": 2,
+      "NO_FRONT": 3,
+      "FRONT_BACK": 1,
+      "PUSH_DIRECTION": 1,
+      "FORMED_CRAFTING": 8,
+      "FORMED_QUANTUM": 2,
+      "VALID_STRAIGHT_PYLON": 1
+    },
+    "rules": [
+      {
+        "id": "ALL",
+        "stateInputs": [],
+        "allowedSides": "all-six",
+        "disallowedSides": "none",
+        "topology": "none"
+      },
+      {
+        "id": "BACK",
+        "stateInputs": [
+          "facing"
+        ],
+        "allowedSides": "opposite-facing",
+        "disallowedSides": "all-except-opposite-facing",
+        "topology": "none"
+      },
+      {
+        "id": "NO_FRONT",
+        "stateInputs": [
+          "facing"
+        ],
+        "allowedSides": "all-except-facing",
+        "disallowedSides": "facing",
+        "topology": "none"
+      },
+      {
+        "id": "FRONT_BACK",
+        "stateInputs": [
+          "facing"
+        ],
+        "allowedSides": "facing-and-opposite-facing",
+        "disallowedSides": "four-perpendicular-sides",
+        "topology": "none"
+      },
+      {
+        "id": "PUSH_DIRECTION",
+        "stateInputs": [
+          "push_direction"
+        ],
+        "allowedSides": "all-if-all-else-all-except-push-direction",
+        "disallowedSides": "none-if-all-else-push-direction",
+        "topology": "none"
+      },
+      {
+        "id": "FORMED_CRAFTING",
+        "stateInputs": [
+          "formed"
+        ],
+        "allowedSides": "all-six-if-formed",
+        "disallowedSides": "all-six-if-unformed",
+        "topology": "trust-exact-persisted-formed-state-and-serialized-block-entity-id"
+      },
+      {
+        "id": "FORMED_QUANTUM",
+        "stateInputs": [
+          "formed"
+        ],
+        "allowedSides": "edge-ring-all-six-else-adjacent-quantum-bridges",
+        "disallowedSides": "all-if-unformed-else-non-adjacent-for-link-or-corner",
+        "topology": "three-by-three-plane-eight-rings-and-center-link"
+      },
+      {
+        "id": "VALID_STRAIGHT_PYLON",
+        "stateInputs": [],
+        "allowedSides": "all-six-if-valid-straight-component",
+        "disallowedSides": "all-six-if-unformed-or-branched",
+        "topology": "straight-axis-line-of-at-least-two-pylons-bounded-256"
+      }
+    ]
+  },
+  "orientationPolicy": {
+    "faces": 6,
+    "persistedSpinValues": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "spinCapablePartCount": 9,
+    "spinIgnoredPartCount": 20,
+    "exhaustiveStateCount": 336,
+    "formula": "20*6+9*6*4"
+  },
+  "renderPolicy": {
+    "transientState": "static-off-inactive-unlocked",
+    "denseCenterParts": [
+      "ae2:cable_anchor"
+    ],
+    "glassCoreOverrides": {
+      "defaultDesiredCableType": "GLASS",
+      "overrideDesiredCableType": "SMART",
+      "partIds": [
+        "ae2:level_emitter",
+        "ae2:energy_level_emitter"
+      ],
+      "effect": "glass-center-promoted-to-covered-core"
+    },
+    "planeConnectionMasks": {
+      "count": 16,
+      "bits": {
+        "left": 1,
+        "down": 2,
+        "right": 4,
+        "up": 8
+      },
+      "compatibleNeighbor": "same-concrete-part-class-same-installed-face",
+      "coordinateSpaces": "mask-bits-are-PlaneConnections-front-view-logical;renderedGeometryBoundBits-are-PlaneBakedModel-visual-local-before-QuadRotator-installed-world-transform;collisionBoundBitsByInstalledFace-are-BusCollisionHelper-installed-face-local;never-reuse-bounds-across-coordinate-spaces",
+      "collisionBoundBitsByInstalledFace": {
+        "down": {
+          "minX": "right",
+          "maxX": "left",
+          "minY": "down",
+          "maxY": "up"
+        },
+        "up": {
+          "minX": "left",
+          "maxX": "right",
+          "minY": "up",
+          "maxY": "down"
+        },
+        "north": {
+          "minX": "left",
+          "maxX": "right",
+          "minY": "down",
+          "maxY": "up"
+        },
+        "south": {
+          "minX": "left",
+          "maxX": "right",
+          "minY": "down",
+          "maxY": "up"
+        },
+        "west": {
+          "minX": "right",
+          "maxX": "left",
+          "minY": "down",
+          "maxY": "up"
+        },
+        "east": {
+          "minX": "right",
+          "maxX": "left",
+          "minY": "down",
+          "maxY": "up"
+        }
+      },
+      "renderedGeometryBoundBits": {
+        "minX": "right",
+        "maxX": "left",
+        "minY": "down",
+        "maxY": "up"
+      },
+      "facadeCutout": {
+        "baseLocalBounds": [
+          1,
+          1,
+          15,
+          15
+        ],
+        "coordinateSpace": "BusCollisionHelper-installed-face-local",
+        "boundBitsByInstalledFace": {
+          "down": {
+            "minX": "right",
+            "maxX": "left",
+            "minY": "down",
+            "maxY": "up"
+          },
+          "up": {
+            "minX": "left",
+            "maxX": "right",
+            "minY": "up",
+            "maxY": "down"
+          },
+          "north": {
+            "minX": "left",
+            "maxX": "right",
+            "minY": "down",
+            "maxY": "up"
+          },
+          "south": {
+            "minX": "left",
+            "maxX": "right",
+            "minY": "down",
+            "maxY": "up"
+          },
+          "west": {
+            "minX": "right",
+            "maxX": "left",
+            "minY": "down",
+            "maxY": "up"
+          },
+          "east": {
+            "minX": "right",
+            "maxX": "left",
+            "minY": "down",
+            "maxY": "up"
+          }
+        },
+        "minXExtendsTo": 0,
+        "minYExtendsTo": 0,
+        "maxXExtendsTo": 16,
+        "maxYExtendsTo": 16
+      }
+    },
+    "facadeCutoutCollision": {
+      "unit": "sixteenths",
+      "orientation": "BusCollisionHelper-installed-face-local-basis",
+      "selection": "union-of-every-installed-part-box-intersecting-current-facade-slab",
+      "stripAabbConstruction": "minecraft-AABB-normalizes-each-generated-strip-endpoint-pair-with-min-max;transparent-inset-plus-boundary-reaching-cutout-may-reverse-endpoints-and-must-produce-the-normalized-strip-not-a-degenerate-strip",
+      "partPolicies": {
+        "ae2:quartz_fiber": {
+          "mode": "static",
+          "boxes": [
+            [
+              6,
+              6,
+              10,
+              10,
+              10,
+              16
+            ]
+          ]
+        },
+        "ae2:toggle_bus": {
+          "mode": "static",
+          "boxes": [
+            [
+              6,
+              6,
+              11,
+              10,
+              10,
+              16
+            ]
+          ]
+        },
+        "ae2:inverted_toggle_bus": {
+          "mode": "static",
+          "boxes": [
+            [
+              6,
+              6,
+              11,
+              10,
+              10,
+              16
+            ]
+          ]
+        },
+        "ae2:cable_anchor": {
+          "mode": "same-side-facade-conditioned",
+          "withoutSameSideFacade": [
+            [
+              7,
+              7,
+              10,
+              9,
+              9,
+              16
+            ]
+          ],
+          "withSameSideFacade": [
+            [
+              7,
+              7,
+              10,
+              9,
+              9,
+              14
+            ]
+          ]
+        },
+        "ae2:monitor": {
+          "mode": "static",
+          "boxes": [
+            [
+              2,
+              2,
+              14,
+              14,
+              14,
+              16
+            ],
+            [
+              4,
+              4,
+              13,
+              12,
+              12,
+              14
+            ]
+          ]
+        },
+        "ae2:semi_dark_monitor": {
+          "mode": "static",
+          "boxes": [
+            [
+              2,
+              2,
+              14,
+              14,
+              14,
+              16
+            ],
+            [
+              4,
+              4,
+              13,
+              12,
+              12,
+              14
+            ]
+          ]
+        },
+        "ae2:dark_monitor": {
+          "mode": "static",
+          "boxes": [
+            [
+              2,
+              2,
+              14,
+              14,
+              14,
+              16
+            ],
+            [
+              4,
+              4,
+              13,
+              12,
+              12,
+              14
+            ]
+          ]
+        },
+        "ae2:storage_bus": {
+          "mode": "static",
+          "boxes": [
+            [
+              3,
+              3,
+              15,
+              13,
+              13,
+              16
+            ],
+            [
+              2,
+              2,
+              14,
+              14,
+              14,
+              15
+            ],
+            [
+              5,
+              5,
+              12,
+              11,
+              11,
+              14
+            ]
+          ]
+        },
+        "ae2:import_bus": {
+          "mode": "static",
+          "boxes": [
+            [
+              6,
+              6,
+              11,
+              10,
+              10,
+              13
+            ],
+            [
+              5,
+              5,
+              13,
+              11,
+              11,
+              14
+            ],
+            [
+              4,
+              4,
+              14,
+              12,
+              12,
+              16
+            ]
+          ]
+        },
+        "ae2:export_bus": {
+          "mode": "static",
+          "boxes": [
+            [
+              4,
+              4,
+              12,
+              12,
+              12,
+              14
+            ],
+            [
+              5,
+              5,
+              14,
+              11,
+              11,
+              15
+            ],
+            [
+              6,
+              6,
+              15,
+              10,
+              10,
+              16
+            ],
+            [
+              6,
+              6,
+              11,
+              10,
+              10,
+              12
+            ]
+          ]
+        },
+        "ae2:level_emitter": {
+          "mode": "static",
+          "boxes": [
+            [
+              7,
+              7,
+              11,
+              9,
+              9,
+              16
+            ]
+          ]
+        },
+        "ae2:energy_level_emitter": {
+          "mode": "static",
+          "boxes": [
+            [
+              7,
+              7,
+              11,
+              9,
+              9,
+              16
+            ]
+          ]
+        },
+        "ae2:annihilation_plane": {
+          "mode": "plane-connection-mask",
+          "fixedBoxes": [
+            [
+              5,
+              5,
+              14,
+              11,
+              11,
+              15
+            ]
+          ],
+          "dynamicSheet": {
+            "base": [
+              1,
+              1,
+              15,
+              15,
+              15,
+              16
+            ],
+            "coordinateSpace": "BusCollisionHelper-installed-face-local",
+            "boundBitsByInstalledFace": {
+              "down": {
+                "minX": "right",
+                "maxX": "left",
+                "minY": "down",
+                "maxY": "up"
+              },
+              "up": {
+                "minX": "left",
+                "maxX": "right",
+                "minY": "up",
+                "maxY": "down"
+              },
+              "north": {
+                "minX": "left",
+                "maxX": "right",
+                "minY": "down",
+                "maxY": "up"
+              },
+              "south": {
+                "minX": "left",
+                "maxX": "right",
+                "minY": "down",
+                "maxY": "up"
+              },
+              "west": {
+                "minX": "right",
+                "maxX": "left",
+                "minY": "down",
+                "maxY": "up"
+              },
+              "east": {
+                "minX": "right",
+                "maxX": "left",
+                "minY": "down",
+                "maxY": "up"
+              }
+            },
+            "minXExtendsTo": 0,
+            "minYExtendsTo": 0,
+            "maxXExtendsTo": 16,
+            "maxYExtendsTo": 16
+          }
+        },
+        "ae2:formation_plane": {
+          "mode": "plane-connection-mask",
+          "fixedBoxes": [
+            [
+              5,
+              5,
+              14,
+              11,
+              11,
+              15
+            ]
+          ],
+          "dynamicSheet": {
+            "base": [
+              1,
+              1,
+              15,
+              15,
+              15,
+              16
+            ],
+            "coordinateSpace": "BusCollisionHelper-installed-face-local",
+            "boundBitsByInstalledFace": {
+              "down": {
+                "minX": "right",
+                "maxX": "left",
+                "minY": "down",
+                "maxY": "up"
+              },
+              "up": {
+                "minX": "left",
+                "maxX": "right",
+                "minY": "up",
+                "maxY": "down"
+              },
+              "north": {
+                "minX": "left",
+                "maxX": "right",
+                "minY": "down",
+                "maxY": "up"
+              },
+              "south": {
+                "minX": "left",
+                "maxX": "right",
+                "minY": "down",
+                "maxY": "up"
+              },
+              "west": {
+                "minX": "right",
+                "maxX": "left",
+                "minY": "down",
+                "maxY": "up"
+              },
+              "east": {
+                "minX": "right",
+                "maxX": "left",
+                "minY": "down",
+                "maxY": "up"
+              }
+            },
+            "minXExtendsTo": 0,
+            "minYExtendsTo": 0,
+            "maxXExtendsTo": 16,
+            "maxYExtendsTo": 16
+          }
+        },
+        "ae2:pattern_encoding_terminal": {
+          "mode": "static",
+          "boxes": [
+            [
+              2,
+              2,
+              14,
+              14,
+              14,
+              16
+            ],
+            [
+              4,
+              4,
+              13,
+              12,
+              12,
+              14
+            ]
+          ]
+        },
+        "ae2:crafting_terminal": {
+          "mode": "static",
+          "boxes": [
+            [
+              2,
+              2,
+              14,
+              14,
+              14,
+              16
+            ],
+            [
+              4,
+              4,
+              13,
+              12,
+              12,
+              14
+            ]
+          ]
+        },
+        "ae2:terminal": {
+          "mode": "static",
+          "boxes": [
+            [
+              2,
+              2,
+              14,
+              14,
+              14,
+              16
+            ],
+            [
+              4,
+              4,
+              13,
+              12,
+              12,
+              14
+            ]
+          ]
+        },
+        "ae2:storage_monitor": {
+          "mode": "static",
+          "boxes": [
+            [
+              2,
+              2,
+              14,
+              14,
+              14,
+              16
+            ],
+            [
+              4,
+              4,
+              13,
+              12,
+              12,
+              14
+            ]
+          ]
+        },
+        "ae2:conversion_monitor": {
+          "mode": "static",
+          "boxes": [
+            [
+              2,
+              2,
+              14,
+              14,
+              14,
+              16
+            ],
+            [
+              4,
+              4,
+              13,
+              12,
+              12,
+              14
+            ]
+          ]
+        },
+        "ae2:cable_pattern_provider": {
+          "mode": "static",
+          "boxes": [
+            [
+              2,
+              2,
+              14,
+              14,
+              14,
+              16
+            ],
+            [
+              5,
+              5,
+              12,
+              11,
+              11,
+              14
+            ]
+          ]
+        },
+        "ae2:cable_interface": {
+          "mode": "static",
+          "boxes": [
+            [
+              2,
+              2,
+              14,
+              14,
+              14,
+              16
+            ],
+            [
+              5,
+              5,
+              12,
+              11,
+              11,
+              14
+            ]
+          ]
+        },
+        "ae2:pattern_access_terminal": {
+          "mode": "static",
+          "boxes": [
+            [
+              2,
+              2,
+              14,
+              14,
+              14,
+              16
+            ],
+            [
+              4,
+              4,
+              13,
+              12,
+              12,
+              14
+            ]
+          ]
+        },
+        "ae2:cable_energy_acceptor": {
+          "mode": "static",
+          "boxes": [
+            [
+              2,
+              2,
+              14,
+              14,
+              14,
+              16
+            ],
+            [
+              4,
+              4,
+              12,
+              12,
+              12,
+              14
+            ]
+          ]
+        },
+        "ae2:me_p2p_tunnel": {
+          "mode": "static",
+          "boxes": [
+            [
+              5,
+              5,
+              12,
+              11,
+              11,
+              13
+            ],
+            [
+              3,
+              3,
+              13,
+              13,
+              13,
+              14
+            ],
+            [
+              2,
+              2,
+              14,
+              14,
+              14,
+              16
+            ]
+          ]
+        },
+        "ae2:redstone_p2p_tunnel": {
+          "mode": "static",
+          "boxes": [
+            [
+              5,
+              5,
+              12,
+              11,
+              11,
+              13
+            ],
+            [
+              3,
+              3,
+              13,
+              13,
+              13,
+              14
+            ],
+            [
+              2,
+              2,
+              14,
+              14,
+              14,
+              16
+            ]
+          ]
+        },
+        "ae2:item_p2p_tunnel": {
+          "mode": "static",
+          "boxes": [
+            [
+              5,
+              5,
+              12,
+              11,
+              11,
+              13
+            ],
+            [
+              3,
+              3,
+              13,
+              13,
+              13,
+              14
+            ],
+            [
+              2,
+              2,
+              14,
+              14,
+              14,
+              16
+            ]
+          ]
+        },
+        "ae2:fluid_p2p_tunnel": {
+          "mode": "static",
+          "boxes": [
+            [
+              5,
+              5,
+              12,
+              11,
+              11,
+              13
+            ],
+            [
+              3,
+              3,
+              13,
+              13,
+              13,
+              14
+            ],
+            [
+              2,
+              2,
+              14,
+              14,
+              14,
+              16
+            ]
+          ]
+        },
+        "ae2:fe_p2p_tunnel": {
+          "mode": "static",
+          "boxes": [
+            [
+              5,
+              5,
+              12,
+              11,
+              11,
+              13
+            ],
+            [
+              3,
+              3,
+              13,
+              13,
+              13,
+              14
+            ],
+            [
+              2,
+              2,
+              14,
+              14,
+              14,
+              16
+            ]
+          ]
+        },
+        "ae2:light_p2p_tunnel": {
+          "mode": "static",
+          "boxes": [
+            [
+              5,
+              5,
+              12,
+              11,
+              11,
+              13
+            ],
+            [
+              3,
+              3,
+              13,
+              13,
+              13,
+              14
+            ],
+            [
+              2,
+              2,
+              14,
+              14,
+              14,
+              16
+            ]
+          ]
+        }
+      }
+    },
+    "p2pFrequency": "persisted-frequency-static-glyph",
+    "deviceConnections": "AECableType.min-local-and-endpoint",
+    "mapColorIllumination": "BlueMap-map-color-illumination-uses-original-center-and-outward-world-light-only;element-lightEmission-affects-triangle-blocklight-not-map-color-brightness",
+    "facades": {
+      "policy": "all-six-face-masks-per-instance-valid-static-block-state-material",
+      "maximumFacades": 6,
+      "maskCount": 64,
+      "material": "per-instance-valid-static-BlockState",
+      "eligibility": {
+        "item": "component-free-non-air-BlockItem",
+        "state": "default-state-at-creation-then-valid-property-cycles",
+        "renderShape": "MODEL",
+        "blockEntity": "disallowed-unless-whitelisted",
+        "collision": "full-block-unless-whitelisted",
+        "whitelistResourceSha256": "4ff52f9d8670417406c29430f754305198ba8ab855ca34336962d6d24cf49f82",
+        "whitelistBlockCount": 24,
+        "whitelistBlocks": [
+          "ae2:quartz_glass",
+          "ae2:quartz_vibrant_glass",
+          "minecraft:chiseled_bookshelf",
+          "minecraft:jukebox",
+          "minecraft:furnace",
+          "minecraft:blast_furnace",
+          "minecraft:dropper",
+          "minecraft:dispenser",
+          "minecraft:crafter",
+          "minecraft:barrel",
+          "minecraft:bee_nest",
+          "minecraft:beehive",
+          "minecraft:sculk_catalyst",
+          "minecraft:soul_sand",
+          "minecraft:honey_block",
+          "ae2:controller",
+          "ae2:1k_crafting_storage",
+          "ae2:4k_crafting_storage",
+          "ae2:16k_crafting_storage",
+          "ae2:64k_crafting_storage",
+          "ae2:256k_crafting_storage",
+          "ae2:crafting_monitor",
+          "ae2:crafting_unit",
+          "ae2:crafting_accelerator"
+        ],
+        "neutralDefaultStateCount": 24,
+        "neutralDefaultStates": [
+          {
+            "blockId": "ae2:quartz_glass",
+            "properties": {},
+            "solidRender": false,
+            "sameStateSkipRendering": true
+          },
+          {
+            "blockId": "ae2:quartz_vibrant_glass",
+            "properties": {},
+            "solidRender": false,
+            "sameStateSkipRendering": true
+          },
+          {
+            "blockId": "minecraft:chiseled_bookshelf",
+            "properties": {
+              "facing": "north",
+              "slot_0_occupied": "false",
+              "slot_1_occupied": "false",
+              "slot_2_occupied": "false",
+              "slot_3_occupied": "false",
+              "slot_4_occupied": "false",
+              "slot_5_occupied": "false"
+            },
+            "solidRender": true,
+            "sameStateSkipRendering": false
+          },
+          {
+            "blockId": "minecraft:jukebox",
+            "properties": {
+              "has_record": "false"
+            },
+            "solidRender": true,
+            "sameStateSkipRendering": false
+          },
+          {
+            "blockId": "minecraft:furnace",
+            "properties": {
+              "facing": "north",
+              "lit": "false"
+            },
+            "solidRender": true,
+            "sameStateSkipRendering": false
+          },
+          {
+            "blockId": "minecraft:blast_furnace",
+            "properties": {
+              "facing": "north",
+              "lit": "false"
+            },
+            "solidRender": true,
+            "sameStateSkipRendering": false
+          },
+          {
+            "blockId": "minecraft:dropper",
+            "properties": {
+              "facing": "north",
+              "triggered": "false"
+            },
+            "solidRender": true,
+            "sameStateSkipRendering": false
+          },
+          {
+            "blockId": "minecraft:dispenser",
+            "properties": {
+              "facing": "north",
+              "triggered": "false"
+            },
+            "solidRender": true,
+            "sameStateSkipRendering": false
+          },
+          {
+            "blockId": "minecraft:crafter",
+            "properties": {
+              "crafting": "false",
+              "orientation": "north_up",
+              "triggered": "false"
+            },
+            "solidRender": true,
+            "sameStateSkipRendering": false
+          },
+          {
+            "blockId": "minecraft:barrel",
+            "properties": {
+              "facing": "north",
+              "open": "false"
+            },
+            "solidRender": true,
+            "sameStateSkipRendering": false
+          },
+          {
+            "blockId": "minecraft:bee_nest",
+            "properties": {
+              "facing": "north",
+              "honey_level": "0"
+            },
+            "solidRender": true,
+            "sameStateSkipRendering": false
+          },
+          {
+            "blockId": "minecraft:beehive",
+            "properties": {
+              "facing": "north",
+              "honey_level": "0"
+            },
+            "solidRender": true,
+            "sameStateSkipRendering": false
+          },
+          {
+            "blockId": "minecraft:sculk_catalyst",
+            "properties": {
+              "bloom": "false"
+            },
+            "solidRender": true,
+            "sameStateSkipRendering": false
+          },
+          {
+            "blockId": "minecraft:soul_sand",
+            "properties": {},
+            "solidRender": true,
+            "sameStateSkipRendering": false
+          },
+          {
+            "blockId": "minecraft:honey_block",
+            "properties": {},
+            "solidRender": false,
+            "sameStateSkipRendering": true
+          },
+          {
+            "blockId": "ae2:controller",
+            "properties": {
+              "state": "offline",
+              "type": "block"
+            },
+            "solidRender": true,
+            "sameStateSkipRendering": false
+          },
+          {
+            "blockId": "ae2:1k_crafting_storage",
+            "properties": {
+              "formed": "false",
+              "powered": "false"
+            },
+            "solidRender": true,
+            "sameStateSkipRendering": false
+          },
+          {
+            "blockId": "ae2:4k_crafting_storage",
+            "properties": {
+              "formed": "false",
+              "powered": "false"
+            },
+            "solidRender": true,
+            "sameStateSkipRendering": false
+          },
+          {
+            "blockId": "ae2:16k_crafting_storage",
+            "properties": {
+              "formed": "false",
+              "powered": "false"
+            },
+            "solidRender": true,
+            "sameStateSkipRendering": false
+          },
+          {
+            "blockId": "ae2:64k_crafting_storage",
+            "properties": {
+              "formed": "false",
+              "powered": "false"
+            },
+            "solidRender": true,
+            "sameStateSkipRendering": false
+          },
+          {
+            "blockId": "ae2:256k_crafting_storage",
+            "properties": {
+              "formed": "false",
+              "powered": "false"
+            },
+            "solidRender": true,
+            "sameStateSkipRendering": false
+          },
+          {
+            "blockId": "ae2:crafting_monitor",
+            "properties": {
+              "facing": "north",
+              "formed": "false",
+              "powered": "false",
+              "spin": "0"
+            },
+            "solidRender": true,
+            "sameStateSkipRendering": false
+          },
+          {
+            "blockId": "ae2:crafting_unit",
+            "properties": {
+              "formed": "false",
+              "powered": "false"
+            },
+            "solidRender": true,
+            "sameStateSkipRendering": false
+          },
+          {
+            "blockId": "ae2:crafting_accelerator",
+            "properties": {
+              "formed": "false",
+              "powered": "false"
+            },
+            "solidRender": true,
+            "sameStateSkipRendering": false
+          }
+        ],
+        "stateSchemaCount": 24,
+        "stateCartesianCount": 554,
+        "solidRenderTrueCartesianCount": 551,
+        "sameStateSkipRenderingTrueCartesianCount": 3,
+        "stateSchemaPolicy": "all-24-explicit-whitelist-families-require-exact-complete-persisted-property-key-set-and-value-domains;13-vanilla-families-preserve-valid-state;11-ae2-native-families-apply-declared-static-normalization;extra-missing-or-invalid-properties-atomic-original-resource-fallback",
+        "stateClassificationPolicy": "solidRender-and-same-state-skipRendering-family-invariant-across-all-554-valid-explicit-whitelist-states;neutral-default-row-booleans-apply-to-whole-family;classification-drift-atomic-original-resource-fallback",
+        "stateSchemas": [
+          {
+            "blockId": "ae2:quartz_glass",
+            "properties": {},
+            "blockstateSha256": "9c331aa0f423a364e136b731195caf168df6496a90a065f9699e5e8e37e70d50"
+          },
+          {
+            "blockId": "ae2:quartz_vibrant_glass",
+            "properties": {},
+            "blockstateSha256": "e3b2b20544e578ff4b9d908ca1e7d281ecc46ddd8f0ee496ad53e2e344e17a99"
+          },
+          {
+            "blockId": "minecraft:chiseled_bookshelf",
+            "properties": {
+              "facing": [
+                "north",
+                "south",
+                "west",
+                "east"
+              ],
+              "slot_0_occupied": [
+                "false",
+                "true"
+              ],
+              "slot_1_occupied": [
+                "false",
+                "true"
+              ],
+              "slot_2_occupied": [
+                "false",
+                "true"
+              ],
+              "slot_3_occupied": [
+                "false",
+                "true"
+              ],
+              "slot_4_occupied": [
+                "false",
+                "true"
+              ],
+              "slot_5_occupied": [
+                "false",
+                "true"
+              ]
+            },
+            "blockstateSha256": "7f3f363d1e155d92d08916d8f08de670e269ae4a05fce0844c8bcd6930e8d098"
+          },
+          {
+            "blockId": "minecraft:jukebox",
+            "properties": {
+              "has_record": [
+                "false",
+                "true"
+              ]
+            },
+            "blockstateSha256": "8002563a048d4a5afb22d44692ca1a38e114ef95a3ccd24f02b9e0fd02b693d5"
+          },
+          {
+            "blockId": "minecraft:furnace",
+            "properties": {
+              "facing": [
+                "north",
+                "south",
+                "west",
+                "east"
+              ],
+              "lit": [
+                "false",
+                "true"
+              ]
+            },
+            "blockstateSha256": "aedb43571027a5dea15ba9cbfc05f0327af3048de70b72c3cd67c851839bb284"
+          },
+          {
+            "blockId": "minecraft:blast_furnace",
+            "properties": {
+              "facing": [
+                "north",
+                "south",
+                "west",
+                "east"
+              ],
+              "lit": [
+                "false",
+                "true"
+              ]
+            },
+            "blockstateSha256": "265ec5f30fa65bdaff6867bbad8de73e0a1b21ea12a33da5b771f889e4ac7dcc"
+          },
+          {
+            "blockId": "minecraft:dropper",
+            "properties": {
+              "facing": [
+                "down",
+                "up",
+                "north",
+                "south",
+                "west",
+                "east"
+              ],
+              "triggered": [
+                "false",
+                "true"
+              ]
+            },
+            "blockstateSha256": "c763060c1946a3031cdf6e68ab98db7d81d83c364b0ad4da54fdf055225753c3"
+          },
+          {
+            "blockId": "minecraft:dispenser",
+            "properties": {
+              "facing": [
+                "down",
+                "up",
+                "north",
+                "south",
+                "west",
+                "east"
+              ],
+              "triggered": [
+                "false",
+                "true"
+              ]
+            },
+            "blockstateSha256": "fc1ba39eb47f31285b5d1c9f729fabf5ad9832d8b8f6b1f510d3c870f6e6bfd8"
+          },
+          {
+            "blockId": "minecraft:crafter",
+            "properties": {
+              "crafting": [
+                "false",
+                "true"
+              ],
+              "orientation": [
+                "down_east",
+                "down_north",
+                "down_south",
+                "down_west",
+                "up_east",
+                "up_north",
+                "up_south",
+                "up_west",
+                "west_up",
+                "east_up",
+                "north_up",
+                "south_up"
+              ],
+              "triggered": [
+                "false",
+                "true"
+              ]
+            },
+            "blockstateSha256": "dfa8af74cd96d1d6f2086a63fab3402864497d7f436ba469b34be58924f1edfa"
+          },
+          {
+            "blockId": "minecraft:barrel",
+            "properties": {
+              "facing": [
+                "down",
+                "up",
+                "north",
+                "south",
+                "west",
+                "east"
+              ],
+              "open": [
+                "false",
+                "true"
+              ]
+            },
+            "blockstateSha256": "d8e00576b5f85f83a42b7b31dc177e0add02cf2204fa441c0fe31cbd6d70dcca"
+          },
+          {
+            "blockId": "minecraft:bee_nest",
+            "properties": {
+              "facing": [
+                "north",
+                "south",
+                "west",
+                "east"
+              ],
+              "honey_level": [
+                "0",
+                "1",
+                "2",
+                "3",
+                "4",
+                "5"
+              ]
+            },
+            "blockstateSha256": "09ee024cc05e40767c3e88776e336396a71b146a7fb93f64ba1860aa6a107853"
+          },
+          {
+            "blockId": "minecraft:beehive",
+            "properties": {
+              "facing": [
+                "north",
+                "south",
+                "west",
+                "east"
+              ],
+              "honey_level": [
+                "0",
+                "1",
+                "2",
+                "3",
+                "4",
+                "5"
+              ]
+            },
+            "blockstateSha256": "c4c438bb21bf78f5bdc8835daf852c2f2040e3f96872fe4488d2710a6abfc8ae"
+          },
+          {
+            "blockId": "minecraft:sculk_catalyst",
+            "properties": {
+              "bloom": [
+                "false",
+                "true"
+              ]
+            },
+            "blockstateSha256": "0e6c7b956647211dea0d7ce46e9e111296dd985c51d58a3c094630850b764504"
+          },
+          {
+            "blockId": "minecraft:soul_sand",
+            "properties": {},
+            "blockstateSha256": "6a0ea83a331843c30e21f8d7ea9252c429c4093b6222b60e62e8ab47ca802ef8"
+          },
+          {
+            "blockId": "minecraft:honey_block",
+            "properties": {},
+            "blockstateSha256": "780ffcffff91d90efe172f2f1f200a06dcbe885fe5316d16bebf72bae2ef7c44"
+          },
+          {
+            "blockId": "ae2:controller",
+            "properties": {
+              "state": [
+                "offline",
+                "online",
+                "conflicted"
+              ],
+              "type": [
+                "block",
+                "column_x",
+                "column_y",
+                "column_z",
+                "inside_a",
+                "inside_b"
+              ]
+            },
+            "blockstateSha256": "693d04c733b47e4159052d0843256fa7520bbc1984b6d9e454bec976a73d2ca8"
+          },
+          {
+            "blockId": "ae2:1k_crafting_storage",
+            "properties": {
+              "formed": [
+                "false",
+                "true"
+              ],
+              "powered": [
+                "false",
+                "true"
+              ]
+            },
+            "blockstateSha256": "9a1f6383cd3b54a8361cefc46740ddbee587ce79baefccb6ad6de6355833a603"
+          },
+          {
+            "blockId": "ae2:4k_crafting_storage",
+            "properties": {
+              "formed": [
+                "false",
+                "true"
+              ],
+              "powered": [
+                "false",
+                "true"
+              ]
+            },
+            "blockstateSha256": "dd4210a4c0fc5b0eb7f524571f20b7e1a92c438bc68df7324cb26c939c726abc"
+          },
+          {
+            "blockId": "ae2:16k_crafting_storage",
+            "properties": {
+              "formed": [
+                "false",
+                "true"
+              ],
+              "powered": [
+                "false",
+                "true"
+              ]
+            },
+            "blockstateSha256": "8e04febb39f74e1bb1061f9fee979be9cc4923bf14cc5a5d619cf6e681d506a4"
+          },
+          {
+            "blockId": "ae2:64k_crafting_storage",
+            "properties": {
+              "formed": [
+                "false",
+                "true"
+              ],
+              "powered": [
+                "false",
+                "true"
+              ]
+            },
+            "blockstateSha256": "d8a1b0f2f21c2f05cd959f03213d0434c6bb41e27d5591d0c3c532aea142eb7f"
+          },
+          {
+            "blockId": "ae2:256k_crafting_storage",
+            "properties": {
+              "formed": [
+                "false",
+                "true"
+              ],
+              "powered": [
+                "false",
+                "true"
+              ]
+            },
+            "blockstateSha256": "3458c6e521a76f7a0761c7efe956cc587826cfdd40d1f7c6284100990fb68905"
+          },
+          {
+            "blockId": "ae2:crafting_monitor",
+            "properties": {
+              "facing": [
+                "down",
+                "up",
+                "north",
+                "south",
+                "west",
+                "east"
+              ],
+              "formed": [
+                "false",
+                "true"
+              ],
+              "powered": [
+                "false",
+                "true"
+              ],
+              "spin": [
+                "0",
+                "1",
+                "2",
+                "3"
+              ]
+            },
+            "blockstateSha256": "157e2a326b835180b369874b5f6978fab7c6796293945f85a971ac3f5b1cf2b7"
+          },
+          {
+            "blockId": "ae2:crafting_unit",
+            "properties": {
+              "formed": [
+                "false",
+                "true"
+              ],
+              "powered": [
+                "false",
+                "true"
+              ]
+            },
+            "blockstateSha256": "b33f03d38953281265d6196e2a9f2494974275901b570f390ebf40fa3a338ece"
+          },
+          {
+            "blockId": "ae2:crafting_accelerator",
+            "properties": {
+              "formed": [
+                "false",
+                "true"
+              ],
+              "powered": [
+                "false",
+                "true"
+              ]
+            },
+            "blockstateSha256": "f2b8fd7efa88b37968f55d8169eee48d84c1c673b5b2201719037771d5e18918"
+          }
+        ],
+        "solidRenderSource": "pinned-Minecraft-BlockState.isSolidRender-level-position",
+        "sameStateSkipRenderingCount": 24,
+        "sameStateSkipRendering": [
+          {
+            "blockId": "ae2:quartz_glass",
+            "skipRendering": true
+          },
+          {
+            "blockId": "ae2:quartz_vibrant_glass",
+            "skipRendering": true
+          },
+          {
+            "blockId": "minecraft:chiseled_bookshelf",
+            "skipRendering": false
+          },
+          {
+            "blockId": "minecraft:jukebox",
+            "skipRendering": false
+          },
+          {
+            "blockId": "minecraft:furnace",
+            "skipRendering": false
+          },
+          {
+            "blockId": "minecraft:blast_furnace",
+            "skipRendering": false
+          },
+          {
+            "blockId": "minecraft:dropper",
+            "skipRendering": false
+          },
+          {
+            "blockId": "minecraft:dispenser",
+            "skipRendering": false
+          },
+          {
+            "blockId": "minecraft:crafter",
+            "skipRendering": false
+          },
+          {
+            "blockId": "minecraft:barrel",
+            "skipRendering": false
+          },
+          {
+            "blockId": "minecraft:bee_nest",
+            "skipRendering": false
+          },
+          {
+            "blockId": "minecraft:beehive",
+            "skipRendering": false
+          },
+          {
+            "blockId": "minecraft:sculk_catalyst",
+            "skipRendering": false
+          },
+          {
+            "blockId": "minecraft:soul_sand",
+            "skipRendering": false
+          },
+          {
+            "blockId": "minecraft:honey_block",
+            "skipRendering": true
+          },
+          {
+            "blockId": "ae2:controller",
+            "skipRendering": false
+          },
+          {
+            "blockId": "ae2:1k_crafting_storage",
+            "skipRendering": false
+          },
+          {
+            "blockId": "ae2:4k_crafting_storage",
+            "skipRendering": false
+          },
+          {
+            "blockId": "ae2:16k_crafting_storage",
+            "skipRendering": false
+          },
+          {
+            "blockId": "ae2:64k_crafting_storage",
+            "skipRendering": false
+          },
+          {
+            "blockId": "ae2:256k_crafting_storage",
+            "skipRendering": false
+          },
+          {
+            "blockId": "ae2:crafting_monitor",
+            "skipRendering": false
+          },
+          {
+            "blockId": "ae2:crafting_unit",
+            "skipRendering": false
+          },
+          {
+            "blockId": "ae2:crafting_accelerator",
+            "skipRendering": false
+          }
+        ],
+        "skipRenderingPolicy": "exact-24-explicit-whitelist-same-state-table;ae2-quartz-glass-cross-family-render-shape-rule;exact-gallery-controls-glass-true-oak-log-false-oak-leaves-false;other-ordinary-tag-materials-use-bounded-BlueMap-cullingIdentical-same-state-host-projection",
+        "quartzSkipRenderingPolicy": "true-for-any-two-ae2-QuartzGlassBlock-families-with-equal-render-shape",
+        "ordinarySkipRenderingControlCount": 3,
+        "ordinarySkipRenderingControls": [
+          {
+            "blockId": "minecraft:glass",
+            "skipRendering": true
+          },
+          {
+            "blockId": "minecraft:oak_log",
+            "skipRendering": false
+          },
+          {
+            "blockId": "minecraft:oak_leaves",
+            "skipRendering": false
+          }
+        ],
+        "optionalTagCount": 1,
+        "optionalTags": [
+          "c:glass_blocks"
+        ],
+        "nativeNeutralMaterialCount": 11,
+        "supportSetPolicy": "all-24-explicit-whitelist-families-plus-bounded-static-full-cube-witness-material-lane",
+        "ordinaryMaterialPolicy": "optional-c-glass-blocks-and-ordinary-FacadeItem-eligible-states-require-one-live-unrotated-0-to-16-six-face-full-cube-witness;bounded-additional-static-elements-and-multipart-source-quads-subject-to-uv-tint-weighted-and-semantic-resource-gates;otherwise-valid-complex-static-models-atomic-original-resource-fallback",
+        "tintPolicy": "untinted-or-one-distinct-nonnegative-source-tint-index;untinted-layers-may-coexist;shared-tinted-layers-use-host-block-color-calculator;mixed-nonnegative-tint-indices-atomic-original-resource-fallback",
+        "uvReinterpolationPolicy": "source-QuadReInterpolator-nominal-face-2d-dx-dy-bilinear;admitted-quad-projection-requires-exact-complete-InterpHelper-grid;post-clamp-and-corner-kick-target-uses-projected-dx-dy;noncompatible-projected-quads-atomic-original-resource-fallback",
+        "cardinalVariantTransformPolicy": "exact-signed-permutation-quarter-turn-blockstate-variant-and-uvlock-coordinate-transforms;avoids-host-float-matrix-drift-before-source-exact-InterpHelper-grid",
+        "weightedVariantPolicy": "exact-minecraft-stone-four-alternative-geometry-and-material-host-position-projection-retains-frozen-M2-non-pixel-identical-randomized-uv-boundary;all-other-weighted-sets-require-every-alternative-collapse-to-one-bounded-static-geometry-material-uv-descriptor;otherwise-atomic-original-resource-fallback",
+        "nativeNeutralMaterialScope": "11-ae2-native-neutral-resource-pins-not-the-complete-facade-support-set",
+        "nativeNeutralMaterials": [
+          {
+            "blockId": "ae2:quartz_glass",
+            "properties": {},
+            "materialFamily": "facade-aware-connected-quartz-glass-static",
+            "sourceModel": "ae2:block/quartz_glass",
+            "blockstateSha256": "9c331aa0f423a364e136b731195caf168df6496a90a065f9699e5e8e37e70d50",
+            "solidRender": false,
+            "transparentFacade": true,
+            "blockStateLightEmission": 0,
+            "facadeQuadLightEmission": 0,
+            "statePolicy": {
+              "validPropertyValues": {},
+              "normalization": {},
+              "unknownOrMalformed": "atomic-original-resource-fallback",
+              "galleryPropertiesAreNeutralSampleOnly": true
+            }
+          },
+          {
+            "blockId": "ae2:quartz_vibrant_glass",
+            "properties": {},
+            "materialFamily": "facade-aware-connected-quartz-glass-static",
+            "sourceModel": "ae2:block/quartz_glass",
+            "blockstateSha256": "e3b2b20544e578ff4b9d908ca1e7d281ecc46ddd8f0ee496ad53e2e344e17a99",
+            "solidRender": false,
+            "transparentFacade": true,
+            "blockStateLightEmission": 15,
+            "facadeQuadLightEmission": 0,
+            "statePolicy": {
+              "validPropertyValues": {},
+              "normalization": {},
+              "unknownOrMalformed": "atomic-original-resource-fallback",
+              "galleryPropertiesAreNeutralSampleOnly": true
+            }
+          },
+          {
+            "blockId": "ae2:controller",
+            "properties": {
+              "state": "offline",
+              "type": "block"
+            },
+            "materialFamily": "controller-offline-block",
+            "sourceModel": "ae2:block/controller/controller_block_offline",
+            "blockstateSha256": "693d04c733b47e4159052d0843256fa7520bbc1984b6d9e454bec976a73d2ca8",
+            "solidRender": true,
+            "transparentFacade": false,
+            "blockStateLightEmission": 0,
+            "facadeQuadLightEmission": 0,
+            "statePolicy": {
+              "validPropertyValues": {
+                "state": [
+                  "offline",
+                  "online",
+                  "conflicted"
+                ],
+                "type": [
+                  "block",
+                  "column_x",
+                  "column_y",
+                  "column_z",
+                  "inside_a",
+                  "inside_b"
+                ]
+              },
+              "normalization": {
+                "state": "offline",
+                "type": "block"
+              },
+              "unknownOrMalformed": "atomic-original-resource-fallback",
+              "galleryPropertiesAreNeutralSampleOnly": true
+            }
+          },
+          {
+            "blockId": "ae2:1k_crafting_storage",
+            "properties": {
+              "formed": "false",
+              "powered": "false"
+            },
+            "materialFamily": "crafting-storage-1k-unformed",
+            "sourceModel": "ae2:block/crafting/1k_storage",
+            "blockstateSha256": "9a1f6383cd3b54a8361cefc46740ddbee587ce79baefccb6ad6de6355833a603",
+            "solidRender": true,
+            "transparentFacade": false,
+            "blockStateLightEmission": 0,
+            "facadeQuadLightEmission": 0,
+            "statePolicy": {
+              "validPropertyValues": {
+                "formed": [
+                  "false",
+                  "true"
+                ],
+                "powered": [
+                  "false",
+                  "true"
+                ]
+              },
+              "normalization": {
+                "formed": "false",
+                "powered": "false"
+              },
+              "unknownOrMalformed": "atomic-original-resource-fallback",
+              "galleryPropertiesAreNeutralSampleOnly": true
+            }
+          },
+          {
+            "blockId": "ae2:4k_crafting_storage",
+            "properties": {
+              "formed": "false",
+              "powered": "false"
+            },
+            "materialFamily": "crafting-storage-4k-unformed",
+            "sourceModel": "ae2:block/crafting/4k_storage",
+            "blockstateSha256": "dd4210a4c0fc5b0eb7f524571f20b7e1a92c438bc68df7324cb26c939c726abc",
+            "solidRender": true,
+            "transparentFacade": false,
+            "blockStateLightEmission": 0,
+            "facadeQuadLightEmission": 0,
+            "statePolicy": {
+              "validPropertyValues": {
+                "formed": [
+                  "false",
+                  "true"
+                ],
+                "powered": [
+                  "false",
+                  "true"
+                ]
+              },
+              "normalization": {
+                "formed": "false",
+                "powered": "false"
+              },
+              "unknownOrMalformed": "atomic-original-resource-fallback",
+              "galleryPropertiesAreNeutralSampleOnly": true
+            }
+          },
+          {
+            "blockId": "ae2:16k_crafting_storage",
+            "properties": {
+              "formed": "false",
+              "powered": "false"
+            },
+            "materialFamily": "crafting-storage-16k-unformed",
+            "sourceModel": "ae2:block/crafting/16k_storage",
+            "blockstateSha256": "8e04febb39f74e1bb1061f9fee979be9cc4923bf14cc5a5d619cf6e681d506a4",
+            "solidRender": true,
+            "transparentFacade": false,
+            "blockStateLightEmission": 0,
+            "facadeQuadLightEmission": 0,
+            "statePolicy": {
+              "validPropertyValues": {
+                "formed": [
+                  "false",
+                  "true"
+                ],
+                "powered": [
+                  "false",
+                  "true"
+                ]
+              },
+              "normalization": {
+                "formed": "false",
+                "powered": "false"
+              },
+              "unknownOrMalformed": "atomic-original-resource-fallback",
+              "galleryPropertiesAreNeutralSampleOnly": true
+            }
+          },
+          {
+            "blockId": "ae2:64k_crafting_storage",
+            "properties": {
+              "formed": "false",
+              "powered": "false"
+            },
+            "materialFamily": "crafting-storage-64k-unformed",
+            "sourceModel": "ae2:block/crafting/64k_storage",
+            "blockstateSha256": "d8a1b0f2f21c2f05cd959f03213d0434c6bb41e27d5591d0c3c532aea142eb7f",
+            "solidRender": true,
+            "transparentFacade": false,
+            "blockStateLightEmission": 0,
+            "facadeQuadLightEmission": 0,
+            "statePolicy": {
+              "validPropertyValues": {
+                "formed": [
+                  "false",
+                  "true"
+                ],
+                "powered": [
+                  "false",
+                  "true"
+                ]
+              },
+              "normalization": {
+                "formed": "false",
+                "powered": "false"
+              },
+              "unknownOrMalformed": "atomic-original-resource-fallback",
+              "galleryPropertiesAreNeutralSampleOnly": true
+            }
+          },
+          {
+            "blockId": "ae2:256k_crafting_storage",
+            "properties": {
+              "formed": "false",
+              "powered": "false"
+            },
+            "materialFamily": "crafting-storage-256k-unformed",
+            "sourceModel": "ae2:block/crafting/256k_storage",
+            "blockstateSha256": "3458c6e521a76f7a0761c7efe956cc587826cfdd40d1f7c6284100990fb68905",
+            "solidRender": true,
+            "transparentFacade": false,
+            "blockStateLightEmission": 0,
+            "facadeQuadLightEmission": 0,
+            "statePolicy": {
+              "validPropertyValues": {
+                "formed": [
+                  "false",
+                  "true"
+                ],
+                "powered": [
+                  "false",
+                  "true"
+                ]
+              },
+              "normalization": {
+                "formed": "false",
+                "powered": "false"
+              },
+              "unknownOrMalformed": "atomic-original-resource-fallback",
+              "galleryPropertiesAreNeutralSampleOnly": true
+            }
+          },
+          {
+            "blockId": "ae2:crafting_monitor",
+            "properties": {
+              "facing": "north",
+              "formed": "false",
+              "powered": "false",
+              "spin": "0"
+            },
+            "materialFamily": "crafting-monitor-unformed-north",
+            "sourceModel": "ae2:block/crafting/monitor",
+            "blockstateSha256": "157e2a326b835180b369874b5f6978fab7c6796293945f85a971ac3f5b1cf2b7",
+            "solidRender": true,
+            "transparentFacade": false,
+            "blockStateLightEmission": 0,
+            "facadeQuadLightEmission": 0,
+            "statePolicy": {
+              "validPropertyValues": {
+                "facing": [
+                  "down",
+                  "up",
+                  "north",
+                  "south",
+                  "west",
+                  "east"
+                ],
+                "formed": [
+                  "false",
+                  "true"
+                ],
+                "powered": [
+                  "false",
+                  "true"
+                ],
+                "spin": [
+                  "0",
+                  "1",
+                  "2",
+                  "3"
+                ]
+              },
+              "normalization": {
+                "facing": "preserve",
+                "formed": "false",
+                "powered": "false",
+                "spin": "0"
+              },
+              "unknownOrMalformed": "atomic-original-resource-fallback",
+              "galleryPropertiesAreNeutralSampleOnly": true
+            }
+          },
+          {
+            "blockId": "ae2:crafting_unit",
+            "properties": {
+              "formed": "false",
+              "powered": "false"
+            },
+            "materialFamily": "crafting-unit-unformed",
+            "sourceModel": "ae2:block/crafting/unit",
+            "blockstateSha256": "b33f03d38953281265d6196e2a9f2494974275901b570f390ebf40fa3a338ece",
+            "solidRender": true,
+            "transparentFacade": false,
+            "blockStateLightEmission": 0,
+            "facadeQuadLightEmission": 0,
+            "statePolicy": {
+              "validPropertyValues": {
+                "formed": [
+                  "false",
+                  "true"
+                ],
+                "powered": [
+                  "false",
+                  "true"
+                ]
+              },
+              "normalization": {
+                "formed": "false",
+                "powered": "false"
+              },
+              "unknownOrMalformed": "atomic-original-resource-fallback",
+              "galleryPropertiesAreNeutralSampleOnly": true
+            }
+          },
+          {
+            "blockId": "ae2:crafting_accelerator",
+            "properties": {
+              "formed": "false",
+              "powered": "false"
+            },
+            "materialFamily": "crafting-accelerator-unformed",
+            "sourceModel": "ae2:block/crafting/accelerator",
+            "blockstateSha256": "f2b8fd7efa88b37968f55d8169eee48d84c1c673b5b2201719037771d5e18918",
+            "solidRender": true,
+            "transparentFacade": false,
+            "blockStateLightEmission": 0,
+            "facadeQuadLightEmission": 0,
+            "statePolicy": {
+              "validPropertyValues": {
+                "formed": [
+                  "false",
+                  "true"
+                ],
+                "powered": [
+                  "false",
+                  "true"
+                ]
+              },
+              "normalization": {
+                "formed": "false",
+                "powered": "false"
+              },
+              "unknownOrMalformed": "atomic-original-resource-fallback",
+              "galleryPropertiesAreNeutralSampleOnly": true
+            }
+          }
+        ],
+        "unprovenEligibility": "atomic-original-resource-fallback"
+      },
+      "unsupportedTransientModels": "atomic-original-resource-fallback",
+      "quartzGlassDependency": {
+        "profileId": "ae2-quartz-glass",
+        "profileSha256": "548e5bc00ef07c6d6b93b346422b596882ec11ca03de006065fa45fecb991200",
+        "resourceManifestSha256": "b51c708e7c4d26093c1b6f85b88d0be50572d3cfa76dbf802720f6ad79c7a7fa",
+        "textureManifestSha256": "65005c9b76800cdeba5c4598472a44dea131c9974672f89bf421452755fefb6a",
+        "textureCount": 19,
+        "textureSemanticAlgorithm": "decoded-width-height-argb-scanline-animation-meta-sha256-v1",
+        "textureSemanticSha256": "c51ced2667879b8b298400c81805cf7d4459b5ac88c36350bca7bb6ca2bfef50",
+        "glassState": {
+          "neighborPositionAxes": 6,
+          "neighborAppearance": "adjacent-real-quartz-or-neighbor-cable-bus-facade-appearance-through-RENDERING_FACADE_DIRECTION",
+          "sameCableBusOtherFacade": "not-a-GlassState-input",
+          "localPerpendicularFacades": "FacadeBuilder-mask-and-transparent-inset-only",
+          "visibleFace": "suppressed-for-adjacent-connected-glass",
+          "frameMask": "per-visible-face-four-tangent-neighbor-tests"
+        },
+        "facadeQuadEmission": "zero-for-quartz-and-vibrant-vibrant-source-block-light-is-15",
+        "higherPriorityOverridePolicy": "exact-semantic-match-or-atomic-original-resource-fallback"
+      },
+      "sourceParityGolden": {
+        "thinThicknessBlocks": "1/16-0.002",
+        "thinThicknessSixteenths": 0.968,
+        "transparentClassification": "not-BlockState.isSolidRender-level-position",
+        "transparentPerpendicularOpaqueInset": "one-thin-thickness-on-each-masked-perpendicular-bound",
+        "opaquePerpendicularFaceStripping": "facade-direction-bit-mask",
+        "opaquePerpendicularInnerCornerKick": "one-thin-thickness",
+        "cornerKickSourceEpsilon": {
+          "unit": "block",
+          "value": 1e-05
+        },
+        "cornerKickRuntimeEpsilon": {
+          "unit": "sixteenth",
+          "value": 0.00016
+        },
+        "cornerKickAnalyzerEpsilon": {
+          "unit": "block",
+          "value": 1e-05
+        },
+        "uvAfterClamp": "source-QuadReInterpolator-nominal-face-2d-dx-dy-bilinear;admitted-quad-projection-requires-exact-complete-InterpHelper-grid;post-clamp-and-corner-kick-target-uses-projected-dx-dy;noncompatible-projected-quads-atomic-original-resource-fallback",
+        "cardinalVariantTransform": "exact-signed-permutation-quarter-turn-blockstate-variant-and-uvlock-coordinate-transforms;avoids-host-float-matrix-drift-before-source-exact-InterpHelper-grid",
+        "quadShade": "source-BakedQuad.isShade",
+        "quadShadeHostProjection": "source-shade-bit-semantic-locked-host-prbm-has-no-per-quad-shade-channel",
+        "shadeFalseEligibility": "accepted-not-a-fallback-reason",
+        "lightEmissionHostProjection": "represented",
+        "quadAmbientOcclusion": "source-BakedQuad.hasAmbientOcclusion",
+        "ambientOcclusionDirection": "BlueMap-ResourceModelRenderer-source-faceDir-rotated-by-blockstate-variant-only;element-rotation-affects-vertices-not-AO-direction;runtime-uses-layer-lightFace-not-quad-nominal-face",
+        "mapColorIllumination": "BlueMap-map-color-illumination-uses-original-center-and-outward-world-light-only;element-lightEmission-affects-triangle-blocklight-not-map-color-brightness",
+        "quadTint": "untinted-or-one-distinct-nonnegative-source-tint-index;untinted-layers-may-coexist;shared-tinted-layers-use-host-block-color-calculator;mixed-nonnegative-tint-indices-atomic-original-resource-fallback",
+        "weightedVariants": "exact-minecraft-stone-four-alternative-geometry-and-material-host-position-projection-retains-frozen-M2-non-pixel-identical-randomized-uv-boundary;all-other-weighted-sets-require-every-alternative-collapse-to-one-bounded-static-geometry-material-uv-descriptor;otherwise-atomic-original-resource-fallback",
+        "adjacentCull": "exact-24-explicit-whitelist-same-state-table;ae2-quartz-glass-cross-family-render-shape-rule;exact-gallery-controls-glass-true-oak-log-false-oak-leaves-false;other-ordinary-tag-materials-use-bounded-BlueMap-cullingIdentical-same-state-host-projection",
+        "quartzCrossFamilySkipRendering": "true-for-any-two-ae2-QuartzGlassBlock-families-with-equal-render-shape",
+        "cutoutStripAabbNormalization": "minecraft-AABB-normalizes-each-generated-strip-endpoint-pair-with-min-max;transparent-inset-plus-boundary-reaching-cutout-may-reverse-endpoints-and-must-produce-the-normalized-strip-not-a-degenerate-strip",
+        "outputCullFace": "retain-only-when-original-cull-face-equals-facade-side"
+      }
+    },
+    "fallback": "missing-malformed-or-capped-atomic-original-resource-fallback",
+    "contentsItemsFluidsActivityAndDriveLeds": "excluded"
+  },
+  "resourceClosure": {
+    "directNeutralModelRootCount": 41,
+    "transitiveJsonCount": 43,
+    "pngCount": 56,
+    "pathCount": 99,
+    "totalBytes": 51306,
+    "directNeutralModelRoots": [
+      "ae2:part/quartz_fiber",
+      "ae2:part/toggle_bus_base",
+      "ae2:part/toggle_bus_status_off",
+      "ae2:part/inverted_toggle_bus_base",
+      "ae2:part/cable_anchor",
+      "ae2:part/cable_anchor_short",
+      "ae2:part/monitor_base",
+      "ae2:part/monitor_bright_off",
+      "ae2:part/monitor_medium_off",
+      "ae2:part/monitor_dark_off",
+      "ae2:part/storage_bus_base",
+      "ae2:part/storage_bus_off",
+      "ae2:part/import_bus_base",
+      "ae2:part/import_bus_off",
+      "ae2:part/export_bus_base",
+      "ae2:part/export_bus_off",
+      "ae2:part/level_emitter_base_off",
+      "ae2:part/level_emitter_status_off",
+      "ae2:part/transition_plane_off",
+      "ae2:part/annihilation_plane",
+      "ae2:part/formation_plane",
+      "ae2:part/display_base",
+      "ae2:part/display_status_off",
+      "ae2:part/pattern_encoding_terminal_off",
+      "ae2:part/crafting_terminal_off",
+      "ae2:part/terminal_off",
+      "ae2:part/storage_monitor_off",
+      "ae2:part/conversion_monitor_off",
+      "ae2:part/pattern_provider_base",
+      "ae2:part/interface_off",
+      "ae2:part/interface_base",
+      "ae2:part/pattern_access_terminal_off",
+      "ae2:part/energy_acceptor",
+      "ae2:part/p2p/p2p_tunnel_status_off",
+      "ae2:part/p2p/p2p_tunnel_frequency",
+      "ae2:part/p2p/p2p_tunnel_me",
+      "ae2:part/p2p/p2p_tunnel_redstone",
+      "ae2:part/p2p/p2p_tunnel_items",
+      "ae2:part/p2p/p2p_tunnel_fluids",
+      "ae2:part/p2p/p2p_tunnel_fe",
+      "ae2:part/p2p/p2p_tunnel_light"
+    ],
+    "sourceOnlyTextures": [
+      "ae2:part/annihilation_plane",
+      "ae2:part/formation_plane",
+      "ae2:part/plane_sides",
+      "ae2:part/p2p_tunnel_frequency"
+    ],
+    "requiredResourcesManifestSha256": "ae89e4fc3356503cc76ea92ac9cb11ade296551c9cca85cd583ffddbbe35bd76",
+    "requiredResourceSizesManifestSha256": "a79e93baef3f5d923730686fcc4de05ec30c8b7765aef8b32aaf871f9c4f3869",
+    "liveSemanticGate": {
+      "blueMapVersion": "5.22",
+      "modelCount": 43,
+      "modelAlgorithm": "resolved-parent-applied-elements-faces-ao-shade-light-uv-texture-cull-rotation-tint-float-bits-sha256-v1",
+      "modelSha256": "aefa42ad8427e8f2ac5b9f1c88807c978617d6ff70768a32223616b970b54251",
+      "textureCount": 56,
+      "textureAlgorithm": "decoded-width-height-argb-scanline-animation-meta-sha256-v1",
+      "textureSha256": "1bee2b2917edf3d1eb9ee24505f47a7377665da753f107ec1af9170d783bc833",
+      "higherPriorityOverridePolicy": "exact-semantic-match-or-atomic-original-resource-fallback"
+    }
+  },
+  "frozenAcceptedBaseline": {
+    "artifacts": [
+      {
+        "milestone": "M0",
+        "sizeBytes": 123527,
+        "sha256": "84a3b972d86a49a723e56a820ff3b59039654e2108d8ba965493d2302a5b1e41"
+      },
+      {
+        "milestone": "M1",
+        "sizeBytes": 161930,
+        "sha256": "e02beee7fdafeba9c3ef0ea42deda0a7709cc70df23d4778cfb7a72b1fdaf2e1"
+      },
+      {
+        "milestone": "M2",
+        "sizeBytes": 203599,
+        "sha256": "fc11af62359746990a2b35470c1da66e606b13a36be33a5b854d343eebb108d2"
+      },
+      {
+        "milestone": "M3a",
+        "sizeBytes": 259005,
+        "sha256": "55a11805373aebfde821e5009723ec7d672fb290127dbc60131ffa344c99518a"
+      },
+      {
+        "milestone": "M3b",
+        "sizeBytes": 323416,
+        "sha256": "f02123cb602bb7b6466d1529c5518e45862f53f413ce9a75ecc067d1a30607d1"
+      },
+      {
+        "milestone": "M3c",
+        "sizeBytes": 375558,
+        "sha256": "4c1b557ae4c79c738005b74e2f0c89ca4fbe503dd6ef0ba614fae34d8e449d47"
+      },
+      {
+        "milestone": "M3d",
+        "sizeBytes": 448915,
+        "sha256": "ca057f025338150255ea916402c08bc8b614f9398a063e7433bbe468808c93ee"
+      },
+      {
+        "milestone": "M3e",
+        "sizeBytes": 513674,
+        "sha256": "98ff55eaba609fc894b01e0c4d922b47f1871c324945f88f7a34864cf48b124f"
+      },
+      {
+        "milestone": "M3f",
+        "sizeBytes": 623591,
+        "sha256": "ca67c0fc433e43f8e0801ed8d2cccfe47aae317fbc329c099bc8cd741ec3b42b"
+      }
+    ],
+    "gallerySchemas": [
+      {
+        "milestone": "M2",
+        "schemaVersion": 3,
+        "sha256": "46f1be884675b27d8b6a599ffb9cfafd28610a03fd6f13a9b215cd887a9edadb"
+      },
+      {
+        "milestone": "M3a",
+        "schemaVersion": 4,
+        "sizeBytes": 550496,
+        "sha256": "95e9398ed6c9bf3edf7ceb910b84329fba0227037c003837c628ee0fb657f339"
+      },
+      {
+        "milestone": "M3b",
+        "schemaVersion": 5,
+        "sizeBytes": 1143610,
+        "sha256": "5a1297668b6922b03ae3f2ab089b643aa9521060e61607bbbae353a80d8494fc"
+      },
+      {
+        "milestone": "M3c",
+        "schemaVersion": 6,
+        "sizeBytes": 1517248,
+        "sha256": "2d4fbba58ea2c4d3ed741e93a8dd9857523cac9cda021ffd3111e6ac51aec602"
+      },
+      {
+        "milestone": "M3d",
+        "schemaVersion": 7,
+        "sizeBytes": 3030512,
+        "sha256": "c60d2afff5a1f92da4972963fcb926c38093f43bb6d7f550799f104349728a38"
+      },
+      {
+        "milestone": "M3e",
+        "schemaVersion": 8,
+        "sizeBytes": 3123572,
+        "sha256": "93963dd0bb60a276e1a17c6dd1f4eb916cd92bef4ef30a2e8bdc7a2bfa818b3e"
+      },
+      {
+        "milestone": "M3f",
+        "schemaVersion": 9,
+        "sizeBytes": 3314082,
+        "sha256": "75e6ba2f40631a95f20cfa00d7ca952e521bc2c7a4eb155926334a223a945f3a"
+      }
+    ],
+    "generatedOutputs": {
+      "src/main/resources/bluemap-ae2/profiles/ae2/19.2.17/profile.json": "2c27976a718834dbc97b3eb7cac6543c4ad2a966737c7bccbadb2b1c39c837e8",
+      "src/main/resources/bluemap-ae2/profiles/ae2/19.2.17/required-resources.sha256": "408297def444f1392b7b87fdc4b8520099513b4c57c63a4176b808ce61b4e1be",
+      "src/main/resources/bluemap-ae2/profiles/ae2/19.2.17/routes/quartz-glass/profile.json": "548e5bc00ef07c6d6b93b346422b596882ec11ca03de006065fa45fecb991200",
+      "src/main/resources/bluemap-ae2/profiles/ae2/19.2.17/routes/quartz-glass/required-resources.tsv": "b51c708e7c4d26093c1b6f85b88d0be50572d3cfa76dbf802720f6ad79c7a7fa",
+      "src/main/resources/bluemap-ae2/profiles/ae2/19.2.17/routes/crafting/profile.json": "676f63473b4827bb952a7c1f3fb457a6a03c3bfd0fb4b29a122b9f57468ba0f7",
+      "src/main/resources/bluemap-ae2/profiles/ae2/19.2.17/routes/crafting/required-resources.tsv": "dc474ba6ce7c4c2d53778827b1c1f9b4994594ea984ed7a2cbd62c40e1bc1183",
+      "src/main/resources/bluemap-ae2/profiles/ae2/19.2.17/routes/quantum-bridge/profile.json": "21afa152e3f56d8bdde9f602748c0efbca52a2c55d5dd7a836adca267c65480e",
+      "src/main/resources/bluemap-ae2/profiles/ae2/19.2.17/routes/quantum-bridge/required-resources.tsv": "717eed1ada75fb43c1324792c147cd8c2308d8c73ee82bf52d8de6bad4f74ed9",
+      "src/main/resources/bluemap-ae2/profiles/ae2/19.2.17/routes/m3-completion/profile.json": "281a335d3024ebbb97c6268e768826c467d6f7ea660989fd3dae204c6c03abf3",
+      "src/main/resources/bluemap-ae2/profiles/ae2/19.2.17/routes/m3-completion/required-resources.tsv": "3faf7f29e2878f5525541bad855cbc66b6d45786dc8fc6ee29a6fbbf4878cca1",
+      "src/main/resources/bluemap-ae2/profiles/extendedae/1.21-2.2.33-neoforge/profile.json": "eab467f46c27974e1f7d54fe749366b92eacd8d63d57bad1e8f3e452d82ad1df",
+      "src/main/resources/bluemap-ae2/profiles/extendedae/1.21-2.2.33-neoforge/required-resources.tsv": "5e72f79f45a3b120a89cf8b7a1fa15ce41bebaae62a63c6f3305ef40bd5d24ee"
+    }
+  },
+  "limitations": [
+    "exact-only-ae2-19.2.17",
+    "static-off-inactive-unlocked",
+    "machine-contents-held-items-fluids-and-activity-excluded",
+    "accurate-drive-led-state-excluded",
+    "missing-malformed-or-capped-observation-falls-back-atomically",
+    "no-upstream-model-texture-source-class-or-precomputed-mesh-is-bundled"
+  ]
+}

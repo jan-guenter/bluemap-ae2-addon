@@ -1,0 +1,6 @@
+{
+  "id": "bluemap-ae2",
+  "entrypoint": "io.github.janguenter.bluemap.ae2.BlueMapAe2Addon",
+  "dependencies": [],
+  "soft-dependencies": []
+}

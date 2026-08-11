@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "profileId": "extendedae",
+  "modId": "extendedae",
+  "version": "1.21-2.2.33-neoforge",
+  "artifact": "ExtendedAE-1.21-2.2.33-neoforge.jar",
+  "sizeBytes": 5573972,
+  "sha1": "e87867bffee36a28f9f4493f7bb7e7a5109a480f",
+  "sha256": "6652ed1ea4b71f585d48c05a195a77594a7a2bd1ecea0fc805db2122aafad734",
+  "sha512": "a61c6f606b5d0a27857b55b8fc6a670352d91f19d2a2dadd2d650f08ae6682f437e7b18a80c5e26122bbf7b70b007851f1aaa90442fce16d8729c71c1ec10225",
+  "minecraft": "1.21.1",
+  "neoforge": "21.1.234",
+  "coverageMilestone": "M3b",
+  "runtimeAcceptance": "technical-pending",
+  "humanAcceptance": "pending",
+  "supportedDrive": {
+    "blockId": "extendedae:ex_drive",
+    "syntheticBlockState": "bluemap_ae2:extendedae_ex_drive",
+    "slotCount": 20,
+    "frontSlotCount": 10,
+    "backSlotCount": 10,
+    "rowsPerSide": 5,
+    "columnsPerSide": 2,
+    "baseModel": "extendedae:block/extended_drive/extended_me_drive_base",
+    "emptyCellModel": "ae2:block/drive/drive_cell_empty",
+    "builtInCellModels": {
+      "extendedae:infinity_water_cell": "extendedae:block/drive/infinity_water_cell",
+      "extendedae:infinity_cobblestone_cell": "extendedae:block/drive/infinity_cobblestone_cell",
+      "extendedae:void_cell": "extendedae:block/drive/void_cell"
+    },
+    "dependentAe2CellCatalog": {
+      "profileId": "ae2",
+      "version": "19.2.17",
+      "itemCount": 23,
+      "occupiedModelCount": 12
+    },
+    "supportedItemCount": 26,
+    "occupiedModelCount": 15,
+    "ledSource": "position-color-no-texture",
+    "ledMaterialProxy": "ae2:block/drive/drive_front",
+    "ledPolicy": "static-offline-unknown",
+    "unknownCellPolicy": "atomic-whole-block-original-resource-fallback"
+  },
+  "textures": [
+    "extendedae:block/drive/infinity_cell",
+    "extendedae:block/drive/void_cell",
+    "extendedae:block/extended_drive/drive_inside",
+    "extendedae:block/extended_drive/ex_drive_bottom",
+    "extendedae:block/extended_drive/ex_drive_side",
+    "extendedae:block/extended_drive/ex_drive_top",
+    "extendedae:block/generics/front",
+    "extendedae:block/generics/side"
+  ],
+  "textureManifestSha256": "b3de9aede1d2fb8854925a11397009d7458084071d5d5acc293913e27d29b75e",
+  "resourcePartitions": {
+    "extendedaeExact": {
+      "pathCount": 15,
+      "blockstateCount": 1,
+      "modelCount": 6,
+      "textureCount": 8,
+      "totalBytes": 13242,
+      "manifestFormat": "path-tab-bytes-tab-sha256-lf",
+      "manifestSha256": "5e72f79f45a3b120a89cf8b7a1fa15ce41bebaae62a63c6f3305ef40bd5d24ee"
+    },
+    "dependentAe2M3aDrive": {
+      "profileId": "ae2",
+      "version": "19.2.17",
+      "pathCount": 26,
+      "textureCount": 10,
+      "manifestSha256": "a8d10416d0fce66d8a91ce9e0dc93a83d2f552da8762a0a90e183dc58f6745cf"
+    }
+  },
+  "requiredResourcesManifestSha256": "5e72f79f45a3b120a89cf8b7a1fa15ce41bebaae62a63c6f3305ef40bd5d24ee"
+}

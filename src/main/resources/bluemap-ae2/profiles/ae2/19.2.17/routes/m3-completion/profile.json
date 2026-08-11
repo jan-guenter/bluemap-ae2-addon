@@ -1,0 +1,287 @@
+{
+  "schemaVersion": 1,
+  "profileId": "ae2-m3-completion",
+  "modId": "ae2",
+  "version": "19.2.17",
+  "artifact": "appliedenergistics2-19.2.17.jar",
+  "sizeBytes": 8230896,
+  "sha1": "49c18d6a4af487957d7e5a6ad5dcbf71090b8e14",
+  "sha256": "460d779a0609b81409907d9956de8f6f70a1b0912257e3e5c3c7e75ac9630e95",
+  "sha512": "55edfd948366aff620881e0625e48c333a2cb847e73249bc0b588efbc4b86709992a8ffbca97ea387e270df4186fe7f74ee2f27b739f1c952e932becfb9dea33",
+  "source": {
+    "tag": "neoforge/v19.2.17",
+    "commit": "79ee2c704ad62941a426c26b1cb1f76ef5b2ee5a",
+    "artifact": "appliedenergistics2-19.2.17-sources.jar",
+    "sizeBytes": 3814167,
+    "sha1": "260a230e9fa1b4885489f7f58b30c19226093a52",
+    "sha256": "d2f451203cb61c2d21fae52c683083d2f72441ca7d26725f4df5934290492e6a",
+    "sha512": "c7feaf57a7f56b76dc019519b84cf4e0718cc334827c0497f17dd65921e723a2b98f9a072807a46f2c7e3431be71eeec3bdea9a990b661076af849e3d7ef2c34"
+  },
+  "minecraft": "1.21.1",
+  "neoforge": "21.1.234",
+  "coverageMilestone": "M3f",
+  "buildAcceptance": "local-build-candidate",
+  "runtimeAcceptance": "technical-lifecycle-pending",
+  "humanAcceptance": "pending",
+  "supportedBlocks": [
+    {
+      "id": "ae2:paint",
+      "projection": "persisted-splotches"
+    },
+    {
+      "id": "ae2:sky_stone_chest",
+      "projection": "static-closed-stone"
+    },
+    {
+      "id": "ae2:smooth_sky_stone_chest",
+      "projection": "static-closed-smooth"
+    },
+    {
+      "id": "ae2:crank",
+      "projection": "static-neutral"
+    },
+    {
+      "id": "ae2:inscriber",
+      "projection": "static-neutral-structural"
+    },
+    {
+      "id": "ae2:spatial_pylon",
+      "projection": "local-topology-static-offline-unknown"
+    }
+  ],
+  "syntheticBlockStates": {
+    "paint": "bluemap_ae2:paint",
+    "skyStoneChest": "bluemap_ae2:sky_stone_chest",
+    "crank": "bluemap_ae2:crank",
+    "inscriber": "bluemap_ae2:inscriber",
+    "spatialPylon": "bluemap_ae2:spatial_pylon"
+  },
+  "blockEntityIds": {
+    "paint": "ae2:paint",
+    "skyStoneChest": "ae2:sky_chest",
+    "crank": "ae2:crank",
+    "inscriber": "ae2:inscriber",
+    "spatialPylon": "ae2:spatial_pylon"
+  },
+  "persistedState": {
+    "paint": {
+      "blockProperties": {
+        "facing": "required-six-way-direction",
+        "light_level": "required-integer-0-through-2"
+      },
+      "blockEntity": {
+        "requiredId": "ae2:paint",
+        "dots": "required-bounded-byte-array",
+        "encoding": "count-byte-then-two-bytes-per-splotch",
+        "acceptedCount": "1-through-21",
+        "positionByte": "x-low-nibble-y-high-nibble-divided-by-15",
+        "valueByte": "direction-low-3-bits-color-next-4-bits-lumen-high-bit",
+        "acceptedDirectionOrdinals": "0-through-5",
+        "acceptedColorOrdinals": "0-through-15",
+        "malformed": "atomic-original-resource-fallback"
+      }
+    },
+    "skyStoneChest": {
+      "blockProperties": {
+        "facing": "required-horizontal-direction",
+        "waterlogged": "required-boolean"
+      },
+      "blockEntity": {
+        "requiredId": "ae2:sky_chest",
+        "inventory": "ignored",
+        "openers": "transient-excluded"
+      }
+    },
+    "crank": {
+      "blockProperties": {
+        "facing": "required-six-way-direction"
+      },
+      "blockEntity": {
+        "requiredId": "ae2:crank",
+        "rotation": "transient-stream-excluded-neutral-zero"
+      }
+    },
+    "inscriber": {
+      "blockProperties": {
+        "facing": "required-six-way-direction",
+        "spin": "required-integer-0-through-3",
+        "waterlogged": "required-boolean"
+      },
+      "blockEntity": {
+        "requiredId": "ae2:inscriber",
+        "inventory": "ignored",
+        "processingAndSmash": "excluded-neutral-zero"
+      }
+    },
+    "spatialPylon": {
+      "blockProperties": {
+        "powered_on": "accepted-but-ignored"
+      },
+      "blockEntity": {
+        "requiredId": "ae2:spatial_pylon",
+        "ordinarySavedRenderFields": [],
+        "visualStateOnly": [
+          "powered",
+          "online",
+          "axisPosition",
+          "axis"
+        ]
+      }
+    }
+  },
+  "topologyPolicy": {
+    "spatialPylon": {
+      "evidence": "uncached-native-axis-line-scan",
+      "maximumAxisLinePylons": 256,
+      "none": "isolated-base-plus-dim",
+      "start": "one-positive-axis-neighbor",
+      "end": "one-negative-axis-neighbor",
+      "middle": "two-opposite-same-axis-neighbors",
+      "formedAxisCaps": "outer-base-inner-red",
+      "formedEndpointLateralFaces": "outer-base-end-inner-red-end",
+      "formedMiddleLateralFaces": "outer-base-spanned-inner-red-spanned",
+      "uvPolicy": "exact-source-axis-role-rotations-and-v-flips",
+      "boundedLocallyInvalidComponent": "bounded-locally-invalid-component-unformed-base-plus-dim",
+      "missingMalformedOrCapped": "atomic-original-resource-fallback",
+      "globalClusterValidity": "not-claimed-beyond-bounded-local-component",
+      "onlineAndPower": "not-claimed-static-offline-unknown",
+      "extensionInteraction": "native-block-id-only-no-connector-claim"
+    }
+  },
+  "renderPolicy": {
+    "paint": {
+      "layer": "cutout",
+      "ambientOcclusion": false,
+      "light": "host-block-state-with-emissive-lumen-quads",
+      "spriteSelection": "abs-position-plus-value-modulo-3",
+      "orderedFaceOffset": "0.001-per-splotch-starting-at-0.001",
+      "trianglesPerSplotch": 2,
+      "maximumSplotches": 21,
+      "maximumTriangles": 42
+    },
+    "skyStoneChest": {
+      "layer": "entity-cutout-equivalent",
+      "pose": "closed",
+      "orientation": "horizontal-front-negative-yaw-about-center",
+      "inventory": "excluded",
+      "light": "world-derived",
+      "trianglesPerChest": 36
+    },
+    "crank": {
+      "layer": "cutout",
+      "pose": "neutral-zero-degrees",
+      "orientation": "full-source-block-orientation-about-center",
+      "ambientOcclusion": true,
+      "light": "world-derived",
+      "triangles": 34
+    },
+    "inscriber": {
+      "casingLayer": "stock-model",
+      "stampLayer": "solid",
+      "pose": "neutral-progress-zero",
+      "orientation": "full-source-block-orientation-about-center",
+      "itemsAndAnimation": "excluded",
+      "light": "world-derived",
+      "casingTrianglesBeforeNeighborCulling": 66,
+      "stampTriangles": 12,
+      "maximumTriangles": 78
+    },
+    "spatialPylon": {
+      "layer": "cutout",
+      "ambientOcclusion": false,
+      "power": "static-offline-unknown-non-emissive",
+      "light": "world-derived",
+      "triangles": 24
+    },
+    "atomicFallback": "per-block-original-resource-model",
+    "particles": "excluded",
+    "contentsItemsFluidsAndMachineActivity": "excluded"
+  },
+  "sourceTextures": [
+    "ae2:block/crank",
+    "ae2:block/inscriber",
+    "ae2:block/inscriber_inside",
+    "ae2:block/paint1",
+    "ae2:block/paint2",
+    "ae2:block/paint3",
+    "ae2:block/skyblockchest",
+    "ae2:block/skychest",
+    "ae2:block/spatial_pylon/base",
+    "ae2:block/spatial_pylon/base_end",
+    "ae2:block/spatial_pylon/base_spanned",
+    "ae2:block/spatial_pylon/dim",
+    "ae2:block/spatial_pylon/dim_end",
+    "ae2:block/spatial_pylon/dim_spanned",
+    "ae2:block/spatial_pylon/red",
+    "ae2:block/spatial_pylon/red_end",
+    "ae2:block/spatial_pylon/red_spanned"
+  ],
+  "emittedStaticTextures": [
+    "ae2:block/crank",
+    "ae2:block/inscriber",
+    "ae2:block/inscriber_inside",
+    "ae2:block/paint1",
+    "ae2:block/paint2",
+    "ae2:block/paint3",
+    "ae2:block/skyblockchest",
+    "ae2:block/skychest",
+    "ae2:block/spatial_pylon/base",
+    "ae2:block/spatial_pylon/base_end",
+    "ae2:block/spatial_pylon/base_spanned",
+    "ae2:block/spatial_pylon/dim",
+    "ae2:block/spatial_pylon/red",
+    "ae2:block/spatial_pylon/red_end",
+    "ae2:block/spatial_pylon/red_spanned"
+  ],
+  "fallbackOnlyTextures": [
+    "ae2:block/sky_stone_block",
+    "ae2:block/smooth_sky_stone_block"
+  ],
+  "resourcePartition": {
+    "pathCount": 33,
+    "blockstateCount": 6,
+    "modelCount": 8,
+    "textureCount": 19,
+    "sourceTextureCount": 17,
+    "emittedStaticTextureCount": 15,
+    "fallbackOnlyTextureCount": 2,
+    "totalBytes": 22491,
+    "acceptedProfileOverlapCount": 0,
+    "familyPaths": {
+      "paint": {
+        "count": 5,
+        "bytes": 1041
+      },
+      "spatialPylon": {
+        "count": 11,
+        "bytes": 2139
+      },
+      "skyStoneChest": {
+        "count": 8,
+        "bytes": 6051
+      },
+      "crank": {
+        "count": 5,
+        "bytes": 3993
+      },
+      "inscriber": {
+        "count": 4,
+        "bytes": 9267
+      }
+    }
+  },
+  "requiredResourcesManifestSha256": "3faf7f29e2878f5525541bad855cbc66b6d45786dc8fc6ee29a6fbbf4878cca1",
+  "sourceTextureManifestSha256": "030ebfafeeef07005946fcf5abf7b28365ec02001273b4bedcaa26b41f8de395",
+  "emittedStaticTextureManifestSha256": "4652a3110adac720845b559b990dabd32e55887d43bc113f85856052bd0a8a05",
+  "fallbackTextureManifestSha256": "aaff6681328dfc441a01f5a014182e914a82598395b7a594809b4652281a1146",
+  "limitations": [
+    "exact-only-ae2-19.2.17",
+    "spatial-pylon-role-is-bounded-local-and-non-authoritative",
+    "spatial-pylon-online-power-and-global-validity-beyond-the-bounded-local-component-are-not-claimed",
+    "machine-contents-items-fluids-and-activity-are-excluded",
+    "sky-chests-are-always-closed",
+    "crank-and-inscriber-use-neutral-static-poses",
+    "particles-are-excluded",
+    "non-native-extension-connectors-are-not-claimed"
+  ]
+}

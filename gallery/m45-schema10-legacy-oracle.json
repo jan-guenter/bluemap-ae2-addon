@@ -1,0 +1,58 @@
+{
+  "anchors": {
+    "241 100 249": {
+      "geometry_signature": "7c09ca1b978183e9126a5204ed045038a318a8beeabf29ea121750eb6ccaf5f2",
+      "material_triangles": {
+        "ae2:block/drive/drive_front": 38,
+        "ae2:block/drive/drive_inside": 16,
+        "ae2:block/drive/drive_inside_bottom": 2,
+        "ae2:block/drive/drive_inside_top": 10,
+        "ae2:block/generics/back": 6,
+        "ae2:block/generics/bottom": 2,
+        "ae2:block/generics/front": 8,
+        "ae2:block/generics/side": 16,
+        "ae2:block/generics/top": 2,
+        "megacells:block/drive/cells/standard_cell": 6,
+        "megacells:block/drive/cells/standard_cell_tiers": 6
+      },
+      "nonlighting_attribute_signature": "a0f4ef646e3ae65c2f8ac29a4aaaddc090ec35dc0c6c67e74fa05264065263a5",
+      "triangle_count": 112
+    },
+    "266 100 266": {
+      "geometry_signature": "7a4367725e336a36629dc9f6de38cbc52bb074e185c4d6929ad8f8e3a0052af0",
+      "material_triangles": {
+        "ae2:block/drive/drive_front": 66,
+        "ae2:block/drive/drive_inside_top": 8,
+        "ae2:block/generics/bottom": 2,
+        "ae2:block/generics/top": 2,
+        "extendedae:block/extended_drive/drive_inside": 16,
+        "extendedae:block/extended_drive/ex_drive_bottom": 2,
+        "extendedae:block/extended_drive/ex_drive_side": 8,
+        "extendedae:block/extended_drive/ex_drive_top": 2,
+        "extendedae:block/generics/front": 8,
+        "extendedae:block/generics/side": 12,
+        "megacells:block/drive/cells/standard_cell": 6,
+        "megacells:block/drive/cells/standard_cell_tiers": 6
+      },
+      "nonlighting_attribute_signature": "82c2247c1e2a9898392d261488be9cbebc28fd9c7274cc9f93806042a3b1bb9b",
+      "triangle_count": 138
+    },
+    "318 100 261": {
+      "geometry_signature": "587ac8c9c3b71f5d5b569dd0675dcb6bd51804b14f3a472e56777344960c50fe",
+      "material_triangles": {
+        "ae2:block/crafting/1k_storage_light": 8,
+        "ae2:block/crafting/light_base": 8,
+        "ae2:block/crafting/ring_side_hor": 16
+      },
+      "nonlighting_attribute_signature": "818f0ab3c1e25664d33a4203058324b03676ce0760e69c6d4f966f3dbf704c83",
+      "triangle_count": 32
+    }
+  },
+  "coverage_id": "m45-schema10-legacy-upgrades",
+  "route_ids": [
+    "expandedae",
+    "megacells"
+  ],
+  "schema_version": 2,
+  "signature_schema_version": 11
+}
