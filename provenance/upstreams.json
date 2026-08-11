@@ -14,13 +14,13 @@
       "M4",
       "M5"
     ],
-    "status": "implemented-local-review-candidate",
+    "status": "owner-accepted-m4-m5",
     "acceptance": {
       "exact_artifact_and_resource_gate": "passed",
-      "technical_acceptance": "pending",
-      "runtime_lifecycle": "pending",
-      "human_visual_acceptance": "pending",
-      "publication": "not-authorized"
+      "technical_acceptance": "passed",
+      "runtime_lifecycle": "passed",
+      "human_visual_acceptance": "passed-2026-08-12",
+      "publication": "authorized-2026-08-12"
     },
     "verification": {
       "script": "tools/verify_m45_artifacts.py",

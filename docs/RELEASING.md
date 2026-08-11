@@ -14,8 +14,8 @@ The owner accepted the exact artifacts in BlueMap and separately authorized
 publication on 2026-08-12. Candidate aliases remain beside hash-exact accepted
 aliases. Publication is now authorized but is not complete.
 
-The repository remains unpublished while the authorized first-release process
-is completed and independently verified. The
+The add-on remains unreleased while the authorized first-release process is
+completed and independently verified in the public repository. The
 exact M0 runtime artifact was
 human accepted on 2026-08-04. The exact 161,930-byte M1 SNAPSHOT JAR with
 SHA-256
@@ -262,7 +262,7 @@ scope before any publication attempt.
 
 ## Version contract
 
-- Development version: `0.1.0-alpha.1-SNAPSHOT`.
+- Release-candidate version: `0.1.0-alpha.1`.
 - First possible gated release: no earlier than complete M0-M5 acceptance,
   including S1 cable-bus structural-completeness visual acceptance;
   the version remains provisional until then.
