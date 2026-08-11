@@ -12,7 +12,7 @@ permissions:
   id-token: write
 
 env:
-  PROMOTION_JAVA_VERSION: '21.0.12+8'
+  PROMOTION_JAVA_VERSION: '21.0.12+8.0.LTS'
 
 concurrency:
   # Every version updates the same artifact-root maven-metadata.xml.
