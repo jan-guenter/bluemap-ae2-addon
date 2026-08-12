@@ -41,6 +41,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -841,38 +843,43 @@ class NativeFacadeResourceModelsTest {
     }
 
     private static ResourcePack exactResourcePack() throws Exception {
-        Path ae2Main = Path.of(
-                "/root/work/allthemons/research/ae2-19.2.17/src/main/resources"
+        Path ae2Jar = requiredPinnedPath("bluemapAe2.testAe2Jar");
+        Path minecraftClientJar = requiredPinnedPath(
+                "bluemapAe2.testMinecraftClientJar"
         );
-        Path ae2Generated = Path.of(
-                "/root/work/allthemons/research/ae2-19.2.17/src/generated/resources"
+        Path blueMapSource = requiredPinnedPath(
+                "bluemapAe2.testBlueMapSourcePath"
         );
         ResourcePack pack = new ResourcePack(new PackVersion(34, 0));
         pack.loadResources(List.of(
-                Path.of("/root/work/allthemons/bluemap-backport/core/src/main/"
-                        + "resourceExtensions"),
-                ae2Main,
-                ae2Generated,
-                Path.of("/root/.gradle/caches/neoformruntime/artifacts/"
-                        + "minecraft_1.21.1_client.jar")
+                blueMapSource.resolve("core/src/main/resourceExtensions"),
+                ae2Jar,
+                minecraftClientJar
         ));
         for (Key key : M3cQuartzGlassResourceModels.requiredTextures()) {
             if (pack.getTextures().get(key) != null) {
                 continue;
             }
-            Path relative = Path.of(
-                    "assets",
-                    key.getNamespace(),
-                    "textures",
-                    key.getValue() + ".png"
-            );
-            Path source = Files.exists(ae2Generated.resolve(relative))
-                    ? ae2Generated.resolve(relative) : ae2Main.resolve(relative);
-            BufferedImage image = ImageIO.read(source.toFile());
-            assertNotNull(image, source.toString());
+            String entryName = "assets/" + key.getNamespace() + "/textures/"
+                    + key.getValue() + ".png";
+            BufferedImage image;
+            try (ZipFile archive = new ZipFile(ae2Jar.toFile())) {
+                ZipEntry entry = archive.getEntry(entryName);
+                assertNotNull(entry, entryName);
+                image = ImageIO.read(archive.getInputStream(entry));
+            }
+            assertNotNull(image, entryName);
             pack.getTextures().put(key, Texture.from(key, image));
         }
         return pack;
+    }
+
+    private static Path requiredPinnedPath(String property) {
+        String value = System.getProperty(property, "");
+        assertFalse(value.isBlank(), property);
+        Path path = Path.of(value);
+        assertTrue(Files.exists(path), path.toString());
+        return path;
     }
 
     private static Map<String, Map<String, String>> explicitWhitelistDefaults() {

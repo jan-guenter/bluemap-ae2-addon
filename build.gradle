@@ -50,6 +50,12 @@ tasks.withType(AbstractArchiveTask).configureEach {
 
 tasks.named('test', Test).configure {
     useJUnitPlatform()
+    systemProperty 'bluemapAe2.testAe2Jar',
+            providers.gradleProperty('ae2Jar').getOrElse('')
+    systemProperty 'bluemapAe2.testMinecraftClientJar',
+            providers.gradleProperty('minecraftClientJar').getOrElse('')
+    systemProperty 'bluemapAe2.testBlueMapSourcePath',
+            providers.gradleProperty('bluemapSourcePath').getOrElse('')
 }
 
 tasks.register('testRuntimeEvidenceAnalyzer', Exec) {
