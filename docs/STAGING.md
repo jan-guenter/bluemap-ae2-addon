@@ -355,7 +355,8 @@ on `data-atm120`, and the historical PVC was untouched. S1 remains an exact
 human-accepted local checkpoint and is unreleased. M4/M5 was accepted and
 publication was separately authorized on 2026-08-12. The distinct
 non-SNAPSHOT gate subsequently published immutable prerelease
-`v0.1.0-alpha.1`; its accepted staging alias is
+`v0.1.0-alpha.1`; the hash-exact staging alias for that published prerelease
+build, distinct from the M4/M5 local-checkpoint aliases, is
 `ae2-addon-0.1.0-alpha.1-accepted.jar` at 1,207,650 bytes and SHA-256
 `8372b4f043f3091f6aa1fed6a76006e5e04cbf462647472beb392c9789da9e03`.
 

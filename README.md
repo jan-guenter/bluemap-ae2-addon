@@ -5,11 +5,11 @@ whose geometry is normally constructed by Minecraft client code.
 
 ## Current status
 
-**M4/M5 is the complete owner-accepted All the Mons 1.2.0 release. Its
-reproducible artifacts, schema-11 evidence, isolated technical lifecycle, and
-bounded BlueMap visual review passed. Version `0.1.0-alpha.1` was published as
-an immutable GitHub prerelease with attestations and Maven coordinates on
-2026-08-12.** The exact
+**M4/M5 is the complete owner-accepted All the Mons 1.2.0 local checkpoint.
+Its reproducible artifacts, schema-11 evidence, isolated technical lifecycle,
+and bounded BlueMap visual review passed. Tag `v0.1.0-alpha.1` was published as
+an immutable GitHub prerelease with attestations and Maven coordinate
+`io.github.jan-guenter:bluemap-ae2-addon:0.1.0-alpha.1` on 2026-08-12.** The exact
 target is All the Mons `1.2.0` at pack commit
 `c7bb230f21d14d26859d0b92548f089b3a493ad9`, Minecraft `1.21.1`, NeoForge
 `21.1.248`, Java `21`, AE2 `19.2.17`, AppliedFlux
@@ -540,8 +540,8 @@ missing, malformed, unknown, or unsupported observations use atomic original-
 resource fallback. The exact schema-11 gallery and isolated lifecycle passed
 technical validation. The owner completed the bounded BlueMap visual review
 on 2026-08-12 and accepted the exact JAR, gallery, and map archive. The same
-message separately authorized publication. The exact release-version build is
-now published as immutable prerelease `0.1.0-alpha.1`.
+message separately authorized publication. The exact release-version build
+was published as immutable prerelease `v0.1.0-alpha.1`.
 
 Ordinary chunk data does not preserve live AE2 power, channel or connection
 state. The profile therefore uses the explicit `idle-off-unknown` policy and
