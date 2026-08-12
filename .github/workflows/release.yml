@@ -4,6 +4,12 @@ on:
   push:
     tags:
       - 'v*'
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: Immutable v* tag to resume after a safe prepublication failure
+        required: true
+        type: string
 
 permissions:
   contents: write
@@ -13,6 +19,7 @@ permissions:
 
 env:
   PROMOTION_JAVA_VERSION: '21.0.12+8.0.LTS'
+  RELEASE_TAG: ${{ inputs.release_tag || github.ref_name }}
 
 concurrency:
   # Every version updates the same artifact-root maven-metadata.xml.
@@ -22,11 +29,12 @@ concurrency:
 jobs:
   release:
     runs-on: ubuntu-24.04
-    timeout-minutes: 60
+    timeout-minutes: 120
     steps:
       - name: Check out tagged source
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          ref: ${{ env.RELEASE_TAG }}
           fetch-depth: 0
           persist-credentials: false
 
@@ -38,9 +46,14 @@ jobs:
             echo "Release versions must not end in -SNAPSHOT" >&2
             exit 1
           fi
-          test "${GITHUB_REF_NAME}" = "v${version}"
+          test "${RELEASE_TAG}" = "v${version}"
+          [[ "${RELEASE_TAG}" == v* ]]
+          git fetch --no-tags origin \
+            "refs/tags/${RELEASE_TAG}:refs/tags/${RELEASE_TAG}"
+          test "$(git rev-parse 'HEAD^{commit}')" = \
+            "$(git rev-parse "refs/tags/${RELEASE_TAG}^{commit}")"
           git fetch --no-tags origin main:refs/remotes/origin/main
-          git merge-base --is-ancestor "${GITHUB_SHA}" refs/remotes/origin/main
+          git merge-base --is-ancestor HEAD refs/remotes/origin/main
           echo "VERSION=${version}" >> "${GITHUB_ENV}"
 
       - name: Check out exact BlueMap backport
@@ -189,7 +202,7 @@ jobs:
             -Pm45AdvancedAeJar="${RUNNER_TEMP}/pinned-evidence/AdvancedAE-1.6.12-1.21.1.jar"
             -Pm45AthenaJar="${RUNNER_TEMP}/pinned-evidence/athena-neoforge-1.21.1-4.0.6.jar"
             -Pm45ExtendedAeJar="${RUNNER_TEMP}/pinned-evidence/ExtendedAE-1.21-2.2.35-neoforge.jar"
-            -PreleaseTag="${GITHUB_REF_NAME}"
+            -PreleaseTag="${RELEASE_TAG}"
           )
           tasks=(
             clean
@@ -402,16 +415,16 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           notes="Owner-accepted exact-version All the Mons 1.2.0 M0-M5 release for AE2 19.2.17, the seven pinned M4/M5 extension inputs, and the Java 21 Minecraft 1.21.1 BlueMap 5.22 backport. Coverage is limited to the documented static profiles; this is not a general AE2 compatibility claim or a production recommendation."
-          if gh release view "${GITHUB_REF_NAME}" >/dev/null 2>&1; then
-            test "$(gh release view "${GITHUB_REF_NAME}" \
+          if gh release view "${RELEASE_TAG}" >/dev/null 2>&1; then
+            test "$(gh release view "${RELEASE_TAG}" \
               --json isDraft --jq '.isDraft')" = true
-            gh release edit "${GITHUB_REF_NAME}" \
+            gh release edit "${RELEASE_TAG}" \
               --draft \
               --title "BlueMap AE2 Add-on ${VERSION}" \
               --verify-tag
-            gh release upload "${GITHUB_REF_NAME}" release/* --clobber
+            gh release upload "${RELEASE_TAG}" release/* --clobber
           else
-            gh release create "${GITHUB_REF_NAME}" release/* \
+            gh release create "${RELEASE_TAG}" release/* \
               --draft \
               --generate-notes \
               --notes "${notes}" \
@@ -431,7 +444,7 @@ jobs:
             "bluemap-ae2-addon-${VERSION}.module.json"
             "bluemap-ae2-addon-${VERSION}.pom"
           )
-          mapfile -t actual < <(gh release view "${GITHUB_REF_NAME}" \
+          mapfile -t actual < <(gh release view "${RELEASE_TAG}" \
             --json assets --jq '.assets[].name' | LC_ALL=C sort)
           if ! diff -u \
               <(printf '%s\n' "${expected[@]}" | LC_ALL=C sort) \
@@ -441,7 +454,7 @@ jobs:
           fi
           downloaded="${RUNNER_TEMP}/draft-assets"
           mkdir -p "${downloaded}"
-          gh release download "${GITHUB_REF_NAME}" --dir "${downloaded}"
+          gh release download "${RELEASE_TAG}" --dir "${downloaded}"
           for asset in release/*; do
             cmp "${asset}" "${downloaded}/$(basename "${asset}")"
           done
@@ -459,7 +472,7 @@ jobs:
         run: |
           ./gradlew --no-daemon \
             -PbluemapSourcePath=.ci/bluemap \
-            "-PreleaseTag=${GITHUB_REF_NAME}" \
+            "-PreleaseTag=${RELEASE_TAG}" \
             verifyReleaseCandidate \
             publishAddonPublicationToGitHubPackagesRepository
 
@@ -475,19 +488,19 @@ jobs:
             "bluemap-ae2-addon-${VERSION}.module.json"
             "bluemap-ae2-addon-${VERSION}.pom"
           )
-          mapfile -t actual < <(gh release view "${GITHUB_REF_NAME}" \
+          mapfile -t actual < <(gh release view "${RELEASE_TAG}" \
             --json assets --jq '.assets[].name' | LC_ALL=C sort)
           diff -u \
             <(printf '%s\n' "${expected[@]}" | LC_ALL=C sort) \
             <(printf '%s\n' "${actual[@]}")
           downloaded="${RUNNER_TEMP}/final-draft-assets"
           mkdir -p "${downloaded}"
-          gh release download "${GITHUB_REF_NAME}" --dir "${downloaded}"
+          gh release download "${RELEASE_TAG}" --dir "${downloaded}"
           for asset in release/*; do
             cmp "${asset}" "${downloaded}/$(basename "${asset}")"
           done
           if [[ "${VERSION}" == *-* ]]; then
-            gh release edit "${GITHUB_REF_NAME}" --draft=false --prerelease
+            gh release edit "${RELEASE_TAG}" --draft=false --prerelease
           else
-            gh release edit "${GITHUB_REF_NAME}" --draft=false --latest
+            gh release edit "${RELEASE_TAG}" --draft=false --latest
           fi
