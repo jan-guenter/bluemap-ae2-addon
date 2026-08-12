@@ -270,7 +270,8 @@ scope before any publication attempt.
 - Any pull request that changes `addon_version` must also update the changelog,
   compatibility, provenance and relevant runtime evidence.
 - Tags must identify a clean commit reachable from `main`.
-- Release-candidate builds use exact Eclipse Temurin `21.0.12+8`. A moving
+- Release-candidate builds use exact Eclipse Temurin `21.0.12+8`. GitHub's
+  setup catalog selector for that same build is `21.0.12+8.0.LTS`. A moving
   Java 21 selector is not a promotion toolchain.
 - Treat published Maven versions and release tags as immutable. Never reuse a
   version or move its tag; the repository controls below enforce that policy.
