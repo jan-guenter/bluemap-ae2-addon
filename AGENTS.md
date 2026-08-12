@@ -418,9 +418,10 @@ candidate aliases remain on `data-atm120` beside hash-exact accepted aliases
 `ae2-addon-m5-accepted.jar`, `ae2-m5-gallery-accepted.zip`, and
 `ae2-m5-enabled-accepted-map-2026-08-11.tar.gz`. The owner accepted those exact
 artifacts in BlueMap and separately authorized publication on 2026-08-12. S1
-is the accepted predecessor. Release preparation is authorized, but do not
-claim a release, Maven publication, tag, or root integration until each action
-has actually completed and been independently verified.
+is the accepted predecessor. Immutable prerelease `v0.1.0-alpha.1`, both JAR
+attestations, the six checksum-closed assets, and Maven coordinate
+`io.github.jan-guenter:bluemap-ae2-addon:0.1.0-alpha.1` were independently
+verified after publication. Root workspace integration remains separate.
 
 ## Project invariants
 

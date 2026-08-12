@@ -449,6 +449,10 @@ io.github.jan-guenter:bluemap-ae2-addon:<version>
 The release workflow must never upload the AE2 input JAR, staging worlds,
 screenshots, logs or credentials.
 
+The first execution of this process completed on 2026-08-12 for immutable
+prerelease `v0.1.0-alpha.1`. The release assets and checksum ledger, both JAR
+attestations, and Maven version `0.1.0-alpha.1` were independently verified.
+
 GitHub's public Maven registry still requires authentication to download a
 package. Use a token with package-read access for independent Maven
 verification; GitHub Release assets remain the normal unauthenticated

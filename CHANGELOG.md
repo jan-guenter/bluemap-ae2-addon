@@ -4,13 +4,20 @@
 
 ## [0.1.0-alpha.1] - 2026-08-12
 
+- Publish immutable prerelease `v0.1.0-alpha.1` from the protected tag. The
+  workflow reproduced all four release outputs twice, verified the exact six
+  release assets, attested the production and sources JARs, and published
+  Maven coordinate `io.github.jan-guenter:bluemap-ae2-addon:0.1.0-alpha.1`.
+  The release production JAR is 1,207,650 bytes with SHA-256
+  `8372b4f043f3091f6aa1fed6a76006e5e04cbf462647472beb392c9789da9e03`.
+
 - Record owner BlueMap visual acceptance on 2026-08-12 of the exact M4/M5
   production JAR, schema-11 gallery, and deterministic enabled map archive.
   Bind hash-exact accepted aliases `ae2-addon-m5-accepted.jar`,
   `ae2-m5-gallery-accepted.zip`, and
   `ae2-m5-enabled-accepted-map-2026-08-11.tar.gz` beside the retained candidate
-  aliases. The owner separately authorized first publication; non-SNAPSHOT
-  release-version artifacts remain a distinct exact gate.
+  aliases. The owner separately authorized first publication; the exact
+  non-SNAPSHOT release-version gate subsequently passed.
 
 - Complete the All the Mons `1.2.0` M4/M5 implementation as a local review
   candidate for exact AppliedFlux `1.21-2.1.5-neoforge`, ME Requester
@@ -66,7 +73,7 @@
   `44422aa71c2f450951d8433e25e01de7a0b00dbd0d9c4fa4ff74ca98e649a2df`.
   Candidate and hash-exact accepted aliases now coexist on `data-atm120`.
   Owner visual acceptance and the separate publication decision were recorded
-  on 2026-08-12; the non-SNAPSHOT release itself remains pending.
+  on 2026-08-12; the non-SNAPSHOT release was published later that day.
 - Retarget the local S1 checkpoint to All the Mons `1.2.0` at pack commit
   `c7bb230f21d14d26859d0b92548f089b3a493ad9`, NeoForge `21.1.248`, the
   canonical 6,467,235-byte BlueMap
