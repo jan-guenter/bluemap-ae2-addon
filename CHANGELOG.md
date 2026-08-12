@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## [0.1.0-alpha.1] - 2026-08-12
+
 - Record owner BlueMap visual acceptance on 2026-08-12 of the exact M4/M5
   production JAR, schema-11 gallery, and deterministic enabled map archive.
   Bind hash-exact accepted aliases `ae2-addon-m5-accepted.jar`,

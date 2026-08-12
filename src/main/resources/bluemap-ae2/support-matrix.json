@@ -7,20 +7,20 @@
     "neoforge": "21.1.248",
     "java": 21
   },
-  "developmentState": "implemented-local-review-candidate",
-  "publicationGate": "blocked-pending-technical-runtime-human-acceptance-and-separate-publication-decision",
+  "developmentState": "owner-accepted-m4-m5-release-preparation",
+  "publicationGate": "authorized-pending-exact-release-artifact-validation",
   "currentCandidate": {
     "milestones": [
       "M4",
       "M5"
     ],
-    "status": "implemented-local-review-candidate",
+    "status": "owner-accepted-m4-m5",
     "acceptance": {
       "exactArtifactAndResourceGate": "passed",
-      "technical": "pending",
-      "runtimeLifecycle": "pending",
-      "humanVisual": "pending",
-      "publication": "not-authorized"
+      "technical": "passed",
+      "runtimeLifecycle": "passed",
+      "humanVisual": "passed-2026-08-12",
+      "publication": "authorized-2026-08-12"
     },
     "artifactCount": 8,
     "extensionArtifactCount": 7,
@@ -34,8 +34,8 @@
       "modId": "ae2",
       "version": "19.2.17",
       "status": "current-core-and-s1-accepted-base",
-      "coverage": "s1-accepted-base-plus-m4-m5-implementation-pending-acceptance",
-      "runtimeAcceptance": "s1-human-accepted-m4-m5-pending",
+      "coverage": "s1-accepted-base-plus-owner-accepted-m4-m5",
+      "runtimeAcceptance": "s1-and-m4-m5-human-accepted",
       "artifact": {
         "fileName": "appliedenergistics2-19.2.17.jar",
         "sizeBytes": 8230896,
@@ -54,12 +54,12 @@
       "modId": "appflux",
       "version": "1.21-2.1.5-neoforge",
       "milestone": "M4",
-      "status": "implemented-local-review-candidate",
+      "status": "owner-accepted-m4-m5",
       "acceptance": {
         "exactArtifactAndResourceGate": "passed",
-        "technical": "pending",
-        "runtimeLifecycle": "pending",
-        "humanVisual": "pending"
+        "technical": "passed",
+        "runtimeLifecycle": "passed",
+        "humanVisual": "passed-2026-08-12"
       },
       "artifact": {
         "fileName": "AppliedFlux-1.21-2.1.5-neoforge.jar",
@@ -100,12 +100,12 @@
       "modId": "merequester",
       "version": "1.21.1-1.4.3",
       "milestone": "M4",
-      "status": "implemented-local-review-candidate",
+      "status": "owner-accepted-m4-m5",
       "acceptance": {
         "exactArtifactAndResourceGate": "passed",
-        "technical": "pending",
-        "runtimeLifecycle": "pending",
-        "humanVisual": "pending"
+        "technical": "passed",
+        "runtimeLifecycle": "passed",
+        "humanVisual": "passed-2026-08-12"
       },
       "artifact": {
         "fileName": "merequester-neoforge-1.21.1-1.4.3.jar",
@@ -142,12 +142,12 @@
       "modId": "expandedae",
       "version": "2.1.1",
       "milestone": "M4",
-      "status": "implemented-local-review-candidate",
+      "status": "owner-accepted-m4-m5",
       "acceptance": {
         "exactArtifactAndResourceGate": "passed",
-        "technical": "pending",
-        "runtimeLifecycle": "pending",
-        "humanVisual": "pending"
+        "technical": "passed",
+        "runtimeLifecycle": "passed",
+        "humanVisual": "passed-2026-08-12"
       },
       "artifact": {
         "fileName": "expandedae-2.1.1.jar",
@@ -187,12 +187,12 @@
       "modId": "megacells",
       "version": "4.11.0",
       "milestone": "M5",
-      "status": "implemented-local-review-candidate",
+      "status": "owner-accepted-m4-m5",
       "acceptance": {
         "exactArtifactAndResourceGate": "passed",
-        "technical": "pending",
-        "runtimeLifecycle": "pending",
-        "humanVisual": "pending"
+        "technical": "passed",
+        "runtimeLifecycle": "passed",
+        "humanVisual": "passed-2026-08-12"
       },
       "artifact": {
         "fileName": "megacells-4.11.0.jar",
@@ -253,12 +253,12 @@
       "modId": "advanced_ae",
       "version": "1.6.12-1.21.1",
       "milestone": "M5",
-      "status": "implemented-local-review-candidate",
+      "status": "owner-accepted-m4-m5",
       "acceptance": {
         "exactArtifactAndResourceGate": "passed",
-        "technical": "pending",
-        "runtimeLifecycle": "pending",
-        "humanVisual": "pending"
+        "technical": "passed",
+        "runtimeLifecycle": "passed",
+        "humanVisual": "passed-2026-08-12"
       },
       "artifact": {
         "fileName": "AdvancedAE-1.6.12-1.21.1.jar",
@@ -323,12 +323,12 @@
       "modId": "extendedae",
       "version": "1.21-2.2.35-neoforge",
       "milestone": "M5",
-      "status": "implemented-local-review-candidate",
+      "status": "owner-accepted-m4-m5",
       "acceptance": {
         "exactArtifactAndResourceGate": "passed",
-        "technical": "pending",
-        "runtimeLifecycle": "pending",
-        "humanVisual": "pending"
+        "technical": "passed",
+        "runtimeLifecycle": "passed",
+        "humanVisual": "passed-2026-08-12"
       },
       "artifact": {
         "fileName": "ExtendedAE-1.21-2.2.35-neoforge.jar",

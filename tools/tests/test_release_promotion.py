@@ -22,7 +22,9 @@ class ReleasePromotionContractTest(unittest.TestCase):
         ]
 
         self.assertEqual("21.0.12+8", build_version)
-        self.assertEqual([build_version, build_version], workflow_versions)
+        self.assertEqual(
+            ["21.0.12+8.0.LTS", "21.0.12+8.0.LTS"], workflow_versions
+        )
         self.assertNotIn("java-version: '21'", CI)
         self.assertNotIn("java-version: '21'", RELEASE)
 

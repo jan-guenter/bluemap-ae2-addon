@@ -50,6 +50,12 @@ tasks.withType(AbstractArchiveTask).configureEach {
 
 tasks.named('test', Test).configure {
     useJUnitPlatform()
+    systemProperty 'bluemapAe2.testAe2Jar',
+            providers.gradleProperty('ae2Jar').getOrElse('')
+    systemProperty 'bluemapAe2.testMinecraftClientJar',
+            providers.gradleProperty('minecraftClientJar').getOrElse('')
+    systemProperty 'bluemapAe2.testBlueMapSourcePath',
+            providers.gradleProperty('bluemapSourcePath').getOrElse('')
 }
 
 tasks.register('testRuntimeEvidenceAnalyzer', Exec) {
@@ -1654,19 +1660,18 @@ tasks.register('verifyProductionJar') {
                             java       : 21
                     ] ||
                     supportMatrix.developmentState !=
-                            'implemented-local-review-candidate' ||
+                            'owner-accepted-m4-m5-release-preparation' ||
                     supportMatrix.publicationGate !=
-                            'blocked-pending-technical-runtime-human-acceptance-' +
-                                    'and-separate-publication-decision' ||
+                            'authorized-pending-exact-release-artifact-validation' ||
                     supportMatrix.currentCandidate != [
                             milestones               : ['M4', 'M5'],
-                            status                   : 'implemented-local-review-candidate',
+                            status                   : 'owner-accepted-m4-m5',
                             acceptance               : [
                                     exactArtifactAndResourceGate: 'passed',
-                                    technical                    : 'pending',
-                                    runtimeLifecycle              : 'pending',
-                                    humanVisual                   : 'pending',
-                                    publication                   : 'not-authorized'
+                                    technical                    : 'passed',
+                                    runtimeLifecycle              : 'passed',
+                                    humanVisual                   : 'passed-2026-08-12',
+                                    publication                   : 'authorized-2026-08-12'
                             ],
                             artifactCount            : 8,
                             extensionArtifactCount   : 7,
@@ -1685,14 +1690,14 @@ tasks.register('verifyProductionJar') {
                             '1.21-2.2.35-neoforge'
                     ] ||
                     supportMatrix.profiles[1..6].any {
-                        it.status != 'implemented-local-review-candidate'
+                        it.status != 'owner-accepted-m4-m5'
                     } ||
                     supportMatrix.profiles[1..6].any {
                         it.acceptance != [
                                 exactArtifactAndResourceGate: 'passed',
-                                technical                    : 'pending',
-                                runtimeLifecycle              : 'pending',
-                                humanVisual                   : 'pending'
+                                technical                    : 'passed',
+                                runtimeLifecycle              : 'passed',
+                                humanVisual                   : 'passed-2026-08-12'
                         ]
                     } ||
                     supportMatrix.profiles[1..6]*.milestone != [
@@ -1705,9 +1710,8 @@ tasks.register('verifyProductionJar') {
                             version          : '19.2.17',
                             status           : 'current-core-and-s1-accepted-base',
                             coverage         :
-                                    's1-accepted-base-plus-m4-m5-implementation-' +
-                                            'pending-acceptance',
-                            runtimeAcceptance: 's1-human-accepted-m4-m5-pending',
+                                    's1-accepted-base-plus-owner-accepted-m4-m5',
+                            runtimeAcceptance: 's1-and-m4-m5-human-accepted',
                             acceptedEvidence : [
                                     milestone        : 'S1',
                                     acceptedOn       : '2026-08-11',
@@ -2633,9 +2637,9 @@ tasks.register('verifyProvenance') {
         def adaptationLicenses = manifest.local_adaptations*.spdx
         def currentClosure = manifest.current_m45_closure
         if (sha256(file('provenance/upstreams.json')) !=
-                '2228960e639092c8003caf46e4c8a9d429754105a92d98e2d9eeac5dd1a20b88' ||
+                'f8b959965733cd4803c2ea9bf649177aa0f71410ba60383d210389ee37d87516' ||
                 sha256(file('src/main/resources/bluemap-ae2/support-matrix.json')) !=
-                        '87976b6d53aed30b2abbec32df4cd9d7e02d6ba16c642b18310da38a013ca690' ||
+                        'b28808e2e55a94d214301f2a80d0eaaa5c201d4b1045c35435d95dc312eaf38f' ||
                 manifest.schema_version != 1 ||
                 manifest.project_license != 'LGPL-3.0-only' ||
                 manifest.baseline != [
@@ -2646,13 +2650,13 @@ tasks.register('verifyProvenance') {
                         java        : 21
                 ] ||
                 currentClosure?.milestones != ['M4', 'M5'] ||
-                currentClosure?.status != 'implemented-local-review-candidate' ||
+                currentClosure?.status != 'owner-accepted-m4-m5' ||
                 currentClosure?.acceptance != [
                         exact_artifact_and_resource_gate: 'passed',
-                        technical_acceptance            : 'pending',
-                        runtime_lifecycle                : 'pending',
-                        human_visual_acceptance          : 'pending',
-                        publication                     : 'not-authorized'
+                        technical_acceptance            : 'passed',
+                        runtime_lifecycle                : 'passed',
+                        human_visual_acceptance          : 'passed-2026-08-12',
+                        publication                     : 'authorized-2026-08-12'
                 ] ||
                 currentClosure?.verification != [
                         script                      : 'tools/verify_m45_artifacts.py',

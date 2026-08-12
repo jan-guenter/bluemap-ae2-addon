@@ -12,7 +12,7 @@ permissions:
   id-token: write
 
 env:
-  PROMOTION_JAVA_VERSION: '21.0.12+8'
+  PROMOTION_JAVA_VERSION: '21.0.12+8.0.LTS'
 
 concurrency:
   # Every version updates the same artifact-root maven-metadata.xml.
@@ -401,7 +401,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          notes="Exact-version All the Mons 1.2.0 M0-M5 review candidate for AE2 19.2.17, the seven pinned M4/M5 extension inputs, and the Java 21 Minecraft 1.21.1 BlueMap 5.22 backport. Coverage is limited to the documented static profiles; this is not a general AE2 compatibility claim, an acceptance claim, or a production recommendation."
+          notes="Owner-accepted exact-version All the Mons 1.2.0 M0-M5 release for AE2 19.2.17, the seven pinned M4/M5 extension inputs, and the Java 21 Minecraft 1.21.1 BlueMap 5.22 backport. Coverage is limited to the documented static profiles; this is not a general AE2 compatibility claim or a production recommendation."
           if gh release view "${GITHUB_REF_NAME}" >/dev/null 2>&1; then
             test "$(gh release view "${GITHUB_REF_NAME}" \
               --json isDraft --jq '.isDraft')" = true

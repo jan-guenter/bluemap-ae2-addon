@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "project": "io.github.jan-guenter:bluemap-ae2-addon",
+  "version": "0.1.0-alpha.1",
+  "promotionJava": {
+    "distribution": "temurin",
+    "version": "21.0.12+8"
+  },
+  "evidence": {
+    "id": "atm120-m45-owner-accepted-2026-08-12",
+    "acceptedOn": "2026-08-12"
+  },
+  "artifacts": {
+    "productionJar": {
+      "sizeBytes": 1207650,
+      "sha256": "8372b4f043f3091f6aa1fed6a76006e5e04cbf462647472beb392c9789da9e03"
+    },
+    "sourcesJar": {
+      "sizeBytes": 532770,
+      "sha256": "b38c7c671730d88849bdd86cce30ce911a94b023b7e1d487baa1977dc9663bea"
+    },
+    "pom": {
+      "sizeBytes": 1619,
+      "sha256": "129f5e572e7bc77618a5739ba2999bd3559e3644608b8aaa7b9f604b00c9d528"
+    },
+    "moduleMetadata": {
+      "sizeBytes": 2794,
+      "sha256": "9277aab0b8e66703140a020747f7a60174bf9453b01de52e08ff7b068a848d9a"
+    }
+  }
+}

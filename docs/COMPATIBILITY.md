@@ -480,12 +480,12 @@ resource reload in the same JVM.
 | Module | Pack-pinned version | Current state |
 | --- | --- | --- |
 | AE2 | `19.2.17` | Exact ATM 1.2.0 S1 structural lifecycle and owner BlueMap visual review accepted on 2026-08-11; exact core input for the technically validated M4/M5 candidate |
-| AppliedFlux | `1.21-2.1.5-neoforge` | M4 static part and 20-cell Drive integration implemented; exact technical lifecycle passed; visual review pending |
-| ME Requester | `1.21.1-1.4.3` | M4 requester block and terminal implemented; exact technical lifecycle passed; visual review pending |
-| Expanded AE | `2.1.1` | M4 I/O Port, two parts and 21 formed-crafting blocks implemented; colorable Drive remains intentional stock fallback; exact technical lifecycle passed; visual review pending |
-| MEGA Cells | `4.11.0` | M5 eight crafting blocks, three parts, Cell Dock and 67-cell integration implemented; exact technical lifecycle passed; visual review pending |
-| Advanced AE | `1.6.12-1.21.1` | M5 eight quantum blocks and Athena-backed quantum-alloy CTM implemented; exact technical lifecycle passed; visual review pending |
-| Athena | `4.0.6` | Exact dependency for Advanced AE frame-zero CTM; no independent content route; technical lifecycle passed with `advanced-ae-athena`; visual review pending |
+| AppliedFlux | `1.21-2.1.5-neoforge` | M4 static part and 20-cell Drive integration implemented; exact technical lifecycle and owner visual review passed |
+| ME Requester | `1.21.1-1.4.3` | M4 requester block and terminal implemented; exact technical lifecycle and owner visual review passed |
+| Expanded AE | `2.1.1` | M4 I/O Port, two parts and 21 formed-crafting blocks implemented; colorable Drive remains intentional stock fallback; exact technical lifecycle and owner visual review passed |
+| MEGA Cells | `4.11.0` | M5 eight crafting blocks, three parts, Cell Dock and 67-cell integration implemented; exact technical lifecycle and owner visual review passed |
+| Advanced AE | `1.6.12-1.21.1` | M5 eight quantum blocks and Athena-backed quantum-alloy CTM implemented; exact technical lifecycle and owner visual review passed |
+| Athena | `4.0.6` | Exact dependency for Advanced AE frame-zero CTM; no independent content route; technical lifecycle and owner visual review passed with `advanced-ae-athena` |
 | ExtendedAE | `1.21-2.2.35-neoforge` | Exact Extended Drive retained; M5 six matrix blocks and two planes implemented; exact M5 technical lifecycle and owner visual review passed |
 | Glassential | `3.4.5` | Current S1 facade-material evidence input; no dedicated rendering profile |
 

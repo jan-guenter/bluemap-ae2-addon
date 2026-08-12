@@ -534,10 +534,12 @@ state. The profile therefore uses the explicit `idle-off-unknown` policy and
 makes no live-network claim. Smart-cable overlays are the exact zero-channel
 static representation, not telemetry.
 
-Publication is intentionally blocked until the implemented M0-M5 scope is
-human accepted and the owner separately authorizes publication. There is no
-public remote, release or tag; Maven publication and root-submodule integration
-are also blocked.
+The complete M0-M5 scope is human accepted and publication was separately
+authorized on 2026-08-12. The public repository now exists and the exact
+`0.1.0-alpha.1` non-SNAPSHOT artifact is proceeding through its independent
+release-candidate gate. No release, tag, Maven package, or root-submodule
+integration is claimed until that exact artifact completes the documented
+promotion workflow.
 This is an unofficial community add-on, is not affiliated with or endorsed by
 BlueMap or Applied Energistics 2, and is not recommended for production.
 
