@@ -19,7 +19,7 @@ permissions:
 
 env:
   PROMOTION_JAVA_VERSION: '21.0.12+8.0.LTS'
-  RELEASE_TAG: ${{ inputs.release_tag || github.ref_name }}
+  RELEASE_TAG: ${{ github.event.inputs.release_tag || github.ref_name }}
 
 concurrency:
   # Every version updates the same artifact-root maven-metadata.xml.
