@@ -5,11 +5,11 @@ whose geometry is normally constructed by Minecraft client code.
 
 ## Current status
 
-**M4/M5 is the complete owner-accepted All the Mons 1.2.0 local checkpoint.
-Its reproducible artifacts, schema-11 evidence, isolated technical lifecycle,
-and bounded BlueMap visual review passed; publication was separately
-authorized on 2026-08-12 and release preparation is in progress. It is not yet
-released.** The exact
+**M4/M5 is the complete owner-accepted All the Mons 1.2.0 release. Its
+reproducible artifacts, schema-11 evidence, isolated technical lifecycle, and
+bounded BlueMap visual review passed. Version `0.1.0-alpha.1` was published as
+an immutable GitHub prerelease with attestations and Maven coordinates on
+2026-08-12.** The exact
 target is All the Mons `1.2.0` at pack commit
 `c7bb230f21d14d26859d0b92548f089b3a493ad9`, Minecraft `1.21.1`, NeoForge
 `21.1.248`, Java `21`, AE2 `19.2.17`, AppliedFlux
@@ -28,7 +28,7 @@ Java tests (560 passed and two intentional exporter tests were skipped) and
 passed 192/192 tests in 945.343 seconds together with the generator/checksum
 closure.
 
-| Candidate artifact | Size | SHA-256 |
+| Accepted runtime/evidence artifact | Size | SHA-256 |
 | --- | ---: | --- |
 | Production JAR | 1,207,683 bytes | `6fed7a625b02229213a047788995944f14e7e7fcabe0e0ddc6d9b5e994146e9f` |
 | Sources JAR | 532,979 bytes | `4a45c60f8512630c6bd9735e26018d019ebe99d58f2c87fa2f3c46e101b624d8` |
@@ -39,6 +39,20 @@ closure.
 | M4/M5 main oracle | 221,769 bytes | `c2ce69bed949306551ca4ff6cdebf7fac88f0f2f2fa7ab294d3312f363e1b448` |
 | M4/M5 legacy-upgrade oracle | 2,336 bytes | `2319ecf576ba07b123078c720d941990fac939033d375e5853f51bf98348c3c7` |
 | Enabled map archive | 20,821,895 bytes | `44422aa71c2f450951d8433e25e01de7a0b00dbd0d9c4fa4ff74ca98e649a2df` |
+
+The separately rebuilt release-version outputs are:
+
+| Published artifact | Size | SHA-256 |
+| --- | ---: | --- |
+| Production JAR | 1,207,650 bytes | `8372b4f043f3091f6aa1fed6a76006e5e04cbf462647472beb392c9789da9e03` |
+| Sources JAR | 532,770 bytes | `b38c7c671730d88849bdd86cce30ce911a94b023b7e1d487baa1977dc9663bea` |
+| POM | 1,619 bytes | `129f5e572e7bc77618a5739ba2999bd3559e3644608b8aaa7b9f604b00c9d528` |
+| Gradle module metadata | 2,794 bytes | `9277aab0b8e66703140a020747f7a60174bf9453b01de52e08ff7b068a848d9a` |
+
+Download the immutable prerelease from
+[GitHub Releases](https://github.com/jan-guenter/bluemap-ae2-addon/releases/tag/v0.1.0-alpha.1).
+The Maven coordinate is
+`io.github.jan-guenter:bluemap-ae2-addon:0.1.0-alpha.1`.
 
 S1 native cable-bus structural completeness remains the accepted predecessor:
 its All the Mons 1.2.0 isolated lifecycle and owner BlueMap visual review passed
@@ -526,20 +540,19 @@ missing, malformed, unknown, or unsupported observations use atomic original-
 resource fallback. The exact schema-11 gallery and isolated lifecycle passed
 technical validation. The owner completed the bounded BlueMap visual review
 on 2026-08-12 and accepted the exact JAR, gallery, and map archive. The same
-message separately authorized publication; first-release preparation is now
-in progress.
+message separately authorized publication. The exact release-version build is
+now published as immutable prerelease `0.1.0-alpha.1`.
 
 Ordinary chunk data does not preserve live AE2 power, channel or connection
 state. The profile therefore uses the explicit `idle-off-unknown` policy and
 makes no live-network claim. Smart-cable overlays are the exact zero-channel
 static representation, not telemetry.
 
-The complete M0-M5 scope is human accepted and publication was separately
-authorized on 2026-08-12. The public repository now exists and the exact
-`0.1.0-alpha.1` non-SNAPSHOT artifact is proceeding through its independent
-release-candidate gate. No release, tag, Maven package, or root-submodule
-integration is claimed until that exact artifact completes the documented
-promotion workflow.
+The complete M0-M5 scope is human accepted. The exact `0.1.0-alpha.1`
+non-SNAPSHOT artifact completed the independent promotion workflow on
+2026-08-12: the protected tag, immutable GitHub prerelease, both JAR
+attestations, checksum-closed assets, and Maven package are published. Root
+workspace integration remains a separate coordination action.
 This is an unofficial community add-on, is not affiliated with or endorsed by
 BlueMap or Applied Energistics 2, and is not recommended for production.
 
