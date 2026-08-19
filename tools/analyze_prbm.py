@@ -46,7 +46,7 @@ from typing import Any, Iterable, Sequence
 import zlib
 
 
-SCHEMA_VERSION = 11
+SCHEMA_VERSION = 12
 PRBM_VERSION = 1
 PRBM_HEADER_FLAGS = 0x07
 # AE2 19.2.17's dense straight axial caps extend 0.01/16 blocks beyond the
@@ -306,6 +306,10 @@ M3_COMPLETION_STOCK_MATERIALS = {
 }
 SCHEMA9_CANONICAL_SHA256 = "75e6ba2f40631a95f20cfa00d7ca952e521bc2c7a4eb155926334a223a945f3a"
 SCHEMA10_CANONICAL_SHA256 = "389a9b2b82dd16e3f4af82f9836e593770e404995a153218937908528c17dcee"
+SCHEMA11_CANONICAL_SHA256 = "914dab6931077521959cf59260a1ffb0cdbe105385f43880763b289f8117ec55"
+SCHEMA12_CANONICAL_SHA256 = "f73959670b6490c27b9b89e61e486f06750fb15e2a74c5cc36047c5e81b77483"
+APPMEK_DRIVE_ROUTE = "appmek-drive-cells"
+APPMEK_DRIVE_TEXTURE = "appmek:block/drive/drive_cells"
 M45_ROUTES = (
     "appflux",
     "merequester",
@@ -2024,6 +2028,28 @@ class M45LegacyUpgradeContract:
 
 
 @dataclass(frozen=True)
+class AppMekProjectionContract:
+    expected_path: str
+    review_projection: str
+    reason: str
+
+
+@dataclass(frozen=True)
+class AppMekAnchorContract:
+    case_id: str
+    position: tuple[int, int, int]
+    route: str | None
+    block_id: str
+    expected_path: str
+    expected_triangle_count: int
+    expected_material_triangles: tuple[tuple[str, int], ...]
+    physical_stock_projection: AppMekProjectionContract
+    route_disabled_projection: AppMekProjectionContract
+    native_structural_disabled_projection: AppMekProjectionContract
+    native_drive_disabled_projection: AppMekProjectionContract
+
+
+@dataclass(frozen=True)
 class AnchorContract:
     case_id: str
     case_label: str
@@ -2090,6 +2116,9 @@ class GalleryContract:
         tuple[str, tuple[tuple[int, int, int], ...]], ...
     ] = ()
     m45_legacy_upgrade_positions: tuple[tuple[int, int, int], ...] = ()
+    appmek_anchors: tuple[AppMekAnchorContract, ...] = ()
+    appmek_positions: tuple[tuple[int, int, int], ...] = ()
+    appmek_route_positions: tuple[tuple[int, int, int], ...] = ()
 
 
 @dataclass(frozen=True)
@@ -3551,6 +3580,40 @@ def _schema6_view(schema7: dict[str, Any]) -> dict[str, Any]:
             (19, 11), (19, 12), (19, 14), (19, 15),
         )
     ]
+    return view
+
+
+def _schema11_view(schema12: dict[str, Any]) -> dict[str, Any]:
+    """Project schema 12 to the byte-frozen accepted schema-11 manifest."""
+    view = json.loads(json.dumps(schema12))
+    profile = view.get("profile")
+    cases = view.get("cases")
+    if not isinstance(profile, dict) or not isinstance(cases, list):
+        raise EvidenceError("schema-12 Applied Mekanistics projection metadata is missing")
+    if (
+        view.get("case_count") != 162
+        or view.get("anchor_count") != 1_373
+        or len(cases) != 162
+        or len(profile.get("selected_resources", ())) != 434
+        or profile.get("selected_resources", ())[-1:] != [APPMEK_DRIVE_TEXTURE]
+    ):
+        raise EvidenceError("schema-12 accepted schema-11 projection identity changed")
+    view["schema_version"] = 11
+    view["signature_schema_version"] = 11
+    view["case_count"] = 158
+    view["anchor_count"] = 1_366
+    view["cases"] = cases[:-4]
+    profile["coverage_milestone"] = "M5-cumulative-review"
+    profile["selected_resources"] = profile["selected_resources"][:-1]
+    profile.pop("appmek_routes", None)
+    profile.pop("supported_applied_mekanistics", None)
+    view.get("bounds", {}).pop("appmek_fixture", None)
+    for key in (
+        "appmek_floor_policy",
+        "appmek_review_summary",
+        "appmek_verification_policy",
+    ):
+        view.pop(key, None)
     return view
 
 
@@ -10627,10 +10690,269 @@ def _parse_schema11_cases(
     return contract, evidence
 
 
+def _parse_appmek_projection(
+    value: Any,
+    label: str,
+) -> AppMekProjectionContract:
+    if (
+        not isinstance(value, dict)
+        or set(value) != {"expected_path", "review_projection", "reason"}
+        or not isinstance(value.get("expected_path"), str)
+        or value.get("review_projection") not in {"empty", "nonempty"}
+        or not isinstance(value.get("reason"), str)
+    ):
+        raise EvidenceError(f"schema-12 {label} projection changed")
+    return AppMekProjectionContract(
+        expected_path=value["expected_path"],
+        review_projection=value["review_projection"],
+        reason=value["reason"],
+    )
+
+
+def _parse_schema12_cases(
+    value: dict[str, Any], digest: str
+) -> tuple[GalleryContract, dict[str, Any]]:
+    if digest != SCHEMA12_CANONICAL_SHA256:
+        raise EvidenceError("schema-12 narrow Applied Mekanistics manifest changed")
+    if value.get("signature_schema_version") != 12:
+        raise EvidenceError("schema-12 gallery must use signature schema 12")
+
+    schema11 = _schema11_view(value)
+    schema11_payload = canonical_json(schema11, pretty=True).encode("utf-8")
+    schema11_sha256 = sha256_bytes(schema11_payload)
+    if schema11_sha256 != SCHEMA11_CANONICAL_SHA256:
+        raise EvidenceError(
+            "schema-12 does not embed the byte-frozen accepted schema-11 view"
+        )
+    legacy, legacy_evidence = _parse_schema11_cases(schema11, schema11_sha256)
+
+    all_cases = value.get("cases")
+    profile = value.get("profile")
+    summary = value.get("appmek_review_summary")
+    route_profiles = profile.get("appmek_routes") if isinstance(profile, dict) else None
+    if (
+        not isinstance(all_cases, list)
+        or not isinstance(profile, dict)
+        or not isinstance(summary, dict)
+        or not isinstance(route_profiles, list)
+        or value.get("case_count") != 162
+        or value.get("anchor_count") != 1_373
+        or len(all_cases) != 162
+    ):
+        raise EvidenceError("schema-12 narrow Applied Mekanistics header changed")
+    raw_cases = all_cases[-4:]
+    if (
+        [case.get("case_id") for case in raw_cases]
+        != [f"ae2-appmek-{index:02d}" for index in range(1, 5)]
+        or [len(case.get("anchors", ())) for case in raw_cases] != [1, 3, 2, 1]
+        or [case.get("route") for case in raw_cases]
+        != [
+            APPMEK_DRIVE_ROUTE,
+            APPMEK_DRIVE_ROUTE,
+            "parent-renderer-controls",
+            "parent-renderer-controls",
+        ]
+    ):
+        raise EvidenceError("schema-12 exact four-case review matrix changed")
+    expected_summary = {
+        "case_count": 4,
+        "anchor_count": 7,
+        "case_anchor_allocation": [1, 3, 2, 1],
+        "custom_anchor_count": 6,
+        "fallback_anchor_count": 0,
+        "control_anchor_count": 1,
+        "review_control_anchor_count": 3,
+        "fixture_block_count": 3,
+        "route_ids": [APPMEK_DRIVE_ROUTE],
+        "route_affected_anchor_counts": {APPMEK_DRIVE_ROUTE: 4},
+        "enabled_preoracle_projection": {
+            "nonempty_anchor_count": 7,
+            "empty_anchor_count": 0,
+        },
+        "physical_stock_projection": {
+            "nonempty_anchor_count": 1,
+            "empty_anchor_count": 6,
+        },
+        "appmek_drive_route_disabled_projection": {
+            "nonempty_anchor_count": 3,
+            "empty_anchor_count": 4,
+        },
+        "native_structural_disabled_projection": {
+            "nonempty_anchor_count": 5,
+            "empty_anchor_count": 2,
+        },
+        "native_drive_disabled_projection": {
+            "nonempty_anchor_count": 3,
+            "empty_anchor_count": 4,
+        },
+        "new_selected_resource_target_count": 1,
+        "new_selected_resource_targets": [APPMEK_DRIVE_TEXTURE],
+        "new_selected_resource_count": 1,
+        "runtime_oracle": {
+            "status": "pending-exact-enabled-live-map-capture",
+            "policy": "exact-prbm-geometry-material-and-nonlighting-signatures",
+            "capture_anchor_count": 7,
+            "expected_nonempty_anchor_count": 7,
+            "expected_empty_anchor_count": 0,
+            "synthetic_geometry_forbidden": True,
+        },
+        "unit_only_geometry_policy": (
+            "existing-native-drive-and-parent-renderer-tests-remain-authoritative-"
+            "beyond-the-small-live-matrix"
+        ),
+    }
+    if summary != expected_summary:
+        raise EvidenceError("schema-12 narrow Applied Mekanistics summary changed")
+    if len(route_profiles) != 1:
+        raise EvidenceError("schema-12 Applied Mekanistics route profile changed")
+    route_profile = route_profiles[0]
+    if (
+        route_profile.get("route") != APPMEK_DRIVE_ROUTE
+        or route_profile.get("route_resources") != [APPMEK_DRIVE_TEXTURE]
+        or route_profile.get("affected_anchor_count") != 4
+        or route_profile.get("case_count") != 2
+        or route_profile.get("artifact", {}).get("sha256")
+        != "8946fea39451dbce8e709dedbef40a52ba337bdf7a25ac0c4b503800b1bf0773"
+        or route_profile.get("mekanism_runtime", {}).get("version") != "10.7.19"
+        or route_profile.get("mekanism_runtime", {}).get("sha256")
+        != "004dbc9f3106f4d192aeaa1ee1190dd16ec9ca8059ed3d093b80034f4c574f43"
+    ):
+        raise EvidenceError("schema-12 exact AppMek/Mekanism route identity changed")
+
+    parsed: list[AppMekAnchorContract] = []
+    seen_positions = {anchor.position for case in legacy.cases for anchor in case.anchors}
+    expected_triangle_counts = [250, 106, 106, 106, 74, 74, 18]
+    for raw_case in raw_cases:
+        for raw_anchor in raw_case["anchors"]:
+            position = _s1_xyz(raw_anchor.get("position"), "AppMek anchor position")
+            if position in seen_positions:
+                raise EvidenceError("schema-12 Applied Mekanistics position is duplicated")
+            seen_positions.add(position)
+            route = raw_anchor.get("appmek_route")
+            expected_path = raw_anchor.get("expected_path")
+            expected_materials = raw_anchor.get("expected_material_triangles", {})
+            if (
+                route not in {None, APPMEK_DRIVE_ROUTE}
+                or not isinstance(raw_anchor.get("block_id"), str)
+                or not isinstance(expected_path, str)
+                or raw_anchor.get("review_projection") != "nonempty"
+                or raw_anchor.get("runtime_oracle_policy")
+                != "exact-live-prbm-pending-capture-no-synthetic-mesh-expectation"
+                or not isinstance(raw_anchor.get("expected_triangle_count"), int)
+                or not isinstance(expected_materials, dict)
+                or any(
+                    not isinstance(resource, str)
+                    or not isinstance(count, int)
+                    or count <= 0
+                    for resource, count in expected_materials.items()
+                )
+                or {
+                    "expected_geometry_signature",
+                    "expected_nonlighting_attribute_signature",
+                    "source_derived_synthetic_fixture",
+                }
+                & set(raw_anchor)
+            ):
+                raise EvidenceError("schema-12 Applied Mekanistics anchor changed")
+            parsed.append(
+                AppMekAnchorContract(
+                    case_id=raw_case["case_id"],
+                    position=position,
+                    route=route,
+                    block_id=raw_anchor["block_id"],
+                    expected_path=expected_path,
+                    expected_triangle_count=raw_anchor["expected_triangle_count"],
+                    expected_material_triangles=tuple(sorted(expected_materials.items())),
+                    physical_stock_projection=_parse_appmek_projection(
+                        raw_anchor.get("physical_stock_projection"),
+                        f"physical stock at {position}",
+                    ),
+                    route_disabled_projection=_parse_appmek_projection(
+                        raw_anchor.get("route_disabled_projection"),
+                        f"route disabled at {position}",
+                    ),
+                    native_structural_disabled_projection=_parse_appmek_projection(
+                        raw_anchor.get("native_structural_disabled_projection"),
+                        f"native structural disabled at {position}",
+                    ),
+                    native_drive_disabled_projection=_parse_appmek_projection(
+                        raw_anchor.get("native_drive_disabled_projection"),
+                        f"native Drive disabled at {position}",
+                    ),
+                )
+            )
+    if (
+        len(parsed) != 7
+        or [anchor.expected_triangle_count for anchor in parsed]
+        != expected_triangle_counts
+        or [anchor.route for anchor in parsed]
+        != [APPMEK_DRIVE_ROUTE] * 4 + [None] * 3
+        or [anchor.block_id for anchor in parsed]
+        != ["ae2:drive"] * 4
+        + ["ae2:cable_bus", "ae2:cable_bus", "mekanism:basic_pressurized_tube"]
+        or [dict(anchor.expected_material_triangles).get(APPMEK_DRIVE_TEXTURE, 0)
+            for anchor in parsed]
+        != [60, 6, 6, 6, 0, 0, 0]
+    ):
+        raise EvidenceError("schema-12 Applied Mekanistics selector closure changed")
+    tube = raw_cases[-1]["anchors"][0]
+    if tube.get("transmitter_topology") != {
+        "acceptors_unsigned_byte": 32,
+        "connection_mode_ordinals": [0, 0, 0, 0, 0, 0],
+        "connections_unsigned_byte": 0,
+        "direction_ordinal_order": ["down", "up", "north", "south", "west", "east"],
+        "east_mode": "normal",
+    }:
+        raise EvidenceError("schema-12 pressurized-tube seam topology changed")
+
+    selected_resources = profile.get("selected_resources")
+    if (
+        not isinstance(selected_resources, list)
+        or selected_resources[-1:] != [APPMEK_DRIVE_TEXTURE]
+        or len(selected_resources) != 434
+    ):
+        raise EvidenceError("schema-12 selected-resource closure changed")
+    route_positions = tuple(
+        sorted(anchor.position for anchor in parsed if anchor.route == APPMEK_DRIVE_ROUTE)
+    )
+    contract = replace(
+        legacy,
+        expected_selected_resources=tuple(sorted(selected_resources)),
+        schema_version=12,
+        signature_schema_version=12,
+        appmek_anchors=tuple(parsed),
+        appmek_positions=tuple(sorted(anchor.position for anchor in parsed)),
+        appmek_route_positions=route_positions,
+    )
+    evidence = dict(legacy_evidence)
+    evidence.update(
+        {
+            "sha256": digest,
+            "schema_version": 12,
+            "signature_schema_version": 12,
+            "case_count": 162,
+            "anchor_count": 1_373,
+            "frozen_schema11_view_sha256": schema11_sha256,
+            "appmek_review_summary": summary,
+            "appmek_routes": route_profiles,
+            "appmek_preoracle_excluded_anchor_count": 7,
+        }
+    )
+    evidence["profile"] = {
+        **legacy_evidence["profile"],
+        "coverage_milestone": "Applied-Mekanistics-extension-review",
+        "selected_resource_count": len(selected_resources),
+        "appmek_route_count": 1,
+    }
+    return contract, evidence
+
+
 def parse_cases(path: Path) -> tuple[GalleryContract, dict[str, Any]]:
     value, digest = read_json(path, "gallery cases manifest")
     if not isinstance(value, dict):
         raise EvidenceError("gallery cases manifest is not an object")
+    if value.get("schema_version") == 12:
+        return _parse_schema12_cases(value, digest)
     if value.get("schema_version") == 11:
         return _parse_schema11_cases(value, digest)
     if value.get("schema_version") == 10:
@@ -14408,6 +14730,22 @@ def _m45_mode_projection(
     return None
 
 
+def _appmek_mode_projection(
+    anchor: AppMekAnchorContract,
+    *,
+    stock_baseline: bool,
+    native_structural_disabled: bool,
+    appmek_drive_disabled: bool,
+) -> AppMekProjectionContract | None:
+    if stock_baseline:
+        return anchor.physical_stock_projection
+    if native_structural_disabled:
+        return anchor.native_structural_disabled_projection
+    if appmek_drive_disabled:
+        return anchor.route_disabled_projection
+    return None
+
+
 def _m45_legacy_upgrade_mode_projection(
     anchor: AnchorContract,
     *,
@@ -14712,6 +15050,7 @@ def analyze(
     native_structural_disabled: bool = False,
     m45_route_disabled: str | None = None,
     m45_disabled: bool = False,
+    appmek_drive_disabled: bool = False,
 ) -> dict[str, Any]:
     if m45_route_disabled is not None and m45_route_disabled not in M45_ROUTES:
         raise EvidenceError(f"unknown M4/M5 route: {m45_route_disabled}")
@@ -14726,6 +15065,7 @@ def analyze(
             native_structural_disabled,
             m45_route_disabled is not None,
             m45_disabled,
+            appmek_drive_disabled,
         )
     ) > 1:
         raise EvidenceError(
@@ -14738,23 +15078,27 @@ def analyze(
     settings, settings_digest = parse_settings(map_root)
     textures, textures_evidence = parse_textures(map_root)
     gallery, cases_evidence = parse_cases(cases_path)
-    if extension_disabled and gallery.schema_version not in {5, 6, 7, 8, 9, 10, 11}:
+    if extension_disabled and gallery.schema_version not in {5, 6, 7, 8, 9, 10, 11, 12}:
         raise EvidenceError("extension-disabled mode requires a schema-5+ M3b gallery")
-    if glass_disabled and gallery.schema_version not in {6, 7, 8, 9, 10, 11}:
+    if glass_disabled and gallery.schema_version not in {6, 7, 8, 9, 10, 11, 12}:
         raise EvidenceError("glass-disabled mode requires a schema-6+ M3c gallery")
-    if crafting_disabled and gallery.schema_version not in {7, 8, 9, 10, 11}:
+    if crafting_disabled and gallery.schema_version not in {7, 8, 9, 10, 11, 12}:
         raise EvidenceError("crafting-disabled mode requires a schema-7+ M3d gallery")
-    if quantum_disabled and gallery.schema_version not in {8, 9, 10, 11}:
+    if quantum_disabled and gallery.schema_version not in {8, 9, 10, 11, 12}:
         raise EvidenceError("quantum-disabled mode requires a schema-8+ M3e gallery")
-    if m3_completion_disabled and gallery.schema_version not in {9, 10, 11}:
+    if m3_completion_disabled and gallery.schema_version not in {9, 10, 11, 12}:
         raise EvidenceError("m3-completion-disabled mode requires a schema-9+ M3f gallery")
     if native_structural_disabled and gallery.schema_version != 10:
-        if gallery.schema_version != 11:
+        if gallery.schema_version not in {11, 12}:
             raise EvidenceError(
                 "native-structural-disabled mode requires the schema-10+ S1 gallery"
             )
-    if (m45_route_disabled is not None or m45_disabled) and gallery.schema_version != 11:
+    if (m45_route_disabled is not None or m45_disabled) and gallery.schema_version not in {11, 12}:
         raise EvidenceError("M4/M5 route-disabled mode requires the schema-11 gallery")
+    if appmek_drive_disabled and gallery.schema_version != 12:
+        raise EvidenceError(
+            "AppMek Drive route-disabled mode requires the schema-12 gallery"
+        )
     validation_mode = (
         "stock-baseline"
         if stock_baseline
@@ -14774,11 +15118,16 @@ def analyze(
         if m45_route_disabled is not None
         else "m45-disabled"
         if m45_disabled
+        else "appmek-drive-disabled"
+        if appmek_drive_disabled
         else "enabled"
     )
     legacy_validation_mode = (
         "enabled"
-        if native_structural_disabled or m45_route_disabled is not None or m45_disabled
+        if native_structural_disabled
+        or m45_route_disabled is not None
+        or m45_disabled
+        or appmek_drive_disabled
         else validation_mode
     )
     cases = gallery.cases
@@ -15771,7 +16120,7 @@ def analyze(
         )
         case_results.append(case_result)
 
-    if gallery.schema_version == 11:
+    if gallery.schema_version >= 11:
         m45_missing_materials = {
             position: sum(
                 record.material_identity == "bluemap:block/missing"
@@ -15823,7 +16172,7 @@ def analyze(
         if native_structural_disabled
         else 0
     )
-    if gallery.schema_version == 11 and (
+    if gallery.schema_version >= 11 and (
         len(m45_legacy_upgrade_records) != len(M45_LEGACY_UPGRADE_SPECS)
         or validated_m45_legacy_active_anchors
         + validated_m45_legacy_projected_anchors
@@ -15841,7 +16190,7 @@ def analyze(
         expected_active_custom_anchor_count != 589
         or expected_active_custom_triangles != 27_188
         or expected_active_fallback_count
-        != (14 if gallery.schema_version == 11 else 17)
+        != (14 if gallery.schema_version >= 11 else 17)
     ):
         raise EvidenceError(
             "native-structural-disabled effective aggregate contract changed"
@@ -16106,7 +16455,7 @@ def analyze(
 
     m45_legacy_upgrades: dict[str, Any] | None = None
     m45_review: dict[str, Any] | None = None
-    if gallery.schema_version == 11:
+    if gallery.schema_version >= 11:
         legacy_upgrade_anchors = [
             anchor
             for case in cases
@@ -17820,6 +18169,70 @@ def analyze(
             "contract_validated": True,
         }
 
+    appmek_review: dict[str, Any] | None = None
+    if gallery.schema_version == 12:
+        appmek_rows = []
+        mode_nonempty = 0
+        for anchor in gallery.appmek_anchors:
+            projection = _appmek_mode_projection(
+                anchor,
+                stock_baseline=stock_baseline,
+                native_structural_disabled=native_structural_disabled,
+                appmek_drive_disabled=appmek_drive_disabled,
+            )
+            effective_path = (
+                anchor.expected_path if projection is None else projection.expected_path
+            )
+            effective_review = (
+                "nonempty" if projection is None else projection.review_projection
+            )
+            mode_nonempty += effective_review == "nonempty"
+            appmek_rows.append(
+                {
+                    "case_id": anchor.case_id,
+                    "position": dict(zip(("x", "y", "z"), anchor.position)),
+                    "route": anchor.route,
+                    "block_id": anchor.block_id,
+                    "effective_path": effective_path,
+                    "review_projection": effective_review,
+                    "runtime_oracle_status": "pending",
+                }
+            )
+        expected_mode_counts = {
+            "enabled": (7, 0),
+            "stock-baseline": (1, 6),
+            "native-structural-disabled": (5, 2),
+            "appmek-drive-disabled": (3, 4),
+        }.get(validation_mode, (7, 0))
+        if (mode_nonempty, 7 - mode_nonempty) != expected_mode_counts:
+            raise EvidenceError("schema-12 AppMek projection aggregate changed")
+        appmek_review = {
+            "mode": validation_mode,
+            "route": APPMEK_DRIVE_ROUTE,
+            "anchor_count": 7,
+            "route_affected_anchor_count": 4,
+            "parent_renderer_control_anchor_count": 3,
+            "preoracle_excluded_from_prbm_selection": True,
+            "synthetic_geometry_forbidden": True,
+            "mode_projection": {
+                "nonempty_anchor_count": mode_nonempty,
+                "empty_anchor_count": 7 - mode_nonempty,
+            },
+            "declared_native_drive_disabled_projection": {
+                "nonempty_anchor_count": sum(
+                    anchor.native_drive_disabled_projection.review_projection
+                    == "nonempty"
+                    for anchor in gallery.appmek_anchors
+                ),
+                "empty_anchor_count": sum(
+                    anchor.native_drive_disabled_projection.review_projection == "empty"
+                    for anchor in gallery.appmek_anchors
+                ),
+            },
+            "anchors": appmek_rows,
+            "contract_validated": True,
+        }
+
     report = {
         "schema_version": gallery.schema_version,
         "mode": validation_mode,
@@ -17849,6 +18262,8 @@ def analyze(
                 else "resolved-resource-path-v10-s1-native-structural-layout"
                 if gallery.signature_schema_version == 10
                 else "resolved-resource-path-v11-m45-cumulative-review-layout"
+                if gallery.signature_schema_version == 11
+                else "resolved-resource-path-v12-appmek-preoracle-layout"
             ),
             "shape_quantum": canonical_float(SHAPE_QUANTUM),
             "ownership_epsilon": canonical_float(OWNERSHIP_EPSILON),
@@ -17951,6 +18366,8 @@ def analyze(
         report["m45_legacy_upgrades"] = m45_legacy_upgrades
     if m45_review is not None:
         report["m45_review"] = m45_review
+    if appmek_review is not None:
+        report["appmek_review"] = appmek_review
     return report
 
 
@@ -18063,6 +18480,15 @@ def parse_args(arguments: Sequence[str]) -> argparse.Namespace:
             "the exact accepted S1 projection remains enabled"
         ),
     )
+    parser.add_argument(
+        "--appmek-drive-disabled",
+        action="store_true",
+        help=(
+            "validate the declared schema-12 AppMek Drive route-disabled "
+            "projection while the byte-frozen schema-11 map remains enabled; "
+            "the seven new selectors remain excluded until the live oracle freezes"
+        ),
+    )
     return parser.parse_args(arguments)
 
 
@@ -18082,6 +18508,7 @@ def main(arguments: Sequence[str] | None = None) -> int:
             native_structural_disabled=options.native_structural_disabled,
             m45_route_disabled=options.m45_route_disabled,
             m45_disabled=options.m45_disabled,
+            appmek_drive_disabled=options.appmek_drive_disabled,
         )
         encoded = canonical_json(report, pretty=True)
         if options.output is None:

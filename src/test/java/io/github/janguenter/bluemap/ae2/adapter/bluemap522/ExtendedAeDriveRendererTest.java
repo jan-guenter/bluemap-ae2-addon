@@ -439,9 +439,10 @@ class ExtendedAeDriveRendererTest {
         return switch (owner) {
             case APPLIED_FLUX -> M45Runtime.APPFLUX;
             case MEGA_CELLS -> M45Runtime.MEGA_CELLS;
-            case AE2, EXTENDED_AE -> throw new IllegalArgumentException(
-                    "owner has no extension route"
-            );
+            case AE2, EXTENDED_AE, APPLIED_MEKANISTICS ->
+                    throw new IllegalArgumentException(
+                            "owner is unsupported by the Extended Drive route"
+                    );
         };
     }
 

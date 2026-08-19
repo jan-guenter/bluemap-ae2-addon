@@ -18,7 +18,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-/** Registration boundary for the optional ATM 1.2.0 M4/M5 routes. */
+/** Registration boundary for optional exact ATM 1.2.0 extension routes. */
 final class M45Adapter {
 
     private static final Key RENDERER_KEY = Key.parse("bluemap_ae2:m45");
@@ -93,13 +93,15 @@ final class M45Adapter {
 
     static void reconcileCoreAfterBake(
             boolean coreActive,
-            boolean nativeStructuralActive
+            boolean nativeStructuralActive,
+            boolean nativeDriveActive
     ) {
         blockRoutesIfCoreInactive(RUNTIME, coreActive);
         blockExtendedPlanesIfNativeStructuralInactive(
                 RUNTIME,
                 nativeStructuralActive
         );
+        blockAppMekDriveCellsIfNativeDriveInactive(RUNTIME, nativeDriveActive);
     }
 
     static void blockRoutesIfCoreInactive(M45Runtime runtime, boolean coreActive) {
@@ -111,6 +113,13 @@ final class M45Adapter {
             boolean nativeStructuralActive
     ) {
         runtime.blockExtendedPlanesIfNativeStructuralInactive(nativeStructuralActive);
+    }
+
+    static void blockAppMekDriveCellsIfNativeDriveInactive(
+            M45Runtime runtime,
+            boolean nativeDriveActive
+    ) {
+        runtime.blockAppMekDriveCellsIfNativeDriveInactive(nativeDriveActive);
     }
 
     static boolean isExpectedSyntheticVariant(Variant variant) {

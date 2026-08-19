@@ -37,6 +37,7 @@ final class DriveRenderer implements BlockRenderer {
     private final DriveRenderSupport renderSupport;
     private final ResourceValidator resourceValidator;
     private final DriveCellRouteAccess cellRoutes;
+    private final ExtensionDriveResourceValidator extensionResourceValidator;
     private final DriveDecoder decoder;
     private Boolean resourcesSupported;
 
@@ -54,7 +55,8 @@ final class DriveRenderer implements BlockRenderer {
                 profileActivation,
                 driveActivation,
                 M3DriveResourceModels::resourcesSupported,
-                new ExtensionDriveCellRouteAccess(M45Adapter.runtime())
+                new ExtensionDriveCellRouteAccess(M45Adapter.runtime()),
+                ExtensionDriveResourceModels::supported
         );
     }
 
@@ -73,7 +75,8 @@ final class DriveRenderer implements BlockRenderer {
                 profileActivation,
                 driveActivation,
                 resourceValidator,
-                DriveCellRouteAccess.NONE
+                DriveCellRouteAccess.NONE,
+                ExtensionDriveResourceModels::supported
         );
     }
 
@@ -86,11 +89,37 @@ final class DriveRenderer implements BlockRenderer {
             ResourceValidator resourceValidator,
             DriveCellRouteAccess cellRoutes
     ) {
+        this(
+                resourcePack,
+                textureGallery,
+                renderSettings,
+                profileActivation,
+                driveActivation,
+                resourceValidator,
+                cellRoutes,
+                ExtensionDriveResourceModels::supported
+        );
+    }
+
+    DriveRenderer(
+            ResourcePack resourcePack,
+            TextureGallery textureGallery,
+            RenderSettings renderSettings,
+            ProfileActivation profileActivation,
+            DriveRouteActivation driveActivation,
+            ResourceValidator resourceValidator,
+            DriveCellRouteAccess cellRoutes,
+            ExtensionDriveResourceValidator extensionResourceValidator
+    ) {
         this.resourcePack = resourcePack;
         this.profileActivation = profileActivation;
         this.driveActivation = driveActivation;
         this.resourceValidator = resourceValidator;
         this.cellRoutes = java.util.Objects.requireNonNull(cellRoutes, "cellRoutes");
+        this.extensionResourceValidator = java.util.Objects.requireNonNull(
+                extensionResourceValidator,
+                "extensionResourceValidator"
+        );
         this.decoder = new DriveDecoder(cellRoutes);
         this.renderSupport = new DriveRenderSupport(
                 resourcePack,
@@ -194,6 +223,11 @@ final class DriveRenderer implements BlockRenderer {
             throw exception;
         } catch (RuntimeException | LinkageError exception) {
             driveActivation.disable(DriveRouteActivation.Reason.RENDER_CALLBACK_FAILED);
+            try {
+                cellRoutes.blockIfNativeDriveInactive();
+            } catch (RuntimeException | LinkageError ignored) {
+                // Dependency reconciliation cannot replace the atomic stock fallback.
+            }
             fallback(
                     BoundedDiagnostics.Event.DRIVE_RENDER_FAILED,
                     block,
@@ -282,9 +316,18 @@ final class DriveRenderer implements BlockRenderer {
                 continue;
             }
             try {
-                if (!cellRoutes.isActive(cell.owner())
-                        || !ExtensionDriveResourceModels.supported(resourcePack, cell)) {
-                    disableExtensionSafely(cell.owner());
+                if (!cellRoutes.isActive(cell.owner())) {
+                    return false;
+                }
+                if (!extensionResourceValidator.supported(
+                        resourcePack,
+                        cell.itemId(),
+                        cell.modelId(),
+                        cell.owner()
+                )) {
+                    if (cell.owner() != DriveCellOwner.APPLIED_MEKANISTICS) {
+                        disableExtensionSafely(cell.owner());
+                    }
                     return false;
                 }
             } catch (RuntimeException | LinkageError exception) {

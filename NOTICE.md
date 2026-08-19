@@ -40,6 +40,21 @@ these third-party artifacts are evidence and resource providers only and none
 of their content is redistributed, no additional upstream license file is
 bundled.
 
+The unreleased `0.1.0-alpha.2` successor additionally studies exact Applied
+Mekanistics `1.6.3` at tag commit
+`137f24bb9a46775ddd5a620055270b5e8a540f5a` and exact Mekanism mod version
+`10.7.19` from `Mekanism-1.21.1-10.7.19.85.jar`, correlated to exact source
+tag commit `a00109e4856fd38b9c5b3dd7f22ce4a59cd65a80`. Applied Mekanistics declares
+code `LGPL-3.0-or-later` and assets `CC BY-NC-SA 3.0`. Mekanism declares MIT
+and is copyright 2017-2025 Aidan C. Brady.
+
+Only independently written compatibility code and bounded identifiers,
+sizes, cryptographic digests, and semantic signatures are packaged. No
+Applied Mekanistics or Mekanism source, class, model, texture, binary, or JAR
+is redistributed. Their runtime resources remain operator installed. This
+notice records a pending implementation candidate, not runtime acceptance or
+publication.
+
 The M4/M5 implementation packages independently written adapter, catalog, and
 geometry code plus identifiers, sizes, and cryptographic digests. No source,
 class, model, texture, animation metadata, binary, JAR, client capture, or
@@ -256,11 +271,12 @@ The exact M45 verifier covers AE2 plus all seven external M4/M5 inputs, eleven
 resource manifests with 375 rows, and the 67-row MEGA cell catalog. Live
 power, channels, activity, requested jobs, displayed stacks, inventories,
 fluids, animation, and accurate LEDs are deliberately not adapted. The Java
-runtime audit is clear and the bounded implementation tests passed, but the
-provisional schema-11 evidence remains review-only; final reproducible
-artifacts, the isolated lifecycle, deterministic live-map evidence, and human
-visual acceptance remain pending. No M4/M5 acceptance or release is asserted
-by this notice.
+runtime audit, bounded implementation tests, final reproducible artifacts,
+schema-11 isolated lifecycle, deterministic live-map evidence, and human
+visual acceptance completed on 2026-08-12. The exact result was published as
+immutable prerelease `v0.1.0-alpha.1`. That acceptance does not transfer to
+the separate Applied Mekanistics alpha.2 candidate, whose runtime and owner
+acceptance remain pending.
 
 AE2 textures and models remain under their upstream CC BY-NC-SA 3.0 terms and
 are resolved only from the operator-installed resource pack. They are not

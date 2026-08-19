@@ -99,10 +99,10 @@ BlueMap on 2026-08-11. Candidate aliases `ae2-addon-s1-candidate.jar`,
 `ae2-s1-enabled-candidate-map-2026-08-11.tar.gz` remain hash-exact to accepted
 aliases `ae2-addon-s1-accepted.jar`, `ae2-s1-gallery-accepted.zip` and
 `ae2-s1-enabled-accepted-map-2026-08-11.tar.gz` on `data-atm120`; the
-historical PVC was untouched. S1 is therefore the latest exact accepted local
-rollback/checkpoint for the All the Mons 1.2.0 tuple. M3f remains the preceding
-historical All the Mons 1.1.1 / NeoForge 21.1.234 accepted checkpoint, not a
-current-pack compatibility claim.
+historical PVC was untouched. At that historical checkpoint S1 was therefore
+the latest exact accepted local rollback result for the All the Mons 1.2.0
+tuple. M3f remained the preceding historical All the Mons 1.1.1 / NeoForge
+21.1.234 accepted checkpoint, not a current-pack compatibility claim.
 
 The isolated release gate must then restore the exact tested JAR and
 enabled configuration with another full restart and compare the re-enabled
@@ -151,6 +151,8 @@ JAR, gallery and map-archive aliases remain unchanged. The exact corrected
 M3f JAR, gallery and map archive were visually accepted on 2026-08-09,
 completing M3. At that checkpoint M3f was the acceptance baseline and M3e was
 its previous accepted rollback checkpoint. S1 subsequently passed its All the
-Mons 1.2.0 rollback lifecycle and bounded owner visual review and is now the
-latest exact accepted local rollback/checkpoint. It remains unreleased.
+Mons 1.2.0 rollback lifecycle and bounded owner visual review and became the
+next exact accepted local rollback/checkpoint. M4/M5 later became the accepted
+successor and was published as immutable prerelease `v0.1.0-alpha.1`; the
+separate alpha.2 candidate remains pending runtime and owner acceptance.
 A successful staging lifecycle is not a production deployment recommendation.

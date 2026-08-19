@@ -42,6 +42,32 @@ the disjoint 26-resource Drive partition is
 The third-party JAR is an ephemeral test input and is never committed, cached
 as a CI artifact or published.
 
+## Unreleased Applied Mekanistics exact evidence
+
+The `0.1.0-alpha.2` successor is additionally pinned to these operator-supplied
+All the Mons `1.2.0` runtime files:
+
+| Evidence input | Size | SHA-256 | Exact source correlation |
+| --- | ---: | --- | --- |
+| Applied Mekanistics `1.6.3` | 149,709 bytes | `8946fea39451dbce8e709dedbef40a52ba337bdf7a25ac0c4b503800b1bf0773` | tag `1.6.3`, commit `137f24bb9a46775ddd5a620055270b5e8a540f5a` |
+| Mekanism mod version `10.7.19` (`Mekanism-1.21.1-10.7.19.85.jar`) | 11,976,009 bytes | `004dbc9f3106f4d192aeaa1ee1190dd16ec9ca8059ed3d093b80034f4c574f43` | exact source tag commit `a00109e4856fd38b9c5b3dd7f22ce4a59cd65a80` |
+
+The AppMek metadata requires AE2 `[19.2.10,20.0.0)` and literally records
+Mekanism `[10.7.14,11-)`. Both complete files must match before
+`appmek-drive-cells` can activate. The exact resource closure contains six
+Drive paths, 3,611 bytes in total. Runtime then
+validates the resolved model and decoded texture semantics so a higher-priority
+resource-pack override cannot bypass the artifact gate.
+
+AppMek declares code `LGPL-3.0-or-later` and assets
+`CC BY-NC-SA 3.0`; Mekanism declares MIT. This repository contains only
+independently written adapter/model-decoder code plus identifiers, sizes,
+digests, and semantic signatures. It bundles no AppMek or Mekanism class,
+source, model, texture, binary, or JAR. All visual resources are resolved from
+the exact operator-installed artifacts. The alpha.2 evidence is not yet a
+runtime or publication record; the owner-accepted alpha.1 section below stays
+historical and byte-bound.
+
 ## All the Mons 1.2.0 M4/M5 exact evidence
 
 The completed M4/M5 implementation is bound to the following exact external
@@ -697,8 +723,12 @@ aliases `ae2-addon-s1-accepted.jar`, `ae2-s1-gallery-accepted.zip` and
 on `data-atm120`; the historical PVC was untouched. The final review pod was
 Ready with zero restarts and zero initializer failures, all exact routes
 active and verifier counters `1/1/2/0`; `save-all flush` completed before
-scale-to-zero. S1 remains the latest exact human-accepted local checkpoint. It
-is unreleased and none of this evidence authorizes publication.
+scale-to-zero. At that historical checkpoint S1 was the latest exact human-
+accepted local result and remained unreleased; none of the S1 evidence alone
+authorized publication. M4/M5 was separately accepted and published as
+immutable prerelease `v0.1.0-alpha.1` on 2026-08-12. That publication does not
+transfer acceptance or release authorization to the alpha.2 Applied
+Mekanistics candidate.
 
 ## M2 facade/material audit evidence
 

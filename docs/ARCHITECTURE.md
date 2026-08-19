@@ -11,11 +11,11 @@ The current packages have deliberately narrow duties:
 
 | Package | Duty |
 | --- | --- |
-| `activation` | Family-wide core activation plus independently fail-closed accepted routes and eight M4/M5 extension routes |
+| `activation` | Family-wide core activation plus independently fail-closed accepted routes, eight published M4/M5 routes, and one unreleased AppMek route |
 | `adapter/bluemap522` | Exact BlueMap 5.22 registration, bounded cable-bus/Drive/Crafting Monitor/M3-completion/extension DTOs, native and extension neighborhood projection, resource routing, world access, geometry emission and original-resource fallback |
 | `diagnostics` | Bounded, location-free reason counters and one-time warnings |
-| `model` | BlueMap-independent cable-bus/native-structural/Drive/glass/crafting/quantum/M3-completion and M4/M5 snapshots, strict decoders, topology, two-sided bay mapping, position RNG and neutral geometry |
-| `profile` | Exact AE2 19.2.17 plus exact All the Mons 1.2.0 AppliedFlux, ME Requester, Expanded AE, MEGA Cells, Advanced AE/Athena and ExtendedAE artifact/resource identities, operator disablement and milestone-bounded activation |
+| `model` | BlueMap-independent cable-bus/native-structural/Drive/glass/crafting/quantum/M3-completion and extension catalogs/snapshots, strict decoders, topology, bay mapping, position RNG and neutral geometry |
+| `profile` | Exact AE2 19.2.17 plus exact All the Mons 1.2.0 AppliedFlux, ME Requester, Expanded AE, MEGA Cells, Advanced AE/Athena, ExtendedAE, Applied Mekanistics and Mekanism artifact/resource identities, operator disablement and milestone-bounded activation |
 
 `tools/analyze_prbm.py` is a development-evidence consumer, not production
 add-on code. It has no Java or server runtime linkage and is never packaged in
@@ -74,12 +74,13 @@ capability but cannot make the core profile depend on extension classes.
    AE control. It also proves the exact operator-installed AE2, Minecraft,
    Advanced AE 1.6.12, ExtendedAE 2.2.35 and Glassential 3.4.5 evidence used
    by the current All the Mons 1.2.0 route.
-   The M4/M5 verifier separately proves the exact AE2 artifact plus the seven
+   The expanded M45 verifier proves the exact AE2 artifact plus nine
    pack-pinned AppliedFlux 2.1.5, ME Requester 1.4.3, Expanded AE 2.1.1,
    MEGA Cells 4.11.0, Advanced AE 1.6.12, Athena 4.0.6, and ExtendedAE 2.2.35
-   artifacts. It checks all three complete-artifact digests, eleven exact
-   resource manifests with 375 rows, and the 67-row MEGA Cells cell-model
-   catalog before any M4/M5 route can activate.
+   artifacts, including Applied Mekanistics 1.6.3 and Mekanism 10.7.19. It
+   checks complete-artifact digests and twelve exact resource manifests with
+   381 rows before a dependent route can activate. The published alpha.1 predecessor remains
+   the historical eight-artifact/eleven-manifest M4/M5 acceptance record.
 5. The `ae2` profile remains inactive when it is absent, disabled by the
    operator, unsupported, malformed or blocked by a failed core capability.
 6. Only a complete exact-profile pass enables its resource routing. The
@@ -605,10 +606,10 @@ stock/restored lifecycle then passed on 2026-08-11, including one-build
 persistence, exact cold/warm rerenders, zero-restart pods, exact restored
 route activation and both render workers advancing. The owner visually
 accepted the exact 855,833-byte JAR, 70,925-byte gallery and 20,660,117-byte
-map archive in BlueMap on 2026-08-11. S1 remains the latest exact human-
-accepted local checkpoint.
+map archive in BlueMap on 2026-08-11. At that historical checkpoint S1 was the
+latest exact human-accepted local result.
 
-M4/M5 is now the complete owner-accepted local checkpoint. Its
+M4/M5 then became the complete owner-accepted local checkpoint. Its
 clear Java runtime audit and exact eight-artifact M45 verifier passed. Two
 byte-identical builds each ran 562 Java tests (560 passed and two intentional
 exporter tests were skipped) and 180 pre-oracle Python tests; the final frozen-
@@ -655,6 +656,16 @@ Only loss of the shared exact AE2 core blocks all eight. Loss of S1 native
 structural support blocks `extendedae-planes` but leaves the other seven
 unchanged. A callback that has emitted partial M4/M5 output resets the tile
 before invoking the captured original resource.
+
+The unreleased AppMek profile adds only `appmek-drive-cells`. It requires the
+exact AppMek+Mekanism tuple and active native Drive support. Ten AppMek IDs map
+to five exact installed chassis models in `ae2:drive`; unknown, malformed,
+inactive, or semantically mismatched selections restore the complete original
+Drive. A thrown AppMek model callback restores that Drive and disables only
+the AppMek route. Chemical P2P, Extended Drive, ME Chest, and MEGA Cell Dock
+integration are outside this candidate. Schema-12 seam regressions exercise
+the already-supported AE2 storage-bus and Mekanism pressurized-tube paths and
+introduce no production renderer.
 
 Each tile callback must continue for contained data, runtime and linkage
 failures. BlueMap's

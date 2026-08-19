@@ -18,6 +18,8 @@ The local profile is intentionally pinned to one complete tuple:
 | Advanced AE | `1.6.12-1.21.1`, SHA-256 `a01d9718667ac13899013e91c5b0b7708b9b9db1da9b8e380772dde54bbe8f41` |
 | Athena | `4.0.6`, SHA-256 `43699885bbce3343916d4c5c4940cf0e3f9f6f02fdeb46e8655e121b42282ec5` |
 | ExtendedAE | `1.21-2.2.35-neoforge`, SHA-256 `14a2860fa2c747e9dda2279b8933fac6311fecfee166c765171022b902591c65` |
+| Applied Mekanistics | `1.6.3`, SHA-256 `8946fea39451dbce8e709dedbef40a52ba337bdf7a25ac0c4b503800b1bf0773` |
+| Mekanism | mod version `10.7.19`; exact `Mekanism-1.21.1-10.7.19.85.jar` SHA-256 `004dbc9f3106f4d192aeaa1ee1190dd16ec9ca8059ed3d093b80034f4c574f43` |
 | Glassential | `3.4.5`, SHA-256 `1f0c8f7533bf3b2002575219ba795fd32a44cc5085c2710624ebbf69e6121471` |
 | BlueMap upstream | `5.22`, commit `fe5115d5548a30d34175b8e0449aaca280af199f` |
 | BlueMap backport | `5.22-agent.backport-5.22-mc1.21.1-2`, commit `9be321df995a1103808621d529eb72773e719d4d`; 6,467,235-byte NeoForge JAR SHA-256 `749f7647fa29764cea113114a7ab3259271bab3da22720989f2bd9fd1f3ba150` |
@@ -26,6 +28,23 @@ The local profile is intentionally pinned to one complete tuple:
 AE2's own runtime metadata permits NeoForge `[21.1.169,)`; this project has
 not generalized or tested that broader range. The narrower ATMons pin is the
 only runtime target.
+
+## Unreleased Applied Mekanistics successor
+
+Development version `0.1.0-alpha.2` adds one independently fail-closed route,
+`appmek-drive-cells`. It requires the complete exact Applied Mekanistics and
+Mekanism files above, the accepted AE2 core, and native Drive. Ten chemical
+cell IDs map to five exact installed chassis models in native `ae2:drive`.
+Chemical P2P, Extended Drive, ME Chest, and MEGA Cell Dock are outside scope.
+Schema-12 seam regressions cover existing parent storage-bus and pressurized-
+tube renderers without adding a production route.
+
+The successor verifier covers ten complete artifacts, twelve resource
+manifests with 381 rows, and the exact six-path/3,611-byte AppMek resource
+closure. This is an implementation candidate only: staging, owner acceptance,
+and publication have not occurred. The accepted and published alpha.1 M4/M5
+record below remains immutable at eight routes, eight artifacts, eleven
+manifests, and 375 rows.
 
 The M0-M3f runtime and human-acceptance records below are deliberately
 historical: they bind All the Mons `1.1.1` at pack commit
@@ -250,9 +269,9 @@ shares report SHA-256
 and 46-file manifest SHA-256
 `e1e592faabd263e1b9bacce14d56577f330d1b5cbd80336f2bd1563d3f1b2a78`.
 The owner visually accepted the exact S1 JAR, gallery and map archive in
-BlueMap on 2026-08-11. S1 is the latest exact human-accepted local checkpoint. No
-broader BlueMap, AE2, Minecraft, NeoForge or pack-version compatibility
-follows from this exact result.
+BlueMap on 2026-08-11. At that historical checkpoint S1 was the latest exact
+human-accepted local result. No broader BlueMap, AE2, Minecraft, NeoForge or
+pack-version compatibility follows from this exact result.
 
 M4/M5 is the complete owner-accepted local checkpoint for the exact
 All the Mons 1.2.0 tuple above. The Java runtime audit and exact M45 verifier
@@ -261,8 +280,10 @@ intentional skips) and 180 pre-oracle Python tests; the final frozen-oracle
 CPython 3.13.14 suite passed 192/192 tests. The exact schema-11 evidence and
 enabled initial/restored, combined-disabled, crafting-disabled, and native-
 structural-disabled cold/warm lifecycle modes passed. This is an exact runtime
-compatibility result for that tuple and was owner visually accepted on
-2026-08-12; it is not a broader compatibility claim.
+compatibility result for that tuple, was owner visually accepted on
+2026-08-12, and was published as immutable prerelease `v0.1.0-alpha.1`; it is
+not a broader compatibility claim. The separate alpha.2 candidate remains
+unreleased and pending runtime and owner acceptance.
 
 ## Version behavior
 

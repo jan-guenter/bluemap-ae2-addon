@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "profileId": "appmek",
+  "modId": "appmek",
+  "version": "1.6.3",
+  "artifact": "Applied-Mekanistics-1.6.3.jar",
+  "sizeBytes": 149709,
+  "sha1": "bec4a47269ec23bca2329742e13409bfde69c5c3",
+  "sha256": "8946fea39451dbce8e709dedbef40a52ba337bdf7a25ac0c4b503800b1bf0773",
+  "sha512": "1a693c3c05862805bd88cf1265fd4b9b98b2da4efe986c9ff26efa0e675df14373983ffdf7ededb26f07864b6702fabc299ac1a06fb8fa35de0b341b596dbf9b",
+  "minecraft": "1.21.1",
+  "neoforge": "21.1.248",
+  "source": {
+    "repository": "https://github.com/AppliedEnergistics/Applied-Mekanistics.git",
+    "tag": "1.6.3",
+    "commit": "137f24bb9a46775ddd5a620055270b5e8a540f5a",
+    "correlation": "t4-tag-commit-byte-correlated-runtime-resources"
+  },
+  "dependentProfiles": {
+    "ae2": {
+      "version": "19.2.17",
+      "requiredRange": "[19.2.10,20.0.0)"
+    },
+    "mekanism": {
+      "version": "10.7.19",
+      "artifact": "Mekanism-1.21.1-10.7.19.85.jar",
+      "sizeBytes": 11976009,
+      "sha1": "b78945c40cfe7640408f3fd1e44da385a8c8b805",
+      "sha256": "004dbc9f3106f4d192aeaa1ee1190dd16ec9ca8059ed3d093b80034f4c574f43",
+      "sha512": "66745825330a98f3e4a5ea3a44aff8b00870f715c144edc38dd2f61b4240589600b58ae89efac3b54dbb5aa430b1059dac1a28fd71cac5cc9002bbeb5ba3f22b",
+      "requiredRange": "[10.7.14,11-)",
+      "sourceTag": "v1.21.1-10.7.19.85",
+      "sourceCommit": "a00109e4856fd38b9c5b3dd7f22ce4a59cd65a80"
+    }
+  },
+  "routes": [
+    {
+      "routeId": "appmek-drive-cells",
+      "coverage": {
+        "ordinaryCellItems": 5,
+        "portableCellItems": 5,
+        "cellModels": 5,
+        "host": "ae2:drive",
+        "contents": "excluded",
+        "ledState": "static-offline-unknown"
+      },
+      "coreDependencies": ["ae2", "ae2-drive", "mekanism"],
+      "resourcePartition": {
+        "pathCount": 6,
+        "totalBytes": 3611,
+        "manifest": "drive-required-resources.tsv",
+        "manifestSha256": "eb224e499a4f5dc4762447f06defb782159c55abca43df00170e1bde65e8b1f2"
+      },
+      "failureBoundary": {
+        "inactiveOrUnknownOrMalformed": "whole-current-drive-stock",
+        "lateSemanticMismatch": "whole-current-drive-stock-without-route-disable",
+        "callbackFailure": "whole-current-drive-stock-and-disable-appmek-drive-cells"
+      }
+    }
+  ],
+  "semanticResourceGate": {
+    "schemaVersion": 1,
+    "resolvedModelAlgorithm": "bluemap-ae2-resolved-model-elements-faces-v1",
+    "decodedTextureAlgorithm": "bluemap-ae2-decoded-texture-key-size-animation-argb-v1",
+    "drive": {
+      "texture": "appmek:block/drive/drive_cells",
+      "decodedTextureSemanticSha256": "cea8a99feaebd750fd6e2e0c1cb2d23e973dfe98717664a8458f998d1d910c03",
+      "modelSemanticSha256": {
+        "appmek:block/drive/cells/chemical_storage_cell_1k": "03de2e1576548b970a9f7198585343f856e8f1adc2e024f4027fe2a3ccf7d573",
+        "appmek:block/drive/cells/chemical_storage_cell_4k": "28399315b2edef915600234f5a4044144fa2bc6c112cdff3446efc302723a710",
+        "appmek:block/drive/cells/chemical_storage_cell_16k": "a58174fbf0bd325cf16cdd58c8258633afa091c6440a503a9511ae4c61f7ed55",
+        "appmek:block/drive/cells/chemical_storage_cell_64k": "96d1fbadad1da33257f53c743fba966eea5521508b48d4472e8755892dd66fb7",
+        "appmek:block/drive/cells/chemical_storage_cell_256k": "2e52758406d987b21f79f626418ba187c7f9e052158fd7a12d0fcb2c8d2f8d84"
+      }
+    }
+  },
+  "bundledUpstreamResources": false,
+  "candidateState": "implemented-pending-runtime-and-owner-acceptance"
+}

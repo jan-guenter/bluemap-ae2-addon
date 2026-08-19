@@ -56,6 +56,10 @@ tasks.named('test', Test).configure {
             providers.gradleProperty('minecraftClientJar').getOrElse('')
     systemProperty 'bluemapAe2.testBlueMapSourcePath',
             providers.gradleProperty('bluemapSourcePath').getOrElse('')
+    systemProperty 'bluemapAe2.testAppMekJar',
+            providers.gradleProperty('m45AppMekJar').getOrElse('')
+    systemProperty 'bluemapAe2.testMekanismJar',
+            providers.gradleProperty('m45MekanismJar').getOrElse('')
 }
 
 tasks.register('testRuntimeEvidenceAnalyzer', Exec) {
@@ -220,6 +224,8 @@ tasks.register('verifyProductionJar') {
                             'athena-required-resources.tsv',
                     'bluemap-ae2/profiles/extendedae/1.21-2.2.35-neoforge/' +
                             'm5-required-resources.tsv',
+                    'bluemap-ae2/profiles/appmek/1.6.3/profile.json',
+                    'bluemap-ae2/profiles/appmek/1.6.3/drive-required-resources.tsv',
                     'bluemap-ae2/profiles/ae2/19.2.17/profile.json',
                     'bluemap-ae2/profiles/ae2/19.2.17/required-resources.sha256',
                     'bluemap-ae2/profiles/ae2/19.2.17/routes/quartz-glass/profile.json',
@@ -1649,9 +1655,63 @@ tasks.register('verifyProductionJar') {
                 throw new GradleException('Packaged ExtendedAE resource manifest mismatch')
             }
 
+            def appMekProfileEntry =
+                    'bluemap-ae2/profiles/appmek/1.6.3/profile.json'
+            def appMekProfileBytes = zipFile.getInputStream(
+                    zipFile.getEntry(appMekProfileEntry)
+            ).withCloseable { it.readAllBytes() }
+            def appMekProfileSha256 = java.security.MessageDigest
+                    .getInstance('SHA-256')
+                    .digest(appMekProfileBytes)
+                    .encodeHex()
+                    .toString()
+            def appMekProfile = readJson(appMekProfileEntry)
+            if (appMekProfileSha256 !=
+                    '0118bbcf8c903d04a51d40c1ba58eeb809d5876cddc25d432dcc428ffa3eb166' ||
+                    appMekProfile.schemaVersion != 1 ||
+                    appMekProfile.profileId != 'appmek' ||
+                    appMekProfile.version != '1.6.3' ||
+                    appMekProfile.sha256 !=
+                            '8946fea39451dbce8e709dedbef40a52ba337bdf7a25ac0c4b503800b1bf0773' ||
+                    appMekProfile.dependentProfiles?.mekanism?.requiredRange !=
+                            '[10.7.14,11-)' ||
+                    appMekProfile.routes*.routeId != ['appmek-drive-cells'] ||
+                    appMekProfile.routes[0]?.coreDependencies !=
+                            ['ae2', 'ae2-drive', 'mekanism'] ||
+                    appMekProfile.semanticResourceGate?.drive?.modelSemanticSha256
+                            ?.size() != 5 ||
+                    appMekProfile.bundledUpstreamResources != false) {
+                throw new GradleException('Packaged Applied Mekanistics profile mismatch')
+            }
+
+            [
+                    'drive-required-resources.tsv': [
+                            sha256:
+                                    'eb224e499a4f5dc4762447f06defb782159c55abca43df00170e1bde65e8b1f2',
+                            rows: 6
+                    ]
+            ].each { String name, Map expected ->
+                def path = "bluemap-ae2/profiles/appmek/1.6.3/${name}"
+                def bytes = zipFile.getInputStream(zipFile.getEntry(path))
+                        .withCloseable { it.readAllBytes() }
+                def digest = java.security.MessageDigest.getInstance('SHA-256')
+                        .digest(bytes).encodeHex().toString()
+                def lines = new String(
+                        bytes, java.nio.charset.StandardCharsets.UTF_8
+                ).readLines()
+                if (digest != expected.sha256 || lines.size() != expected.rows ||
+                        !lines.every {
+                            it ==~ /assets\/appmek\/[^\t]+\t[1-9][0-9]*\t[0-9a-f]{64}/
+                        }) {
+                    throw new GradleException(
+                            "Packaged Applied Mekanistics ${name} mismatch"
+                    )
+                }
+            }
+
             def supportMatrix = readJson('bluemap-ae2/support-matrix.json')
             if (supportMatrix.schemaVersion != 1 ||
-                    supportMatrix.profiles?.size() != 12 ||
+                    supportMatrix.profiles?.size() != 13 ||
                     supportMatrix.baseline != [
                             pack      : 'All the Mons 1.2.0',
                             packCommit: 'c7bb230f21d14d26859d0b92548f089b3a493ad9',
@@ -1660,25 +1720,28 @@ tasks.register('verifyProductionJar') {
                             java       : 21
                     ] ||
                     supportMatrix.developmentState !=
-                            'owner-accepted-m4-m5-release-preparation' ||
+                            'appmek-candidate-pending-runtime-and-owner-acceptance' ||
                     supportMatrix.publicationGate !=
-                            'authorized-pending-exact-release-artifact-validation' ||
+                            'blocked-pending-appmek-runtime-and-owner-acceptance' ||
                     supportMatrix.currentCandidate != [
-                            milestones               : ['M4', 'M5'],
-                            status                   : 'owner-accepted-m4-m5',
+                            milestones               : ['M4', 'M5', 'Applied-Mekanistics'],
+                            status                   :
+                                    'implemented-pending-runtime-and-owner-acceptance',
                             acceptance               : [
-                                    exactArtifactAndResourceGate: 'passed',
-                                    technical                    : 'passed',
-                                    runtimeLifecycle              : 'passed',
-                                    humanVisual                   : 'passed-2026-08-12',
-                                    publication                   : 'authorized-2026-08-12'
+                                    exactArtifactAndResourceGate:
+                                            'pending-final-clean-gate',
+                                    technical                    :
+                                            'pending-independent-source-audit',
+                                    runtimeLifecycle              : 'pending',
+                                    humanVisual                   : 'pending',
+                                    publication                   : 'blocked'
                             ],
-                            artifactCount            : 8,
-                            extensionArtifactCount   : 7,
-                            routeCount               : 8,
-                            resourceManifestCount    : 11,
-                            resourceRowReferenceCount: 375,
-                            resourceRowReferenceBytes: 192033
+                            artifactCount            : 10,
+                            extensionArtifactCount   : 9,
+                            routeCount               : 9,
+                            resourceManifestCount    : 12,
+                            resourceRowReferenceCount: 381,
+                            resourceRowReferenceBytes: 195644
                     ] ||
                     supportMatrix.profiles[0..6]*.modId != [
                             'ae2', 'appflux', 'merequester', 'expandedae',
@@ -1726,6 +1789,30 @@ tasks.register('verifyProductionJar') {
                     supportMatrix.profiles[1..6].sum {
                         (it.resourcePartitions ?: []).size()
                     } != 11 ||
+                    supportMatrix.profiles[12]?.modId != 'appmek' ||
+                    supportMatrix.profiles[12]?.version != '1.6.3' ||
+                    supportMatrix.profiles[12]?.milestone !=
+                            'Applied-Mekanistics' ||
+                    supportMatrix.profiles[12]?.status !=
+                            'implemented-pending-runtime-and-owner-acceptance' ||
+                    supportMatrix.profiles[12]?.artifact?.sha256 !=
+                            '8946fea39451dbce8e709dedbef40a52ba337bdf7a25ac0c4b503800b1bf0773' ||
+                    supportMatrix.profiles[12]?.dependentArtifacts != [[
+                            modId       : 'mekanism',
+                            version     : '10.7.19',
+                            requiredRange: '[10.7.14,11-)',
+                            fileName    : 'Mekanism-1.21.1-10.7.19.85.jar',
+                            sizeBytes   : 11976009,
+                            sha256      :
+                                    '004dbc9f3106f4d192aeaa1ee1190dd16ec9ca8059ed3d093b80034f4c574f43',
+                            bundled     : false
+                    ]] ||
+                    supportMatrix.profiles[12]?.routes*.routeId !=
+                            ['appmek-drive-cells'] ||
+                    supportMatrix.profiles[12]?.routes[0]?.dependencies !=
+                            ['ae2', 'ae2-drive', 'mekanism'] ||
+                    supportMatrix.profiles[12]?.resourcePartitions*.pathCount !=
+                            [6] ||
                     supportMatrix.profiles[7] != [
                             profileId        : 'ae2-quartz-glass',
                             modId            : 'ae2',
@@ -2408,13 +2495,17 @@ tasks.register('verifyProductionJar') {
                         it.startsWith('gripe/_90/megacells/') ||
                         it.startsWith('lu/kolja/expandedae/') ||
                         it.startsWith('net/pedroksl/advanced_ae/') ||
+                        it.startsWith('me/ramidzkh/mekae2/') ||
+                        it.startsWith('mekanism/') ||
                         it.startsWith('net/minecraft/') ||
                         it.startsWith('net/neoforged/') ||
                         it.startsWith('assets/ae2/') ||
                         it.startsWith('assets/extendedae/') ||
                         it.startsWith('assets/megacells/') ||
                         it.startsWith('assets/expandedae/') ||
-                        it.startsWith('assets/advanced_ae/')
+                        it.startsWith('assets/advanced_ae/') ||
+                        it.startsWith('assets/appmek/') ||
+                        it.startsWith('assets/mekanism/')
             }
             if (!forbidden.isEmpty()) {
                 throw new GradleException("Production JAR contains forbidden entries: ${forbidden}")
@@ -2525,6 +2616,8 @@ tasks.register('verifySourcesJar') {
                             'athena-required-resources.tsv',
                     'bluemap-ae2/profiles/extendedae/1.21-2.2.35-neoforge/' +
                             'm5-required-resources.tsv',
+                    'bluemap-ae2/profiles/appmek/1.6.3/profile.json',
+                    'bluemap-ae2/profiles/appmek/1.6.3/drive-required-resources.tsv',
                     'bluemap-ae2/profiles/ae2/19.2.17/profile.json',
                     'bluemap-ae2/profiles/ae2/19.2.17/required-resources.sha256',
                     'bluemap-ae2/profiles/ae2/19.2.17/routes/quartz-glass/profile.json',
@@ -2565,13 +2658,17 @@ tasks.register('verifySourcesJar') {
                         it.startsWith('gripe/_90/megacells/') ||
                         it.startsWith('lu/kolja/expandedae/') ||
                         it.startsWith('net/pedroksl/advanced_ae/') ||
+                        it.startsWith('me/ramidzkh/mekae2/') ||
+                        it.startsWith('mekanism/') ||
                         it.startsWith('net/minecraft/') ||
                         it.startsWith('net/neoforged/') ||
                         it.startsWith('assets/ae2/') ||
                         it.startsWith('assets/extendedae/') ||
                         it.startsWith('assets/megacells/') ||
                         it.startsWith('assets/expandedae/') ||
-                        it.startsWith('assets/advanced_ae/')
+                        it.startsWith('assets/advanced_ae/') ||
+                        it.startsWith('assets/appmek/') ||
+                        it.startsWith('assets/mekanism/')
             }
             if (!forbiddenThirdParty.isEmpty()) {
                 throw new GradleException(
@@ -2621,6 +2718,9 @@ tasks.register('verifyProvenance') {
                     'cable-bus-structural/required-resources.sha256',
             'src/main/resources/bluemap-ae2/profiles/ae2/19.2.17/routes/' +
                     'cable-bus-structural/required-resources.tsv',
+            'src/main/resources/bluemap-ae2/profiles/appmek/1.6.3/profile.json',
+            'src/main/resources/bluemap-ae2/profiles/appmek/1.6.3/' +
+                    'drive-required-resources.tsv',
             'src/main/resources/bluemap-ae2/support-matrix.json'
     )
 
@@ -2637,9 +2737,9 @@ tasks.register('verifyProvenance') {
         def adaptationLicenses = manifest.local_adaptations*.spdx
         def currentClosure = manifest.current_m45_closure
         if (sha256(file('provenance/upstreams.json')) !=
-                'f8b959965733cd4803c2ea9bf649177aa0f71410ba60383d210389ee37d87516' ||
+                '2f17df6178e367001c804878ed85cc8f06064078807b555fb25f546ff72dfe38' ||
                 sha256(file('src/main/resources/bluemap-ae2/support-matrix.json')) !=
-                        'b28808e2e55a94d214301f2a80d0eaaa5c201d4b1045c35435d95dc312eaf38f' ||
+                        '2c1dfd869a1bd5a97e099b9cdc455723f893177a76939f851d0865cff5a5f882' ||
                 manifest.schema_version != 1 ||
                 manifest.project_license != 'LGPL-3.0-only' ||
                 manifest.baseline != [
@@ -2649,24 +2749,25 @@ tasks.register('verifyProvenance') {
                         neoforge    : '21.1.248',
                         java        : 21
                 ] ||
-                currentClosure?.milestones != ['M4', 'M5'] ||
-                currentClosure?.status != 'owner-accepted-m4-m5' ||
+                currentClosure?.milestones != ['M4', 'M5', 'Applied-Mekanistics'] ||
+                currentClosure?.status !=
+                        'implemented-pending-runtime-and-owner-acceptance' ||
                 currentClosure?.acceptance != [
-                        exact_artifact_and_resource_gate: 'passed',
-                        technical_acceptance            : 'passed',
-                        runtime_lifecycle                : 'passed',
-                        human_visual_acceptance          : 'passed-2026-08-12',
-                        publication                     : 'authorized-2026-08-12'
+                        exact_artifact_and_resource_gate: 'pending-final-clean-gate',
+                        technical_acceptance            :
+                                'pending-independent-source-audit',
+                        runtime_lifecycle                : 'pending',
+                        human_visual_acceptance          : 'pending',
+                        publication                     : 'blocked'
                 ] ||
                 currentClosure?.verification != [
                         script                      : 'tools/verify_m45_artifacts.py',
-                        artifact_count              : 8,
-                        extension_artifact_count    : 7,
-                        route_count                 : 8,
-                        resource_manifest_count     : 11,
-                        resource_row_reference_count: 375,
-                        resource_row_reference_bytes: 192033,
-                        mega_cell_catalog_rows      : 67
+                        artifact_count              : 10,
+                        extension_artifact_count    : 9,
+                        route_count                 : 9,
+                        resource_manifest_count     : 12,
+                        resource_row_reference_count: 381,
+                        resource_row_reference_bytes: 195644
                 ] ||
                 currentClosure?.artifacts?.collectEntries { key, artifact ->
                     [(key): [artifact.version, artifact.size, artifact.sha256,
@@ -2695,20 +2796,33 @@ tasks.register('verifyProvenance') {
                                 false],
                         extendedae : ['1.21-2.2.35-neoforge', 5578031,
                                 '14a2860fa2c747e9dda2279b8933fac6311fecfee166c765171022b902591c65',
+                                false],
+                        appmek     : ['1.6.3', 149709,
+                                '8946fea39451dbce8e709dedbef40a52ba337bdf7a25ac0c4b503800b1bf0773',
+                                false],
+                        mekanism   : ['10.7.19', 11976009,
+                                '004dbc9f3106f4d192aeaa1ee1190dd16ec9ca8059ed3d093b80034f4c574f43',
                                 false]
                 ] ||
                 currentClosure?.routes*.route_id != [
                         'appflux', 'merequester', 'expandedae', 'megacells',
                         'advanced-ae-quantum', 'advanced-ae-athena',
-                        'extendedae-matrix', 'extendedae-planes'
+                        'extendedae-matrix', 'extendedae-planes',
+                        'appmek-drive-cells'
                 ] ||
                 currentClosure?.routes*.milestone != [
-                        'M4', 'M4', 'M4', 'M5', 'M5', 'M5', 'M5', 'M5'
+                        'M4', 'M4', 'M4', 'M5', 'M5', 'M5', 'M5', 'M5',
+                        'Applied-Mekanistics'
                 ] ||
-                currentClosure?.routes?.any {
+                currentClosure?.routes[0..7]?.any {
                     it.coverage == null ||
                             it.failure_boundary != 'route-local-atomic-stock-fallback'
                 } ||
+                currentClosure?.routes[8..8]?.any {
+                    it.coverage == null || !it.failure_boundary
+                } ||
+                currentClosure?.routes[8]?.core_dependencies !=
+                        ['ae2', 'ae2-drive', 'mekanism'] ||
                 currentClosure?.resource_partitions?.collectEntries { key, partition ->
                     [(key): [partition.path_count, partition.total_bytes,
                             partition.manifest_sha256]]
@@ -2734,7 +2848,9 @@ tasks.register('verifyProvenance') {
                         'extendedae-drive-folded': [15, 13242,
                                 '5e72f79f45a3b120a89cf8b7a1fa15ce41bebaae62a63c6f3305ef40bd5d24ee'],
                         'extendedae-m5'          : [38, 7172,
-                                '518a608d2b60eba9ed084fd66d017bcfefa1de2f090d5a9ea13a6433b76bc0b1']
+                                '518a608d2b60eba9ed084fd66d017bcfefa1de2f090d5a9ea13a6433b76bc0b1'],
+                        'appmek-drive-cells'     : [6, 3611,
+                                'eb224e499a4f5dc4762447f06defb782159c55abca43df00170e1bde65e8b1f2']
                 ] ||
                 currentClosure?.retained_current_route != [
                         profile_id            : 'extendedae',
@@ -3500,9 +3616,12 @@ tasks.register('verifyProvenance') {
                         [3, 4, 5, 6, 7, 8, 9] ||
                 manifest.ae2?.s1_native_structural_profile_audit
                         ?.frozen_accepted_baseline?.generated_output_count != 12 ||
-                manifest.local_adaptations?.size() != 10 ||
-                manifest.local_adaptations[0]?.upstream_files?.size() != 30 ||
+                manifest.local_adaptations?.size() != 11 ||
+                manifest.local_adaptations[0]?.upstream_files?.size() != 4 ||
+                !manifest.local_adaptations[0]?.local?.contains(
+                        'native Drive adapter') ||
                 manifest.local_adaptations[0]?.spdx != 'LGPL-3.0-only' ||
+                manifest.local_adaptations[1]?.upstream_files?.size() != 30 ||
                 sha256(file('src/main/resources/bluemap-ae2/profiles/ae2/' +
                         '19.2.17/profile.json')) !=
                         '2c27976a718834dbc97b3eb7cac6543c4ad2a966737c7bccbadb2b1c39c837e8' ||
@@ -3738,6 +3857,8 @@ tasks.register('verifyM45PinnedArtifacts', Exec) {
     def advancedAeJar = providers.gradleProperty('m45AdvancedAeJar')
     def athenaJar = providers.gradleProperty('m45AthenaJar')
     def extendedAeJar = providers.gradleProperty('m45ExtendedAeJar')
+    def appMekJar = providers.gradleProperty('m45AppMekJar')
+    def mekanismJar = providers.gradleProperty('m45MekanismJar')
     doFirst {
         def missing = [
                 ae2Jar           : ae2Jar,
@@ -3747,7 +3868,9 @@ tasks.register('verifyM45PinnedArtifacts', Exec) {
                 m45MegaCellsJar  : megaCellsJar,
                 m45AdvancedAeJar : advancedAeJar,
                 m45AthenaJar     : athenaJar,
-                m45ExtendedAeJar : extendedAeJar
+                m45ExtendedAeJar : extendedAeJar,
+                m45AppMekJar     : appMekJar,
+                m45MekanismJar   : mekanismJar
         ].findAll { String ignored, value -> !value.isPresent() }
                 .keySet()
         if (!missing.isEmpty()) {
@@ -3764,7 +3887,9 @@ tasks.register('verifyM45PinnedArtifacts', Exec) {
             '--mega-cells-jar', megaCellsJar.getOrElse('missing'),
             '--advanced-ae-jar', advancedAeJar.getOrElse('missing'),
             '--athena-jar', athenaJar.getOrElse('missing'),
-            '--extended-ae-jar', extendedAeJar.getOrElse('missing')
+            '--extended-ae-jar', extendedAeJar.getOrElse('missing'),
+            '--appmek-jar', appMekJar.getOrElse('missing'),
+            '--mekanism-jar', mekanismJar.getOrElse('missing')
 }
 
 tasks.named('check').configure {

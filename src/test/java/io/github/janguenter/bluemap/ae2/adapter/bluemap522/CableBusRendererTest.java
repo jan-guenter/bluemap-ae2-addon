@@ -69,6 +69,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class CableBusRendererTest {
 
+    private static final float MESH_EPSILON = 0.000001F;
     private static final int X = 1;
     private static final int Y = 64;
     private static final int Z = 1;
@@ -622,6 +623,24 @@ class CableBusRendererTest {
             }
         }
         assertEquals(12, states);
+    }
+
+    @Test
+    void storageBusReachesTheQioDashboardSeamWithoutChangingItsExactMesh()
+            throws Exception {
+        assertNativeStorageBusSeam(
+                Direction6.EAST,
+                "mekanism:qio_dashboard"
+        );
+    }
+
+    @Test
+    void storageBusReachesTheRadioactiveWasteBarrelSeamWithoutChangingItsExactMesh()
+            throws Exception {
+        assertNativeStorageBusSeam(
+                Direction6.UP,
+                "mekanism:radioactive_waste_barrel"
+        );
     }
 
     @Test
@@ -1595,6 +1614,69 @@ class CableBusRendererTest {
 
     private static NativeRuntime nativeRuntime(Fixture fixture) {
         return nativeRuntime(fixture, M45Adapter.runtime());
+    }
+
+    private static void assertNativeStorageBusSeam(
+            Direction6 direction,
+            String targetBlockId
+    ) throws Exception {
+        Fixture fixture = fixture(false, false, true);
+        ResourcePack exact = AppMekExternalResourceTestSupport.exactResources();
+        AppMekExternalResourceTestSupport.putExactAe2Textures(
+                exact,
+                NativeStructuralResourceModels.requiredTextures()
+        );
+        for (Key key : exact.getModels().keySet()) {
+            fixture.resourcePack().getModels().put(key, exact.getModels().get(key));
+        }
+        for (Key key : exact.getTextures().keySet()) {
+            fixture.resourcePack().getTextures().put(
+                    key,
+                    exact.getTextures().get(key)
+            );
+        }
+        fixture.gallery().put(fixture.resourcePack().getTextures());
+        fixture.blockEntities().put(
+                new Position(X, Y, Z),
+                cableBusWithFacePart(
+                        "ae2:fluix_glass_cable",
+                        direction,
+                        "ae2:storage_bus"
+                )
+        );
+        fixture.states().put(
+                new Position(
+                        X + direction.stepX(),
+                        Y + direction.stepY(),
+                        Z + direction.stepZ()
+                ),
+                BlockState.fromString(targetBlockId)
+        );
+
+        RecordingTileModel model = render(nativeRuntime(fixture).renderer(), fixture);
+
+        assertEquals(74, model.size(), targetBlockId);
+        float attachmentPlane = direction == Direction6.EAST || direction == Direction6.UP
+                ? 14F : 2F;
+        int axis = direction == Direction6.EAST ? 0 : direction == Direction6.UP ? 1 : 2;
+        boolean reachesAttachmentPlane = false;
+        float minimum = Float.POSITIVE_INFINITY;
+        float maximum = Float.NEGATIVE_INFINITY;
+        for (int face = 0; face < model.size(); face++) {
+            float[] positions = model.face(face).positions();
+            for (int index = axis; index < positions.length; index += 3) {
+                minimum = Math.min(minimum, positions[index]);
+                maximum = Math.max(maximum, positions[index]);
+                reachesAttachmentPlane |=
+                        Math.abs(positions[index] - attachmentPlane) <= MESH_EPSILON;
+                assertTrue(Float.isFinite(positions[index]),
+                        targetBlockId + "/" + face + "/" + index);
+            }
+        }
+        assertTrue(
+                reachesAttachmentPlane,
+                targetBlockId + "/" + minimum + "/" + maximum
+        );
     }
 
     private static NativeRuntime nativeRuntime(

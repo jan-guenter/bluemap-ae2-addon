@@ -3028,8 +3028,19 @@ class AnalyzerTest(unittest.TestCase):
         global CASES_PATH
         self.temporary = tempfile.TemporaryDirectory()
         self.addCleanup(self.temporary.cleanup)
+        self.schema12_cases_path = PROJECT_CASES_PATH
         self.schema11_cases_path = PROJECT_CASES_PATH
         manifest = json.loads(PROJECT_CASES_PATH.read_text(encoding="utf-8"))
+        if manifest.get("schema_version") == 12:
+            schema11 = analyze_prbm._schema11_view(manifest)
+            self.schema11_cases_path = (
+                Path(self.temporary.name) / "accepted-schema11-cases.json"
+            )
+            self.schema11_cases_path.write_text(
+                analyze_prbm.canonical_json(schema11, pretty=True),
+                encoding="utf-8",
+            )
+            manifest = schema11
         if manifest.get("schema_version") == 11:
             schema10 = analyze_prbm._schema10_view(manifest)
             self.schema10_cases_path = (
@@ -3061,6 +3072,106 @@ class AnalyzerTest(unittest.TestCase):
         )
         m45_runtime_patcher.start()
         self.addCleanup(m45_runtime_patcher.stop)
+
+    def test_schema12_narrow_appmek_manifest_and_projection_modes_are_exact(
+        self,
+    ) -> None:
+        gallery, evidence = analyze_prbm.parse_cases(self.schema12_cases_path)
+        self.assertEqual(12, gallery.schema_version)
+        self.assertEqual(158, len(gallery.cases))
+        self.assertEqual(7, len(gallery.appmek_anchors))
+        self.assertEqual(4, len(gallery.appmek_route_positions))
+        self.assertEqual(162, evidence["case_count"])
+        self.assertEqual(1_373, evidence["anchor_count"])
+        self.assertEqual(
+            analyze_prbm.SCHEMA11_CANONICAL_SHA256,
+            evidence["frozen_schema11_view_sha256"],
+        )
+        self.assertEqual(
+            [250, 106, 106, 106, 74, 74, 18],
+            [anchor.expected_triangle_count for anchor in gallery.appmek_anchors],
+        )
+        self.assertEqual(
+            [60, 6, 6, 6, 0, 0, 0],
+            [
+                dict(anchor.expected_material_triangles).get(
+                    analyze_prbm.APPMEK_DRIVE_TEXTURE,
+                    0,
+                )
+                for anchor in gallery.appmek_anchors
+            ],
+        )
+        mode_counts = {}
+        for mode, kwargs in {
+            "enabled": {},
+            "stock": {"stock_baseline": True},
+            "native-structural": {"native_structural_disabled": True},
+            "appmek-drive": {"appmek_drive_disabled": True},
+        }.items():
+            projections = [
+                analyze_prbm._appmek_mode_projection(
+                    anchor,
+                    stock_baseline=kwargs.get("stock_baseline", False),
+                    native_structural_disabled=kwargs.get(
+                        "native_structural_disabled",
+                        False,
+                    ),
+                    appmek_drive_disabled=kwargs.get(
+                        "appmek_drive_disabled",
+                        False,
+                    ),
+                )
+                for anchor in gallery.appmek_anchors
+            ]
+            nonempty = sum(
+                projection is None or projection.review_projection == "nonempty"
+                for projection in projections
+            )
+            mode_counts[mode] = (nonempty, 7 - nonempty)
+        self.assertEqual(
+            {
+                "enabled": (7, 0),
+                "stock": (1, 6),
+                "native-structural": (5, 2),
+                "appmek-drive": (3, 4),
+            },
+            mode_counts,
+        )
+
+        parsed = analyze_prbm.parse_args(
+            ["--map-root", str(self.map_root), "--appmek-drive-disabled"]
+        )
+        self.assertTrue(parsed.appmek_drive_disabled)
+
+    def test_schema12_manifest_mutations_fail_closed_before_live_oracle(self) -> None:
+        manifest = json.loads(
+            self.schema12_cases_path.read_text(encoding="utf-8")
+        )
+        mutations = []
+        for mutator in (
+            lambda value: value["cases"][-1]["anchors"][0].__setitem__(
+                "block_id", "minecraft:stone"
+            ),
+            lambda value: value["cases"][-2]["anchors"][0]["position"].__setitem__(
+                "x", 999
+            ),
+            lambda value: value["cases"][-4]["anchors"][0].__setitem__(
+                "expected_triangle_count", 249
+            ),
+            lambda value: value["profile"]["appmek_routes"][0].__setitem__(
+                "route", "future-route"
+            ),
+        ):
+            value = copy.deepcopy(manifest)
+            mutator(value)
+            mutations.append(value)
+        for value in mutations:
+            payload = analyze_prbm.canonical_json(value, pretty=True).encode("utf-8")
+            with self.assertRaises(analyze_prbm.EvidenceError):
+                analyze_prbm._parse_schema12_cases(
+                    value,
+                    hashlib.sha256(payload).hexdigest(),
+                )
 
     @staticmethod
     def _restore_cases_path(path: Path) -> None:
@@ -3685,12 +3796,14 @@ class AnalyzerTest(unittest.TestCase):
         verify = outputs[
             Path("datapack/data/ae2_m3/function/verify.mcfunction")
         ]
+        self.assertEqual(272_646, len(build))
         self.assertEqual(
-            "47e4d61e3db0835b6b7c51caa9d512da25e0d278125fd6bb194f9178edf4cb78",
+            "812e5f289592f35eb1018a5154d40222567aeff0d79225f552144277326a027f",
             hashlib.sha256(build).hexdigest(),
         )
+        self.assertEqual(1_008_964, len(verify))
         self.assertEqual(
-            "a4461f992cb3aafd090cd46b321ec3d19914d44e6792b3b846bd491fd62f8b93",
+            "799bd217357b7ebf58a16792b540e6cc1d3dd72efad9808fc3980d063d4b3133",
             hashlib.sha256(verify).hexdigest(),
         )
         datapack_digest = hashlib.sha256()
@@ -3709,7 +3822,7 @@ class AnalyzerTest(unittest.TestCase):
             datapack_digest.update(payload)
             datapack_digest.update(b"\0")
         self.assertEqual(
-            "0d44d6bc90d9ae5b4a4dd3a6a46971b09ebab2074f710da8b07d022c5928c5ed",
+            "6d4eb64c453bf9db43ec15b114a71d98fb23a6980c499bed2b18047f9211f36e",
             datapack_digest.hexdigest(),
         )
 

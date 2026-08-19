@@ -7,27 +7,28 @@
     "neoforge": "21.1.248",
     "java": 21
   },
-  "developmentState": "owner-accepted-m4-m5-release-preparation",
-  "publicationGate": "authorized-pending-exact-release-artifact-validation",
+  "developmentState": "appmek-candidate-pending-runtime-and-owner-acceptance",
+  "publicationGate": "blocked-pending-appmek-runtime-and-owner-acceptance",
   "currentCandidate": {
     "milestones": [
       "M4",
-      "M5"
+      "M5",
+      "Applied-Mekanistics"
     ],
-    "status": "owner-accepted-m4-m5",
+    "status": "implemented-pending-runtime-and-owner-acceptance",
     "acceptance": {
-      "exactArtifactAndResourceGate": "passed",
-      "technical": "passed",
-      "runtimeLifecycle": "passed",
-      "humanVisual": "passed-2026-08-12",
-      "publication": "authorized-2026-08-12"
+      "exactArtifactAndResourceGate": "pending-final-clean-gate",
+      "technical": "pending-independent-source-audit",
+      "runtimeLifecycle": "pending",
+      "humanVisual": "pending",
+      "publication": "blocked"
     },
-    "artifactCount": 8,
-    "extensionArtifactCount": 7,
-    "routeCount": 8,
-    "resourceManifestCount": 11,
-    "resourceRowReferenceCount": 375,
-    "resourceRowReferenceBytes": 192033
+    "artifactCount": 10,
+    "extensionArtifactCount": 9,
+    "routeCount": 9,
+    "resourceManifestCount": 12,
+    "resourceRowReferenceCount": 381,
+    "resourceRowReferenceBytes": 195644
   },
   "profiles": [
     {
@@ -854,6 +855,65 @@
         "directionalShade": "BlueMap-5.22-host-projection-not-pixel-exact-because-PRBM-has-no-per-quad-shade-channel",
         "upstreamResources": "operator-installed-not-bundled",
         "runtimeGallery": "accepted-bounded-schema10"
+      }
+    },
+    {
+      "modId": "appmek",
+      "version": "1.6.3",
+      "milestone": "Applied-Mekanistics",
+      "status": "implemented-pending-runtime-and-owner-acceptance",
+      "runtimeAcceptance": "pending",
+      "humanAcceptance": "pending",
+      "artifact": {
+        "fileName": "Applied-Mekanistics-1.6.3.jar",
+        "sizeBytes": 149709,
+        "sha1": "bec4a47269ec23bca2329742e13409bfde69c5c3",
+        "sha256": "8946fea39451dbce8e709dedbef40a52ba337bdf7a25ac0c4b503800b1bf0773",
+        "bundled": false
+      },
+      "dependentArtifacts": [
+        {
+          "modId": "mekanism",
+          "version": "10.7.19",
+          "requiredRange": "[10.7.14,11-)",
+          "fileName": "Mekanism-1.21.1-10.7.19.85.jar",
+          "sizeBytes": 11976009,
+          "sha256": "004dbc9f3106f4d192aeaa1ee1190dd16ec9ca8059ed3d093b80034f4c574f43",
+          "bundled": false
+        }
+      ],
+      "routes": [
+        {
+          "routeId": "appmek-drive-cells",
+          "coverage": {
+            "itemIds": 10,
+            "uniqueChassisModels": 5,
+            "hosts": [
+              "ae2:drive"
+            ]
+          },
+          "dependencies": [
+            "ae2",
+            "ae2-drive",
+            "mekanism"
+          ],
+          "failureBoundary": "preflight-mismatch-inactivates-route;inactive-unknown-malformed-or-late-semantic-mismatch-stocks-current-drive;callback-failure-stocks-current-drive-and-disables-only-appmek-drive-cells"
+        }
+      ],
+      "resourcePartitions": [
+        {
+          "key": "appmek-drive-cells",
+          "pathCount": 6,
+          "totalBytes": 3611,
+          "manifestSha256": "eb224e499a4f5dc4762447f06defb782159c55abca43df00170e1bde65e8b1f2"
+        }
+      ],
+      "limitations": {
+        "chemicalP2pExtendedDriveMeChestAndCellDock": "out-of-scope",
+        "seamControls": "existing-ae2-storage-bus-and-mekanism-pressurized-tube-renderers-only-no-new-route",
+        "transientState": "static-offline-unknown",
+        "upstreamResources": "operator-installed-not-bundled",
+        "runtimeGallery": "schema12-pending-exact-live-oracle-freeze"
       }
     }
   ]

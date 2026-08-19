@@ -21,7 +21,18 @@ MEGA Cells `4.11.0`, Advanced AE `1.6.12-1.21.1`, Athena `4.0.6`, ExtendedAE
 NeoForge JAR has SHA-256
 `749f7647fa29764cea113114a7ab3259271bab3da22720989f2bd9fd1f3ba150`.
 
-The Java runtime audit and exact eight-artifact, eleven-manifest/375-row,
+Development now targets unreleased `0.1.0-alpha.2`. It adds exact Applied
+Mekanistics `1.6.3` support against exact Mekanism `10.7.19` through the
+independent `appmek-drive-cells` route: ten chemical-cell IDs map to five exact
+chassis models in native `ae2:drive` only. Its expanded verifier locks ten
+artifacts and twelve resource manifests with 381 rows. Schema-12 also carries
+bounded parent-renderer seam regressions for AE2 storage buses against two
+Mekanism blocks and a Mekanism pressurized tube against the full-block AE2
+interface. Runtime and owner acceptance remain pending; publication is
+blocked. No AppMek or Mekanism class, asset, source, or binary is bundled.
+
+The published alpha.1 Java runtime audit and exact eight-artifact,
+eleven-manifest/375-row,
 67-cell-catalog M45 verifier passed. Two byte-identical builds each ran 562
 Java tests (560 passed and two intentional exporter tests were skipped) and
 180 pre-oracle Python tests. The final frozen-oracle CPython 3.13.14 suite
@@ -505,8 +516,10 @@ aliases `ae2-addon-s1-accepted.jar`, `ae2-s1-gallery-accepted.zip` and
 `data-atm120`; the historical PVC was untouched. The final visual-review pod
 was Ready with zero restarts and zero initializer failures, every exact route
 activated, the fixture counters remained `1/1/2/0`, and `save-all flush`
-completed before staging was scaled to zero. S1 remains the latest exact
-human-accepted local checkpoint.
+completed before staging was scaled to zero. At that historical checkpoint S1
+was the latest exact human-accepted local result. M4/M5 later became the
+accepted successor and was published as immutable prerelease
+`v0.1.0-alpha.1` on 2026-08-12.
 
 ## M4/M5 accepted local checkpoint
 
@@ -543,6 +556,22 @@ on 2026-08-12 and accepted the exact JAR, gallery, and map archive. The same
 message separately authorized publication. The exact release-version build
 was published as immutable prerelease `v0.1.0-alpha.1`.
 
+## Applied Mekanistics alpha.2 candidate
+
+The unreleased successor adds one independently fail-closed route:
+
+| Route | Exact static coverage |
+| --- | --- |
+| `appmek-drive-cells` | Five ordinary and five portable chemical cells mapped to five exact chassis models in native `ae2:drive` |
+
+The route requires exact AppMek and Mekanism identities plus active native
+Drive support. Unknown cells, malformed slot data, inactive dependencies, or
+resource mismatch use whole-Drive stock fallback. A thrown AppMek model
+callback disables only this route. Resource-pack overrides are validated
+semantically before use. Chemical P2P, Extended Drive, ME Chest, and MEGA Cell
+Dock integration are outside this candidate. The schema-12 seam cases exercise
+the already-supported parent AE2 and Mekanism renderers and add no route.
+
 Ordinary chunk data does not preserve live AE2 power, channel or connection
 state. The profile therefore uses the explicit `idle-off-unknown` policy and
 makes no live-network claim. Smart-cable overlays are the exact zero-channel
@@ -563,11 +592,11 @@ BlueMap add-on entrypoint
         |
 exact BlueMap 5.22 adapter and inactive-by-default hooks
         |
-exact AE2 19.2.17, S1 and seven All the Mons 1.2.0 M4/M5 artifact/resource gates
+exact AE2 19.2.17, S1 and nine All the Mons 1.2.0 extension/dependency gates
         |
 bounded cable-bus, Drive, crafting-monitor and extension DTOs
         |
-eight independently fail-closed extension routes plus accepted native routes
+ten independently fail-closed extension routes plus accepted native routes
         |
 deterministic cable, part, Drive, glass, crafting, quantum, connected-texture and matrix geometry
         |
@@ -583,7 +612,8 @@ BlueMap or BlueNBT classes or assets. See [architecture](docs/ARCHITECTURE.md),
 
 The default build expects the exact BlueMap backport in sibling directory
 `../bluemap-backport`. The current M4/M5 gate is
-`verifyM45PinnedArtifacts` with all seven `m45*Jar` inputs. Historical
+`verifyM45PinnedArtifacts` with all nine `m45*Jar` inputs, including exact
+AppMek and Mekanism JARs. Historical
 M3b/M3d gates retain the old `extendedAeJar`/`advancedAeJar` properties; the
 S1 gate deliberately uses the All the Mons 1.2.0 `nativeStructural*Jar`
 properties:
@@ -635,6 +665,8 @@ python3 -m unittest discover -s tools/tests -p 'test_*.py' -v
   -Pm45AdvancedAeJar=/absolute/path/AdvancedAE-1.6.12-1.21.1.jar \
   -Pm45AthenaJar=/absolute/path/athena-neoforge-1.21.1-4.0.6.jar \
   -Pm45ExtendedAeJar=/absolute/path/ExtendedAE-1.21-2.2.35-neoforge.jar \
+  -Pm45AppMekJar=/absolute/path/Applied-Mekanistics-1.6.3.jar \
+  -Pm45MekanismJar=/absolute/path/Mekanism-1.21.1-10.7.19.85.jar \
   verifyM45PinnedArtifacts
 ```
 

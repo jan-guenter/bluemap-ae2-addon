@@ -33,12 +33,15 @@ import de.bluecolored.bluemap.core.world.biome.Biome;
 import de.bluecolored.bluemap.core.world.block.BlockAccess;
 import de.bluecolored.bluemap.core.world.block.BlockNeighborhood;
 import io.github.janguenter.bluemap.ae2.activation.DriveRouteActivation;
+import io.github.janguenter.bluemap.ae2.activation.ExtensionRouteActivation;
 import io.github.janguenter.bluemap.ae2.activation.ProfileActivation;
 import io.github.janguenter.bluemap.ae2.model.Direction6;
 import io.github.janguenter.bluemap.ae2.model.DriveCellDefinition;
+import io.github.janguenter.bluemap.ae2.model.DriveCellCatalog;
 import io.github.janguenter.bluemap.ae2.model.DriveCellOwner;
 import io.github.janguenter.bluemap.ae2.model.DriveCellRouteAccess;
 import io.github.janguenter.bluemap.ae2.model.DriveInventoryProjection;
+import io.github.janguenter.bluemap.ae2.model.PartOrientation;
 import io.github.janguenter.bluemap.ae2.profile.Ae219217DriveProfile;
 import org.junit.jupiter.api.Test;
 
@@ -133,6 +136,177 @@ class DriveRendererTest {
             assertTrue(missing.profileActivation().isActive());
             assertTrue(missing.driveActivation().isActive());
         }
+    }
+
+    @Test
+    void allTenAppMekCellsFillTheTenNativeDriveSlots() throws Exception {
+        List<DriveCellDefinition> definitions = DriveCellCatalog.extensionDefinitions(
+                DriveCellOwner.APPLIED_MEKANISTICS
+        );
+        DriveInventoryProjection inventory = DriveInventoryProjection.empty();
+        for (int slot = 0; slot < definitions.size(); slot++) {
+            inventory = inventory.withSlot(
+                    slot,
+                    DriveInventoryProjection.Slot.occupied(
+                            definitions.get(slot).itemId()
+                    )
+            );
+        }
+        M45Runtime runtime = activeRuntime(DriveCellOwner.APPLIED_MEKANISTICS);
+
+        Fixture fixture = appMekFixture(
+                inventory,
+                "north",
+                0,
+                runtime,
+                ExtensionDriveResourceModels::supported
+        );
+
+        assertEquals(250, render(fixture).size());
+        assertTrue(runtime.active(M45Runtime.APPMEK_DRIVE_CELLS));
+        assertTrue(fixture.driveActivation().isActive());
+    }
+
+    @Test
+    void threeRepresentativeAppMekOrientationsTransformTheSameChassis()
+            throws Exception {
+        String itemId = "appmek:chemical_storage_cell_1k";
+        M45Runtime referenceRuntime = activeRuntime(
+                DriveCellOwner.APPLIED_MEKANISTICS
+        );
+        RecordingTileModel reference = render(appMekFixture(
+                inventory(itemId),
+                "north",
+                0,
+                referenceRuntime,
+                ExtensionDriveResourceModels::supported
+        ));
+        float[] localChassisFace = reference.face(90).positions();
+
+        for (OrientationCase orientation : List.of(
+                new OrientationCase(Direction6.EAST, 0),
+                new OrientationCase(Direction6.UP, 1),
+                new OrientationCase(Direction6.SOUTH, 3)
+        )) {
+            M45Runtime runtime = activeRuntime(DriveCellOwner.APPLIED_MEKANISTICS);
+            RecordingTileModel rendered = render(appMekFixture(
+                    inventory(itemId),
+                    orientation.facing().name().toLowerCase(java.util.Locale.ROOT),
+                    orientation.spin(),
+                    runtime,
+                    ExtensionDriveResourceModels::supported
+            ));
+            PartOrientation angles = PartOrientation.forPart(
+                    orientation.facing(),
+                    orientation.spin()
+            );
+            MatrixM4f matrix = new Variant(
+                    M3DriveResourceModels.DRIVE_BASE,
+                    angles.x(),
+                    angles.y(),
+                    angles.z()
+            ).getTransformMatrix();
+            assertEquals(106, rendered.size(), orientation.toString());
+            assertArrayEquals(
+                    transform(matrix, localChassisFace),
+                    rendered.face(90).positions(),
+                    0.000001F,
+                    orientation.toString()
+            );
+        }
+    }
+
+    @Test
+    void appMekValidatorFalseFallsBackWithoutDisableButThrowDisablesOnlyAppMek()
+            throws Exception {
+        String itemId = "appmek:chemical_storage_cell_1k";
+
+        M45Runtime mismatchRuntime = activeRuntime(
+                DriveCellOwner.APPLIED_MEKANISTICS
+        );
+        Fixture mismatch = appMekFixture(
+                inventory(itemId),
+                "north",
+                0,
+                mismatchRuntime,
+                (pack, id, model, owner) -> false
+        );
+        assertOriginalOnly(render(mismatch), mismatch, "semantic mismatch");
+        assertTrue(mismatchRuntime.active(M45Runtime.APPMEK_DRIVE_CELLS));
+
+        M45Runtime failureRuntime = activeRuntime(
+                DriveCellOwner.APPLIED_MEKANISTICS
+        );
+        Fixture failure = appMekFixture(
+                inventory(itemId),
+                "north",
+                0,
+                failureRuntime,
+                (pack, id, model, owner) -> {
+                    throw new IllegalStateException("injected selected-model callback");
+                }
+        );
+        assertOriginalOnly(render(failure), failure, "callback failure");
+        assertTrue(failureRuntime.route(M45Runtime.APPMEK_DRIVE_CELLS).isDisabled());
+        assertEquals(
+                ExtensionRouteActivation.Reason.RENDER_CALLBACK_FAILED,
+                failureRuntime.route(M45Runtime.APPMEK_DRIVE_CELLS).snapshot().reason()
+        );
+        assertFalse(failureRuntime.route(M45Runtime.APPFLUX).isDisabled());
+
+        Fixture later = appMekFixture(
+                inventory(itemId),
+                "north",
+                0,
+                failureRuntime,
+                ExtensionDriveResourceModels::supported
+        );
+        assertOriginalOnly(render(later), later, "later disabled AppMek host");
+
+        ResourcePack nativeResources = M3DriveResourceModelsTest.exactResources();
+        Fixture nativePeer = fixture(
+                "ae2:item_storage_cell_1k",
+                "north",
+                0,
+                TEST_RENDER_SETTINGS,
+                15,
+                0,
+                Map.of(),
+                nativeResources,
+                new ExtensionDriveCellRouteAccess(failureRuntime)
+        );
+        assertEquals(106, render(nativePeer).size());
+    }
+
+    @Test
+    void nativeDriveCallbackFailureImmediatelyBlocksDependentAppMekRoute()
+            throws Exception {
+        M45Runtime runtime = activeRuntime(DriveCellOwner.APPLIED_MEKANISTICS);
+        Fixture fixture = appMekFixture(
+                inventory("appmek:chemical_storage_cell_1k"),
+                "north",
+                0,
+                runtime,
+                ExtensionDriveResourceModels::supported
+        );
+        RecordingTileModel model = new RecordingTileModel();
+        model.failWithRuntimeOnAddInvocation(2);
+
+        fixture.renderer().render(
+                fixture.neighborhood(),
+                null,
+                new TileModelView(model),
+                new Color()
+        );
+
+        assertOriginalOnly(model, fixture, "native Drive callback failure");
+        assertTrue(fixture.driveActivation().isDisabled());
+        assertFalse(runtime.active(M45Runtime.APPMEK_DRIVE_CELLS));
+        assertFalse(runtime.route(M45Runtime.APPMEK_DRIVE_CELLS).isDisabled());
+        assertEquals(
+                ExtensionRouteActivation.Reason.BLOCKED_BY_CORE,
+                runtime.route(M45Runtime.APPMEK_DRIVE_CELLS).snapshot().reason()
+        );
     }
 
     @Test
@@ -362,6 +536,32 @@ class DriveRendererTest {
             ResourcePack resourcePack,
             DriveCellRouteAccess cellRoutes
     ) throws Exception {
+        return fixtureInventory(
+                inventory(cellId),
+                facing,
+                spin,
+                renderSettings,
+                skyLight,
+                blockLight,
+                lightOverrides,
+                resourcePack,
+                cellRoutes,
+                ExtensionDriveResourceModels::supported
+        );
+    }
+
+    private static Fixture fixtureInventory(
+            DriveInventoryProjection inventory,
+            String facing,
+            int spin,
+            RenderSettings renderSettings,
+            int skyLight,
+            int blockLight,
+            Map<Position, LightLevels> lightOverrides,
+            ResourcePack resourcePack,
+            DriveCellRouteAccess cellRoutes,
+            ExtensionDriveResourceValidator extensionResourceValidator
+    ) throws Exception {
         putTexture(resourcePack, ORIGINAL, 0xFF336699);
         putOriginalCube(resourcePack);
         TextureGallery gallery = new TextureGallery();
@@ -371,7 +571,7 @@ class DriveRendererTest {
         Map<Position, BlockState> states = new HashMap<>();
         Map<Position, BlockEntity> blockEntities = new HashMap<>();
         states.put(center, exactState(facing, spin));
-        blockEntities.put(center, drive(cellId));
+        blockEntities.put(center, drive(inventory));
         BlockNeighborhood neighborhood = new BlockNeighborhood(
                 new TestBlockAccess(
                         states,
@@ -405,7 +605,8 @@ class DriveRendererTest {
                         profileActivation,
                         driveActivation,
                         M3DriveResourceModels::resourcesSupported,
-                        cellRoutes
+                        cellRoutes,
+                        extensionResourceValidator
                 );
         return new Fixture(
                 gallery,
@@ -446,6 +647,29 @@ class DriveRendererTest {
         );
     }
 
+    private static Fixture appMekFixture(
+            DriveInventoryProjection inventory,
+            String facing,
+            int spin,
+            M45Runtime runtime,
+            ExtensionDriveResourceValidator extensionResourceValidator
+    ) throws Exception {
+        ResourcePack resourcePack = AppMekExternalResourceTestSupport.exactResources();
+        assertTrue(M3DriveResourceModels.resourcesSupported(resourcePack));
+        return fixtureInventory(
+                inventory,
+                facing,
+                spin,
+                TEST_RENDER_SETTINGS,
+                15,
+                0,
+                Map.of(),
+                resourcePack,
+                new ExtensionDriveCellRouteAccess(runtime),
+                extensionResourceValidator
+        );
+    }
+
     private static M45Runtime activeRuntime(DriveCellOwner owner) {
         M45Runtime runtime = new M45Runtime();
         runtime.route(routeId(owner)).activate("exact-profile");
@@ -456,6 +680,7 @@ class DriveRendererTest {
         return switch (owner) {
             case APPLIED_FLUX -> M45Runtime.APPFLUX;
             case MEGA_CELLS -> M45Runtime.MEGA_CELLS;
+            case APPLIED_MEKANISTICS -> M45Runtime.APPMEK_DRIVE_CELLS;
             case AE2, EXTENDED_AE -> throw new IllegalArgumentException(
                     "owner has no extension route"
             );
@@ -487,11 +712,19 @@ class DriveRendererTest {
 
     private static Ae2DriveBlockEntityData drive(String cellId)
             throws ReflectiveOperationException {
-        Ae2DriveBlockEntityData data = new Ae2DriveBlockEntityData();
-        DriveInventoryProjection inventory = DriveInventoryProjection.empty().withSlot(
+        return drive(inventory(cellId));
+    }
+
+    private static DriveInventoryProjection inventory(String cellId) {
+        return DriveInventoryProjection.empty().withSlot(
                 0,
                 DriveInventoryProjection.Slot.occupied(cellId)
         );
+    }
+
+    private static Ae2DriveBlockEntityData drive(DriveInventoryProjection inventory)
+            throws ReflectiveOperationException {
+        Ae2DriveBlockEntityData data = new Ae2DriveBlockEntityData();
         Field field = Ae2DriveBlockEntityData.class.getDeclaredField("inv");
         field.setAccessible(true);
         field.set(data, inventory);
@@ -930,5 +1163,8 @@ class DriveRendererTest {
     }
 
     private record LightLevels(int skyLight, int blockLight) {
+    }
+
+    private record OrientationCase(Direction6 facing, int spin) {
     }
 }

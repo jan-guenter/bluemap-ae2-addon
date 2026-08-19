@@ -18,6 +18,7 @@ import io.github.janguenter.bluemap.ae2.profile.advancedae.AdvancedAe1612AthenaP
 import io.github.janguenter.bluemap.ae2.profile.advancedae.AdvancedAe1612Catalog;
 import io.github.janguenter.bluemap.ae2.profile.advancedae.AdvancedAe1612Profile;
 import io.github.janguenter.bluemap.ae2.profile.advancedae.Athena406ArtifactIdentity;
+import io.github.janguenter.bluemap.ae2.profile.appmek.AppMek163Profile;
 import io.github.janguenter.bluemap.ae2.profile.appflux.AppFlux215Profile;
 import io.github.janguenter.bluemap.ae2.profile.expandedae.ExpandedAe211Catalog;
 import io.github.janguenter.bluemap.ae2.profile.expandedae.ExpandedAe211Profile;
@@ -38,7 +39,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
-/** Exact ATM 1.2.0 resource routing for independently isolated M4/M5 profiles. */
+/** Exact ATM 1.2.0 resource routing for independently isolated extensions. */
 final class M45ResourceExtension implements ResourcePackExtension {
 
     static final Key SYNTHETIC = Key.parse("bluemap_ae2:m45");
@@ -53,6 +54,8 @@ final class M45ResourceExtension implements ResourcePackExtension {
     private final M45Runtime runtime;
     private final java.util.function.BooleanSupplier coreActive;
     private final java.util.function.BooleanSupplier nativeStructuralActive;
+    private final java.util.function.BooleanSupplier nativeDriveActive;
+    private final java.util.function.BooleanSupplier nativeDrivePending;
     private final Map<String, RouteProfile> profiles;
 
     M45ResourceExtension(ResourcePack resourcePack, M45Runtime runtime) {
@@ -60,7 +63,9 @@ final class M45ResourceExtension implements ResourcePackExtension {
                 resourcePack,
                 runtime,
                 BlueMap522Adapter::coreProfileActiveForM45,
-                BlueMap522Adapter::nativeStructuralActiveForM45
+                BlueMap522Adapter::nativeStructuralActiveForM45,
+                BlueMap522Adapter::nativeDriveActiveForM45,
+                BlueMap522Adapter::nativeDrivePendingForM45
         );
     }
 
@@ -69,7 +74,7 @@ final class M45ResourceExtension implements ResourcePackExtension {
             M45Runtime runtime,
             java.util.function.BooleanSupplier coreActive
     ) {
-        this(resourcePack, runtime, coreActive, () -> true);
+        this(resourcePack, runtime, coreActive, () -> true, () -> true, () -> false);
     }
 
     M45ResourceExtension(
@@ -78,12 +83,32 @@ final class M45ResourceExtension implements ResourcePackExtension {
             java.util.function.BooleanSupplier coreActive,
             java.util.function.BooleanSupplier nativeStructuralActive
     ) {
+        this(resourcePack, runtime, coreActive, nativeStructuralActive,
+                () -> true, () -> false);
+    }
+
+    M45ResourceExtension(
+            ResourcePack resourcePack,
+            M45Runtime runtime,
+            java.util.function.BooleanSupplier coreActive,
+            java.util.function.BooleanSupplier nativeStructuralActive,
+            java.util.function.BooleanSupplier nativeDriveActive,
+            java.util.function.BooleanSupplier nativeDrivePending
+    ) {
         this.resourcePack = Objects.requireNonNull(resourcePack, "resourcePack");
         this.runtime = Objects.requireNonNull(runtime, "runtime");
         this.coreActive = Objects.requireNonNull(coreActive, "coreActive");
         this.nativeStructuralActive = Objects.requireNonNull(
                 nativeStructuralActive,
                 "nativeStructuralActive"
+        );
+        this.nativeDriveActive = Objects.requireNonNull(
+                nativeDriveActive,
+                "nativeDriveActive"
+        );
+        this.nativeDrivePending = Objects.requireNonNull(
+                nativeDrivePending,
+                "nativeDrivePending"
         );
         this.profiles = Map.ofEntries(
                 Map.entry(M45Runtime.APPFLUX, profile(
@@ -162,6 +187,24 @@ final class M45ResourceExtension implements ResourcePackExtension {
                         ExtendedAe2235Profile.JAR_SHA256,
                         ExtendedAe2235Profile.EXACT_REASON,
                         extendedPlaneResources()
+                )),
+                Map.entry(M45Runtime.APPMEK_DRIVE_CELLS, combinedProfile(
+                        AppMek163Profile.DRIVE_EXACT_REASON,
+                        AppMek163Profile.driveRequiredResources(),
+                        identity(
+                                AppMek163Profile.MOD_ID,
+                                AppMek163Profile.VERSION,
+                                AppMek163Profile.JAR_BYTES,
+                                AppMek163Profile.JAR_SHA256,
+                                AppMek163Profile.DRIVE_EXACT_REASON
+                        ),
+                        identity(
+                                AppMek163Profile.MEKANISM_MOD_ID,
+                                AppMek163Profile.MEKANISM_VERSION,
+                                AppMek163Profile.MEKANISM_JAR_BYTES,
+                                AppMek163Profile.MEKANISM_JAR_SHA256,
+                                "exact-atm-1.2.0-mekanism-10.7.19"
+                        )
                 ))
         );
     }
@@ -227,6 +270,13 @@ final class M45ResourceExtension implements ResourcePackExtension {
                             ExtensionRouteActivation.Reason.BLOCKED_BY_CORE,
                             "native-structural-core-inactive"
                     );
+                } else if (M45Runtime.APPMEK_DRIVE_CELLS.equals(routeId)
+                        && !nativeDriveActive.getAsBoolean()
+                        && !nativeDrivePending.getAsBoolean()) {
+                    route.inactive(
+                            ExtensionRouteActivation.Reason.BLOCKED_BY_CORE,
+                            "native-drive-core-inactive"
+                    );
                 } else if (!resourcesPresent(profile.resources())) {
                     route.inactive(
                             ExtensionRouteActivation.Reason.REQUIRED_RESOURCES_MISMATCH,
@@ -237,6 +287,12 @@ final class M45ResourceExtension implements ResourcePackExtension {
                     route.inactive(
                             ExtensionRouteActivation.Reason.REQUIRED_RESOURCES_MISMATCH,
                             "static-frame-zero-textures-mismatch"
+                    );
+                } else if (M45Runtime.APPMEK_DRIVE_CELLS.equals(routeId)
+                        && !AppMekResourceModels.driveSupported(resourcePack)) {
+                    route.inactive(
+                            ExtensionRouteActivation.Reason.REQUIRED_RESOURCES_MISMATCH,
+                            "resolved-drive-resources-mismatch"
                     );
                 }
             } catch (RuntimeException | LinkageError exception) {
@@ -528,6 +584,9 @@ final class M45ResourceExtension implements ResourcePackExtension {
     }
 
     private static String operatorProfileId(String routeId) {
+        if (M45Runtime.APPMEK_DRIVE_CELLS.equals(routeId)) {
+            return AppMek163Profile.PROFILE_ID;
+        }
         return M45Runtime.EXTENDED_MATRIX.equals(routeId)
                 || M45Runtime.EXTENDED_PLANES.equals(routeId)
                 ? ExtendedAe2235Profile.PROFILE_ID

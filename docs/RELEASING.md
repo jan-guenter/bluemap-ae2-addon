@@ -12,11 +12,13 @@ passed. The candidate production JAR, gallery, and map archive are respectively
 and `44422aa71c2f450951d8433e25e01de7a0b00dbd0d9c4fa4ff74ca98e649a2df`.
 The owner accepted the exact artifacts in BlueMap and separately authorized
 publication on 2026-08-12. Candidate aliases remain beside hash-exact accepted
-aliases. Publication is now authorized but is not complete.
+aliases. The first-release process completed later that day as immutable
+prerelease `v0.1.0-alpha.1`, including GitHub assets, attestations and Maven
+coordinate `io.github.jan-guenter:bluemap-ae2-addon:0.1.0-alpha.1`.
 
-The add-on remains unreleased while the authorized first-release process is
-completed and independently verified in the public repository. The
-exact M0 runtime artifact was
+Development now targets the separate unreleased `0.1.0-alpha.2` Applied
+Mekanistics candidate. Its implementation and source gates do not transfer the
+alpha.1 acceptance or authorize an alpha.2 release. The exact M0 runtime artifact was
 human accepted on 2026-08-04. The exact 161,930-byte M1 SNAPSHOT JAR with
 SHA-256
 `e02beee7fdafeba9c3ef0ea42deda0a7709cc70df23d4778cfb7a72b1fdaf2e1`
@@ -224,18 +226,18 @@ on 2026-08-11. Candidate aliases `ae2-addon-s1-candidate.jar`,
 `ae2-s1-enabled-candidate-map-2026-08-11.tar.gz` remain hash-exact to accepted
 aliases `ae2-addon-s1-accepted.jar`, `ae2-s1-gallery-accepted.zip` and
 `ae2-s1-enabled-accepted-map-2026-08-11.tar.gz` on `data-atm120`; the
-historical PVC was untouched. S1 remains the latest exact human-accepted local
-checkpoint and is unreleased. M4/M5 is now the latest accepted checkpoint
-described above; its separate publication decision was recorded on
-2026-08-12.
+historical PVC was untouched. At that historical checkpoint S1 was the latest
+exact human-accepted local checkpoint and remained unreleased. M4/M5 later
+became the accepted checkpoint described above and was published as immutable
+prerelease `v0.1.0-alpha.1` on 2026-08-12.
 Machine contents, held items, fluids, live/activity-specific state and
 accurate Drive LEDs remain accepted non-goals.
 
 The owner accepted the complete implemented M0-M5 scope and explicitly
-authorized publication on 2026-08-12. Create the repository, remote, tag,
-package, and root integration only through the verified sequence below; do not
-describe any step as complete before it has actually passed. For each milestone,
-record at least:
+authorized publication on 2026-08-12; the verified sequence below then created
+the public repository and immutable alpha.1 release. Apply the same gates to
+alpha.2 promotion and root integration, and do not describe any successor step
+as complete before it has actually passed. For each milestone, record at least:
 
 - enabled, independently extension-disabled, independently glass-disabled,
   independently crafting-disabled, independently quantum-disabled,
@@ -252,20 +254,23 @@ record at least:
 - initial control/custom time, memory, triangle and material measurements;
 - exact tested JAR digest and rollback result.
 
-The workflows are only dormant future infrastructure. Their presence does not
-authorize creation of a remote or tag. Schema 10 remains the accepted S1 local-
-checkpoint projection; its technical lifecycle and bounded owner visual review
-passed on 2026-08-11. Schema 11 is the exact owner-accepted M4/M5 projection;
-its visual review passed on 2026-08-12. Every fixture and release
-input must remain exact and must be revalidated against the implemented M0-M5
-scope before any publication attempt.
+The workflows and public repository supported the immutable alpha.1 release;
+their presence does not authorize an alpha.2 tag or publication. Schema 10
+remains the accepted S1 local-checkpoint projection; its technical lifecycle
+and bounded owner visual review passed on 2026-08-11. Schema 11 is the exact
+owner-accepted M4/M5 projection and its visual review passed on 2026-08-12.
+Schema 12 and every alpha.2 fixture and release input must remain exact and be
+revalidated for Applied Mekanistics before any successor publication attempt.
 
 ## Version contract
 
-- Release-candidate version: `0.1.0-alpha.1`.
-- First possible gated release: no earlier than complete M0-M5 acceptance,
-  including S1 cable-bus structural-completeness visual acceptance;
-  the version remains provisional until then.
+- Current unreleased candidate version: `0.1.0-alpha.2`. Published
+  `0.1.0-alpha.1` is immutable and must never be rebuilt, overwritten, or
+  retagged as this successor.
+- Next possible gated release: no earlier than exact schema-12 Applied
+  Mekanistics runtime validation, owner visual acceptance, and a separate
+  alpha.2 release authorization. The published M0-M5/alpha.1 acceptance does
+  not transfer to this successor.
 - Release tag: exactly `v<addon_version>`.
 - Any pull request that changes `addon_version` must also update the changelog,
   compatibility, provenance and relevant runtime evidence.
@@ -276,11 +281,11 @@ scope before any publication attempt.
 - Treat published Maven versions and release tags as immutable. Never reuse a
   version or move its tag; the repository controls below enforce that policy.
 
-## Repository controls required before any future first tag
+## Repository controls required before any future release tag
 
 The workflow cannot grant itself repository-administration authority. Before
-creating the first release tag, the owner must configure and independently
-verify all of these GitHub settings:
+creating any future release tag, the owner must independently verify that all
+of these GitHub settings remain in force:
 
 - protect `main` with the required CI check and reviewed pull requests;
 - add a tag ruleset for `v*` that restricts creation and blocks update and
@@ -329,8 +334,8 @@ remain distinct exact artifacts and must follow the two-pass gate below.
 Use exact Eclipse Temurin `21.0.12+8`, the exact clean BlueMap backport/API
 checkouts and the exact AE2 runtime artifact. Historical M3b/M3d gates retain
 their 2.2.33/1.6.11 inputs; the S1 gate uses the current All the Mons 1.2.0
-`nativeStructural*Jar` properties. The current M4/M5 verifier requires all
-seven `m45*Jar` properties:
+`nativeStructural*Jar` properties. The unreleased alpha.2 verifier requires
+all nine `m45*Jar` properties; the accepted alpha.1 history used seven:
 
 ```bash
 python3 gallery/generate.py --check
@@ -390,6 +395,8 @@ cmp /tmp/ae2-current-gallery-first.zip /tmp/ae2-current-gallery-second.zip
   -Pm45AdvancedAeJar=/absolute/path/AdvancedAE-1.6.12-1.21.1.jar \
   -Pm45AthenaJar=/absolute/path/athena-neoforge-1.21.1-4.0.6.jar \
   -Pm45ExtendedAeJar=/absolute/path/ExtendedAE-1.21-2.2.35-neoforge.jar \
+  -Pm45AppMekJar=/absolute/path/Applied-Mekanistics-1.6.3.jar \
+  -Pm45MekanismJar=/absolute/path/Mekanism-1.21.1-10.7.19.85.jar \
   verifyM45PinnedArtifacts
 ```
 

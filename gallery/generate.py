@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: LGPL-3.0-only
-"""Generate and validate the bounded AE2/ExtendedAE S1 staging fixtures."""
+"""Generate and validate the cumulative schema-12 AE2 staging fixtures."""
 
 from __future__ import annotations
 
@@ -66,6 +66,8 @@ M45_CLEAR_BOUNDS = tuple(
     for min_z in range(312, 432, 30)
     for min_x in range(336, 512, 44)
 )
+APPMEK_FIXTURE_BOUNDS = ((528, 96, 312), (559, 110, 327))
+APPMEK_CLEAR_BOUNDS = (APPMEK_FIXTURE_BOUNDS,)
 S1_CLEAR_BOUNDS = (
     ((208, 96, 312), (263, 110, 339)),
     ((264, 96, 312), (319, 110, 339)),
@@ -1821,19 +1823,23 @@ S1_PROVENANCE_SIZE_BYTES = 112_852
 S1_PROVENANCE_SHA256 = (
     "5cea0a302297a00e4fe0bf246695c6e79f646356c87a44d396ceb365d9a249c5"
 )
-CURRENT_SUPPORT_MATRIX_SIZE_BYTES = 35_282
+CURRENT_SUPPORT_MATRIX_SIZE_BYTES = 37_498
 CURRENT_SUPPORT_MATRIX_SHA256 = (
-    "b28808e2e55a94d214301f2a80d0eaaa5c201d4b1045c35435d95dc312eaf38f"
+    "2c1dfd869a1bd5a97e099b9cdc455723f893177a76939f851d0865cff5a5f882"
 )
-CURRENT_PROVENANCE_SIZE_BYTES = 129_805
+CURRENT_PROVENANCE_SIZE_BYTES = 134_092
 CURRENT_PROVENANCE_SHA256 = (
-    "f8b959965733cd4803c2ea9bf649177aa0f71410ba60383d210389ee37d87516"
+    "2f17df6178e367001c804878ed85cc8f06064078807b555fb25f546ff72dfe38"
 )
 CURRENT_ACCEPTED_S1_SUPPORT_PROJECTION_SHA256 = (
     "8d594a89eb71dfb4905b2e2799554b65e4787b175d0323e984e5f6053b8efc94"
 )
+# This current-companion semantic projection intentionally includes the
+# additive schema-12 AppMek/Mekanism provenance.  The historical accepted S1
+# bytes remain separately frozen by S1_PROVENANCE_SIZE_BYTES/SHA256 above and
+# in the byte-exact schema-11 manifest projection.
 CURRENT_ACCEPTED_S1_PROVENANCE_PROJECTION_SHA256 = (
-    "481d651ff3615d9e005bf4c7f02dd733cbf0753a954327fcffef7468d23064b4"
+    "441dad9d4253d6e2079cf885260022f8ce3d33d8d2a03f63c648d733f09c89b5"
 )
 CURRENT_ACCEPTED_S1_PROFILE_IDS = (
     "ae2-quartz-glass",
@@ -8644,6 +8650,72 @@ M45_ROUTES = (
     "extendedae-matrix",
     "extendedae-planes",
 )
+
+APPMEK_ROUTES = ("appmek-drive-cells",)
+APPMEK_TIERS = ("1k", "4k", "16k", "64k", "256k")
+APPMEK_CELL_IDS = tuple(
+    item_id
+    for tier in APPMEK_TIERS
+    for item_id in (
+        f"appmek:chemical_storage_cell_{tier}",
+        f"appmek:portable_chemical_cell_{tier}",
+    )
+)
+APPMEK_CELL_MODELS = {
+    item_id: f"appmek:block/drive/cells/chemical_storage_cell_{tier}"
+    for tier in APPMEK_TIERS
+    for item_id in (
+        f"appmek:chemical_storage_cell_{tier}",
+        f"appmek:portable_chemical_cell_{tier}",
+    )
+}
+APPMEK_SELECTED_RESOURCES = ("appmek:block/drive/drive_cells",)
+APPMEK_NEW_SELECTED_RESOURCES = APPMEK_SELECTED_RESOURCES
+APPMEK_ARTIFACT = {
+    "artifact": "Applied-Mekanistics-1.6.3.jar",
+    "version": "1.6.3",
+    "size_bytes": 149_709,
+    "sha1": "bec4a47269ec23bca2329742e13409bfde69c5c3",
+    "sha256": "8946fea39451dbce8e709dedbef40a52ba337bdf7a25ac0c4b503800b1bf0773",
+    "source": {
+        "tag": "1.6.3",
+        "commit": "137f24bb9a46775ddd5a620055270b5e8a540f5a",
+    },
+}
+APPMEK_MEKANISM_ARTIFACT = {
+    "artifact": "Mekanism-1.21.1-10.7.19.85.jar",
+    "version": "10.7.19",
+    "size_bytes": 11_976_009,
+    "sha1": "b78945c40cfe7640408f3fd1e44da385a8c8b805",
+    "sha256": "004dbc9f3106f4d192aeaa1ee1190dd16ec9ca8059ed3d093b80034f4c574f43",
+}
+APPMEK_CASE_ANCHOR_ALLOCATION = (1, 3, 2, 1)
+APPMEK_EXPECTED_CASE_COUNT = 4
+APPMEK_EXPECTED_ANCHOR_COUNT = 7
+APPMEK_EXPECTED_CUSTOM_ANCHOR_COUNT = 6
+APPMEK_EXPECTED_FALLBACK_ANCHOR_COUNT = 0
+APPMEK_EXPECTED_CONTROL_ANCHOR_COUNT = 1
+APPMEK_EXPECTED_REVIEW_CONTROL_ANCHOR_COUNT = 3
+APPMEK_EXPECTED_FIXTURE_BLOCK_COUNT = 3
+APPMEK_DRIVE_BASE_MATERIAL_TRIANGLES = {
+    "ae2:block/drive/drive_front": 28,
+    "ae2:block/drive/drive_inside": 16,
+    "ae2:block/drive/drive_inside_bottom": 2,
+    "ae2:block/drive/drive_inside_top": 10,
+    "ae2:block/generics/back": 6,
+    "ae2:block/generics/bottom": 2,
+    "ae2:block/generics/front": 8,
+    "ae2:block/generics/side": 16,
+    "ae2:block/generics/top": 2,
+}
+APPMEK_STORAGE_BUS_MATERIAL_TRIANGLES = {
+    "ae2:part/cable/core/glass/transparent": 12,
+    "ae2:part/cable/glass/transparent": 12,
+    "ae2:part/monitor_sides_status_off": 8,
+    "ae2:part/storage_bus": 4,
+    "ae2:part/storage_bus_back": 6,
+    "ae2:part/storage_bus_sides": 32,
+}
 M45_RUNTIME_COVERAGE = "m45-cumulative-runtime"
 M45_RUNTIME_ORACLE_SIZE_BYTES = 221_769
 M45_RUNTIME_ORACLE_SHA256 = (
@@ -11044,12 +11116,505 @@ def enrich_and_validate_m45_runtime_oracle(
         raise ValueError("M4/M5 runtime-oracle enrichment closure changed")
 
 
+def _appmek_projection(
+    expected_path: str,
+    review_projection: str,
+    reason: str,
+) -> dict[str, str]:
+    if review_projection not in {"empty", "nonempty"}:
+        raise ValueError("Applied Mekanistics projection must be empty or nonempty")
+    return {
+        "expected_path": expected_path,
+        "review_projection": review_projection,
+        "reason": reason,
+    }
+
+
+def _appmek_drive_anchor(
+    position: tuple[int, int, int],
+    facing: str,
+    spin: int,
+    slot_items: dict[int, dict[str, Any]],
+    *,
+    expected_path: str = "custom-appmek-drive-cells",
+    fallback_reason: str | None = None,
+    fixture_role: str,
+    **metadata: Any,
+) -> dict[str, Any]:
+    if facing not in DIRECTION_DELTAS or spin not in range(4):
+        raise ValueError("invalid Applied Mekanistics Drive orientation")
+    if not slot_items or any(item["id"] not in APPMEK_CELL_IDS for item in slot_items.values()):
+        raise ValueError("narrow Applied Mekanistics Drive fixture must use exact cell IDs")
+    anchor = drive_anchor(
+        position,
+        facing,
+        spin,
+        slot_items,
+        expected_path=expected_path,
+        fallback_reason=fallback_reason,
+    )
+    custom = expected_path == "custom-appmek-drive-cells"
+    occupied_count = len(slot_items)
+    material_triangles = dict(APPMEK_DRIVE_BASE_MATERIAL_TRIANGLES)
+    material_triangles["ae2:block/drive/drive_front"] += 10 * occupied_count
+    material_triangles["appmek:block/drive/drive_cells"] = 6 * occupied_count
+    anchor.update(
+        {
+            "appmek_route": "appmek-drive-cells",
+            "review_projection": "nonempty" if custom else "empty",
+            "expected_block_entity_id": DRIVE_BLOCK_ID,
+            "fixture_role": fixture_role,
+            "expected_triangle_count": 90 + 16 * occupied_count,
+            "expected_material_triangles": dict(sorted(material_triangles.items())),
+            "cell_contents_policy": "omitted",
+            "led_status_policy": "existing-parent-static-offline-unknown-not-a-review-variable",
+            "route_disabled_projection": _appmek_projection(
+                "native-drive-atomic-original-resource",
+                "empty",
+                (
+                    "appmek-drive-route-inactive-rejects-unknown-cell-owner"
+                    if custom
+                    else "fallback-is-route-independent"
+                ),
+            ),
+            "physical_stock_projection": _appmek_projection(
+                "physical-stock-dynamic-ae2-drive",
+                "empty",
+                "physical-addon-absence-has-no-static-drive-model",
+            ),
+            "native_structural_disabled_projection": _appmek_projection(
+                expected_path,
+                "nonempty" if custom else "empty",
+                "native-structural-route-does-not-own-native-drive",
+            ),
+            "native_drive_disabled_projection": _appmek_projection(
+                "native-drive-atomic-original-resource",
+                "empty",
+                "native-drive-route-inactive-makes-appmek-cell-lane-unreachable",
+            ),
+            **metadata,
+        }
+    )
+    return anchor
+
+
+def _appmek_storage_bus_seam_anchor(
+    position: tuple[int, int, int],
+    direction: str,
+    *,
+    fixture_role: str,
+    target_block_id: str,
+    target_position: tuple[int, int, int],
+    target_side: str,
+    seam_policy: str,
+) -> dict[str, Any]:
+    if direction not in DIRECTION_DELTAS or target_side not in DIRECTION_DELTAS:
+        raise ValueError("invalid storage-bus seam direction")
+    delta = DIRECTION_DELTAS[direction]
+    if target_position != tuple(position[axis] + delta[axis] for axis in range(3)):
+        raise ValueError("storage-bus seam target is not adjacent")
+    anchor = cable_anchor(
+        position,
+        "ae2:fluix_glass_cable",
+        expected_path="custom-s1",
+        face_parts={direction: native_structural_part("storage_bus")},
+    )
+    anchor.update({
+        "appmek_route": None,
+        "review_projection": "nonempty",
+        "expected_block_entity_id": "ae2:cable_bus",
+        "installed_face": direction,
+        "expected_triangle_count": 74,
+        "expected_material_triangles": dict(APPMEK_STORAGE_BUS_MATERIAL_TRIANGLES),
+        "fixture_role": fixture_role,
+        "parent_renderer_control": "ae2-cable-bus-structural-storage-bus",
+        "seam_target": {
+            "block_id": target_block_id,
+            "position": target_position,
+            "observed_side": target_side,
+            "policy": seam_policy,
+        },
+        "route_disabled_projection": _appmek_projection(
+            "custom-s1",
+            "nonempty",
+            "appmek-drive-route-does-not-own-preexisting-storage-bus-rendering",
+        ),
+        "native_structural_disabled_projection": _appmek_projection(
+            "physical-stock-dynamic-ae2-cable-bus",
+            "empty",
+            "native-structural-route-owns-storage-bus-rendering",
+        ),
+        "native_drive_disabled_projection": _appmek_projection(
+            "custom-s1",
+            "nonempty",
+            "native-drive-route-does-not-own-preexisting-storage-bus-rendering",
+        ),
+        "physical_stock_projection": _appmek_projection(
+            "physical-stock-dynamic-ae2-cable-bus",
+            "empty",
+            "physical-ae2-addon-absence-has-no-static-cable-bus-model",
+        ),
+    })
+    return anchor
+
+
+def _appmek_pressurized_tube_control_anchor(
+    position: tuple[int, int, int],
+    *,
+    fixture_role: str,
+    interface_position: tuple[int, int, int],
+) -> dict[str, Any]:
+    if interface_position != (position[0] + 1, position[1], position[2]):
+        raise ValueError("pressurized-tube control interface must be east")
+    unchanged = _appmek_projection(
+        "parent-mekanism-pressurized-tube-control",
+        "nonempty",
+        "independent-mekanism-parent-renderer-control-remains-active",
+    )
+    return {
+        "position": position,
+        "block_id": "mekanism:basic_pressurized_tube",
+        "cable_id": None,
+        "expected_path": "parent-mekanism-pressurized-tube-control",
+        "appmek_route": None,
+        "review_projection": "nonempty",
+        "expected_block_entity_id": "mekanism:basic_pressurized_tube",
+        "expected_triangle_count": 18,
+        "fixture_role": fixture_role,
+        "parent_renderer_control": "mekanism-basic-pressurized-tube-east-normal-acceptor",
+        "interface_position": interface_position,
+        "transmitter_topology": {
+            "connections_unsigned_byte": 0,
+            "acceptors_unsigned_byte": 32,
+            "connection_mode_ordinals": [0, 0, 0, 0, 0, 0],
+            "direction_ordinal_order": [
+                "down", "up", "north", "south", "west", "east"
+            ],
+            "east_mode": "normal",
+        },
+        "contents_policy": "omitted",
+        "route_disabled_projection": dict(unchanged),
+        "native_structural_disabled_projection": dict(unchanged),
+        "native_drive_disabled_projection": dict(unchanged),
+        "physical_stock_projection": dict(unchanged),
+    }
+
+
+
+def create_narrow_appmek_cases() -> list[dict[str, Any]]:
+    """Small exact live matrix requested for the AppMek Drive and seam review."""
+    cases: list[dict[str, Any]] = []
+
+    def add(
+        route: str,
+        label: str,
+        category: str,
+        anchors: Iterable[dict[str, Any]],
+        fixture_blocks: Iterable[dict[str, Any]] = (),
+    ) -> None:
+        cases.append(
+            {
+                "case_id": f"ae2-appmek-{len(cases) + 1:02d}",
+                "milestone": "Applied-Mekanistics",
+                "route": route,
+                "label": label,
+                "category": category,
+                "anchors": tuple(anchors),
+                "fixture_blocks": tuple(fixture_blocks),
+            }
+        )
+
+    add(
+        "appmek-drive-cells",
+        "All ten Applied Mekanistics cells in one native Drive",
+        "complete-cell-catalog",
+        (
+            _appmek_drive_anchor(
+                (528, 100, 312),
+                "north",
+                0,
+                {
+                    slot: drive_item(item_id)
+                    for slot, item_id in enumerate(APPMEK_CELL_IDS)
+                },
+                fixture_role="all-ten-cell-native-drive",
+                catalog_item_ids=APPMEK_CELL_IDS,
+            ),
+        ),
+    )
+
+    transform_specs = (
+        ((532, 100, 312), "up", 1, 0, "appmek:chemical_storage_cell_1k"),
+        ((536, 100, 312), "east", 2, 4, "appmek:chemical_storage_cell_16k"),
+        ((540, 100, 312), "down", 3, 9, "appmek:portable_chemical_cell_256k"),
+    )
+    add(
+        "appmek-drive-cells",
+        "Representative native Drive facing and spin controls",
+        "representative-drive-transforms",
+        (
+            _appmek_drive_anchor(
+                position,
+                facing,
+                spin,
+                {slot: drive_item(item_id)},
+                fixture_role="representative-facing-spin-parent-control",
+                transform_index=index,
+                transform_cell_id=item_id,
+                transform_slot=slot,
+            )
+            for index, (position, facing, spin, slot, item_id) in enumerate(
+                transform_specs
+            )
+        ),
+    )
+
+    add(
+        "parent-renderer-controls",
+        "Storage-bus visual seams against exact Mekanism targets",
+        "storage-bus-seam-controls",
+        (
+            _appmek_storage_bus_seam_anchor(
+                (528, 100, 318),
+                "east",
+                fixture_role="qio-dashboard-horizontal-visual-seam",
+                target_block_id="mekanism:qio_dashboard",
+                target_position=(529, 100, 318),
+                target_side="west",
+                seam_policy=(
+                    "visual-only-qio-capability-requires-a-selected-frequency-"
+                    "and-is-not-proven-by-this-empty-control"
+                ),
+            ),
+            _appmek_storage_bus_seam_anchor(
+                (534, 100, 318),
+                "up",
+                fixture_role="radioactive-waste-barrel-vertical-chemical-seam",
+                target_block_id="mekanism:radioactive_waste_barrel",
+                target_position=(534, 101, 318),
+                target_side="down",
+                seam_policy="exact-top-bottom-only-chemical-capability-side",
+            ),
+        ),
+        (
+            {
+                "position": (529, 100, 318),
+                "block_id": "mekanism:qio_dashboard",
+                "placement_state": {"active": False, "facing": "west"},
+                "expected_state": {"active": False, "facing": "west"},
+                "expected_block_entity_id": "mekanism:qio_dashboard",
+                "fixture_role": "qio-dashboard-unselected-frequency-visual-target",
+                "contents_policy": "omitted",
+            },
+            {
+                "position": (534, 101, 318),
+                "block_id": "mekanism:radioactive_waste_barrel",
+                "placement_state": {"facing": "north"},
+                "expected_state": {"facing": "north"},
+                "expected_block_entity_id": "mekanism:radioactive_waste_barrel",
+                "fixture_role": "waste-barrel-empty-vertical-chemical-target",
+                "contents_policy": "omitted",
+            },
+        ),
+    )
+
+    add(
+        "parent-renderer-controls",
+        "Pressurized-tube acceptor seam against the full-block ME Interface",
+        "pressurized-tube-interface-control",
+        (
+            _appmek_pressurized_tube_control_anchor(
+                (540, 100, 318),
+                fixture_role="basic-pressurized-tube-east-interface-acceptor",
+                interface_position=(541, 100, 318),
+            ),
+        ),
+        (
+            {
+                "position": (541, 100, 318),
+                "block_id": "ae2:interface",
+                "placement_state": {},
+                "expected_block_entity_id": "ae2:interface",
+                "fixture_role": "full-block-interface-chemical-capability-target",
+                "contents_policy": "omitted",
+            },
+        ),
+    )
+
+    allocation = tuple(len(case["anchors"]) for case in cases)
+    anchors = [anchor for case in cases for anchor in case["anchors"]]
+    fixtures = [fixture for case in cases for fixture in case["fixture_blocks"]]
+    positions = [value["position"] for value in (*anchors, *fixtures)]
+    if (
+        len(cases) != APPMEK_EXPECTED_CASE_COUNT
+        or allocation != APPMEK_CASE_ANCHOR_ALLOCATION
+        or len(anchors) != APPMEK_EXPECTED_ANCHOR_COUNT
+        or len(fixtures) != APPMEK_EXPECTED_FIXTURE_BLOCK_COUNT
+    ):
+        raise ValueError("narrow Applied Mekanistics case/anchor allocation changed")
+    if len(positions) != len(set(positions)):
+        raise ValueError("narrow Applied Mekanistics fixture positions overlap")
+    if any(not within(position, APPMEK_FIXTURE_BOUNDS) for position in positions):
+        raise ValueError("narrow Applied Mekanistics fixture escaped its bounds")
+    predecessor_bounds = (
+        FIXTURE_BOUNDS,
+        M2_FIXTURE_BOUNDS,
+        M3_FIXTURE_BOUNDS,
+        M3B_FIXTURE_BOUNDS,
+        M3C_FIXTURE_BOUNDS,
+        M3D_FIXTURE_BOUNDS,
+        M3E_FIXTURE_BOUNDS,
+        M3F_FIXTURE_BOUNDS,
+        S1_FIXTURE_BOUNDS,
+        M45_FIXTURE_BOUNDS,
+        DECK_BOUNDS,
+        SENTINEL_BOUNDS,
+        *DENSE_OWNED_BOUNDS,
+    )
+    if any(overlaps(APPMEK_FIXTURE_BOUNDS, bounds) for bounds in predecessor_bounds):
+        raise ValueError("narrow Applied Mekanistics fixture overlaps predecessor bounds")
+    clear_volume = (
+        (APPMEK_FIXTURE_BOUNDS[1][0] - APPMEK_FIXTURE_BOUNDS[0][0] + 1)
+        * (APPMEK_FIXTURE_BOUNDS[1][1] - APPMEK_FIXTURE_BOUNDS[0][1] + 1)
+        * (APPMEK_FIXTURE_BOUNDS[1][2] - APPMEK_FIXTURE_BOUNDS[0][2] + 1)
+    )
+    if APPMEK_CLEAR_BOUNDS != (APPMEK_FIXTURE_BOUNDS,) or clear_volume > 32_768:
+        raise ValueError("narrow Applied Mekanistics clear bounds changed")
+
+    if Counter(anchor["expected_path"] for anchor in anchors) != Counter(
+        {
+            "custom-appmek-drive-cells": 4,
+            "custom-s1": 2,
+            "parent-mekanism-pressurized-tube-control": 1,
+        }
+    ):
+        raise ValueError("narrow Applied Mekanistics route/control closure changed")
+    all_ten = tuple(
+        item["id"]
+        for item in cases[0]["anchors"][0]["drive_inventory"]
+        if item is not None
+    )
+    if (
+        all_ten != APPMEK_CELL_IDS
+        or cases[0]["anchors"][0]["expected_triangle_count"] != 250
+        or set(APPMEK_CELL_MODELS) != set(APPMEK_CELL_IDS)
+    ):
+        raise ValueError("narrow Applied Mekanistics ten-cell Drive changed")
+    if tuple(
+        (
+            anchor["block_state"]["facing"],
+            anchor["block_state"]["spin"],
+            anchor["transform_slot"],
+            anchor["transform_cell_id"],
+            anchor["expected_triangle_count"],
+        )
+        for anchor in cases[1]["anchors"]
+    ) != tuple(
+        (facing, spin, slot, item_id, 106)
+        for _position, facing, spin, slot, item_id in transform_specs
+    ):
+        raise ValueError("narrow representative Drive transforms changed")
+    if tuple(anchor["installed_face"] for anchor in cases[2]["anchors"]) != (
+        "east",
+        "up",
+    ) or any(
+        anchor["expected_material_triangles"]
+        != APPMEK_STORAGE_BUS_MATERIAL_TRIANGLES
+        for anchor in cases[2]["anchors"]
+    ):
+        raise ValueError("narrow storage-bus seam controls changed")
+    if tuple(
+        (
+            anchor["position"],
+            anchor["installed_face"],
+            anchor["seam_target"]["block_id"],
+            anchor["seam_target"]["position"],
+            anchor["seam_target"]["observed_side"],
+            anchor["expected_triangle_count"],
+        )
+        for anchor in cases[2]["anchors"]
+    ) != (
+        (
+            (528, 100, 318),
+            "east",
+            "mekanism:qio_dashboard",
+            (529, 100, 318),
+            "west",
+            74,
+        ),
+        (
+            (534, 100, 318),
+            "up",
+            "mekanism:radioactive_waste_barrel",
+            (534, 101, 318),
+            "down",
+            74,
+        ),
+    ):
+        raise ValueError("narrow storage-bus target topology changed")
+    if tuple(
+        (
+            fixture["position"],
+            fixture["block_id"],
+            fixture["placement_state"],
+            fixture["expected_block_entity_id"],
+        )
+        for fixture in fixtures
+    ) != (
+        (
+            (529, 100, 318),
+            "mekanism:qio_dashboard",
+            {"active": False, "facing": "west"},
+            "mekanism:qio_dashboard",
+        ),
+        (
+            (534, 101, 318),
+            "mekanism:radioactive_waste_barrel",
+            {"facing": "north"},
+            "mekanism:radioactive_waste_barrel",
+        ),
+        ((541, 100, 318), "ae2:interface", {}, "ae2:interface"),
+    ):
+        raise ValueError("narrow Applied Mekanistics context fixture closure changed")
+    tube = cases[3]["anchors"][0]
+    if (
+        tube["block_id"] != "mekanism:basic_pressurized_tube"
+        or tube["position"] != (540, 100, 318)
+        or tube["interface_position"] != (541, 100, 318)
+        or tube["expected_triangle_count"] != 18
+        or tube["transmitter_topology"]
+        != {
+            "connections_unsigned_byte": 0,
+            "acceptors_unsigned_byte": 32,
+            "connection_mode_ordinals": [0, 0, 0, 0, 0, 0],
+            "direction_ordinal_order": [
+                "down", "up", "north", "south", "west", "east"
+            ],
+            "east_mode": "normal",
+        }
+    ):
+        raise ValueError("narrow pressurized-tube/interface control changed")
+    if any(
+        {
+            "expected_geometry_signature",
+            "expected_nonlighting_attribute_signature",
+        }
+        & set(anchor)
+        for anchor in anchors
+    ):
+        raise ValueError("pre-capture AppMek append must not invent signatures")
+    return cases
+
+
 M45_CASES = create_m45_cases()
 enrich_and_validate_m45_runtime_oracle(M45_CASES)
 M45_CASE_COUNT = len(M45_CASES)
 M45_ANCHOR_COUNT = sum(len(case["anchors"]) for case in M45_CASES)
-TOTAL_CASE_COUNT = CASE_COUNT + M45_CASE_COUNT
-TOTAL_ANCHOR_COUNT = ANCHOR_COUNT + M45_ANCHOR_COUNT
+APPMEK_CASES = create_narrow_appmek_cases()
+APPMEK_CASE_COUNT = len(APPMEK_CASES)
+APPMEK_ANCHOR_COUNT = sum(len(case["anchors"]) for case in APPMEK_CASES)
+TOTAL_CASE_COUNT = CASE_COUNT + M45_CASE_COUNT + APPMEK_CASE_COUNT
+TOTAL_ANCHOR_COUNT = ANCHOR_COUNT + M45_ANCHOR_COUNT + APPMEK_ANCHOR_COUNT
 
 
 def json_bytes(value: object) -> bytes:
@@ -12142,6 +12707,111 @@ def _render_m45_cases(
             "anchors": [
                 _render_m45_anchor(anchor, profiles[case["route"]])
                 for anchor in case["anchors"]
+            ],
+            "fixture_blocks": [
+                _render_fixture_block(fixture) for fixture in case["fixture_blocks"]
+            ],
+        }
+        for case in cases
+    ]
+
+
+def _render_appmek_anchor(anchor: dict[str, Any]) -> dict[str, Any]:
+    rendered: dict[str, Any] = {
+        "position": dict(zip(("x", "y", "z"), anchor["position"])),
+        "block_id": anchor["block_id"],
+        "cable_id": anchor.get("cable_id"),
+        "expected_path": anchor["expected_path"],
+        "appmek_route": anchor["appmek_route"],
+        "review_projection": anchor["review_projection"],
+        "fixture_role": anchor["fixture_role"],
+        "route_disabled_projection": anchor["route_disabled_projection"],
+        "physical_stock_projection": anchor["physical_stock_projection"],
+        "runtime_oracle_policy": (
+            "exact-live-prbm-pending-capture-no-synthetic-mesh-expectation"
+        ),
+    }
+    if "expected_block_entity_id" in anchor:
+        rendered["expected_block_entity_id"] = anchor["expected_block_entity_id"]
+    for key in ("expected_triangle_count", "expected_material_triangles"):
+        if key in anchor:
+            rendered[key] = anchor[key]
+    if anchor.get("face_parts"):
+        rendered["face_parts"] = [
+            {"direction": direction, **anchor["face_parts"][direction]}
+            for direction in DIRECTION_DELTAS
+            if direction in anchor["face_parts"]
+        ]
+    if anchor.get("facades"):
+        rendered["facades"] = [
+            {"direction": direction, "block_state": anchor["facades"][direction]}
+            for direction in DIRECTION_DELTAS
+            if direction in anchor["facades"]
+        ]
+    if "drive_inventory" in anchor:
+        rendered["block_state"] = anchor["block_state"]
+        rendered["inventory"] = {
+            "compound": "inv",
+            "slots": [
+                {
+                    "slot": slot,
+                    "field": f"item{slot}",
+                    **({"empty": True} if item is None else {"item_stack": item}),
+                }
+                for slot, item in enumerate(anchor["drive_inventory"])
+            ],
+        }
+        rendered["network_condition"] = "disconnected-unpowered"
+    for key in (
+        "native_structural_disabled_projection",
+        "native_drive_disabled_projection",
+    ):
+        if key in anchor:
+            rendered[key] = anchor[key]
+    for key in (
+        "installed_face",
+        "p2p_frequency_unsigned",
+        "p2p_output",
+        "orientation_index",
+        "mesh_equality_group",
+        "mesh_equality_policy",
+        "catalog_item_ids",
+        "transform_index",
+        "transform_cell_id",
+        "transform_slot",
+        "parent_renderer_control",
+        "cell_contents_policy",
+        "led_status_policy",
+        "contents_policy",
+        "transmitter_topology",
+    ):
+        if key in anchor:
+            rendered[key] = anchor[key]
+    if "seam_target" in anchor:
+        rendered["seam_target"] = {
+            **anchor["seam_target"],
+            "position": dict(
+                zip(("x", "y", "z"), anchor["seam_target"]["position"])
+            ),
+        }
+    if "interface_position" in anchor:
+        rendered["interface_position"] = dict(
+            zip(("x", "y", "z"), anchor["interface_position"])
+        )
+    return rendered
+
+
+def _render_appmek_cases(cases: Iterable[dict[str, Any]]) -> list[dict[str, Any]]:
+    return [
+        {
+            "case_id": case["case_id"],
+            "milestone": case["milestone"],
+            "route": case["route"],
+            "coverage_id": "appmek-exact-extension-review",
+            "label": case["label"],
+            "category": case["category"],
+            "anchors": [
+                _render_appmek_anchor(anchor) for anchor in case["anchors"]
             ],
             "fixture_blocks": [
                 _render_fixture_block(fixture) for fixture in case["fixture_blocks"]
@@ -13625,7 +14295,7 @@ def _m45_route_profiles(
     return tuple(profiles)
 
 
-def cases_manifest() -> dict[str, object]:
+def _schema11_manifest() -> dict[str, object]:
     manifest = _schema10_manifest()
     schema10_payload = json_bytes(manifest)
     if hashlib.sha256(schema10_payload).hexdigest() != (
@@ -13654,8 +14324,11 @@ def cases_manifest() -> dict[str, object]:
     profile["m45_routes"] = list(route_profiles)
     manifest["schema_version"] = 11
     manifest["signature_schema_version"] = 11
-    manifest["case_count"] = TOTAL_CASE_COUNT
-    manifest["anchor_count"] = TOTAL_ANCHOR_COUNT
+    # Keep the accepted schema-11 predecessor byte-identical.  The cumulative
+    # totals below include the schema-12 Applied Mekanistics append and must
+    # therefore not leak into this frozen projection.
+    manifest["case_count"] = CASE_COUNT + M45_CASE_COUNT
+    manifest["anchor_count"] = ANCHOR_COUNT + M45_ANCHOR_COUNT
     manifest["cases"] = [
         *manifest["cases"],
         *_render_m45_cases(M45_CASES, route_profiles),
@@ -13770,6 +14443,239 @@ def cases_manifest() -> dict[str, object]:
         ],
         "topology_contract": (
             "Java unit coverage remains authoritative beyond the bounded physical review layouts"
+        ),
+    }
+    return manifest
+
+
+def cases_manifest() -> dict[str, object]:
+    manifest = _schema11_manifest()
+    schema11_payload = json_bytes(manifest)
+    if hashlib.sha256(schema11_payload).hexdigest() != (
+        "914dab6931077521959cf59260a1ffb0cdbe105385f43880763b289f8117ec55"
+    ):
+        raise ValueError(
+            "accepted schema-11 projection changed before Applied Mekanistics append"
+        )
+    profile = manifest.get("profile")
+    bounds = manifest.get("bounds")
+    cases = manifest.get("cases")
+    if not isinstance(profile, dict) or not isinstance(bounds, dict) or not isinstance(cases, list):
+        raise ValueError("schema-11 profile, bounds, or cases are unavailable")
+    base_selected = list(profile.get("selected_resources", ()))
+    if set(APPMEK_SELECTED_RESOURCES) & set(base_selected):
+        raise ValueError("Applied Mekanistics resources unexpectedly overlap schema 11")
+    appmek_anchors = [
+        anchor for case in APPMEK_CASES for anchor in case["anchors"]
+    ]
+
+    def projection_counts(field: str | None) -> dict[str, int]:
+        values = [
+            (
+                anchor["review_projection"]
+                if field is None
+                else anchor[field]["review_projection"]
+            )
+            for anchor in appmek_anchors
+        ]
+        if set(values) - {"empty", "nonempty"}:
+            raise ValueError(f"unexpected Applied Mekanistics {field} projection")
+        return {
+            "nonempty_anchor_count": values.count("nonempty"),
+            "empty_anchor_count": values.count("empty"),
+        }
+
+    projection_summaries = {
+        "enabled_preoracle_projection": projection_counts(None),
+        "physical_stock_projection": projection_counts(
+            "physical_stock_projection"
+        ),
+        "appmek_drive_route_disabled_projection": projection_counts(
+            "route_disabled_projection"
+        ),
+        "native_structural_disabled_projection": projection_counts(
+            "native_structural_disabled_projection"
+        ),
+        "native_drive_disabled_projection": projection_counts(
+            "native_drive_disabled_projection"
+        ),
+    }
+    if projection_summaries != {
+        "enabled_preoracle_projection": {
+            "nonempty_anchor_count": 7,
+            "empty_anchor_count": 0,
+        },
+        "physical_stock_projection": {
+            "nonempty_anchor_count": 1,
+            "empty_anchor_count": 6,
+        },
+        "appmek_drive_route_disabled_projection": {
+            "nonempty_anchor_count": 3,
+            "empty_anchor_count": 4,
+        },
+        "native_structural_disabled_projection": {
+            "nonempty_anchor_count": 5,
+            "empty_anchor_count": 2,
+        },
+        "native_drive_disabled_projection": {
+            "nonempty_anchor_count": 3,
+            "empty_anchor_count": 4,
+        },
+    }:
+        raise ValueError("narrow Applied Mekanistics projection closure changed")
+
+    route_profiles = []
+    for route in APPMEK_ROUTES:
+        route_anchors = [
+            anchor
+            for case in APPMEK_CASES
+            for anchor in case["anchors"]
+            if anchor["appmek_route"] == route
+        ]
+        route_profiles.append(
+            {
+                "route": route,
+                "milestone": "Applied-Mekanistics",
+                "artifact": APPMEK_ARTIFACT,
+                "mekanism_runtime": APPMEK_MEKANISM_ARTIFACT,
+                "case_count": sum(case["route"] == route for case in APPMEK_CASES),
+                "affected_anchor_count": len(route_anchors),
+                "custom_anchor_count": sum(
+                    anchor["expected_path"].startswith("custom-appmek-")
+                    for anchor in route_anchors
+                ),
+                "fallback_anchor_count": sum(
+                    anchor["expected_path"].startswith("stock-fallback-appmek-")
+                    for anchor in route_anchors
+                ),
+                "route_resources": ["appmek:block/drive/drive_cells"],
+                "core_dependency": "exact-active-ae2-core-and-native-drive-route",
+                "route_disabled_projection": "per-anchor-declared-review-projection",
+                "failure_policy": "disable-only-this-appmek-route-and-preserve-predecessors",
+            }
+        )
+
+    profile["coverage_milestone"] = "Applied-Mekanistics-extension-review"
+    profile["selected_resources"] = base_selected + list(
+        APPMEK_NEW_SELECTED_RESOURCES
+    )
+    profile["appmek_routes"] = route_profiles
+    profile["supported_applied_mekanistics"] = {
+        "artifact": APPMEK_ARTIFACT,
+        "mekanism_runtime": APPMEK_MEKANISM_ARTIFACT,
+        "route_ids": list(APPMEK_ROUTES),
+        "drive_block_id": DRIVE_BLOCK_ID,
+        "drive_slot_count": DRIVE_SLOT_COUNT,
+        "cell_models": APPMEK_CELL_MODELS,
+        "cell_item_ids": list(APPMEK_CELL_IDS),
+        "drive_review": {
+            "all_ten_one_drive": True,
+            "representative_transform_controls": 3,
+            "native_parent_transform_coverage": 24,
+            "chemical_contents": "omitted",
+            "led_status": "not-a-review-variable-existing-parent-static-offline-unknown",
+        },
+        "seam_controls": {
+            "new_route_ownership": False,
+            "storage_bus": {
+                "renderer_owner": "ae2-cable-bus-structural",
+                "qio_dashboard": "horizontal-visual-only-unselected-frequency",
+                "radioactive_waste_barrel": "vertical-top-bottom-chemical-side",
+            },
+            "pressurized_tube": {
+                "renderer_owner": "independent-mekanism-addon",
+                "target": "full-block-ae2-interface",
+                "cable_interface_excluded": True,
+                "east_acceptor_bit": 32,
+            },
+        },
+        "excluded_routes": [
+            "chemical-p2p",
+            "extended-drive",
+            "me-chest",
+            "megacells-cell-dock",
+        ],
+        "static_policy": "cell-shells-and-persisted-seam-topology-only",
+        "atomic_fallback": "native-drive-original-resource",
+    }
+
+    manifest["schema_version"] = 12
+    manifest["signature_schema_version"] = 12
+    manifest["case_count"] = TOTAL_CASE_COUNT
+    manifest["anchor_count"] = TOTAL_ANCHOR_COUNT
+    manifest["cases"] = [*cases, *_render_appmek_cases(APPMEK_CASES)]
+    bounds["appmek_fixture"] = _render_bounds(APPMEK_FIXTURE_BOUNDS)
+    manifest["appmek_floor_policy"] = {
+        "anchor_y": 100,
+        "owned_y": [96, 110],
+        "support": "air-isolated-except-three-declared-parent-renderer-seams",
+        "air_block_id": "minecraft:air",
+        "exact_context_exceptions": [
+            "one-qio-dashboard-visual-target",
+            "one-vertical-radioactive-waste-barrel-target",
+            "one-full-block-me-interface-target",
+        ],
+        "reason": "small-drive-catalog-review-plus-exact-cross-addon-seam-regressions",
+    }
+    manifest["appmek_review_summary"] = {
+        "case_count": APPMEK_CASE_COUNT,
+        "anchor_count": APPMEK_ANCHOR_COUNT,
+        "case_anchor_allocation": list(APPMEK_CASE_ANCHOR_ALLOCATION),
+        "custom_anchor_count": APPMEK_EXPECTED_CUSTOM_ANCHOR_COUNT,
+        "fallback_anchor_count": APPMEK_EXPECTED_FALLBACK_ANCHOR_COUNT,
+        "control_anchor_count": APPMEK_EXPECTED_CONTROL_ANCHOR_COUNT,
+        "review_control_anchor_count": (
+            APPMEK_EXPECTED_REVIEW_CONTROL_ANCHOR_COUNT
+        ),
+        "fixture_block_count": APPMEK_EXPECTED_FIXTURE_BLOCK_COUNT,
+        "route_ids": list(APPMEK_ROUTES),
+        "route_affected_anchor_counts": {
+            route: sum(
+                anchor["appmek_route"] == route
+                for case in APPMEK_CASES
+                for anchor in case["anchors"]
+            )
+            for route in APPMEK_ROUTES
+        },
+        **projection_summaries,
+        "new_selected_resource_target_count": len(APPMEK_SELECTED_RESOURCES),
+        "new_selected_resource_targets": list(APPMEK_SELECTED_RESOURCES),
+        "new_selected_resource_count": len(APPMEK_NEW_SELECTED_RESOURCES),
+        "runtime_oracle": {
+            "status": "pending-exact-enabled-live-map-capture",
+            "policy": "exact-prbm-geometry-material-and-nonlighting-signatures",
+            "capture_anchor_count": APPMEK_ANCHOR_COUNT,
+            "expected_nonempty_anchor_count": 7,
+            "expected_empty_anchor_count": 0,
+            "synthetic_geometry_forbidden": True,
+        },
+        "unit_only_geometry_policy": (
+            "existing-native-drive-and-parent-renderer-tests-remain-authoritative-beyond-the-small-live-matrix"
+        ),
+    }
+    manifest["appmek_verification_policy"] = {
+        "build_counter": "#appmek_builds ae2amrun must remain exactly 1",
+        "checkpoints": [
+            {
+                "phase": "immediate",
+                "function": "ae2_m3:appmek/check_immediate",
+                "score": "#appmek_immediate ae2amrun",
+            },
+            {
+                "phase": "20t",
+                "function": "ae2_m3:appmek/check_20t",
+                "score": "#appmek_20t ae2amrun",
+            },
+            {
+                "phase": "100t",
+                "function": "ae2_m3:appmek/check_100t",
+                "score": "#appmek_100t ae2amrun",
+            },
+        ],
+        "chunk_reload": "release-forceload-then-load-and-run-ae2_m3:verify-without-build",
+        "full_jvm_restart": "run-ae2_m3:verify-without-build-after-restart",
+        "state_boundary": (
+            "exact-block-state-block-entity-id-drive-cell-ids-storage-bus-parts-targets-and-pressurized-tube-topology"
         ),
     }
     return manifest
@@ -14102,6 +15008,70 @@ def cases_tsv() -> bytes:
                 }
             )
             lines.append("\t".join(row[header] for header in headers))
+    for case in APPMEK_CASES:
+        for anchor in case["anchors"]:
+            face_parts = ",".join(
+                f"{direction}:{part['id']}"
+                + (f"@{part['spin']}" if "spin" in part else "")
+                + (f"#freq={part['freq']}" if "freq" in part else "")
+                + (f"#output={str(part['output']).lower()}" if "output" in part else "")
+                + (
+                    f"#cell={part['cell']['id']}"
+                    if isinstance(part.get("cell"), dict)
+                    else ""
+                )
+                for direction, part in anchor.get("face_parts", {}).items()
+            ) or "none"
+            facade_rows = []
+            for direction, state in anchor.get("facades", {}).items():
+                facade_rows.append(f"{direction}:{state['Name']}")
+            row = {header: "-" for header in headers}
+            row.update(
+                {
+                    "case_id": case["case_id"],
+                    "milestone": case["milestone"],
+                    "coverage_id": "appmek-exact-extension-review",
+                    "route": case["route"],
+                    "label": case["label"],
+                    "category": case["category"],
+                    "expected_path": anchor["expected_path"],
+                    "block_id": anchor["block_id"],
+                    "cable_id": anchor.get("cable_id") or "-",
+                    "anchor": " ".join(map(str, anchor["position"])),
+                    "face_parts": face_parts,
+                    "facades": ",".join(facade_rows) or "none",
+                    "fallback_reason": anchor.get("fallback_reason", "-"),
+                    "expected_triangles": str(
+                        anchor.get("expected_triangle_count", "-")
+                    ),
+                    "block_state": (
+                        json.dumps(
+                            anchor["block_state"],
+                            sort_keys=True,
+                            separators=(",", ":"),
+                        )
+                        if "block_state" in anchor
+                        else "-"
+                    ),
+                    "drive_inventory": (
+                        json.dumps(
+                            {
+                                f"item{slot}": item or {}
+                                for slot, item in enumerate(anchor["drive_inventory"])
+                            },
+                            sort_keys=True,
+                            separators=(",", ":"),
+                        )
+                        if "drive_inventory" in anchor
+                        else "-"
+                    ),
+                    "installed_face": anchor.get("installed_face", "-"),
+                    "p2p_frequency_unsigned": str(
+                        anchor.get("p2p_frequency_unsigned", "-")
+                    ),
+                }
+            )
+            lines.append("\t".join(row[header] for header in headers))
     return ("\n".join(lines) + "\n").encode("utf-8")
 
 
@@ -14136,8 +15106,18 @@ def part_snbt(part: dict[str, Any]) -> str:
             fields.append(f"freq:{snbt_string(frequency)}")
         else:
             raise ValueError("unsupported generated malformed P2P frequency")
+    if "output" in part:
+        output = part["output"]
+        if not isinstance(output, bool):
+            raise ValueError("generated P2P output flag must be boolean")
+        fields.append(f"output:{1 if output else 0}b")
     if "overflow" in part:
         fields.append(f"overflow:{snbt_string(part['overflow'])}")
+    if "cell" in part:
+        cell = part["cell"]
+        fields.append(
+            "cell:{}" if cell is None else "cell:" + drive_item_snbt(cell)
+        )
     return "{" + ",".join(fields) + "}"
 
 
@@ -14422,6 +15402,174 @@ def fixture_block_snbt(
     return None
 
 
+def appmek_build_entry_lines(value: dict[str, Any]) -> list[str]:
+    """Place one exact Applied Mekanistics anchor or context block."""
+    position = block_position(value["position"])
+    if value["block_id"] == "ae2:cable_bus":
+        return [
+            f"setblock {position} ae2:cable_bus replace",
+            f"data merge block {position} {cable_bus_snbt(value)}",
+        ]
+    if "drive_inventory" in value:
+        return [
+            f"setblock {position} {drive_block_state(value)} replace",
+            f"data merge block {position} {drive_inventory_snbt(value)}",
+        ]
+    return [
+        f"setblock {position} {fixture_block_placement_state(value)} replace"
+    ]
+
+
+def appmek_build_lines() -> list[str]:
+    lines = [
+        "# Applied Mekanistics schema-12 exact extension fixtures.",
+        "scoreboard objectives add ae2amrun dummy",
+        "scoreboard players add #appmek_builds ae2amrun 1",
+        "scoreboard players set #appmek_immediate ae2amrun 0",
+        "scoreboard players set #appmek_20t ae2amrun 0",
+        "scoreboard players set #appmek_100t ae2amrun 0",
+    ]
+    for case in APPMEK_CASES:
+        lines.append(f"# {case['case_id']} {case['label']}")
+        # Establish the exact cross-mod context before placing the selected
+        # cable-bus anchor so neighbor notifications see the final seam.
+        for fixture in case["fixture_blocks"]:
+            lines.extend(appmek_build_entry_lines(fixture))
+        for anchor in case["anchors"]:
+            lines.extend(appmek_build_entry_lines(anchor))
+        lines.append("")
+    lines.extend(
+        (
+            "function ae2_m3:appmek/check_immediate",
+            "schedule function ae2_m3:appmek/check_20t 20t replace",
+            "schedule function ae2_m3:appmek/check_100t 100t replace",
+            "",
+        )
+    )
+    return lines
+
+
+def appmek_verification_lines(objective: str) -> list[str]:
+    """Verify the exact persisted Drive and parent-renderer seam controls."""
+    failure = f"run scoreboard players add #failures {objective} 1"
+    lines: list[str] = []
+    for case in APPMEK_CASES:
+        lines.append(f"# {case['case_id']} {case['label']}")
+        for anchor in case["anchors"]:
+            position = block_position(anchor["position"])
+            if anchor["block_id"] == "ae2:cable_bus":
+                lines.append(
+                    f"execute unless block {position} ae2:cable_bus {failure}"
+                )
+                lines.append(
+                    f'execute unless data block {position} {{id:"ae2:cable_bus"}} '
+                    f"{failure}"
+                )
+                lines.append(
+                    f"execute unless data block {position} "
+                    f"{cable_bus_snbt(anchor, include_has_redstone=False)} {failure}"
+                )
+                for direction in DIRECTION_DELTAS:
+                    if direction not in anchor.get("face_parts", {}):
+                        lines.append(
+                            f"execute if data block {position} {direction} {failure}"
+                        )
+                    facade_field = "facade" + direction[0].upper() + direction[1:]
+                    if direction not in anchor.get("facades", {}):
+                        lines.append(
+                            f"execute if data block {position} {facade_field} {failure}"
+                        )
+                    elif "Properties" not in anchor["facades"][direction]:
+                        lines.append(
+                            f"execute if data block {position} "
+                            f"{facade_field}.Properties {failure}"
+                        )
+            elif "drive_inventory" in anchor:
+                lines.extend(drive_verification_lines(anchor, objective))
+                lines.append(
+                    f'execute unless data block {position} {{id:"{DRIVE_BLOCK_ID}"}} '
+                    f"{failure}"
+                )
+            elif anchor["block_id"] == "mekanism:basic_pressurized_tube":
+                lines.append(
+                    f"execute unless block {position} "
+                    f"mekanism:basic_pressurized_tube {failure}"
+                )
+                lines.append(
+                    f"execute unless data block {position} "
+                    '{id:"mekanism:basic_pressurized_tube",connections:0b,'
+                    'acceptors:32b,connection:[I;0,0,0,0,0,0]} '
+                    f"{failure}"
+                )
+            else:
+                lines.append(
+                    f"execute unless block {position} "
+                    f"{fixture_block_state(anchor)} {failure}"
+                )
+        for fixture in case["fixture_blocks"]:
+            position = block_position(fixture["position"])
+            lines.append(
+                f"execute unless block {position} {fixture_block_state(fixture)} "
+                f"{failure}"
+            )
+            fixture_nbt = fixture_block_snbt(
+                fixture,
+                include_has_redstone=False,
+            )
+            if fixture_nbt is not None:
+                lines.append(
+                    f"execute unless data block {position} {fixture_nbt} {failure}"
+                )
+                for direction in DIRECTION_DELTAS:
+                    if direction not in fixture.get("face_parts", {}):
+                        lines.append(
+                            f"execute if data block {position} {direction} {failure}"
+                        )
+                    facade_field = "facade" + direction[0].upper() + direction[1:]
+                    if direction not in fixture.get("facades", {}):
+                        lines.append(
+                            f"execute if data block {position} {facade_field} {failure}"
+                        )
+            expected_block_entity_id = fixture.get("expected_block_entity_id")
+            if expected_block_entity_id is not None:
+                lines.append(
+                    f"execute unless data block {position} "
+                    f'{{id:"{expected_block_entity_id}"}} {failure}'
+                )
+        lines.append("")
+    return lines
+
+
+def appmek_checkpoint_function(status_player: str, phase: str) -> bytes:
+    if status_player not in {
+        "#appmek_immediate",
+        "#appmek_20t",
+        "#appmek_100t",
+    }:
+        raise ValueError("unknown Applied Mekanistics checkpoint player")
+    lines = [
+        "# SPDX-License-Identifier: LGPL-3.0-only",
+        f"# Exact Applied Mekanistics {phase} retained-state checkpoint.",
+        "scoreboard objectives add ae2amrun dummy",
+        "scoreboard players set #failures ae2amrun 0",
+        *appmek_verification_lines("ae2amrun"),
+        f"scoreboard players set {status_player} ae2amrun -1",
+        f"execute if score #failures ae2amrun matches 0 run scoreboard players set {status_player} ae2amrun 1",
+        "",
+    ]
+    return "\n".join(lines).encode("utf-8")
+
+
+def appmek_gate_lines(objective: str) -> list[str]:
+    failure = f"run scoreboard players add #failures {objective} 1"
+    return [
+        f"execute unless score #appmek_builds ae2amrun matches 1 {failure}",
+        f"execute unless score #appmek_immediate ae2amrun matches 1 {failure}",
+        f"execute unless score #appmek_20t ae2amrun matches 1 {failure}",
+        f"execute unless score #appmek_100t ae2amrun matches 1 {failure}",
+    ]
+
+
 def m3_completion_verification_lines(objective: str) -> list[str]:
     failure = f"run scoreboard players add #failures {objective} 1"
     lines: list[str] = []
@@ -14536,6 +15684,10 @@ def build_function() -> bytes:
             f"fill {fill_bounds(bounds)} minecraft:air replace"
             for bounds in M45_CLEAR_BOUNDS
         ),
+        *(
+            f"fill {fill_bounds(bounds)} minecraft:air replace"
+            for bounds in APPMEK_CLEAR_BOUNDS
+        ),
         "",
     ]
     for case in CASES:
@@ -14625,6 +15777,7 @@ def build_function() -> bytes:
         lines.append("")
 
     lines.extend(m45_build_lines())
+    lines.extend(appmek_build_lines())
 
     lines.extend(
         (
@@ -14664,6 +15817,7 @@ def load_function() -> bytes:
         f"forceload add {horizontal_bounds(M3F_FIXTURE_BOUNDS)}",
         f"forceload add {horizontal_bounds(S1_FIXTURE_BOUNDS)}",
         f"forceload add {horizontal_bounds(M45_FIXTURE_BOUNDS)}",
+        f"forceload add {horizontal_bounds(APPMEK_FIXTURE_BOUNDS)}",
         f"forceload add {horizontal_bounds(DECK_BOUNDS)}",
         f"forceload add {horizontal_bounds(SENTINEL_BOUNDS)}",
         "",
@@ -14685,6 +15839,7 @@ def release_function() -> bytes:
         f"forceload remove {horizontal_bounds(M3F_FIXTURE_BOUNDS)}",
         f"forceload remove {horizontal_bounds(S1_FIXTURE_BOUNDS)}",
         f"forceload remove {horizontal_bounds(M45_FIXTURE_BOUNDS)}",
+        f"forceload remove {horizontal_bounds(APPMEK_FIXTURE_BOUNDS)}",
         f"forceload remove {horizontal_bounds(DECK_BOUNDS)}",
         f"forceload remove {horizontal_bounds(SENTINEL_BOUNDS)}",
         'tellraw @a [{"text":"Released the cumulative AE2 review-gallery chunks.","color":"yellow"}]',
@@ -14696,8 +15851,10 @@ def release_function() -> bytes:
 def clear_function() -> bytes:
     lines = (
         "# SPDX-License-Identifier: LGPL-3.0-only",
-        "# Clear only the eleven disjoint main gallery-owned volumes.",
+        "# Clear only the disjoint cumulative main gallery-owned volumes.",
         "schedule clear ae2_m3:settle_check",
+        "schedule clear ae2_m3:appmek/check_20t",
+        "schedule clear ae2_m3:appmek/check_100t",
         f"fill {fill_bounds(FIXTURE_BOUNDS)} minecraft:air replace",
         f"fill {fill_bounds(M2_FIXTURE_BOUNDS)} minecraft:air replace",
         f"fill {fill_bounds(M3_FIXTURE_BOUNDS)} minecraft:air replace",
@@ -14713,6 +15870,10 @@ def clear_function() -> bytes:
         *(
             f"fill {fill_bounds(bounds)} minecraft:air replace"
             for bounds in M45_CLEAR_BOUNDS
+        ),
+        *(
+            f"fill {fill_bounds(bounds)} minecraft:air replace"
+            for bounds in APPMEK_CLEAR_BOUNDS
         ),
         f"fill {fill_bounds(DECK_BOUNDS)} minecraft:air replace",
         f"fill {fill_bounds(SENTINEL_BOUNDS)} minecraft:air replace",
@@ -14929,12 +16090,15 @@ def settle_check_function() -> bytes:
         "scoreboard objectives add ae2m3s dummy",
         "scoreboard players add #attempts ae2m3s 1",
         "scoreboard players set #failures ae2m3s 0",
+        "scoreboard objectives add ae2amrun dummy",
         "",
         *crafting_verification_lines("ae2m3s"),
         *quantum_verification_lines("ae2m3s"),
         *m3_completion_verification_lines("ae2m3s"),
         *native_structural_verification_lines("ae2m3s"),
         *m45_verification_lines("ae2m3s"),
+        *appmek_verification_lines("ae2m3s"),
+        *appmek_gate_lines("ae2m3s"),
         "execute if score #failures ae2m3s matches 0 run scoreboard players add #stable ae2m3s 1",
         "execute unless score #failures ae2m3s matches 0 run scoreboard players set #stable ae2m3s 0",
         "execute if score #stable ae2m3s matches 2.. run save-all flush",
@@ -14958,6 +16122,8 @@ def verify_function() -> bytes:
         "execute unless score #s1_builds ae2s1run matches 1 run scoreboard players add #failures ae2m3v 1",
         "scoreboard objectives add ae2m45run dummy",
         "execute unless score #m45_builds ae2m45run matches 1 run scoreboard players add #failures ae2m3v 1",
+        "scoreboard objectives add ae2amrun dummy",
+        *appmek_gate_lines("ae2m3v"),
         "execute unless score #stable ae2m3s matches 2.. run scoreboard players add #failures ae2m3v 1",
         "",
     ]
@@ -15041,6 +16207,7 @@ def verify_function() -> bytes:
     lines.extend(m3_completion_verification_lines("ae2m3v"))
     lines.extend(native_structural_verification_lines("ae2m3v"))
     lines.extend(m45_verification_lines("ae2m3v"))
+    lines.extend(appmek_verification_lines("ae2m3v"))
 
     lines.extend(
         (
@@ -15055,7 +16222,7 @@ def verify_function() -> bytes:
             f"execute unless block {block_position(POSE_HEAD)} minecraft:air run scoreboard players add #failures ae2m3v 1",
             "",
             f'execute if score #failures ae2m3v matches 0 run tellraw @a [{{"text":"AE2 ATM 1.2.0 cumulative review verification passed: {TOTAL_CASE_COUNT}/{TOTAL_CASE_COUNT} cases and {TOTAL_ANCHOR_COUNT}/{TOTAL_ANCHOR_COUNT} anchors after two consecutive exact checks.","color":"green"}}]',
-            'execute unless score #failures ae2m3v matches 0 run tellraw @a [{"text":"AE2/ExtendedAE S1 fixture verification failed with ","color":"red"},{"score":{"name":"#failures","objective":"ae2m3v"}},{"text":" mismatches.","color":"red"}]',
+            'execute unless score #failures ae2m3v matches 0 run tellraw @a [{"text":"AE2 cumulative extension fixture verification failed with ","color":"red"},{"score":{"name":"#failures","objective":"ae2m3v"}},{"text":" mismatches.","color":"red"}]',
             "",
         )
     )
@@ -15183,7 +16350,7 @@ def expected_outputs() -> dict[Path, bytes]:
     pack = {
         "pack": {
             "pack_format": 48,
-            "description": "AE2 ATM 1.2.0 cumulative S1/M4/M5 BlueMap review fixtures",
+            "description": "AE2 ATM 1.2.0 cumulative schema-12 Applied Mekanistics BlueMap review fixtures",
         }
     }
     outputs = {
@@ -15198,6 +16365,15 @@ def expected_outputs() -> dict[Path, bytes]:
         FUNCTION_ROOT / "settle_check.mcfunction": settle_check_function(),
         FUNCTION_ROOT / "preprobe.mcfunction": preprobe_function(),
         FUNCTION_ROOT / "preprobe_check.mcfunction": preprobe_check_function(),
+        FUNCTION_ROOT / "appmek/check_immediate.mcfunction": (
+            appmek_checkpoint_function("#appmek_immediate", "immediate")
+        ),
+        FUNCTION_ROOT / "appmek/check_20t.mcfunction": (
+            appmek_checkpoint_function("#appmek_20t", "20-tick")
+        ),
+        FUNCTION_ROOT / "appmek/check_100t.mcfunction": (
+            appmek_checkpoint_function("#appmek_100t", "100-tick")
+        ),
         FUNCTION_ROOT / "pose_south.mcfunction": pose_function(),
         FUNCTION_ROOT / "dense/build.mcfunction": dense_build_function(),
         FUNCTION_ROOT / "dense/clear.mcfunction": dense_clear_function(),
@@ -15289,6 +16465,11 @@ def main() -> int:
         f"{S1_ORACLE_TRIANGLE_COUNT + EXPECTED_LEGACY_UPGRADE_CUSTOM_TRIANGLE_COUNT}; "
         f"M4/M5 review {M45_CASE_COUNT} cases/{M45_ANCHOR_COUNT} anchors across "
         f"{len(M45_ROUTES)} independently disabled routes; "
+        f"Applied Mekanistics {APPMEK_CASE_COUNT} cases/{APPMEK_ANCHOR_COUNT} "
+        f"anchors ({APPMEK_EXPECTED_CUSTOM_ANCHOR_COUNT} custom, "
+        f"{APPMEK_EXPECTED_FALLBACK_ANCHOR_COUNT} fallback, "
+        f"{APPMEK_EXPECTED_CONTROL_ANCHOR_COUNT} independent control, "
+        f"{APPMEK_EXPECTED_REVIEW_CONTROL_ANCHOR_COUNT} review controls); "
         f"optional dense fixture {DENSE_CELL_COUNT} cells/"
         f"{DENSE_EXPECTED_TRIANGLES} triangles."
     )

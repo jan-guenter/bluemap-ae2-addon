@@ -38,6 +38,8 @@ class VerifyM45ArtifactsTest(unittest.TestCase):
                 "advancedae",
                 "athena",
                 "extendedae",
+                "appmek",
+                "mekanism",
             },
             set(ARTIFACTS),
         )
@@ -49,10 +51,12 @@ class VerifyM45ArtifactsTest(unittest.TestCase):
         self.assertEqual(4_791_255, ARTIFACTS["advancedae"].size)
         self.assertEqual(99_944, ARTIFACTS["athena"].size)
         self.assertEqual(5_578_031, ARTIFACTS["extendedae"].size)
+        self.assertEqual(149_709, ARTIFACTS["appmek"].size)
+        self.assertEqual(11_976_009, ARTIFACTS["mekanism"].size)
 
     def test_resource_manifest_mapping_is_closed(self):
-        self.assertEqual(11, len(RESOURCE_MANIFESTS))
-        self.assertEqual(375, sum(item.expected_rows for item in RESOURCE_MANIFESTS))
+        self.assertEqual(12, len(RESOURCE_MANIFESTS))
+        self.assertEqual(381, sum(item.expected_rows for item in RESOURCE_MANIFESTS))
         mapping = {
             manifest.relative_path: manifest.artifact
             for manifest in RESOURCE_MANIFESTS
@@ -68,6 +72,10 @@ class VerifyM45ArtifactsTest(unittest.TestCase):
             mapping[
                 "extendedae/1.21-2.2.33-neoforge/required-resources.tsv"
             ],
+        )
+        self.assertEqual(
+            "appmek",
+            mapping["appmek/1.6.3/drive-required-resources.tsv"],
         )
         self.assertEqual(
             "extendedae",

@@ -97,10 +97,11 @@ public final class DriveCellCatalog {
     }
 
     public static List<DriveCellDefinition> allDefinitions() {
-        List<DriveCellDefinition> result = new ArrayList<>(23 + 20 + 67);
+        List<DriveCellDefinition> result = new ArrayList<>(23 + 20 + 67 + 10);
         result.addAll(DEFINITIONS);
         result.addAll(extensionDefinitions(DriveCellOwner.APPLIED_FLUX));
         result.addAll(extensionDefinitions(DriveCellOwner.MEGA_CELLS));
+        result.addAll(extensionDefinitions(DriveCellOwner.APPLIED_MEKANISTICS));
         return List.copyOf(result);
     }
 

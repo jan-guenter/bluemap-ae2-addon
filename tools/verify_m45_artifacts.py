@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: LGPL-3.0-only
-"""Verify the exact All the Mons 1.2.0 M4/M5 artifact/resource closure."""
+"""Verify the exact All the Mons 1.2.0 M4/M5/AppMek artifact closure."""
 
 from __future__ import annotations
 
@@ -99,6 +99,22 @@ ARTIFACTS = {
         "e5b76a50802087d999bf6c113bc635e8ade9f20e06f4d3276a144f4eaa3090fc"
         "3b6c67b9b6a1f7d0d036e48e69f601114a0cc92c5a8d45953f895718f806348c",
     ),
+    "appmek": ArtifactIdentity(
+        "Applied Mekanistics 1.6.3",
+        149_709,
+        "bec4a47269ec23bca2329742e13409bfde69c5c3",
+        "8946fea39451dbce8e709dedbef40a52ba337bdf7a25ac0c4b503800b1bf0773",
+        "1a693c3c05862805bd88cf1265fd4b9b98b2da4efe986c9ff26efa0e675df143"
+        "73983ffdf7ededb26f07864b6702fabc299ac1a06fb8fa35de0b341b596dbf9b",
+    ),
+    "mekanism": ArtifactIdentity(
+        "Mekanism 10.7.19",
+        11_976_009,
+        "b78945c40cfe7640408f3fd1e44da385a8c8b805",
+        "004dbc9f3106f4d192aeaa1ee1190dd16ec9ca8059ed3d093b80034f4c574f43",
+        "66745825330a98f3e4a5ea3a44aff8b00870f715c144edc38dd2f61b424058960"
+        "0b58ae89efac3b54dbb5aa430b1059dac1a28fd71cac5cc9002bbeb5ba3f22b",
+    ),
 }
 
 
@@ -146,6 +162,9 @@ RESOURCE_MANIFESTS = (
         "extendedae",
         38,
     ),
+    ResourceManifest(
+        "appmek/1.6.3/drive-required-resources.tsv", "appmek", 6
+    ),
 )
 
 
@@ -162,6 +181,7 @@ MANIFEST_SCOPE_ROOTS = (
     "advancedae/1.6.12",
     "extendedae/1.21-2.2.33-neoforge",
     "extendedae/1.21-2.2.35-neoforge",
+    "appmek/1.6.3",
 )
 
 
@@ -330,7 +350,7 @@ def verify_artifacts(
     resource_root: Path = DEFAULT_RESOURCE_ROOT,
 ) -> tuple[int, int, int, int]:
     if set(artifact_paths) != set(ARTIFACTS):
-        raise ValueError("M4/M5 artifact set changed")
+        raise ValueError("M4/M5/AppMek artifact set changed")
     verify_resource_manifest_set(resource_root)
     archives: dict[str, zipfile.ZipFile] = {}
     try:
@@ -378,6 +398,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--advanced-ae-jar", required=True, type=Path)
     parser.add_argument("--athena-jar", required=True, type=Path)
     parser.add_argument("--extended-ae-jar", required=True, type=Path)
+    parser.add_argument("--appmek-jar", required=True, type=Path)
+    parser.add_argument("--mekanism-jar", required=True, type=Path)
     parser.add_argument(
         "--resource-root",
         type=Path,
@@ -398,6 +420,8 @@ def main() -> int:
         "advancedae": args.advanced_ae_jar,
         "athena": args.athena_jar,
         "extendedae": args.extended_ae_jar,
+        "appmek": args.appmek_jar,
+        "mekanism": args.mekanism_jar,
     }
     try:
         artifacts, manifests, resource_rows, catalog_rows = verify_artifacts(
@@ -405,10 +429,13 @@ def main() -> int:
             args.resource_root,
         )
     except (OSError, ValueError, zipfile.BadZipFile) as error:
-        print(f"M4/M5 artifact verification failed: {error}", file=sys.stderr)
+        print(
+            f"M4/M5/AppMek artifact verification failed: {error}",
+            file=sys.stderr,
+        )
         return 1
     print(
-        "Verified exact All the Mons 1.2.0 M4/M5 closure: "
+        "Verified exact All the Mons 1.2.0 M4/M5/AppMek closure: "
         f"{artifacts} artifacts, {manifests} resource manifests, "
         f"{resource_rows} resource rows, and {catalog_rows} MEGA cell rows."
     )

@@ -1,5 +1,25 @@
 # Coverage
 
+## Unreleased `0.1.0-alpha.2` candidate
+
+The successor candidate adds exact Applied Mekanistics `1.6.3` support only
+for the exact All the Mons `1.2.0` tuple. `appmek-drive-cells` adds five
+ordinary and five portable chemical cells, mapped to five exact chassis
+models, in native `ae2:drive` only. Unknown IDs, malformed/count-not-one slot
+data, inactive dependencies, and validator mismatch use whole-Drive stock
+fallback; thrown AppMek callbacks disable only this route. Existing native
+Drive orientation tests remain authoritative, with bounded AppMek mapping,
+all-ten-slot, representative-orientation, resource, and failure tests.
+
+The candidate uses schema 12 with 162 cases and 1,373 anchors, including four
+AppMek review cases and seven anchors. Four anchors cover the native Drives;
+two retain AE2 storage-bus seams against a Mekanism QIO Dashboard and
+Radioactive Waste Barrel; one retains the generic Mekanism pressurized-tube
+seam against a full-block `ae2:interface`. The seam cases exercise existing
+parent renderers and add no production route. The enabled live geometry oracle
+remains pending. No staging, owner acceptance, release, or compatibility
+claim is made for alpha.2 yet.
+
 ## All the Mons 1.2.0 M4/M5 accepted coverage
 
 The complete M4/M5 implementation is the latest owner-accepted local
@@ -924,8 +944,8 @@ BlueMap on 2026-08-11. Both candidate and accepted alias sets were hash-exact
 on `data-atm120`, and the historical PVC was untouched. The final review pod
 was Ready with zero restarts and zero initializer failures, all exact routes
 active, verifier counters `1/1/2/0`, and a completed `save-all flush` before
-scale-to-zero. S1 remains the latest exact human-accepted local checkpoint and
-is unreleased.
+scale-to-zero. At that historical checkpoint S1 was the latest exact human-
+accepted local result and remained unreleased.
 
 The M4/M5 implementation, exact technical lifecycle, and bounded owner visual
 review are complete in the accepted checkpoint described at the top of this
@@ -976,6 +996,8 @@ technical lifecycle and owner visual gate on the same date. The exact corrected
 M3f JAR, gallery and map archive completed their technical lifecycle and owner
 visual gate on 2026-08-09, completing M3. S1 subsequently completed the exact
 runtime lifecycle and bounded owner BlueMap visual review recorded above on
-2026-08-11. It remains the latest human-accepted local checkpoint, while the
-implemented extension candidate has passed its technical lifecycle and awaits
-owner review.
+2026-08-11. M4/M5 subsequently completed its technical lifecycle and owner
+review and was published as immutable prerelease `v0.1.0-alpha.1` on
+2026-08-12. The separate alpha.2 Applied Mekanistics candidate currently has
+implementation and source-gate evidence only; runtime and owner acceptance
+remain pending.

@@ -296,8 +296,10 @@ parts, planes, six P2P types and frequency pixels, legal dense layouts, the
 exact bounded facade-state/material contract and 30 native attached-device
 connection identities. Its exact All the Mons 1.2.0 isolated lifecycle passed
 on 2026-08-11, and the owner visually accepted the exact JAR, gallery and map
-archive in BlueMap on 2026-08-11. S1 remains the latest exact human-accepted
-local checkpoint and is unreleased.
+archive in BlueMap on 2026-08-11. At that historical checkpoint S1 was the
+latest exact human-accepted local result and remained unreleased. M4/M5 later
+became the accepted successor and was published as immutable prerelease
+`v0.1.0-alpha.1` on 2026-08-12.
 
 Two clean Eclipse Temurin `21.0.12+8` / Python `3.13.14` builds reproduced the
 All the Mons 1.2.0-retargeted S1 artifact set. Each build ran 448 Java tests (446
@@ -395,6 +397,17 @@ audit is clear. Two byte-identical builds each ran 562 Java tests (560 passed
 and two opt-in exporter tests were intentionally skipped) and 180 pre-oracle
 Python tests. The frozen-oracle CPython 3.13.14 suite then passed 192/192 tests
 in 945.343 seconds with the generator/checksum closure.
+
+The unreleased `0.1.0-alpha.2` successor is a separate Applied Mekanistics
+candidate and does not inherit alpha.1 acceptance. It adds exact AppMek
+`1.6.3` plus Mekanism `10.7.19` evidence, the one native-Drive-only
+`appmek-drive-cells` route, and schema 12. The schema adds bounded seam
+regressions for existing AE2 storage-bus and Mekanism pressurized-tube
+renderers without adding a seam route. The current verifier expects ten
+artifacts, twelve resource manifests/381 rows, and nine `m45*Jar` properties.
+Runtime lifecycle, owner review, release-candidate metadata, tagging, and
+publication remain blocked. Never bundle or reconstruct AppMek or Mekanism
+classes, assets, source, or binaries.
 
 The exact accepted local identities are:
 
@@ -535,8 +548,8 @@ verified after publication. Root workspace integration remains separate.
 
 ## Validation
 
-The seven `m45*Jar` properties and `verifyM45PinnedArtifacts` task are the
-current All the Mons 1.2.0 M4/M5 gate. The `extendedAeJar`, `advancedAeJar`
+The nine `m45*Jar` properties and `verifyM45PinnedArtifacts` task are the
+current All the Mons 1.2.0 M45/AppMek gate. The `extendedAeJar`, `advancedAeJar`
 and `verifyCraftingPinnedArtifact` inputs below preserve historical accepted
 M3b/M3d evidence. The four `nativeStructural*Jar` properties are the current
 All the Mons 1.2.0 S1 inputs and must not be substituted for the historical
@@ -591,13 +604,16 @@ python3 -m unittest discover -s tools/tests -p 'test_*.py' -v
   -Pm45AdvancedAeJar=/absolute/path/AdvancedAE-1.6.12-1.21.1.jar \
   -Pm45AthenaJar=/absolute/path/athena-neoforge-1.21.1-4.0.6.jar \
   -Pm45ExtendedAeJar=/absolute/path/ExtendedAE-1.21-2.2.35-neoforge.jar \
+  -Pm45AppMekJar=/absolute/path/Applied-Mekanistics-1.6.3.jar \
+  -Pm45MekanismJar=/absolute/path/Mekanism-1.21.1-10.7.19.85.jar \
   verifyM45PinnedArtifacts
 ```
 
 Also validate `provenance/upstreams.json`, `tools/analyzer-upstreams.json`,
 `gallery/SHA256SUMS`, and the production JAR. `check` also runs the
-dependency-free exact schema-11 PRBM evidence analyzer fixture, its frozen
-schema-10 predecessor and earlier regressions, and the retained S1 and M4/M5
+dependency-free exact schema-12 PRBM evidence analyzer fixture, its byte-exact
+schema-11 projection, frozen schema-10 predecessor, and earlier regressions,
+plus the retained S1 and M4/M5
 oracles. Record no runtime,
 visual or performance result unless that exact gate ran and its evidence was
 retained.

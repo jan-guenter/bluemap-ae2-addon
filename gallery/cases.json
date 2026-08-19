@@ -1,6 +1,111 @@
 {
-  "anchor_count": 1366,
+  "anchor_count": 1373,
+  "appmek_floor_policy": {
+    "air_block_id": "minecraft:air",
+    "anchor_y": 100,
+    "exact_context_exceptions": [
+      "one-qio-dashboard-visual-target",
+      "one-vertical-radioactive-waste-barrel-target",
+      "one-full-block-me-interface-target"
+    ],
+    "owned_y": [
+      96,
+      110
+    ],
+    "reason": "small-drive-catalog-review-plus-exact-cross-addon-seam-regressions",
+    "support": "air-isolated-except-three-declared-parent-renderer-seams"
+  },
+  "appmek_review_summary": {
+    "anchor_count": 7,
+    "appmek_drive_route_disabled_projection": {
+      "empty_anchor_count": 4,
+      "nonempty_anchor_count": 3
+    },
+    "case_anchor_allocation": [
+      1,
+      3,
+      2,
+      1
+    ],
+    "case_count": 4,
+    "control_anchor_count": 1,
+    "custom_anchor_count": 6,
+    "enabled_preoracle_projection": {
+      "empty_anchor_count": 0,
+      "nonempty_anchor_count": 7
+    },
+    "fallback_anchor_count": 0,
+    "fixture_block_count": 3,
+    "native_drive_disabled_projection": {
+      "empty_anchor_count": 4,
+      "nonempty_anchor_count": 3
+    },
+    "native_structural_disabled_projection": {
+      "empty_anchor_count": 2,
+      "nonempty_anchor_count": 5
+    },
+    "new_selected_resource_count": 1,
+    "new_selected_resource_target_count": 1,
+    "new_selected_resource_targets": [
+      "appmek:block/drive/drive_cells"
+    ],
+    "physical_stock_projection": {
+      "empty_anchor_count": 6,
+      "nonempty_anchor_count": 1
+    },
+    "review_control_anchor_count": 3,
+    "route_affected_anchor_counts": {
+      "appmek-drive-cells": 4
+    },
+    "route_ids": [
+      "appmek-drive-cells"
+    ],
+    "runtime_oracle": {
+      "capture_anchor_count": 7,
+      "expected_empty_anchor_count": 0,
+      "expected_nonempty_anchor_count": 7,
+      "policy": "exact-prbm-geometry-material-and-nonlighting-signatures",
+      "status": "pending-exact-enabled-live-map-capture",
+      "synthetic_geometry_forbidden": true
+    },
+    "unit_only_geometry_policy": "existing-native-drive-and-parent-renderer-tests-remain-authoritative-beyond-the-small-live-matrix"
+  },
+  "appmek_verification_policy": {
+    "build_counter": "#appmek_builds ae2amrun must remain exactly 1",
+    "checkpoints": [
+      {
+        "function": "ae2_m3:appmek/check_immediate",
+        "phase": "immediate",
+        "score": "#appmek_immediate ae2amrun"
+      },
+      {
+        "function": "ae2_m3:appmek/check_20t",
+        "phase": "20t",
+        "score": "#appmek_20t ae2amrun"
+      },
+      {
+        "function": "ae2_m3:appmek/check_100t",
+        "phase": "100t",
+        "score": "#appmek_100t ae2amrun"
+      }
+    ],
+    "chunk_reload": "release-forceload-then-load-and-run-ae2_m3:verify-without-build",
+    "full_jvm_restart": "run-ae2_m3:verify-without-build-after-restart",
+    "state_boundary": "exact-block-state-block-entity-id-drive-cell-ids-storage-bus-parts-targets-and-pressurized-tube-topology"
+  },
   "bounds": {
+    "appmek_fixture": {
+      "max": [
+        559,
+        110,
+        327
+      ],
+      "min": [
+        528,
+        96,
+        312
+      ]
+    },
     "controller_sentinel": {
       "max": [
         258,
@@ -242,7 +347,7 @@
       ]
     }
   },
-  "case_count": 158,
+  "case_count": 162,
   "cases": [
     {
       "anchors": [
@@ -171648,6 +171753,788 @@
       "label": "ExtendedAE plane identities, installed-face orbit, and all sixteen masks",
       "milestone": "M5",
       "route": "extendedae-planes"
+    },
+    {
+      "anchors": [
+        {
+          "appmek_route": "appmek-drive-cells",
+          "block_id": "ae2:drive",
+          "block_state": {
+            "facing": "north",
+            "spin": 0
+          },
+          "cable_id": null,
+          "catalog_item_ids": [
+            "appmek:chemical_storage_cell_1k",
+            "appmek:portable_chemical_cell_1k",
+            "appmek:chemical_storage_cell_4k",
+            "appmek:portable_chemical_cell_4k",
+            "appmek:chemical_storage_cell_16k",
+            "appmek:portable_chemical_cell_16k",
+            "appmek:chemical_storage_cell_64k",
+            "appmek:portable_chemical_cell_64k",
+            "appmek:chemical_storage_cell_256k",
+            "appmek:portable_chemical_cell_256k"
+          ],
+          "cell_contents_policy": "omitted",
+          "expected_block_entity_id": "ae2:drive",
+          "expected_material_triangles": {
+            "ae2:block/drive/drive_front": 128,
+            "ae2:block/drive/drive_inside": 16,
+            "ae2:block/drive/drive_inside_bottom": 2,
+            "ae2:block/drive/drive_inside_top": 10,
+            "ae2:block/generics/back": 6,
+            "ae2:block/generics/bottom": 2,
+            "ae2:block/generics/front": 8,
+            "ae2:block/generics/side": 16,
+            "ae2:block/generics/top": 2,
+            "appmek:block/drive/drive_cells": 60
+          },
+          "expected_path": "custom-appmek-drive-cells",
+          "expected_triangle_count": 250,
+          "fixture_role": "all-ten-cell-native-drive",
+          "inventory": {
+            "compound": "inv",
+            "slots": [
+              {
+                "field": "item0",
+                "item_stack": {
+                  "count": 1,
+                  "id": "appmek:chemical_storage_cell_1k"
+                },
+                "slot": 0
+              },
+              {
+                "field": "item1",
+                "item_stack": {
+                  "count": 1,
+                  "id": "appmek:portable_chemical_cell_1k"
+                },
+                "slot": 1
+              },
+              {
+                "field": "item2",
+                "item_stack": {
+                  "count": 1,
+                  "id": "appmek:chemical_storage_cell_4k"
+                },
+                "slot": 2
+              },
+              {
+                "field": "item3",
+                "item_stack": {
+                  "count": 1,
+                  "id": "appmek:portable_chemical_cell_4k"
+                },
+                "slot": 3
+              },
+              {
+                "field": "item4",
+                "item_stack": {
+                  "count": 1,
+                  "id": "appmek:chemical_storage_cell_16k"
+                },
+                "slot": 4
+              },
+              {
+                "field": "item5",
+                "item_stack": {
+                  "count": 1,
+                  "id": "appmek:portable_chemical_cell_16k"
+                },
+                "slot": 5
+              },
+              {
+                "field": "item6",
+                "item_stack": {
+                  "count": 1,
+                  "id": "appmek:chemical_storage_cell_64k"
+                },
+                "slot": 6
+              },
+              {
+                "field": "item7",
+                "item_stack": {
+                  "count": 1,
+                  "id": "appmek:portable_chemical_cell_64k"
+                },
+                "slot": 7
+              },
+              {
+                "field": "item8",
+                "item_stack": {
+                  "count": 1,
+                  "id": "appmek:chemical_storage_cell_256k"
+                },
+                "slot": 8
+              },
+              {
+                "field": "item9",
+                "item_stack": {
+                  "count": 1,
+                  "id": "appmek:portable_chemical_cell_256k"
+                },
+                "slot": 9
+              }
+            ]
+          },
+          "led_status_policy": "existing-parent-static-offline-unknown-not-a-review-variable",
+          "native_drive_disabled_projection": {
+            "expected_path": "native-drive-atomic-original-resource",
+            "reason": "native-drive-route-inactive-makes-appmek-cell-lane-unreachable",
+            "review_projection": "empty"
+          },
+          "native_structural_disabled_projection": {
+            "expected_path": "custom-appmek-drive-cells",
+            "reason": "native-structural-route-does-not-own-native-drive",
+            "review_projection": "nonempty"
+          },
+          "network_condition": "disconnected-unpowered",
+          "physical_stock_projection": {
+            "expected_path": "physical-stock-dynamic-ae2-drive",
+            "reason": "physical-addon-absence-has-no-static-drive-model",
+            "review_projection": "empty"
+          },
+          "position": {
+            "x": 528,
+            "y": 100,
+            "z": 312
+          },
+          "review_projection": "nonempty",
+          "route_disabled_projection": {
+            "expected_path": "native-drive-atomic-original-resource",
+            "reason": "appmek-drive-route-inactive-rejects-unknown-cell-owner",
+            "review_projection": "empty"
+          },
+          "runtime_oracle_policy": "exact-live-prbm-pending-capture-no-synthetic-mesh-expectation"
+        }
+      ],
+      "case_id": "ae2-appmek-01",
+      "category": "complete-cell-catalog",
+      "coverage_id": "appmek-exact-extension-review",
+      "fixture_blocks": [],
+      "label": "All ten Applied Mekanistics cells in one native Drive",
+      "milestone": "Applied-Mekanistics",
+      "route": "appmek-drive-cells"
+    },
+    {
+      "anchors": [
+        {
+          "appmek_route": "appmek-drive-cells",
+          "block_id": "ae2:drive",
+          "block_state": {
+            "facing": "up",
+            "spin": 1
+          },
+          "cable_id": null,
+          "cell_contents_policy": "omitted",
+          "expected_block_entity_id": "ae2:drive",
+          "expected_material_triangles": {
+            "ae2:block/drive/drive_front": 38,
+            "ae2:block/drive/drive_inside": 16,
+            "ae2:block/drive/drive_inside_bottom": 2,
+            "ae2:block/drive/drive_inside_top": 10,
+            "ae2:block/generics/back": 6,
+            "ae2:block/generics/bottom": 2,
+            "ae2:block/generics/front": 8,
+            "ae2:block/generics/side": 16,
+            "ae2:block/generics/top": 2,
+            "appmek:block/drive/drive_cells": 6
+          },
+          "expected_path": "custom-appmek-drive-cells",
+          "expected_triangle_count": 106,
+          "fixture_role": "representative-facing-spin-parent-control",
+          "inventory": {
+            "compound": "inv",
+            "slots": [
+              {
+                "field": "item0",
+                "item_stack": {
+                  "count": 1,
+                  "id": "appmek:chemical_storage_cell_1k"
+                },
+                "slot": 0
+              },
+              {
+                "empty": true,
+                "field": "item1",
+                "slot": 1
+              },
+              {
+                "empty": true,
+                "field": "item2",
+                "slot": 2
+              },
+              {
+                "empty": true,
+                "field": "item3",
+                "slot": 3
+              },
+              {
+                "empty": true,
+                "field": "item4",
+                "slot": 4
+              },
+              {
+                "empty": true,
+                "field": "item5",
+                "slot": 5
+              },
+              {
+                "empty": true,
+                "field": "item6",
+                "slot": 6
+              },
+              {
+                "empty": true,
+                "field": "item7",
+                "slot": 7
+              },
+              {
+                "empty": true,
+                "field": "item8",
+                "slot": 8
+              },
+              {
+                "empty": true,
+                "field": "item9",
+                "slot": 9
+              }
+            ]
+          },
+          "led_status_policy": "existing-parent-static-offline-unknown-not-a-review-variable",
+          "native_drive_disabled_projection": {
+            "expected_path": "native-drive-atomic-original-resource",
+            "reason": "native-drive-route-inactive-makes-appmek-cell-lane-unreachable",
+            "review_projection": "empty"
+          },
+          "native_structural_disabled_projection": {
+            "expected_path": "custom-appmek-drive-cells",
+            "reason": "native-structural-route-does-not-own-native-drive",
+            "review_projection": "nonempty"
+          },
+          "network_condition": "disconnected-unpowered",
+          "physical_stock_projection": {
+            "expected_path": "physical-stock-dynamic-ae2-drive",
+            "reason": "physical-addon-absence-has-no-static-drive-model",
+            "review_projection": "empty"
+          },
+          "position": {
+            "x": 532,
+            "y": 100,
+            "z": 312
+          },
+          "review_projection": "nonempty",
+          "route_disabled_projection": {
+            "expected_path": "native-drive-atomic-original-resource",
+            "reason": "appmek-drive-route-inactive-rejects-unknown-cell-owner",
+            "review_projection": "empty"
+          },
+          "runtime_oracle_policy": "exact-live-prbm-pending-capture-no-synthetic-mesh-expectation",
+          "transform_cell_id": "appmek:chemical_storage_cell_1k",
+          "transform_index": 0,
+          "transform_slot": 0
+        },
+        {
+          "appmek_route": "appmek-drive-cells",
+          "block_id": "ae2:drive",
+          "block_state": {
+            "facing": "east",
+            "spin": 2
+          },
+          "cable_id": null,
+          "cell_contents_policy": "omitted",
+          "expected_block_entity_id": "ae2:drive",
+          "expected_material_triangles": {
+            "ae2:block/drive/drive_front": 38,
+            "ae2:block/drive/drive_inside": 16,
+            "ae2:block/drive/drive_inside_bottom": 2,
+            "ae2:block/drive/drive_inside_top": 10,
+            "ae2:block/generics/back": 6,
+            "ae2:block/generics/bottom": 2,
+            "ae2:block/generics/front": 8,
+            "ae2:block/generics/side": 16,
+            "ae2:block/generics/top": 2,
+            "appmek:block/drive/drive_cells": 6
+          },
+          "expected_path": "custom-appmek-drive-cells",
+          "expected_triangle_count": 106,
+          "fixture_role": "representative-facing-spin-parent-control",
+          "inventory": {
+            "compound": "inv",
+            "slots": [
+              {
+                "empty": true,
+                "field": "item0",
+                "slot": 0
+              },
+              {
+                "empty": true,
+                "field": "item1",
+                "slot": 1
+              },
+              {
+                "empty": true,
+                "field": "item2",
+                "slot": 2
+              },
+              {
+                "empty": true,
+                "field": "item3",
+                "slot": 3
+              },
+              {
+                "field": "item4",
+                "item_stack": {
+                  "count": 1,
+                  "id": "appmek:chemical_storage_cell_16k"
+                },
+                "slot": 4
+              },
+              {
+                "empty": true,
+                "field": "item5",
+                "slot": 5
+              },
+              {
+                "empty": true,
+                "field": "item6",
+                "slot": 6
+              },
+              {
+                "empty": true,
+                "field": "item7",
+                "slot": 7
+              },
+              {
+                "empty": true,
+                "field": "item8",
+                "slot": 8
+              },
+              {
+                "empty": true,
+                "field": "item9",
+                "slot": 9
+              }
+            ]
+          },
+          "led_status_policy": "existing-parent-static-offline-unknown-not-a-review-variable",
+          "native_drive_disabled_projection": {
+            "expected_path": "native-drive-atomic-original-resource",
+            "reason": "native-drive-route-inactive-makes-appmek-cell-lane-unreachable",
+            "review_projection": "empty"
+          },
+          "native_structural_disabled_projection": {
+            "expected_path": "custom-appmek-drive-cells",
+            "reason": "native-structural-route-does-not-own-native-drive",
+            "review_projection": "nonempty"
+          },
+          "network_condition": "disconnected-unpowered",
+          "physical_stock_projection": {
+            "expected_path": "physical-stock-dynamic-ae2-drive",
+            "reason": "physical-addon-absence-has-no-static-drive-model",
+            "review_projection": "empty"
+          },
+          "position": {
+            "x": 536,
+            "y": 100,
+            "z": 312
+          },
+          "review_projection": "nonempty",
+          "route_disabled_projection": {
+            "expected_path": "native-drive-atomic-original-resource",
+            "reason": "appmek-drive-route-inactive-rejects-unknown-cell-owner",
+            "review_projection": "empty"
+          },
+          "runtime_oracle_policy": "exact-live-prbm-pending-capture-no-synthetic-mesh-expectation",
+          "transform_cell_id": "appmek:chemical_storage_cell_16k",
+          "transform_index": 1,
+          "transform_slot": 4
+        },
+        {
+          "appmek_route": "appmek-drive-cells",
+          "block_id": "ae2:drive",
+          "block_state": {
+            "facing": "down",
+            "spin": 3
+          },
+          "cable_id": null,
+          "cell_contents_policy": "omitted",
+          "expected_block_entity_id": "ae2:drive",
+          "expected_material_triangles": {
+            "ae2:block/drive/drive_front": 38,
+            "ae2:block/drive/drive_inside": 16,
+            "ae2:block/drive/drive_inside_bottom": 2,
+            "ae2:block/drive/drive_inside_top": 10,
+            "ae2:block/generics/back": 6,
+            "ae2:block/generics/bottom": 2,
+            "ae2:block/generics/front": 8,
+            "ae2:block/generics/side": 16,
+            "ae2:block/generics/top": 2,
+            "appmek:block/drive/drive_cells": 6
+          },
+          "expected_path": "custom-appmek-drive-cells",
+          "expected_triangle_count": 106,
+          "fixture_role": "representative-facing-spin-parent-control",
+          "inventory": {
+            "compound": "inv",
+            "slots": [
+              {
+                "empty": true,
+                "field": "item0",
+                "slot": 0
+              },
+              {
+                "empty": true,
+                "field": "item1",
+                "slot": 1
+              },
+              {
+                "empty": true,
+                "field": "item2",
+                "slot": 2
+              },
+              {
+                "empty": true,
+                "field": "item3",
+                "slot": 3
+              },
+              {
+                "empty": true,
+                "field": "item4",
+                "slot": 4
+              },
+              {
+                "empty": true,
+                "field": "item5",
+                "slot": 5
+              },
+              {
+                "empty": true,
+                "field": "item6",
+                "slot": 6
+              },
+              {
+                "empty": true,
+                "field": "item7",
+                "slot": 7
+              },
+              {
+                "empty": true,
+                "field": "item8",
+                "slot": 8
+              },
+              {
+                "field": "item9",
+                "item_stack": {
+                  "count": 1,
+                  "id": "appmek:portable_chemical_cell_256k"
+                },
+                "slot": 9
+              }
+            ]
+          },
+          "led_status_policy": "existing-parent-static-offline-unknown-not-a-review-variable",
+          "native_drive_disabled_projection": {
+            "expected_path": "native-drive-atomic-original-resource",
+            "reason": "native-drive-route-inactive-makes-appmek-cell-lane-unreachable",
+            "review_projection": "empty"
+          },
+          "native_structural_disabled_projection": {
+            "expected_path": "custom-appmek-drive-cells",
+            "reason": "native-structural-route-does-not-own-native-drive",
+            "review_projection": "nonempty"
+          },
+          "network_condition": "disconnected-unpowered",
+          "physical_stock_projection": {
+            "expected_path": "physical-stock-dynamic-ae2-drive",
+            "reason": "physical-addon-absence-has-no-static-drive-model",
+            "review_projection": "empty"
+          },
+          "position": {
+            "x": 540,
+            "y": 100,
+            "z": 312
+          },
+          "review_projection": "nonempty",
+          "route_disabled_projection": {
+            "expected_path": "native-drive-atomic-original-resource",
+            "reason": "appmek-drive-route-inactive-rejects-unknown-cell-owner",
+            "review_projection": "empty"
+          },
+          "runtime_oracle_policy": "exact-live-prbm-pending-capture-no-synthetic-mesh-expectation",
+          "transform_cell_id": "appmek:portable_chemical_cell_256k",
+          "transform_index": 2,
+          "transform_slot": 9
+        }
+      ],
+      "case_id": "ae2-appmek-02",
+      "category": "representative-drive-transforms",
+      "coverage_id": "appmek-exact-extension-review",
+      "fixture_blocks": [],
+      "label": "Representative native Drive facing and spin controls",
+      "milestone": "Applied-Mekanistics",
+      "route": "appmek-drive-cells"
+    },
+    {
+      "anchors": [
+        {
+          "appmek_route": null,
+          "block_id": "ae2:cable_bus",
+          "cable_id": "ae2:fluix_glass_cable",
+          "expected_block_entity_id": "ae2:cable_bus",
+          "expected_material_triangles": {
+            "ae2:part/cable/core/glass/transparent": 12,
+            "ae2:part/cable/glass/transparent": 12,
+            "ae2:part/monitor_sides_status_off": 8,
+            "ae2:part/storage_bus": 4,
+            "ae2:part/storage_bus_back": 6,
+            "ae2:part/storage_bus_sides": 32
+          },
+          "expected_path": "custom-s1",
+          "expected_triangle_count": 74,
+          "face_parts": [
+            {
+              "direction": "east",
+              "id": "ae2:storage_bus"
+            }
+          ],
+          "fixture_role": "qio-dashboard-horizontal-visual-seam",
+          "installed_face": "east",
+          "native_drive_disabled_projection": {
+            "expected_path": "custom-s1",
+            "reason": "native-drive-route-does-not-own-preexisting-storage-bus-rendering",
+            "review_projection": "nonempty"
+          },
+          "native_structural_disabled_projection": {
+            "expected_path": "physical-stock-dynamic-ae2-cable-bus",
+            "reason": "native-structural-route-owns-storage-bus-rendering",
+            "review_projection": "empty"
+          },
+          "parent_renderer_control": "ae2-cable-bus-structural-storage-bus",
+          "physical_stock_projection": {
+            "expected_path": "physical-stock-dynamic-ae2-cable-bus",
+            "reason": "physical-ae2-addon-absence-has-no-static-cable-bus-model",
+            "review_projection": "empty"
+          },
+          "position": {
+            "x": 528,
+            "y": 100,
+            "z": 318
+          },
+          "review_projection": "nonempty",
+          "route_disabled_projection": {
+            "expected_path": "custom-s1",
+            "reason": "appmek-drive-route-does-not-own-preexisting-storage-bus-rendering",
+            "review_projection": "nonempty"
+          },
+          "runtime_oracle_policy": "exact-live-prbm-pending-capture-no-synthetic-mesh-expectation",
+          "seam_target": {
+            "block_id": "mekanism:qio_dashboard",
+            "observed_side": "west",
+            "policy": "visual-only-qio-capability-requires-a-selected-frequency-and-is-not-proven-by-this-empty-control",
+            "position": {
+              "x": 529,
+              "y": 100,
+              "z": 318
+            }
+          }
+        },
+        {
+          "appmek_route": null,
+          "block_id": "ae2:cable_bus",
+          "cable_id": "ae2:fluix_glass_cable",
+          "expected_block_entity_id": "ae2:cable_bus",
+          "expected_material_triangles": {
+            "ae2:part/cable/core/glass/transparent": 12,
+            "ae2:part/cable/glass/transparent": 12,
+            "ae2:part/monitor_sides_status_off": 8,
+            "ae2:part/storage_bus": 4,
+            "ae2:part/storage_bus_back": 6,
+            "ae2:part/storage_bus_sides": 32
+          },
+          "expected_path": "custom-s1",
+          "expected_triangle_count": 74,
+          "face_parts": [
+            {
+              "direction": "up",
+              "id": "ae2:storage_bus"
+            }
+          ],
+          "fixture_role": "radioactive-waste-barrel-vertical-chemical-seam",
+          "installed_face": "up",
+          "native_drive_disabled_projection": {
+            "expected_path": "custom-s1",
+            "reason": "native-drive-route-does-not-own-preexisting-storage-bus-rendering",
+            "review_projection": "nonempty"
+          },
+          "native_structural_disabled_projection": {
+            "expected_path": "physical-stock-dynamic-ae2-cable-bus",
+            "reason": "native-structural-route-owns-storage-bus-rendering",
+            "review_projection": "empty"
+          },
+          "parent_renderer_control": "ae2-cable-bus-structural-storage-bus",
+          "physical_stock_projection": {
+            "expected_path": "physical-stock-dynamic-ae2-cable-bus",
+            "reason": "physical-ae2-addon-absence-has-no-static-cable-bus-model",
+            "review_projection": "empty"
+          },
+          "position": {
+            "x": 534,
+            "y": 100,
+            "z": 318
+          },
+          "review_projection": "nonempty",
+          "route_disabled_projection": {
+            "expected_path": "custom-s1",
+            "reason": "appmek-drive-route-does-not-own-preexisting-storage-bus-rendering",
+            "review_projection": "nonempty"
+          },
+          "runtime_oracle_policy": "exact-live-prbm-pending-capture-no-synthetic-mesh-expectation",
+          "seam_target": {
+            "block_id": "mekanism:radioactive_waste_barrel",
+            "observed_side": "down",
+            "policy": "exact-top-bottom-only-chemical-capability-side",
+            "position": {
+              "x": 534,
+              "y": 101,
+              "z": 318
+            }
+          }
+        }
+      ],
+      "case_id": "ae2-appmek-03",
+      "category": "storage-bus-seam-controls",
+      "coverage_id": "appmek-exact-extension-review",
+      "fixture_blocks": [
+        {
+          "block_id": "mekanism:qio_dashboard",
+          "contents_policy": "omitted",
+          "expected_block_entity_id": "mekanism:qio_dashboard",
+          "expected_state": {
+            "active": false,
+            "facing": "west"
+          },
+          "fixture_role": "qio-dashboard-unselected-frequency-visual-target",
+          "placement_state": {
+            "active": false,
+            "facing": "west"
+          },
+          "position": {
+            "x": 529,
+            "y": 100,
+            "z": 318
+          }
+        },
+        {
+          "block_id": "mekanism:radioactive_waste_barrel",
+          "contents_policy": "omitted",
+          "expected_block_entity_id": "mekanism:radioactive_waste_barrel",
+          "expected_state": {
+            "facing": "north"
+          },
+          "fixture_role": "waste-barrel-empty-vertical-chemical-target",
+          "placement_state": {
+            "facing": "north"
+          },
+          "position": {
+            "x": 534,
+            "y": 101,
+            "z": 318
+          }
+        }
+      ],
+      "label": "Storage-bus visual seams against exact Mekanism targets",
+      "milestone": "Applied-Mekanistics",
+      "route": "parent-renderer-controls"
+    },
+    {
+      "anchors": [
+        {
+          "appmek_route": null,
+          "block_id": "mekanism:basic_pressurized_tube",
+          "cable_id": null,
+          "contents_policy": "omitted",
+          "expected_block_entity_id": "mekanism:basic_pressurized_tube",
+          "expected_path": "parent-mekanism-pressurized-tube-control",
+          "expected_triangle_count": 18,
+          "fixture_role": "basic-pressurized-tube-east-interface-acceptor",
+          "interface_position": {
+            "x": 541,
+            "y": 100,
+            "z": 318
+          },
+          "native_drive_disabled_projection": {
+            "expected_path": "parent-mekanism-pressurized-tube-control",
+            "reason": "independent-mekanism-parent-renderer-control-remains-active",
+            "review_projection": "nonempty"
+          },
+          "native_structural_disabled_projection": {
+            "expected_path": "parent-mekanism-pressurized-tube-control",
+            "reason": "independent-mekanism-parent-renderer-control-remains-active",
+            "review_projection": "nonempty"
+          },
+          "parent_renderer_control": "mekanism-basic-pressurized-tube-east-normal-acceptor",
+          "physical_stock_projection": {
+            "expected_path": "parent-mekanism-pressurized-tube-control",
+            "reason": "independent-mekanism-parent-renderer-control-remains-active",
+            "review_projection": "nonempty"
+          },
+          "position": {
+            "x": 540,
+            "y": 100,
+            "z": 318
+          },
+          "review_projection": "nonempty",
+          "route_disabled_projection": {
+            "expected_path": "parent-mekanism-pressurized-tube-control",
+            "reason": "independent-mekanism-parent-renderer-control-remains-active",
+            "review_projection": "nonempty"
+          },
+          "runtime_oracle_policy": "exact-live-prbm-pending-capture-no-synthetic-mesh-expectation",
+          "transmitter_topology": {
+            "acceptors_unsigned_byte": 32,
+            "connection_mode_ordinals": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "connections_unsigned_byte": 0,
+            "direction_ordinal_order": [
+              "down",
+              "up",
+              "north",
+              "south",
+              "west",
+              "east"
+            ],
+            "east_mode": "normal"
+          }
+        }
+      ],
+      "case_id": "ae2-appmek-04",
+      "category": "pressurized-tube-interface-control",
+      "coverage_id": "appmek-exact-extension-review",
+      "fixture_blocks": [
+        {
+          "block_id": "ae2:interface",
+          "contents_policy": "omitted",
+          "expected_block_entity_id": "ae2:interface",
+          "fixture_role": "full-block-interface-chemical-capability-target",
+          "placement_state": {},
+          "position": {
+            "x": 541,
+            "y": 100,
+            "z": 318
+          }
+        }
+      ],
+      "label": "Pressurized-tube acceptor seam against the full-block ME Interface",
+      "milestone": "Applied-Mekanistics",
+      "route": "parent-renderer-controls"
     }
   ],
   "expected_custom_summary": {
@@ -173265,6 +174152,40 @@
     "verify_function": "ae2_m3:dense/verify"
   },
   "profile": {
+    "appmek_routes": [
+      {
+        "affected_anchor_count": 4,
+        "artifact": {
+          "artifact": "Applied-Mekanistics-1.6.3.jar",
+          "sha1": "bec4a47269ec23bca2329742e13409bfde69c5c3",
+          "sha256": "8946fea39451dbce8e709dedbef40a52ba337bdf7a25ac0c4b503800b1bf0773",
+          "size_bytes": 149709,
+          "source": {
+            "commit": "137f24bb9a46775ddd5a620055270b5e8a540f5a",
+            "tag": "1.6.3"
+          },
+          "version": "1.6.3"
+        },
+        "case_count": 2,
+        "core_dependency": "exact-active-ae2-core-and-native-drive-route",
+        "custom_anchor_count": 4,
+        "failure_policy": "disable-only-this-appmek-route-and-preserve-predecessors",
+        "fallback_anchor_count": 0,
+        "mekanism_runtime": {
+          "artifact": "Mekanism-1.21.1-10.7.19.85.jar",
+          "sha1": "b78945c40cfe7640408f3fd1e44da385a8c8b805",
+          "sha256": "004dbc9f3106f4d192aeaa1ee1190dd16ec9ca8059ed3d093b80034f4c574f43",
+          "size_bytes": 11976009,
+          "version": "10.7.19"
+        },
+        "milestone": "Applied-Mekanistics",
+        "route": "appmek-drive-cells",
+        "route_disabled_projection": "per-anchor-declared-review-projection",
+        "route_resources": [
+          "appmek:block/drive/drive_cells"
+        ]
+      }
+    ],
     "core_resources": [
       "ae2:part/cable/core/glass/white",
       "ae2:part/cable/core/glass/light_gray",
@@ -173416,7 +174337,7 @@
       "ae2:part/terminal_dark"
     ],
     "core_texture_manifest_sha256": "e40a9bc4942d8999d825f42bce94947079948d74024f4f1a078cc55252d81d33",
-    "coverage_milestone": "M5-cumulative-review",
+    "coverage_milestone": "Applied-Mekanistics-extension-review",
     "crafting_resource_manifest_sha256": "dc474ba6ce7c4c2d53778827b1c1f9b4994594ea984ed7a2cbd62c40e1bc1183",
     "crafting_resources": [
       "ae2:block/crafting/ring_corner",
@@ -179137,8 +180058,87 @@
       "merequester:part/requester_terminal",
       "merequester:part/requester_terminal_bright",
       "merequester:part/requester_terminal_dark",
-      "merequester:part/requester_terminal_medium"
+      "merequester:part/requester_terminal_medium",
+      "appmek:block/drive/drive_cells"
     ],
+    "supported_applied_mekanistics": {
+      "artifact": {
+        "artifact": "Applied-Mekanistics-1.6.3.jar",
+        "sha1": "bec4a47269ec23bca2329742e13409bfde69c5c3",
+        "sha256": "8946fea39451dbce8e709dedbef40a52ba337bdf7a25ac0c4b503800b1bf0773",
+        "size_bytes": 149709,
+        "source": {
+          "commit": "137f24bb9a46775ddd5a620055270b5e8a540f5a",
+          "tag": "1.6.3"
+        },
+        "version": "1.6.3"
+      },
+      "atomic_fallback": "native-drive-original-resource",
+      "cell_item_ids": [
+        "appmek:chemical_storage_cell_1k",
+        "appmek:portable_chemical_cell_1k",
+        "appmek:chemical_storage_cell_4k",
+        "appmek:portable_chemical_cell_4k",
+        "appmek:chemical_storage_cell_16k",
+        "appmek:portable_chemical_cell_16k",
+        "appmek:chemical_storage_cell_64k",
+        "appmek:portable_chemical_cell_64k",
+        "appmek:chemical_storage_cell_256k",
+        "appmek:portable_chemical_cell_256k"
+      ],
+      "cell_models": {
+        "appmek:chemical_storage_cell_16k": "appmek:block/drive/cells/chemical_storage_cell_16k",
+        "appmek:chemical_storage_cell_1k": "appmek:block/drive/cells/chemical_storage_cell_1k",
+        "appmek:chemical_storage_cell_256k": "appmek:block/drive/cells/chemical_storage_cell_256k",
+        "appmek:chemical_storage_cell_4k": "appmek:block/drive/cells/chemical_storage_cell_4k",
+        "appmek:chemical_storage_cell_64k": "appmek:block/drive/cells/chemical_storage_cell_64k",
+        "appmek:portable_chemical_cell_16k": "appmek:block/drive/cells/chemical_storage_cell_16k",
+        "appmek:portable_chemical_cell_1k": "appmek:block/drive/cells/chemical_storage_cell_1k",
+        "appmek:portable_chemical_cell_256k": "appmek:block/drive/cells/chemical_storage_cell_256k",
+        "appmek:portable_chemical_cell_4k": "appmek:block/drive/cells/chemical_storage_cell_4k",
+        "appmek:portable_chemical_cell_64k": "appmek:block/drive/cells/chemical_storage_cell_64k"
+      },
+      "drive_block_id": "ae2:drive",
+      "drive_review": {
+        "all_ten_one_drive": true,
+        "chemical_contents": "omitted",
+        "led_status": "not-a-review-variable-existing-parent-static-offline-unknown",
+        "native_parent_transform_coverage": 24,
+        "representative_transform_controls": 3
+      },
+      "drive_slot_count": 10,
+      "excluded_routes": [
+        "chemical-p2p",
+        "extended-drive",
+        "me-chest",
+        "megacells-cell-dock"
+      ],
+      "mekanism_runtime": {
+        "artifact": "Mekanism-1.21.1-10.7.19.85.jar",
+        "sha1": "b78945c40cfe7640408f3fd1e44da385a8c8b805",
+        "sha256": "004dbc9f3106f4d192aeaa1ee1190dd16ec9ca8059ed3d093b80034f4c574f43",
+        "size_bytes": 11976009,
+        "version": "10.7.19"
+      },
+      "route_ids": [
+        "appmek-drive-cells"
+      ],
+      "seam_controls": {
+        "new_route_ownership": false,
+        "pressurized_tube": {
+          "cable_interface_excluded": true,
+          "east_acceptor_bit": 32,
+          "renderer_owner": "independent-mekanism-addon",
+          "target": "full-block-ae2-interface"
+        },
+        "storage_bus": {
+          "qio_dashboard": "horizontal-visual-only-unselected-frequency",
+          "radioactive_waste_barrel": "vertical-top-bottom-chemical-side",
+          "renderer_owner": "ae2-cable-bus-structural"
+        }
+      },
+      "static_policy": "cell-shells-and-persisted-seam-topology-only"
+    },
     "supported_center_parts": [
       "ae2:white_glass_cable",
       "ae2:light_gray_glass_cable",
@@ -181208,8 +182208,8 @@
     ],
     "unit_only_reason": "AE2 sanitizes these malformed fields during live block-entity loading; their S1 atomic-fallback boundary is frozen by exact Java decoder and bounded DTO tests. Physical S1 fallback evidence instead uses persistent invalid reporting-part spins, one non-full-cube facade, and one exact known-compatible extension host."
   },
-  "schema_version": 11,
-  "signature_schema_version": 11,
+  "schema_version": 12,
+  "signature_schema_version": 12,
   "unit_only_malformed_cases": [
     "center-not-compound",
     "missing-id",

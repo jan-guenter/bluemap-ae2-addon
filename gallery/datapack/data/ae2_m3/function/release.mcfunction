@@ -10,6 +10,7 @@ forceload remove 281 269 294 278
 forceload remove 280 208 319 230
 forceload remove 208 312 319 367
 forceload remove 336 312 511 431
+forceload remove 528 312 559 327
 forceload remove 214 251 228 257
 forceload remove 255 255 258 257
 tellraw @a [{"text":"Released the cumulative AE2 review-gallery chunks.","color":"yellow"}]

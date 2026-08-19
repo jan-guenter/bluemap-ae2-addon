@@ -1,4 +1,83 @@
-# AE2-family M4/M5 schema-11 staging gallery
+# AE2-family Applied Mekanistics schema-12 staging gallery
+
+This directory contains a reproducible schema-12 candidate for the exact All
+the Mons 1.2.0 Applied Mekanistics extension. It appends one independently
+fail-closed `appmek-drive-cells` route and three narrowly bounded cross-addon
+seam controls while preserving the accepted schema-11 predecessor projection
+byte-for-byte. The generated fixture is for an isolated staging world; it is
+not gameplay content, a production migration tool, or evidence that a live
+render has already passed.
+
+The twice-packaged 102,465-byte candidate datapack ZIP has SHA-256
+`a125d2ab567afee8cd43a77884b38f3befe6578b0b0274dacd64e6e3df48cf04`.
+It contains exactly 23 ordered entries whose newline-delimited path-list
+SHA-256 is
+`15f8bd9e8dacd04f71699728121f5fedfa1c29f145123bfd815223a9176070d3`.
+The 6,053,043-byte `cases.json` has SHA-256
+`f73959670b6490c27b9b89e61e486f06750fb15e2a74c5cc36047c5e81b77483`;
+the 1,395,450-byte `cases.tsv` has SHA-256
+`702ea7c3a2995686af801416da6ee98b8eeca14cd9c825fbdfa4885ebb7e3f15`.
+The candidate remains deliberately unpublished and its exact enabled live
+PRBM oracle is pending staging capture.
+
+## Schema-12 Applied Mekanistics contract
+
+The cumulative gallery contains 162 logical cases and 1,373 anchors. The four
+new cases append exactly seven anchors in the allocation `(1,3,2,1)`: four
+native Drives use the new AppMek cell route, two existing schema-11 AE2
+storage-bus paths are retained as seam controls, and one Mekanism tube is an
+independent parent-renderer control. The QIO dashboard, radioactive waste
+barrel, and full-block ME Interface are context fixtures and are not counted
+as anchors.
+
+| Case | Coverage | Anchors |
+| --- | --- | ---: |
+| `ae2-appmek-01` | All ten ordinary and portable AppMek chemical-cell IDs in slots 0 through 9 of one north/spin-0 native Drive | 1 |
+| `ae2-appmek-02` | Three representative parent Drive transforms: up/spin-1, east/spin-2, and down/spin-3 | 3 |
+| `ae2-appmek-03` | Storage-bus seams against a QIO dashboard and the vertical chemical side of a radioactive waste barrel | 2 |
+| `ae2-appmek-04` | Basic pressurized-tube east acceptor arm against a full-block ME Interface | 1 |
+
+The fixture is bounded inside `(528,96,312)` through `(559,110,327)`. The
+all-ten Drive checks the exact ten inventory compounds and has a 250-triangle
+static expectation. The three one-cell controls use slots 0, 4, and 9 and each
+has a 106-triangle expectation. Existing native Drive tests remain the
+authority for the complete 24-transform matrix; this live gallery deliberately
+does not duplicate that matrix or create a 24-by-10-by-10 loop. Chemical
+contents, component variants, and live LED/status state are excluded from this
+review.
+
+The QIO dashboard pair is explicitly a visual seam: an empty dashboard has no
+selected QIO frequency, so it does not prove the capability handshake. The
+waste-barrel pair places an upward-facing storage bus below the barrel because
+the exact Mekanism capability is exposed only on its top and bottom relative
+sides. Both cable-bus anchors retain the existing schema-11 74-triangle
+storage-bus renderer. The tube control is west of the full-block Interface and
+persists `connections=0`, `acceptors=32`, and six zero connection-mode
+ordinals; that topology selects the east normal arm and has an 18-triangle
+expectation. The targets are retained stock/parent-renderer fixtures rather
+than schema-12 custom anchors.
+
+Disabling only `appmek-drive-cells` projects the four Drive anchors to the
+native Drive's atomic original-resource path. The two storage-bus seams remain
+schema-11 custom and the tube control is unchanged. Native structural-route
+and native Drive-route projections are recorded separately. The only selected
+resource appended by schema 12 is `appmek:block/drive/drive_cells`.
+
+The generated build performs exact no-mutation checks immediately, after 20
+ticks, and after 100 ticks. The three results and the one-build counter live in
+`ae2amrun` as `#appmek_immediate`, `#appmek_20t`, `#appmek_100t`, and
+`#appmek_builds`; `ae2_m3:verify` requires all four to remain exactly valid.
+For the later persistence gate, release and reload the owned chunks and invoke
+`ae2_m3:verify` without rebuilding, then repeat the same verification after a
+complete JVM restart. A build during either gate invalidates the one-build
+proof.
+
+The pre-capture append records exact source-derived triangle/material totals
+but does not invent live geometry or non-lighting signatures. Those signatures
+remain pending until the exact live map is analyzed and the schema-12 PRBM
+oracle is frozen.
+
+## Retained schema-11 checkpoint
 
 This directory contains the deterministic datapack and exact schema-11
 technical evidence contract for the owner-accepted All the Mons 1.2.0 M4/M5
@@ -394,7 +473,7 @@ python3 gallery/generate.py
 python3 gallery/generate.py --check
 cd gallery
 sha256sum --check SHA256SUMS
-./package.sh /tmp/ae2-m5-gallery.zip
+./package.sh /tmp/ae2-appmek-gallery.zip
 ```
 
 `SHA256SUMS` covers every generated file other than itself. The generator
@@ -426,6 +505,12 @@ Schema 11 additionally validates the eight M4/M5 cases, all 409 appended
 anchors, route-owned enabled/disabled projections, the exact 391-anchor main
 runtime oracle, the three schema-10 legacy upgrades, and the frozen schema-10
 predecessor projection.
+Schema 12 additionally validates the exact four-case/seven-anchor Applied
+Mekanistics allocation, the complete ten-cell AppMek catalog in one native
+Drive, three representative Drive transforms, two exact storage-bus seams, one
+persisted pressurized-tube/Interface acceptor seam, owner-isolated route
+projections, lifecycle counters, disjoint bounds, and the byte-frozen
+schema-11 projection.
 The quantum append also locks static-off/particle-omission policy. The packager
 fixes entry order and timestamps, validates the ZIP, and prints its SHA-256.
 
@@ -875,8 +960,9 @@ and 46-file manifest SHA-256
 The fixture stayed at `#m3f_builds=1`, `#s1_builds=1`, `#stable=2` and
 `#failures=0`; every pod had zero restarts, all initializers exited zero and
 both render workers advanced. The owner completed the bounded BlueMap visual
-review for the exact S1 artifact set on 2026-08-11. S1 remains the latest exact
-human-accepted local checkpoint. M4/M5 is now the latest owner-accepted
-checkpoint under the schema-11 evidence above. The owner separately authorized
-publication on 2026-08-12; remote creation, tags, Maven, and root integration
-still require the exact release sequence.
+review for the exact S1 artifact set on 2026-08-11. At that historical
+checkpoint S1 was the latest exact human-accepted local result. M4/M5 later
+became the owner-accepted checkpoint under the schema-11 evidence above and was
+published as immutable prerelease `v0.1.0-alpha.1` on 2026-08-12. The separate
+alpha.2 Applied Mekanistics candidate remains pending runtime and owner
+acceptance.

@@ -9,12 +9,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-/** Lazy exact M4/M5 Drive mappings, isolated from static core-catalog initialization. */
+/** Lazy exact extension Drive mappings, isolated from core-catalog initialization. */
 final class ExtensionDriveCellCatalog {
 
     private static final List<String> APPFLUX_TIERS = List.of(
             "1k", "4k", "16k", "64k", "256k",
             "1m", "4m", "16m", "64m", "256m"
+    );
+    private static final List<String> APPMEK_TIERS = List.of(
+            "1k", "4k", "16k", "64k", "256k"
     );
 
     private ExtensionDriveCellCatalog() {
@@ -31,6 +34,9 @@ final class ExtensionDriveCellCatalog {
             DriveCellOwner owner,
             String itemId
     ) {
+        if (owner == DriveCellOwner.APPLIED_MEKANISTICS) {
+            return Optional.empty();
+        }
         DriveCellDefinition nativeDefinition = nativeDefinitionsMap(owner).get(itemId);
         if (nativeDefinition == null) {
             return Optional.empty();
@@ -48,6 +54,9 @@ final class ExtensionDriveCellCatalog {
     static List<ExtendedAeDriveCellDefinition> extendedDefinitions(
             DriveCellOwner owner
     ) {
+        if (owner == DriveCellOwner.APPLIED_MEKANISTICS) {
+            return List.of();
+        }
         return nativeDefinitions(owner).stream()
                 .map(definition -> new ExtendedAeDriveCellDefinition(
                         definition.itemId(),
@@ -62,6 +71,7 @@ final class ExtensionDriveCellCatalog {
         return switch (owner) {
             case APPLIED_FLUX -> AppFluxHolder.DEFINITIONS;
             case MEGA_CELLS -> MegaCellsHolder.DEFINITIONS;
+            case APPLIED_MEKANISTICS -> AppMekHolder.DEFINITIONS;
             case AE2, EXTENDED_AE -> throw new IllegalArgumentException(
                     "owner does not use an extension Drive route"
             );
@@ -103,6 +113,27 @@ final class ExtensionDriveCellCatalog {
         return Collections.unmodifiableMap(result);
     }
 
+    private static Map<String, DriveCellDefinition> buildAppMekDefinitions() {
+        Map<String, DriveCellDefinition> result = new LinkedHashMap<>();
+        for (String tier : APPMEK_TIERS) {
+            String model = "appmek:block/drive/cells/chemical_storage_cell_" + tier;
+            add(result, new DriveCellDefinition(
+                    "appmek:chemical_storage_cell_" + tier,
+                    model
+            ));
+            add(result, new DriveCellDefinition(
+                    "appmek:portable_chemical_cell_" + tier,
+                    model
+            ));
+        }
+        if (result.size() != 10
+                || result.values().stream().map(DriveCellDefinition::modelId)
+                .distinct().count() != 5) {
+            throw new IllegalStateException("invalid exact AppMek Drive-cell catalog");
+        }
+        return Collections.unmodifiableMap(result);
+    }
+
     private static void add(
             Map<String, DriveCellDefinition> target,
             DriveCellDefinition definition
@@ -127,6 +158,14 @@ final class ExtensionDriveCellCatalog {
                 buildMegaCellsDefinitions();
 
         private MegaCellsHolder() {
+        }
+    }
+
+    private static final class AppMekHolder {
+        private static final Map<String, DriveCellDefinition> DEFINITIONS =
+                buildAppMekDefinitions();
+
+        private AppMekHolder() {
         }
     }
 }
