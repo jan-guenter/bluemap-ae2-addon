@@ -29,7 +29,7 @@ AE2's own runtime metadata permits NeoForge `[21.1.169,)`; this project has
 not generalized or tested that broader range. The narrower ATMons pin is the
 only runtime target.
 
-## Unreleased Applied Mekanistics successor
+## Applied Mekanistics successor
 
 Development version `0.1.0-alpha.2` adds one independently fail-closed route,
 `appmek-drive-cells`. It requires the complete exact Applied Mekanistics and
@@ -41,8 +41,8 @@ tube renderers without adding a production route.
 
 The successor verifier covers ten complete artifacts, twelve resource
 manifests with 381 rows, and the exact six-path/3,611-byte AppMek resource
-closure. This is an implementation candidate only: staging, owner acceptance,
-and publication have not occurred. The accepted and published alpha.1 M4/M5
+closure. Exact schema-12 staging and owner visual acceptance passed on
+2026-08-19, and the owner separately authorized publication. The accepted and published alpha.1 M4/M5
 record below remains immutable at eight routes, eight artifacts, eleven
 manifests, and 375 rows.
 
@@ -282,8 +282,8 @@ enabled initial/restored, combined-disabled, crafting-disabled, and native-
 structural-disabled cold/warm lifecycle modes passed. This is an exact runtime
 compatibility result for that tuple, was owner visually accepted on
 2026-08-12, and was published as immutable prerelease `v0.1.0-alpha.1`; it is
-not a broader compatibility claim. The separate alpha.2 candidate remains
-unreleased and pending runtime and owner acceptance.
+not a broader compatibility claim. The separate alpha.2 candidate is bounded
+to the exact AppMek/Mekanism tuple and its documented static coverage.
 
 ## Version behavior
 

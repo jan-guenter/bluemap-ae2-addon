@@ -1,6 +1,6 @@
 # Coverage
 
-## Unreleased `0.1.0-alpha.2` candidate
+## `0.1.0-alpha.2` Applied Mekanistics coverage
 
 The successor candidate adds exact Applied Mekanistics `1.6.3` support only
 for the exact All the Mons `1.2.0` tuple. `appmek-drive-cells` adds five
@@ -16,9 +16,10 @@ AppMek review cases and seven anchors. Four anchors cover the native Drives;
 two retain AE2 storage-bus seams against a Mekanism QIO Dashboard and
 Radioactive Waste Barrel; one retains the generic Mekanism pressurized-tube
 seam against a full-block `ae2:interface`. The seam cases exercise existing
-parent renderers and add no production route. The enabled live geometry oracle
-remains pending. No staging, owner acceptance, release, or compatibility
-claim is made for alpha.2 yet.
+parent renderers and add no production route. On 2026-08-19 the enabled live
+geometry gate passed at exactly `250/106/106/106/74/74/18` triangles with zero
+fixture failures; the owner visually accepted the exact review and separately
+authorized publication.
 
 ## All the Mons 1.2.0 M4/M5 accepted coverage
 
@@ -998,6 +999,5 @@ visual gate on 2026-08-09, completing M3. S1 subsequently completed the exact
 runtime lifecycle and bounded owner BlueMap visual review recorded above on
 2026-08-11. M4/M5 subsequently completed its technical lifecycle and owner
 review and was published as immutable prerelease `v0.1.0-alpha.1` on
-2026-08-12. The separate alpha.2 Applied Mekanistics candidate currently has
-implementation and source-gate evidence only; runtime and owner acceptance
-remain pending.
+2026-08-12. The separate alpha.2 Applied Mekanistics candidate passed its
+bounded runtime gate and owner visual review on 2026-08-19.

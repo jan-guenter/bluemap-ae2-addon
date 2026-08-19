@@ -2,7 +2,15 @@
 
 ## Unreleased
 
-### Target 0.1.0-alpha.2
+## [0.1.0-alpha.2] - 2026-08-19
+
+- Record exact schema-12 runtime validation and owner visual acceptance of the
+  Applied Mekanistics review gallery. The seven anchors rendered exactly
+  `250/106/106/106/74/74/18` triangles; the naturally refreshed pressurized
+  tube retained its east acceptor arm against the full-block ME Interface.
+- Authorize publication of the exact 1,224,691-byte production JAR with
+  SHA-256
+  `ef4dfac36af57bfd161c701db1bf87ee024465db0952d33ca87a9933fb3d1182`.
 
 - Add one exact, independently gated Applied Mekanistics 1.6.3 chemical-cell
   route against Mekanism 10.7.19: ten cell IDs map to five chassis models in

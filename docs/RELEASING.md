@@ -16,9 +16,10 @@ aliases. The first-release process completed later that day as immutable
 prerelease `v0.1.0-alpha.1`, including GitHub assets, attestations and Maven
 coordinate `io.github.jan-guenter:bluemap-ae2-addon:0.1.0-alpha.1`.
 
-Development now targets the separate unreleased `0.1.0-alpha.2` Applied
-Mekanistics candidate. Its implementation and source gates do not transfer the
-alpha.1 acceptance or authorize an alpha.2 release. The exact M0 runtime artifact was
+The separate `0.1.0-alpha.2` Applied Mekanistics candidate passed its exact
+schema-12 runtime gate and owner visual review on 2026-08-19. The owner then
+separately authorized alpha.2 publication. Its evidence remains independent
+from alpha.1. The exact M0 runtime artifact was
 human accepted on 2026-08-04. The exact 161,930-byte M1 SNAPSHOT JAR with
 SHA-256
 `e02beee7fdafeba9c3ef0ea42deda0a7709cc70df23d4778cfb7a72b1fdaf2e1`
@@ -255,22 +256,22 @@ as complete before it has actually passed. For each milestone, record at least:
 - exact tested JAR digest and rollback result.
 
 The workflows and public repository supported the immutable alpha.1 release;
-their presence does not authorize an alpha.2 tag or publication. Schema 10
+alpha.2 received separate owner authorization on 2026-08-19. Schema 10
 remains the accepted S1 local-checkpoint projection; its technical lifecycle
 and bounded owner visual review passed on 2026-08-11. Schema 11 is the exact
 owner-accepted M4/M5 projection and its visual review passed on 2026-08-12.
-Schema 12 and every alpha.2 fixture and release input must remain exact and be
-revalidated for Applied Mekanistics before any successor publication attempt.
+Schema 12 and every alpha.2 fixture and release input were revalidated for
+Applied Mekanistics before this successor publication attempt.
 
 ## Version contract
 
-- Current unreleased candidate version: `0.1.0-alpha.2`. Published
+- Current owner-accepted release candidate version: `0.1.0-alpha.2`. Published
   `0.1.0-alpha.1` is immutable and must never be rebuilt, overwritten, or
   retagged as this successor.
-- Next possible gated release: no earlier than exact schema-12 Applied
-  Mekanistics runtime validation, owner visual acceptance, and a separate
-  alpha.2 release authorization. The published M0-M5/alpha.1 acceptance does
-  not transfer to this successor.
+- The exact schema-12 Applied Mekanistics runtime validation, owner visual
+  acceptance, and separate alpha.2 release authorization completed on
+  2026-08-19. The published M0-M5/alpha.1 acceptance did not transfer to this
+  successor.
 - Release tag: exactly `v<addon_version>`.
 - Any pull request that changes `addon_version` must also update the changelog,
   compatibility, provenance and relevant runtime evidence.

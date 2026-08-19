@@ -42,7 +42,7 @@ the disjoint 26-resource Drive partition is
 The third-party JAR is an ephemeral test input and is never committed, cached
 as a CI artifact or published.
 
-## Unreleased Applied Mekanistics exact evidence
+## Applied Mekanistics exact evidence
 
 The `0.1.0-alpha.2` successor is additionally pinned to these operator-supplied
 All the Mons `1.2.0` runtime files:
@@ -64,9 +64,10 @@ AppMek declares code `LGPL-3.0-or-later` and assets
 independently written adapter/model-decoder code plus identifiers, sizes,
 digests, and semantic signatures. It bundles no AppMek or Mekanism class,
 source, model, texture, binary, or JAR. All visual resources are resolved from
-the exact operator-installed artifacts. The alpha.2 evidence is not yet a
-runtime or publication record; the owner-accepted alpha.1 section below stays
-historical and byte-bound.
+the exact operator-installed artifacts. The exact alpha.2 runtime gallery and
+owner visual review passed on 2026-08-19; the owner separately authorized
+publication. The owner-accepted alpha.1 section below stays historical and
+byte-bound.
 
 ## All the Mons 1.2.0 M4/M5 exact evidence
 
@@ -728,7 +729,8 @@ accepted local result and remained unreleased; none of the S1 evidence alone
 authorized publication. M4/M5 was separately accepted and published as
 immutable prerelease `v0.1.0-alpha.1` on 2026-08-12. That publication does not
 transfer acceptance or release authorization to the alpha.2 Applied
-Mekanistics candidate.
+Mekanistics candidate; alpha.2 received its own bounded runtime acceptance and
+release authorization on 2026-08-19.
 
 ## M2 facade/material audit evidence
 

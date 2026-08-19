@@ -426,7 +426,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          notes="Owner-accepted exact-version All the Mons 1.2.0 M0-M5 release for AE2 19.2.17, the seven pinned M4/M5 extension inputs, and the Java 21 Minecraft 1.21.1 BlueMap 5.22 backport. Coverage is limited to the documented static profiles; this is not a general AE2 compatibility claim or a production recommendation."
+          notes="Owner-accepted exact-version All the Mons 1.2.0 release for AE2 19.2.17, the pinned M4/M5 extensions, and Applied Mekanistics 1.6.3 against Mekanism 10.7.19. Coverage is limited to the documented static profiles; this is not a general compatibility claim or a production recommendation."
           if gh release view "${RELEASE_TAG}" >/dev/null 2>&1; then
             test "$(gh release view "${RELEASE_TAG}" \
               --json isDraft --jq '.isDraft')" = true

@@ -21,15 +21,18 @@ MEGA Cells `4.11.0`, Advanced AE `1.6.12-1.21.1`, Athena `4.0.6`, ExtendedAE
 NeoForge JAR has SHA-256
 `749f7647fa29764cea113114a7ab3259271bab3da22720989f2bd9fd1f3ba150`.
 
-Development now targets unreleased `0.1.0-alpha.2`. It adds exact Applied
+The owner accepted the exact `0.1.0-alpha.2` Applied Mekanistics review on
+2026-08-19 and separately authorized publication. This successor adds exact Applied
 Mekanistics `1.6.3` support against exact Mekanism `10.7.19` through the
 independent `appmek-drive-cells` route: ten chemical-cell IDs map to five exact
 chassis models in native `ae2:drive` only. Its expanded verifier locks ten
 artifacts and twelve resource manifests with 381 rows. Schema-12 also carries
 bounded parent-renderer seam regressions for AE2 storage buses against two
 Mekanism blocks and a Mekanism pressurized tube against the full-block AE2
-interface. Runtime and owner acceptance remain pending; publication is
-blocked. No AppMek or Mekanism class, asset, source, or binary is bundled.
+interface. The seven-anchor runtime gate passed with exact triangle counts
+`250/106/106/106/74/74/18`, zero fixture failures, and a naturally connected
+tube/interface seam. No AppMek or Mekanism class, asset, source, or binary is
+bundled.
 
 The published alpha.1 Java runtime audit and exact eight-artifact,
 eleven-manifest/375-row,
