@@ -9,6 +9,8 @@ textures, models, source files, or JARs.
 | BlueMap | Compile/runtime host through internal interfaces | upstream `5.22`; current backport `5.22-agent.backport-5.22-mc1.21.1-2`, commit `9be321df995a1103808621d529eb72773e719d4d`, 6,467,235-byte NeoForge JAR SHA-256 `749f7647fa29764cea113114a7ab3259271bab3da22720989f2bd9fd1f3ba150` | MIT | No |
 | BlueNBT | Runtime NBT deserialization supplied by BlueMap | `3.5.1` | MIT | No |
 | Applied Energistics 2 | Installed resources, persisted cable/facade/Drive/crafting/quantum/paint formats, adapted cable/native-Drive behavior, exact M2 facade evidence, exact M3c connected-quartz-glass evidence, exact M3d formed-crafting evidence, exact M3e quantum evidence, exact M3f paint/Sky Stone chest/crank/inscriber/spatial-pylon evidence, and exact S1 native face-part/facade/attached-device structural evidence | `19.2.17`, runtime SHA-256 `460d779a0609b81409907d9956de8f6f70a1b0912257e3e5c3c7e75ac9630e95`, sources SHA-256 `d2f451203cb61c2d21fae52c683083d2f72441ca7d26725f4df5934290492e6a`; tag commit `79ee2c704ad62941a426c26b1cb1f76ef5b2ee5a` | implementation LGPL-3.0-or-later; API MIT; assets CC BY-NC-SA 3.0; text CC0 | No |
+| Applied Mekanistics | Exact unreleased ten-cell/five-chassis native-Drive resource and model-registration evidence; resources remain operator installed | `1.6.3`, 149,709 bytes, SHA-256 `8946fea39451dbce8e709dedbef40a52ba337bdf7a25ac0c4b503800b1bf0773`; tag commit `137f24bb9a46775ddd5a620055270b5e8a540f5a` | code LGPL-3.0-or-later; assets CC BY-NC-SA 3.0 | No |
+| Mekanism | Exact runtime dependency identity for the unreleased Applied Mekanistics profile; no Mekanism renderer or content is copied | mod version `10.7.19`; 11,976,009-byte `Mekanism-1.21.1-10.7.19.85.jar`, SHA-256 `004dbc9f3106f4d192aeaa1ee1190dd16ec9ca8059ed3d093b80034f4c574f43`; exact source tag commit `a00109e4856fd38b9c5b3dd7f22ce4a59cd65a80` | MIT; copyright 2017-2025 Aidan C. Brady | No |
 | AppliedFlux | Exact M4 Flux Accessor part plus 20-item/ten-model Drive integration evidence and installed resources | `1.21-2.1.5-neoforge`, 345,117 bytes, SHA-256 `57e6a2c0f38e660c9e8416f9081d8c515f5ad096d6793d7b7f039e8e210d245b` | runtime metadata declares LGPL-3.0 family | No |
 | ME Requester | Exact M4 requester block transform and offline requester-terminal evidence and installed resources | `1.21.1-1.4.3`, 184,517 bytes, SHA-256 `68f3c861a802d48afeb6e3a48e8ee4f8633904340ac3f89f17493dc84490e385` | runtime metadata declares LGPL-3.0 family | No |
 | ExtendedAE | Installed Ex Drive resources and exact current Drive behavior; M5 six-block Assembler Matrix and two-plane evidence/resources | Current: `1.21-2.2.35-neoforge`, 5,578,031 bytes, SHA-256 `14a2860fa2c747e9dda2279b8933fac6311fecfee166c765171022b902591c65`, tag commit `3776bc854458301bbcc9a44a8238d70a0e3dc00d`; historical accepted M3b/M3d: `1.21-2.2.33-neoforge`, SHA-256 `6652ed1ea4b71f585d48c05a195a77594a7a2bd1ecea0fc805db2122aafad734`, tag commit `90005ee29839fb9fa83bbe6544919c722f8b0dc6` | upstream declares LGPL-3.0 and includes the LGPLv3 text | No |
@@ -38,6 +40,10 @@ of AE2's separately licensed assets or text. AE2 facade models and textures
 remain operator-installed CC BY-NC-SA 3.0 resources; only identifiers and
 cryptographic digests are recorded. Minecraft stone resources are also
 operator supplied and only their identifiers and digests are retained.
+Applied Mekanistics models and textures likewise remain operator-installed
+CC BY-NC-SA 3.0 resources; the repository records only their identifiers,
+sizes, digests, and independently derived semantic signatures. Mekanism is an
+exact dependency-evidence input only, and no Mekanism content is bundled.
 
 The CodeChickenLib-derived files audited inside AE2 declare
 LGPL-2.1-or-later. The M2 ADR keeps their facade-specific behavior in this
@@ -137,5 +143,8 @@ identifiers, sizes, digests, and semantic catalogs. No upstream resource,
 source, class, capture, precomputed mesh, or binary is bundled. The LGPL-3.0-
 family projects reuse the retained LGPLv3/GPLv3 texts; Athena reuses the
 retained MIT text. The M45 exact-artifact/resource gate and bounded Java tests
-passed, but final artifacts, schema-11 identities, isolated lifecycle, live-
-map evidence, and human visual acceptance remain pending.
+passed. The exact alpha.1 artifacts, schema-11 identities, isolated lifecycle,
+live-map evidence, and human visual review completed on 2026-08-12, and
+`v0.1.0-alpha.1` was published as an immutable prerelease. The separate
+Applied Mekanistics alpha.2 candidate described above remains pending runtime
+and owner acceptance.

@@ -442,6 +442,16 @@ public final class BlueMap522Adapter {
         return NATIVE_STRUCTURAL_ACTIVATION.isActive();
     }
 
+    static boolean nativeDriveActiveForM45() {
+        return DRIVE_ACTIVATION.isActive();
+    }
+
+    static boolean nativeDrivePendingForM45() {
+        DriveRouteActivation.Reason reason = DRIVE_ACTIVATION.snapshot().reason();
+        return reason == DriveRouteActivation.Reason.NOT_INSTALLED
+                || reason == DriveRouteActivation.Reason.AWAITING_EXACT_PROFILE;
+    }
+
     static boolean coreCraftingActiveForM45() {
         return CRAFTING_ACTIVATION.isActive();
     }

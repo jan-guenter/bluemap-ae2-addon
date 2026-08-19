@@ -10,7 +10,7 @@ import io.github.janguenter.bluemap.ae2.model.DriveCellOwner;
 import io.github.janguenter.bluemap.ae2.model.ExtendedAeDriveCellDefinition;
 import io.github.janguenter.bluemap.ae2.model.MegaCellDockCellCatalog;
 
-/** Route-local structural check for exact AppliedFlux and MEGA Cells chassis models. */
+/** Route-local structural check for exact extension-owned Drive chassis models. */
 final class ExtensionDriveResourceModels {
 
     private ExtensionDriveResourceModels() {
@@ -37,7 +37,7 @@ final class ExtensionDriveResourceModels {
         );
     }
 
-    private static boolean supported(
+    static boolean supported(
             ResourcePack resourcePack,
             String itemId,
             String modelId,
@@ -47,6 +47,13 @@ final class ExtensionDriveResourceModels {
             return false;
         }
         Model model = resourcePack.getModels().get(M3DriveResourceModels.model(modelId));
+        if (owner == DriveCellOwner.APPLIED_MEKANISTICS) {
+            return AppMekResourceModels.driveModelSupported(
+                    resourcePack,
+                    model,
+                    modelId
+            );
+        }
         if (model == null || model.getParent() != null || model.getElements() == null
                 || model.isAmbientocclusion()) {
             return false;
@@ -55,6 +62,7 @@ final class ExtensionDriveResourceModels {
             case APPLIED_FLUX -> model.getElements().length == 1;
             case MEGA_CELLS -> MegaCellDockCellCatalog.require(itemId)
                     .chassisKind().nominalTriangles() == model.getElements().length * 6;
+            case APPLIED_MEKANISTICS -> false;
             case AE2, EXTENDED_AE -> false;
         };
     }

@@ -132,7 +132,7 @@ class M45ConnectedBlockRendererTest {
             );
             assertEquals("render-callback-failed", failed.snapshot().detail());
             assertEquals(
-                    7,
+                    fixture.runtime().routes().size() - 1L,
                     fixture.runtime().routes().stream()
                             .filter(ExtensionRouteActivation::isActive)
                             .count(),
@@ -157,7 +157,7 @@ class M45ConnectedBlockRendererTest {
             assertEquals(12, model.size(), scenario.routeId());
             assertFalse(fixture.runtime().active(scenario.routeId()));
             assertEquals(
-                    7,
+                    fixture.runtime().routes().size() - 1L,
                     fixture.runtime().routes().stream()
                             .filter(ExtensionRouteActivation::isActive)
                             .count()

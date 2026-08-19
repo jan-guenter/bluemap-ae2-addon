@@ -88,9 +88,10 @@ jobs:
         with:
           python-version: '3.13'
 
-      - name: Set up Gradle
+      - name: Set up Gradle 9.6.1
         uses: gradle/actions/setup-gradle@9c971963bec38e04b3d30dcc455b5382be2fdbfb # v6.3.0
         with:
+          gradle-version: '9.6.1'
           cache-provider: basic
           cache-read-only: true
           validate-wrappers: true
@@ -148,6 +149,12 @@ jobs:
             "${evidence_dir}/ExtendedAE-1.21-2.2.35-neoforge.jar" \
             "https://github.com/GlodBlock/ExtendedAE/releases/download/1.21-2.2.35-neoforge/ExtendedAE-1.21-2.2.35-neoforge.jar"
           download \
+            "${evidence_dir}/Applied-Mekanistics-1.6.3.jar" \
+            "https://cdn.modrinth.com/data/IiATswDj/versions/TpUCzFaW/Applied-Mekanistics-1.6.3.jar"
+          download \
+            "${evidence_dir}/Mekanism-1.21.1-10.7.19.85.jar" \
+            "https://cdn.modrinth.com/data/Ce6I4WUE/versions/5KzzycBT/Mekanism-1.21.1-10.7.19.85.jar"
+          download \
             "${evidence_dir}/athena-neoforge-1.21.1-4.0.6.jar" \
             "https://cdn.modrinth.com/data/b1ZV3DIJ/versions/dJgL278E/athena-neoforge-1.21.1-4.0.6.jar"
           download \
@@ -172,11 +179,15 @@ jobs:
           6652ed1ea4b71f585d48c05a195a77594a7a2bd1ecea0fc805db2122aafad734  ExtendedAE-1.21-2.2.33-neoforge.jar
           a01d9718667ac13899013e91c5b0b7708b9b9db1da9b8e380772dde54bbe8f41  AdvancedAE-1.6.12-1.21.1.jar
           14a2860fa2c747e9dda2279b8933fac6311fecfee166c765171022b902591c65  ExtendedAE-1.21-2.2.35-neoforge.jar
+          8946fea39451dbce8e709dedbef40a52ba337bdf7a25ac0c4b503800b1bf0773  Applied-Mekanistics-1.6.3.jar
+          004dbc9f3106f4d192aeaa1ee1190dd16ec9ca8059ed3d093b80034f4c574f43  Mekanism-1.21.1-10.7.19.85.jar
           43699885bbce3343916d4c5c4940cf0e3f9f6f02fdeb46e8655e121b42282ec5  athena-neoforge-1.21.1-4.0.6.jar
           1f0c8f7533bf3b2002575219ba795fd32a44cc5085c2710624ebbf69e6121471  Glassential-renewed-1.21.1-3.4.5.jar
           749f7647fa29764cea113114a7ab3259271bab3da22720989f2bd9fd1f3ba150  bluemap-5.22-agent.backport-5.22-mc1.21.1-2-neoforge.jar
           499f6897d1837516680f3114072d8106e11c9adcd933fe5cf051b551089b0c99  minecraft-1.21.1-client.jar
           SHA256SUMS
+          test "$(stat -c %s Applied-Mekanistics-1.6.3.jar)" = 149709
+          test "$(stat -c %s Mekanism-1.21.1-10.7.19.85.jar)" = 11976009
           )
 
       - name: Build, test, and verify reproducibility
@@ -202,6 +213,8 @@ jobs:
             -Pm45AdvancedAeJar="${RUNNER_TEMP}/pinned-evidence/AdvancedAE-1.6.12-1.21.1.jar"
             -Pm45AthenaJar="${RUNNER_TEMP}/pinned-evidence/athena-neoforge-1.21.1-4.0.6.jar"
             -Pm45ExtendedAeJar="${RUNNER_TEMP}/pinned-evidence/ExtendedAE-1.21-2.2.35-neoforge.jar"
+            -Pm45AppMekJar="${RUNNER_TEMP}/pinned-evidence/Applied-Mekanistics-1.6.3.jar"
+            -Pm45MekanismJar="${RUNNER_TEMP}/pinned-evidence/Mekanism-1.21.1-10.7.19.85.jar"
             -PreleaseTag="${RELEASE_TAG}"
           )
           tasks=(
@@ -222,7 +235,7 @@ jobs:
             verifyReleaseMetadata
             verifyReleaseCandidate
           )
-          ./gradlew "${gradle_args[@]}" "${tasks[@]}"
+          gradle "${gradle_args[@]}" "${tasks[@]}"
           cp "build/libs/bluemap-ae2-addon-${VERSION}.jar" \
             "${RUNNER_TEMP}/first-build.jar"
           cp "build/libs/bluemap-ae2-addon-${VERSION}-sources.jar" \
@@ -231,7 +244,7 @@ jobs:
             "${RUNNER_TEMP}/first-build.pom"
           cp build/publications/addon/module.json \
             "${RUNNER_TEMP}/first-build.module.json"
-          ./gradlew "${gradle_args[@]}" "${tasks[@]}"
+          gradle "${gradle_args[@]}" "${tasks[@]}"
           cmp "${RUNNER_TEMP}/first-build.jar" \
             "build/libs/bluemap-ae2-addon-${VERSION}.jar"
           cmp "${RUNNER_TEMP}/first-build-sources.jar" \
@@ -414,7 +427,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          notes="Owner-accepted exact-version All the Mons 1.2.0 M0-M5 release for AE2 19.2.17, the seven pinned M4/M5 extension inputs, and the Java 21 Minecraft 1.21.1 BlueMap 5.22 backport. Coverage is limited to the documented static profiles; this is not a general AE2 compatibility claim or a production recommendation."
+          notes="Owner-accepted exact-version All the Mons 1.2.0 release for AE2 19.2.17, the pinned M4/M5 extensions, and Applied Mekanistics 1.6.3 against Mekanism 10.7.19. Coverage is limited to the documented static profiles; this is not a general compatibility claim or a production recommendation."
           if gh release view "${RELEASE_TAG}" >/dev/null 2>&1; then
             test "$(gh release view "${RELEASE_TAG}" \
               --json isDraft --jq '.isDraft')" = true
@@ -470,7 +483,7 @@ jobs:
           GITHUB_ACTOR: ${{ github.actor }}
           GITHUB_TOKEN: ${{ github.token }}
         run: |
-          ./gradlew --no-daemon \
+          gradle --no-daemon \
             -PbluemapSourcePath=.ci/bluemap \
             "-PreleaseTag=${RELEASE_TAG}" \
             verifyReleaseCandidate \

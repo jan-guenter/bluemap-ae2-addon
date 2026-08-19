@@ -1,6 +1,8 @@
 # SPDX-License-Identifier: LGPL-3.0-only
-# Clear only the eleven disjoint main gallery-owned volumes.
+# Clear only the disjoint cumulative main gallery-owned volumes.
 schedule clear ae2_m3:settle_check
+schedule clear ae2_m3:appmek/check_20t
+schedule clear ae2_m3:appmek/check_100t
 fill 208 99 192 263 104 239 minecraft:air replace
 fill 208 99 242 239 104 249 minecraft:air replace
 fill 240 98 242 263 104 249 minecraft:air replace
@@ -29,6 +31,7 @@ fill 336 96 402 379 110 431 minecraft:air replace
 fill 380 96 402 423 110 431 minecraft:air replace
 fill 424 96 402 467 110 431 minecraft:air replace
 fill 468 96 402 511 110 431 minecraft:air replace
+fill 528 96 312 559 110 327 minecraft:air replace
 fill 214 106 251 228 110 257 minecraft:air replace
 fill 255 99 255 258 102 257 minecraft:air replace
 tellraw @a [{"text":"Cleared the bounded cumulative AE2 review-gallery volumes.","color":"yellow"}]

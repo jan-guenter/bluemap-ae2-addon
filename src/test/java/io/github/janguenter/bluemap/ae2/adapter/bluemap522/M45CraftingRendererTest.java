@@ -158,7 +158,7 @@ class M45CraftingRendererTest {
                 fixture.runtime().route(M45Runtime.EXPANDED_AE).snapshot().reason()
         );
         assertEquals(
-                7,
+                fixture.runtime().routes().size() - 1L,
                 fixture.runtime().routes().stream()
                         .filter(ExtensionRouteActivation::isActive)
                         .count()

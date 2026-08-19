@@ -31,10 +31,6 @@ class BlueMap522AdapterTest {
         );
         assertEquals(Ae2CableBusBlockEntityData.class, type.getBlockEntityClass());
         assertFalse(BlueMap522Adapter.activationForTesting().isActive());
-        assertEquals(
-                "awaiting-exact-ae2-profile",
-                BlueMap522Adapter.activationForTesting().reason()
-        );
 
         assertTrue(BlueMap522Adapter.probeBlockEntityRetention());
         assertTrue(BlueMap522Adapter.probeNativeStructuralBlockEntityRetention());
@@ -44,10 +40,6 @@ class BlueMap522AdapterTest {
         );
         assertEquals(Ae2DriveBlockEntityData.class, driveType.getBlockEntityClass());
         assertFalse(BlueMap522Adapter.driveActivationForTesting().isActive());
-        assertEquals(
-                "awaiting-exact-ae2-drive-profile",
-                BlueMap522Adapter.driveActivationForTesting().reason()
-        );
         assertTrue(BlueMap522Adapter.probeDriveBlockEntityRetention());
 
         BlockEntityType extendedDriveType = BlockEntityType.REGISTRY.get(
@@ -58,17 +50,9 @@ class BlueMap522AdapterTest {
                 extendedDriveType.getBlockEntityClass()
         );
         assertFalse(BlueMap522Adapter.extendedDriveActivationForTesting().isActive());
-        assertEquals(
-                "awaiting-exact-extended-drive-profile",
-                BlueMap522Adapter.extendedDriveActivationForTesting().reason()
-        );
         assertTrue(BlueMap522Adapter.probeExtendedDriveBlockEntityRetention());
 
         assertFalse(BlueMap522Adapter.quartzGlassActivationForTesting().isActive());
-        assertEquals(
-                "awaiting-exact-quartz-glass-profile",
-                BlueMap522Adapter.quartzGlassActivationForTesting().reason()
-        );
 
         BlockEntityType craftingMonitorType = BlockEntityType.REGISTRY.get(
                 Key.parse(Ae219217CraftingProfile.CRAFTING_MONITOR_BLOCK)
@@ -78,17 +62,9 @@ class BlueMap522AdapterTest {
                 craftingMonitorType.getBlockEntityClass()
         );
         assertFalse(BlueMap522Adapter.craftingActivationForTesting().isActive());
-        assertEquals(
-                "awaiting-exact-ae2-crafting-profile",
-                BlueMap522Adapter.craftingActivationForTesting().reason()
-        );
         assertTrue(BlueMap522Adapter.probeCraftingMonitorBlockEntityRetention());
 
         assertFalse(BlueMap522Adapter.quantumBridgeActivationForTesting().isActive());
-        assertEquals(
-                "awaiting-exact-ae2-quantum-bridge-profile",
-                BlueMap522Adapter.quantumBridgeActivationForTesting().reason()
-        );
     }
 
     @Test

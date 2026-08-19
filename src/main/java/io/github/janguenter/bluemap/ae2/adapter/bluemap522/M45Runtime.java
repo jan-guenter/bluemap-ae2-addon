@@ -8,7 +8,7 @@ import io.github.janguenter.bluemap.ae2.activation.ExtensionRouteActivation;
 import java.util.List;
 import java.util.Map;
 
-/** Shared activation state for the independently fail-closed ATM 1.2.0 M4/M5 routes. */
+/** Shared activation state for exact ATM 1.2.0 extension routes. */
 final class M45Runtime {
 
     static final String APPFLUX = "appflux";
@@ -19,6 +19,7 @@ final class M45Runtime {
     static final String ADVANCED_ATHENA = "advanced-ae-athena";
     static final String EXTENDED_MATRIX = "extendedae-matrix";
     static final String EXTENDED_PLANES = "extendedae-planes";
+    static final String APPMEK_DRIVE_CELLS = "appmek-drive-cells";
 
     private final Map<String, ExtensionRouteActivation> routes;
 
@@ -31,14 +32,15 @@ final class M45Runtime {
                 routeEntry(ADVANCED_QUANTUM),
                 routeEntry(ADVANCED_ATHENA),
                 routeEntry(EXTENDED_MATRIX),
-                routeEntry(EXTENDED_PLANES)
+                routeEntry(EXTENDED_PLANES),
+                routeEntry(APPMEK_DRIVE_CELLS)
         );
     }
 
     ExtensionRouteActivation route(String routeId) {
         ExtensionRouteActivation route = routes.get(routeId);
         if (route == null) {
-            throw new IllegalArgumentException("unknown M4/M5 route " + routeId);
+            throw new IllegalArgumentException("unknown extension route " + routeId);
         }
         return route;
     }
@@ -74,6 +76,19 @@ final class M45Runtime {
             route.inactive(
                     ExtensionRouteActivation.Reason.BLOCKED_BY_CORE,
                     "native-structural-core-inactive"
+            );
+        }
+    }
+
+    void blockAppMekDriveCellsIfNativeDriveInactive(boolean nativeDriveActive) {
+        if (nativeDriveActive) {
+            return;
+        }
+        ExtensionRouteActivation route = route(APPMEK_DRIVE_CELLS);
+        if (route.isActive()) {
+            route.inactive(
+                    ExtensionRouteActivation.Reason.BLOCKED_BY_CORE,
+                    "native-drive-core-inactive"
             );
         }
     }

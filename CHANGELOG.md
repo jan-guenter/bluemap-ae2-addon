@@ -2,6 +2,26 @@
 
 ## Unreleased
 
+## [0.1.0-alpha.2] - 2026-08-19
+
+- Record exact schema-12 runtime validation and owner visual acceptance of the
+  Applied Mekanistics review gallery. The seven anchors rendered exactly
+  `250/106/106/106/74/74/18` triangles; the naturally refreshed pressurized
+  tube retained its east acceptor arm against the full-block ME Interface.
+- Authorize publication of the exact 1,224,691-byte production JAR with
+  SHA-256
+  `ef4dfac36af57bfd161c701db1bf87ee024465db0952d33ca87a9933fb3d1182`.
+
+- Add one exact, independently gated Applied Mekanistics 1.6.3 chemical-cell
+  route against Mekanism 10.7.19: ten cell IDs map to five chassis models in
+  native AE2 Drives only.
+- Preserve route-local fail-closed behavior for missing, overridden, malformed,
+  inactive, or callback-failing third-party resources; no upstream classes or
+  assets are bundled.
+- Extend schema-12 evidence tooling with a seven-anchor review lane covering
+  four AppMek Drives and three existing parent-renderer seam regressions while
+  retaining the byte-exact schema-11 predecessor projection.
+
 ## [0.1.0-alpha.1] - 2026-08-12
 
 - Publish immutable prerelease `v0.1.0-alpha.1` from the protected tag. The
@@ -162,8 +182,9 @@
   `data-atm120` without touching the historical PVC. The final review pod was
   Ready with zero restarts and zero initializer failures, all exact routes
   active, verifier counters `1/1/2/0`, and a completed `save-all flush` before
-  scale-to-zero. S1 remains the latest exact human-accepted local checkpoint,
-  is unreleased, and does not authorize publication.
+  scale-to-zero. At that historical checkpoint S1 was the latest exact human-
+  accepted local result, remained unreleased, and did not by itself authorize
+  publication.
 - Complete the independently fail-closed M3f `ae2-m3-completion` route for
   persisted paint splotches, both closed Sky Stone chest variants, neutral
   crank and structural Inscriber poses, and locally inferred static/offline

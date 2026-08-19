@@ -10,7 +10,8 @@ public enum DriveCellOwner {
     AE2("ae2", false),
     EXTENDED_AE("extendedae", false),
     APPLIED_FLUX("appflux", true),
-    MEGA_CELLS("megacells", true);
+    MEGA_CELLS("megacells", true),
+    APPLIED_MEKANISTICS("appmek", true);
 
     private final String namespace;
     private final boolean extensionRoute;

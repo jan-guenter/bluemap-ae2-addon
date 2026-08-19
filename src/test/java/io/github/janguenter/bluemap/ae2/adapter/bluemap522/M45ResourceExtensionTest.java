@@ -12,6 +12,7 @@ import io.github.janguenter.bluemap.ae2.profile.ProfileDisablement;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.nio.file.Path;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -76,6 +77,69 @@ class M45ResourceExtensionTest {
             } else {
                 System.setProperty(property, previous);
             }
+        }
+    }
+
+    @Test
+    void canonicalAppMekSwitchDisablesTheSingleDriveCellRoute() throws Exception {
+        String property = ProfileDisablement.SYSTEM_PROPERTY;
+        String previous = System.getProperty(property);
+        try {
+            System.setProperty(property, "appmek");
+            M45Runtime runtime = new M45Runtime();
+
+            extension(runtime, true).loadResources(List.of());
+
+            assertEquals(
+                    ExtensionRouteActivation.Reason.OPERATOR_DISABLED,
+                    runtime.route(M45Runtime.APPMEK_DRIVE_CELLS).snapshot().reason()
+            );
+            assertEquals(
+                    ExtensionRouteActivation.Reason.ARTIFACT_NOT_FOUND,
+                    runtime.route(M45Runtime.APPFLUX).snapshot().reason()
+            );
+        } finally {
+            if (previous == null) {
+                System.clearProperty(property);
+            } else {
+                System.setProperty(property, previous);
+            }
+        }
+    }
+
+    @Test
+    void appMekDriveRouteRequiresBothExactArtifactsAndExactResolvedResources()
+            throws Exception {
+        Path appMek = requiredPath("bluemapAe2.testAppMekJar");
+        Path mekanism = requiredPath("bluemapAe2.testMekanismJar");
+
+        M45Runtime exactRuntime = new M45Runtime();
+        M45ResourceExtension exact = appMekExtension(
+                AppMekExternalResourceTestSupport.exactResources(),
+                exactRuntime,
+                true,
+                false
+        );
+        exact.loadResources(List.of(appMek, mekanism));
+        exact.bake();
+        assertTrue(exactRuntime.active(M45Runtime.APPMEK_DRIVE_CELLS));
+
+        for (List<Path> missingOne : List.of(List.of(appMek), List.of(mekanism))) {
+            M45Runtime runtime = new M45Runtime();
+            M45ResourceExtension extension = appMekExtension(
+                    AppMekExternalResourceTestSupport.exactResources(),
+                    runtime,
+                    true,
+                    false
+            );
+            extension.loadResources(missingOne);
+            assertFalse(runtime.active(M45Runtime.APPMEK_DRIVE_CELLS));
+            assertFalse(runtime.route(M45Runtime.APPMEK_DRIVE_CELLS).isDisabled());
+            assertEquals(
+                    ExtensionRouteActivation.Reason.ARTIFACT_NOT_FOUND,
+                    runtime.route(M45Runtime.APPMEK_DRIVE_CELLS).snapshot().reason()
+            );
+            assertFalse(runtime.route(M45Runtime.APPFLUX).isDisabled());
         }
     }
 
@@ -180,12 +244,67 @@ class M45ResourceExtensionTest {
         assertBlockedByCore(mixed, M45Runtime.EXTENDED_PLANES);
     }
 
+    @Test
+    void appMekDriveDependencyConvergesAcrossResourceExtensionBakeOrders()
+            throws Exception {
+        M45Runtime pendingFirst = new M45Runtime();
+        pendingFirst.route(M45Runtime.APPMEK_DRIVE_CELLS).activate("exact-profile");
+        M45ResourceExtension pending = appMekExtension(
+                AppMekExternalResourceTestSupport.exactResources(),
+                pendingFirst,
+                false,
+                true
+        );
+        pending.bake();
+        assertTrue(pendingFirst.active(M45Runtime.APPMEK_DRIVE_CELLS));
+        M45Adapter.blockAppMekDriveCellsIfNativeDriveInactive(pendingFirst, false);
+        assertBlockedByCore(pendingFirst, M45Runtime.APPMEK_DRIVE_CELLS);
+
+        M45Runtime driveFirst = new M45Runtime();
+        driveFirst.route(M45Runtime.APPMEK_DRIVE_CELLS).activate("exact-profile");
+        appMekExtension(
+                AppMekExternalResourceTestSupport.exactResources(),
+                driveFirst,
+                false,
+                false
+        ).bake();
+        assertBlockedByCore(driveFirst, M45Runtime.APPMEK_DRIVE_CELLS);
+        assertEquals(
+                "native-drive-core-inactive",
+                driveFirst.route(M45Runtime.APPMEK_DRIVE_CELLS).snapshot().detail()
+        );
+    }
+
     private static M45ResourceExtension extension(M45Runtime runtime, boolean coreActive) {
         return new M45ResourceExtension(
                 new ResourcePack(new PackVersion(34, 0)),
                 runtime,
                 () -> coreActive
         );
+    }
+
+    private static M45ResourceExtension appMekExtension(
+            ResourcePack resources,
+            M45Runtime runtime,
+            boolean nativeDriveActive,
+            boolean nativeDrivePending
+    ) {
+        return new M45ResourceExtension(
+                resources,
+                runtime,
+                () -> true,
+                () -> true,
+                () -> nativeDriveActive,
+                () -> nativeDrivePending
+        );
+    }
+
+    private static Path requiredPath(String property) {
+        String value = System.getProperty(property, "");
+        if (value.isBlank()) {
+            throw new IllegalStateException("missing test property " + property);
+        }
+        return Path.of(value);
     }
 
     private static void assertProperties(

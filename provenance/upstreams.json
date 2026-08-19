@@ -12,25 +12,25 @@
   "current_m45_closure": {
     "milestones": [
       "M4",
-      "M5"
+      "M5",
+      "Applied-Mekanistics"
     ],
-    "status": "owner-accepted-m4-m5",
+    "status": "implemented-pending-runtime-and-owner-acceptance",
     "acceptance": {
-      "exact_artifact_and_resource_gate": "passed",
-      "technical_acceptance": "passed",
-      "runtime_lifecycle": "passed",
-      "human_visual_acceptance": "passed-2026-08-12",
-      "publication": "authorized-2026-08-12"
+      "exact_artifact_and_resource_gate": "pending-final-clean-gate",
+      "technical_acceptance": "pending-independent-source-audit",
+      "runtime_lifecycle": "pending",
+      "human_visual_acceptance": "pending",
+      "publication": "blocked"
     },
     "verification": {
       "script": "tools/verify_m45_artifacts.py",
-      "artifact_count": 8,
-      "extension_artifact_count": 7,
-      "route_count": 8,
-      "resource_manifest_count": 11,
-      "resource_row_reference_count": 375,
-      "resource_row_reference_bytes": 192033,
-      "mega_cell_catalog_rows": 67
+      "artifact_count": 10,
+      "extension_artifact_count": 9,
+      "route_count": 9,
+      "resource_manifest_count": 12,
+      "resource_row_reference_count": 381,
+      "resource_row_reference_bytes": 195644
     },
     "artifacts": {
       "ae2": {
@@ -160,6 +160,41 @@
           "correlation": "exact-tag-source-correlated"
         },
         "declared_license": "LGPL-3.0",
+        "bundled": false
+      },
+      "appmek": {
+        "mod_id": "appmek",
+        "version": "1.6.3",
+        "file_name": "Applied-Mekanistics-1.6.3.jar",
+        "size": 149709,
+        "sha1": "bec4a47269ec23bca2329742e13409bfde69c5c3",
+        "sha256": "8946fea39451dbce8e709dedbef40a52ba337bdf7a25ac0c4b503800b1bf0773",
+        "sha512": "1a693c3c05862805bd88cf1265fd4b9b98b2da4efe986c9ff26efa0e675df14373983ffdf7ededb26f07864b6702fabc299ac1a06fb8fa35de0b341b596dbf9b",
+        "source": {
+          "repository": "https://github.com/AppliedEnergistics/Applied-Mekanistics.git",
+          "tag": "1.6.3",
+          "commit": "137f24bb9a46775ddd5a620055270b5e8a540f5a",
+          "correlation": "t4-tag-commit-byte-correlated-runtime-resources"
+        },
+        "declared_code_license": "LGPL-3.0-or-later",
+        "declared_asset_license": "CC BY-NC-SA 3.0",
+        "bundled": false
+      },
+      "mekanism": {
+        "mod_id": "mekanism",
+        "version": "10.7.19",
+        "file_name": "Mekanism-1.21.1-10.7.19.85.jar",
+        "size": 11976009,
+        "sha1": "b78945c40cfe7640408f3fd1e44da385a8c8b805",
+        "sha256": "004dbc9f3106f4d192aeaa1ee1190dd16ec9ca8059ed3d093b80034f4c574f43",
+        "sha512": "66745825330a98f3e4a5ea3a44aff8b00870f715c144edc38dd2f61b4240589600b58ae89efac3b54dbb5aa430b1059dac1a28fd71cac5cc9002bbeb5ba3f22b",
+        "source": {
+          "tag": "v1.21.1-10.7.19.85",
+          "commit": "a00109e4856fd38b9c5b3dd7f22ce4a59cd65a80",
+          "correlation": "exact-tag-source-correlated"
+        },
+        "declared_license": "MIT",
+        "copyright": "Copyright 2017-2025 Aidan C. Brady",
         "bundled": false
       }
     },
@@ -350,6 +385,30 @@
           "ae2-cable-bus-structural"
         ],
         "failure_boundary": "route-local-atomic-stock-fallback"
+      },
+      {
+        "route_id": "appmek-drive-cells",
+        "milestone": "Applied-Mekanistics",
+        "artifact_keys": [
+          "appmek",
+          "mekanism"
+        ],
+        "coverage": {
+          "cell_items": 10,
+          "cell_models": 5,
+          "hosts": [
+            "ae2:drive"
+          ]
+        },
+        "resource_partition_keys": [
+          "appmek-drive-cells"
+        ],
+        "core_dependencies": [
+          "ae2",
+          "ae2-drive",
+          "mekanism"
+        ],
+        "failure_boundary": "preflight-mismatch-inactivates-route;inactive-unknown-malformed-or-late-semantic-mismatch-stocks-current-drive;callback-failure-stocks-current-drive-and-disables-only-appmek-drive-cells"
       }
     ],
     "retained_current_route": {
@@ -440,6 +499,14 @@
         "combined_with_drive_path_count": 53,
         "combined_with_drive_total_bytes": 20414,
         "combined_with_drive_rows_sha256": "9b7a212beddd3ca7e9921d7d4563dfbd452255cd6b0dad8ac0464fd8cffc4c65"
+      },
+      "appmek-drive-cells": {
+        "path": "src/main/resources/bluemap-ae2/profiles/appmek/1.6.3/drive-required-resources.tsv",
+        "artifact_key": "appmek",
+        "semantic_dependency_artifact_key": "mekanism",
+        "path_count": 6,
+        "total_bytes": 3611,
+        "manifest_sha256": "eb224e499a4f5dc4762447f06defb782159c55abca43df00170e1bde65e8b1f2"
       }
     },
     "redistribution": "All upstream artifacts, resources, classes and sources remain operator-installed and are not bundled.",
@@ -1787,6 +1854,19 @@
     }
   },
   "local_adaptations": [
+    {
+      "local": "src/main/java/io/github/janguenter/bluemap/ae2/profile/appmek and the AppMek activation, resource, and native Drive adapter paths",
+      "upstream_files": [
+        "Applied-Mekanistics: src/main/java/me/ramidzkh/mekae2/AppliedMekanistics.java",
+        "AE2: src/main/java/appeng/api/client/StorageCellModels.java",
+        "AE2: src/main/java/appeng/client/render/tesr/DriveBlockEntityRenderer.java",
+        "Mekanism: META-INF/neoforge.mods.toml and exact 10.7.19 API dependency identity"
+      ],
+      "modification": "Independent exact ten-cell AppMek profile and native AE2 Drive route with resolved-model and decoded-texture semantic validation. Unknown, malformed, inactive, overridden, or callback-failing inputs retain the drive-local stock boundary. Storage-bus seams against Mekanism QIO Dashboard and Radioactive Waste Barrel blocks, plus the generic Mekanism pressurized-tube seam against the full-block AE2 interface, are regression evidence for existing parent renderers and add no production route. No AppMek, Mekanism, or AE2 class, source, model, texture, binary, capture, or mesh is bundled.",
+      "modified_on": "2026-08-19",
+      "spdx": "LGPL-3.0-only",
+      "upstream_license_note": "Applied Mekanistics declares code LGPL-3.0-or-later and assets CC BY-NC-SA 3.0. Mekanism declares MIT. Every exact resource remains operator installed; only identifiers, sizes, digests, and independently authored semantic signatures are retained."
+    },
     {
       "local": "tools/ae2_m3_completion_contract.py, tools/generate_ae2_m3_completion_profile.py, tools/verify_m3_completion_artifact.py, src/main/java/io/github/janguenter/bluemap/ae2/profile/Ae219217M3CompletionProfile.java, and the M3f completion implementation files under activation, model, and adapter/bluemap522",
       "upstream_files": [

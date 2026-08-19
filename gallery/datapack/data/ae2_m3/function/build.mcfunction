@@ -42,6 +42,7 @@ fill 336 96 402 379 110 431 minecraft:air replace
 fill 380 96 402 423 110 431 minecraft:air replace
 fill 424 96 402 467 110 431 minecraft:air replace
 fill 468 96 402 511 110 431 minecraft:air replace
+fill 528 96 312 559 110 327 minecraft:air replace
 
 # ae2-m1-01 stone-control
 setblock 210 100 226 minecraft:stone replace
@@ -3145,6 +3146,40 @@ data merge block 500 100 390 {hasRedstone:2,cable:{id:"ae2:fluix_covered_cable"}
 setblock 504 100 390 ae2:cable_bus replace
 data merge block 504 100 390 {hasRedstone:2,cable:{id:"ae2:fluix_covered_cable"},east:{id:"extendedae:smart_annihilation_plane"}}
 
+# Applied Mekanistics schema-12 exact extension fixtures.
+scoreboard objectives add ae2amrun dummy
+scoreboard players add #appmek_builds ae2amrun 1
+scoreboard players set #appmek_immediate ae2amrun 0
+scoreboard players set #appmek_20t ae2amrun 0
+scoreboard players set #appmek_100t ae2amrun 0
+# ae2-appmek-01 All ten Applied Mekanistics cells in one native Drive
+setblock 528 100 312 ae2:drive[facing=north,spin=0] replace
+data merge block 528 100 312 {inv:{item0:{id:"appmek:chemical_storage_cell_1k",count:1},item1:{id:"appmek:portable_chemical_cell_1k",count:1},item2:{id:"appmek:chemical_storage_cell_4k",count:1},item3:{id:"appmek:portable_chemical_cell_4k",count:1},item4:{id:"appmek:chemical_storage_cell_16k",count:1},item5:{id:"appmek:portable_chemical_cell_16k",count:1},item6:{id:"appmek:chemical_storage_cell_64k",count:1},item7:{id:"appmek:portable_chemical_cell_64k",count:1},item8:{id:"appmek:chemical_storage_cell_256k",count:1},item9:{id:"appmek:portable_chemical_cell_256k",count:1}}}
+
+# ae2-appmek-02 Representative native Drive facing and spin controls
+setblock 532 100 312 ae2:drive[facing=up,spin=1] replace
+data merge block 532 100 312 {inv:{item0:{id:"appmek:chemical_storage_cell_1k",count:1},item1:{},item2:{},item3:{},item4:{},item5:{},item6:{},item7:{},item8:{},item9:{}}}
+setblock 536 100 312 ae2:drive[facing=east,spin=2] replace
+data merge block 536 100 312 {inv:{item0:{},item1:{},item2:{},item3:{},item4:{id:"appmek:chemical_storage_cell_16k",count:1},item5:{},item6:{},item7:{},item8:{},item9:{}}}
+setblock 540 100 312 ae2:drive[facing=down,spin=3] replace
+data merge block 540 100 312 {inv:{item0:{},item1:{},item2:{},item3:{},item4:{},item5:{},item6:{},item7:{},item8:{},item9:{id:"appmek:portable_chemical_cell_256k",count:1}}}
+
+# ae2-appmek-03 Storage-bus visual seams against exact Mekanism targets
+setblock 529 100 318 mekanism:qio_dashboard[active=false,facing=west] replace
+setblock 534 101 318 mekanism:radioactive_waste_barrel[facing=north] replace
+setblock 528 100 318 ae2:cable_bus replace
+data merge block 528 100 318 {hasRedstone:2,cable:{id:"ae2:fluix_glass_cable"},east:{id:"ae2:storage_bus"}}
+setblock 534 100 318 ae2:cable_bus replace
+data merge block 534 100 318 {hasRedstone:2,cable:{id:"ae2:fluix_glass_cable"},up:{id:"ae2:storage_bus"}}
+
+# ae2-appmek-04 Pressurized-tube acceptor seam against the full-block ME Interface
+setblock 540 100 318 mekanism:basic_pressurized_tube replace
+setblock 541 100 318 ae2:interface replace
+
+function ae2_m3:appmek/check_immediate
+schedule function ae2_m3:appmek/check_20t 20t replace
+schedule function ae2_m3:appmek/check_100t 100t replace
+
 # Read/capture controller compatibility sentinel.
 setblock 256 99 256 minecraft:stone replace
 setblock 256 100 256 framedblocks:framed_cube[alt=false,glowing=false,propagates_skylight=false,reinforced=false,solid=true,solid_bg=false] replace
@@ -3160,4 +3195,4 @@ scoreboard objectives add ae2m3s dummy
 scoreboard players set #attempts ae2m3s 0
 scoreboard players set #stable ae2m3s 0
 schedule function ae2_m3:settle_check 20t replace
-tellraw @a [{"text":"Built cumulative AE2 ATM 1.2.0 review gallery: 158 cases, 1366 anchors; waiting for two consecutive exact checks.","color":"aqua"}]
+tellraw @a [{"text":"Built cumulative AE2 ATM 1.2.0 review gallery: 162 cases, 1373 anchors; waiting for two consecutive exact checks.","color":"aqua"}]

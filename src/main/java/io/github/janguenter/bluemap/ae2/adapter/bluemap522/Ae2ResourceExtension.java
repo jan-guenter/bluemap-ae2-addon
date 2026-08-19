@@ -807,7 +807,8 @@ final class Ae2ResourceExtension implements ResourcePackExtension {
         // late core-resource failure cannot leave an extension route active.
         M45Adapter.reconcileCoreAfterBake(
                 activation.isActive(),
-                nativeStructuralActivation.isActive()
+                nativeStructuralActivation.isActive(),
+                driveActivation.isActive()
         );
     }
 
