@@ -15431,12 +15431,20 @@ def appmek_build_lines() -> list[str]:
     ]
     for case in APPMEK_CASES:
         lines.append(f"# {case['case_id']} {case['label']}")
-        # Establish the exact cross-mod context before placing the selected
-        # cable-bus anchor so neighbor notifications see the final seam.
-        for fixture in case["fixture_blocks"]:
-            lines.extend(appmek_build_entry_lines(fixture))
-        for anchor in case["anchors"]:
-            lines.extend(appmek_build_entry_lines(anchor))
+        if case["case_id"] == "ae2-appmek-04":
+            # Mekanism refreshes the tube's natural acceptor cache when the
+            # neighboring full-block Interface is placed second.
+            for anchor in case["anchors"]:
+                lines.extend(appmek_build_entry_lines(anchor))
+            for fixture in case["fixture_blocks"]:
+                lines.extend(appmek_build_entry_lines(fixture))
+        else:
+            # Establish the exact cross-mod context before placing the selected
+            # cable-bus anchor so neighbor notifications see the final seam.
+            for fixture in case["fixture_blocks"]:
+                lines.extend(appmek_build_entry_lines(fixture))
+            for anchor in case["anchors"]:
+                lines.extend(appmek_build_entry_lines(anchor))
         lines.append("")
     lines.extend(
         (

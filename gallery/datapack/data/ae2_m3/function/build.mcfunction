@@ -3173,8 +3173,8 @@ setblock 534 100 318 ae2:cable_bus replace
 data merge block 534 100 318 {hasRedstone:2,cable:{id:"ae2:fluix_glass_cable"},up:{id:"ae2:storage_bus"}}
 
 # ae2-appmek-04 Pressurized-tube acceptor seam against the full-block ME Interface
-setblock 541 100 318 ae2:interface replace
 setblock 540 100 318 mekanism:basic_pressurized_tube replace
+setblock 541 100 318 ae2:interface replace
 
 function ae2_m3:appmek/check_immediate
 schedule function ae2_m3:appmek/check_20t 20t replace
