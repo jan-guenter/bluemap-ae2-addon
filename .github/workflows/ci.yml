@@ -222,7 +222,7 @@ jobs:
             gradle_args+=("-PreleaseTag=v${VERSION}")
             tasks+=(verifyReleaseMetadata)
           fi
-          ./gradlew "${gradle_args[@]}" "${tasks[@]}"
+          gradle "${gradle_args[@]}" "${tasks[@]}"
           test -s build/publications/addon/pom-default.xml
           test -s build/publications/addon/module.json
 
@@ -250,7 +250,7 @@ jobs:
         env:
           VERSION: ${{ steps.version.outputs.version }}
         run: |
-          ./gradlew --no-daemon \
+          gradle --no-daemon \
             -PbluemapSourcePath=.ci/bluemap \
             "-PreleaseTag=v${VERSION}" \
             verifyReleaseCandidate

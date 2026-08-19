@@ -235,7 +235,7 @@ jobs:
             verifyReleaseMetadata
             verifyReleaseCandidate
           )
-          ./gradlew "${gradle_args[@]}" "${tasks[@]}"
+          gradle "${gradle_args[@]}" "${tasks[@]}"
           cp "build/libs/bluemap-ae2-addon-${VERSION}.jar" \
             "${RUNNER_TEMP}/first-build.jar"
           cp "build/libs/bluemap-ae2-addon-${VERSION}-sources.jar" \
@@ -244,7 +244,7 @@ jobs:
             "${RUNNER_TEMP}/first-build.pom"
           cp build/publications/addon/module.json \
             "${RUNNER_TEMP}/first-build.module.json"
-          ./gradlew "${gradle_args[@]}" "${tasks[@]}"
+          gradle "${gradle_args[@]}" "${tasks[@]}"
           cmp "${RUNNER_TEMP}/first-build.jar" \
             "build/libs/bluemap-ae2-addon-${VERSION}.jar"
           cmp "${RUNNER_TEMP}/first-build-sources.jar" \
@@ -483,7 +483,7 @@ jobs:
           GITHUB_ACTOR: ${{ github.actor }}
           GITHUB_TOKEN: ${{ github.token }}
         run: |
-          ./gradlew --no-daemon \
+          gradle --no-daemon \
             -PbluemapSourcePath=.ci/bluemap \
             "-PreleaseTag=${RELEASE_TAG}" \
             verifyReleaseCandidate \
