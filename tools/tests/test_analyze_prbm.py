@@ -3798,7 +3798,7 @@ class AnalyzerTest(unittest.TestCase):
         ]
         self.assertEqual(272_646, len(build))
         self.assertEqual(
-            "812e5f289592f35eb1018a5154d40222567aeff0d79225f552144277326a027f",
+            "a0f8061bef43704866a38ecf8f508dbe6318b26f8c9ea17f2539ba59fb16d557",
             hashlib.sha256(build).hexdigest(),
         )
         self.assertEqual(1_008_964, len(verify))
@@ -3822,7 +3822,7 @@ class AnalyzerTest(unittest.TestCase):
             datapack_digest.update(payload)
             datapack_digest.update(b"\0")
         self.assertEqual(
-            "6d4eb64c453bf9db43ec15b114a71d98fb23a6980c499bed2b18047f9211f36e",
+            "3391d9fc02c18f54a58d2e0f6758a8f03ad75d506e67aea5afd14fb927b0e72f",
             datapack_digest.hexdigest(),
         )
 
