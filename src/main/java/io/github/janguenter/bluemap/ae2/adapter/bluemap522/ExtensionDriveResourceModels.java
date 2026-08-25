@@ -17,6 +17,14 @@ final class ExtensionDriveResourceModels {
     }
 
     static boolean supported(ResourcePack resourcePack, DriveCellDefinition definition) {
+        if (definition.externalRouteId() != null) {
+            Model model = resourcePack == null ? null : resourcePack.getModels().get(
+                    M3DriveResourceModels.model(definition.modelId())
+            );
+            return model != null && model.getParent() == null
+                    && model.getElements() != null && model.getElements().length == 1
+                    && !model.isAmbientocclusion();
+        }
         return supported(
                 resourcePack,
                 definition.itemId(),
@@ -63,7 +71,7 @@ final class ExtensionDriveResourceModels {
             case MEGA_CELLS -> MegaCellDockCellCatalog.require(itemId)
                     .chassisKind().nominalTriangles() == model.getElements().length * 6;
             case APPLIED_MEKANISTICS -> false;
-            case AE2, EXTENDED_AE -> false;
+            case AE2, EXTENDED_AE, EXTERNAL -> false;
         };
     }
 }

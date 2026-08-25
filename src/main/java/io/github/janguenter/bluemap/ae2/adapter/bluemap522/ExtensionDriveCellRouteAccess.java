@@ -3,6 +3,7 @@
  */
 package io.github.janguenter.bluemap.ae2.adapter.bluemap522;
 
+import io.github.janguenter.bluemap.ae2.api.Ae2ExtensionRegistry;
 import io.github.janguenter.bluemap.ae2.activation.ExtensionRouteActivation;
 import io.github.janguenter.bluemap.ae2.model.DriveCellOwner;
 import io.github.janguenter.bluemap.ae2.model.DriveCellRouteAccess;
@@ -32,6 +33,19 @@ final class ExtensionDriveCellRouteAccess implements DriveCellRouteAccess {
     }
 
     @Override
+    public boolean isActive(String routeId) {
+        return Ae2ExtensionRegistry.Host.routeActive(routeId);
+    }
+
+    @Override
+    public void disable(String routeId) {
+        Ae2ExtensionRegistry.Host.disableRoute(
+                routeId,
+                Ae2ExtensionRegistry.Host.acquireAccess()
+        );
+    }
+
+    @Override
     public void blockIfNativeDriveInactive() {
         runtime.blockAppMekDriveCellsIfNativeDriveInactive(false);
     }
@@ -41,7 +55,7 @@ final class ExtensionDriveCellRouteAccess implements DriveCellRouteAccess {
             case APPLIED_FLUX -> M45Runtime.APPFLUX;
             case MEGA_CELLS -> M45Runtime.MEGA_CELLS;
             case APPLIED_MEKANISTICS -> M45Runtime.APPMEK_DRIVE_CELLS;
-            case AE2, EXTENDED_AE -> throw new IllegalArgumentException(
+            case AE2, EXTENDED_AE, EXTERNAL -> throw new IllegalArgumentException(
                     "core cell owner has no optional route"
             );
         };

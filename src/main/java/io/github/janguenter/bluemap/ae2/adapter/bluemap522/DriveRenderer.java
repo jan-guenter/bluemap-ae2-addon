@@ -276,10 +276,10 @@ final class DriveRenderer implements BlockRenderer {
             } catch (MaxCapacityReachedException exception) {
                 throw exception;
             } catch (RuntimeException | LinkageError exception) {
-                if (!cell.owner().requiresExtensionRoute()) {
+                if (!cell.requiresExtensionRoute()) {
                     throw exception;
                 }
-                disableExtensionSafely(cell.owner());
+                disableExtensionSafely(cell);
                 return false;
             }
             colorOpacity = DriveRenderSupport.addMapColor(
@@ -312,30 +312,49 @@ final class DriveRenderer implements BlockRenderer {
     private boolean hasExactExtensionResources(DriveSnapshot snapshot) {
         for (java.util.Optional<DriveCellDefinition> candidate : snapshot.cells()) {
             DriveCellDefinition cell = candidate.orElse(null);
-            if (cell == null || !cell.owner().requiresExtensionRoute()) {
+            if (cell == null || !cell.requiresExtensionRoute()) {
                 continue;
             }
             try {
-                if (!cellRoutes.isActive(cell.owner())) {
+                boolean active = cell.externalRouteId() == null
+                        ? cellRoutes.isActive(cell.owner())
+                        : cellRoutes.isActive(cell.externalRouteId());
+                if (!active) {
                     return false;
                 }
-                if (!extensionResourceValidator.supported(
-                        resourcePack,
-                        cell.itemId(),
-                        cell.modelId(),
-                        cell.owner()
-                )) {
-                    if (cell.owner() != DriveCellOwner.APPLIED_MEKANISTICS) {
-                        disableExtensionSafely(cell.owner());
+                boolean supported = cell.externalRouteId() == null
+                        ? extensionResourceValidator.supported(
+                                resourcePack,
+                                cell.itemId(),
+                                cell.modelId(),
+                                cell.owner()
+                        )
+                        : ExtensionDriveResourceModels.supported(resourcePack, cell);
+                if (!supported) {
+                    if (cell.externalRouteId() != null
+                            || cell.owner() != DriveCellOwner.APPLIED_MEKANISTICS) {
+                        disableExtensionSafely(cell);
                     }
                     return false;
                 }
             } catch (RuntimeException | LinkageError exception) {
-                disableExtensionSafely(cell.owner());
+                disableExtensionSafely(cell);
                 return false;
             }
         }
         return true;
+    }
+
+    private void disableExtensionSafely(DriveCellDefinition definition) {
+        if (definition.externalRouteId() == null) {
+            disableExtensionSafely(definition.owner());
+            return;
+        }
+        try {
+            cellRoutes.disable(definition.externalRouteId());
+        } catch (RuntimeException | LinkageError ignored) {
+            // Optional route-state failure must not disable the accepted native Drive.
+        }
     }
 
     private void disableExtensionSafely(DriveCellOwner owner) {

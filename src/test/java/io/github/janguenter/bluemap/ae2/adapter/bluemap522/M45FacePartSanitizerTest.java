@@ -5,6 +5,7 @@ package io.github.janguenter.bluemap.ae2.adapter.bluemap522;
 
 import io.github.janguenter.bluemap.ae2.activation.ExtensionRouteActivation;
 import io.github.janguenter.bluemap.ae2.model.Direction6;
+import io.github.janguenter.bluemap.ae2.model.NativeStructuralPartCatalog;
 import io.github.janguenter.bluemap.ae2.profile.extendedae.ExtendedAe2235Catalog;
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +13,9 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class M45FacePartSanitizerTest {
 
@@ -126,5 +129,37 @@ class M45FacePartSanitizerTest {
                     malformed.getKey()
             );
         }
+    }
+
+    @Test
+    void p2pExtensionsRequireAndRetainThePersistedShortFrequency() {
+        NativeStructuralPartCatalog.Definition definition =
+                new NativeStructuralPartCatalog.Definition(
+                        "arseng:source_p2p_tunnel",
+                        NativeStructuralPartCatalog.Kind.P2P,
+                        false,
+                        1,
+                        2D,
+                        14D,
+                        java.util.List.of(
+                                "ae2:part/p2p/p2p_tunnel_status_off",
+                                "ae2:part/p2p/p2p_tunnel_frequency",
+                                "arseng:part/source_p2p_tunnel"
+                        ),
+                        "arseng-2.1.1-beta"
+                );
+
+        assertTrue(M45FacePartSanitizer.directStateValid(
+                Map.of("id", definition.id(), "freq", (short) -1),
+                definition
+        ));
+        assertFalse(M45FacePartSanitizer.directStateValid(
+                Map.of("id", definition.id()),
+                definition
+        ));
+        assertFalse(M45FacePartSanitizer.directStateValid(
+                Map.of("id", definition.id(), "freq", 65_535),
+                definition
+        ));
     }
 }

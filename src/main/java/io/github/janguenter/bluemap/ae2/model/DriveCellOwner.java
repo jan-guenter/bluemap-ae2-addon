@@ -11,7 +11,8 @@ public enum DriveCellOwner {
     EXTENDED_AE("extendedae", false),
     APPLIED_FLUX("appflux", true),
     MEGA_CELLS("megacells", true),
-    APPLIED_MEKANISTICS("appmek", true);
+    APPLIED_MEKANISTICS("appmek", true),
+    EXTERNAL("", true);
 
     private final String namespace;
     private final boolean extensionRoute;
@@ -37,7 +38,7 @@ public enum DriveCellOwner {
         int separator = itemId.indexOf(':');
         String itemNamespace = itemId.substring(0, separator);
         for (DriveCellOwner owner : values()) {
-            if (owner.namespace.equals(itemNamespace)) {
+            if (!owner.namespace.isEmpty() && owner.namespace.equals(itemNamespace)) {
                 return owner;
             }
         }

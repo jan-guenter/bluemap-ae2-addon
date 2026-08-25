@@ -607,9 +607,10 @@ direct original-resource fallback for every unsupported condition
 ```
 
 The production JAR contains no AE2-family mod, Athena, Minecraft, NeoForge,
-BlueMap or BlueNBT classes or assets. See [architecture](docs/ARCHITECTURE.md),
-[compatibility](docs/COMPATIBILITY.md), [coverage](docs/COVERAGE.md), and
-[provenance](docs/PROVENANCE.md).
+BlueMap or BlueNBT classes or assets. Soft-dependent BlueMap add-ons can use
+the bounded [data-only extension API](docs/EXTENSION_API.md). See
+[architecture](docs/ARCHITECTURE.md), [compatibility](docs/COMPATIBILITY.md),
+[coverage](docs/COVERAGE.md), and [provenance](docs/PROVENANCE.md).
 
 ## Build
 

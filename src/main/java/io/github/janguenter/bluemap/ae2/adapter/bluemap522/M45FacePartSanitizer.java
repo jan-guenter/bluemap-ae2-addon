@@ -3,6 +3,7 @@
  */
 package io.github.janguenter.bluemap.ae2.adapter.bluemap522;
 
+import io.github.janguenter.bluemap.ae2.api.Ae2ExtensionRegistry;
 import io.github.janguenter.bluemap.ae2.model.Direction6;
 import io.github.janguenter.bluemap.ae2.model.NativeStructuralPartCatalog;
 
@@ -46,7 +47,7 @@ final class M45FacePartSanitizer {
                 result.put(entry.getKey(), raw);
                 continue;
             }
-            if (!runtime.active(extension.extensionRouteId())
+            if (!routeActive(runtime, extension.extensionRouteId())
                     || !directStateValid(raw, extension)) {
                 continue;
             }
@@ -64,7 +65,7 @@ final class M45FacePartSanitizer {
         return definition != null && definition.isExtension() ? definition : null;
     }
 
-    private static boolean directStateValid(
+    static boolean directStateValid(
             Object raw,
             NativeStructuralPartCatalog.Definition definition
     ) {
@@ -76,7 +77,11 @@ final class M45FacePartSanitizer {
         } else if (part.containsKey("spin")) {
             return false;
         }
-        if (part.containsKey("freq")) {
+        if (definition.kind() == NativeStructuralPartCatalog.Kind.P2P) {
+            if (!(part.get("freq") instanceof Short)) {
+                return false;
+            }
+        } else if (part.containsKey("freq")) {
             return false;
         }
         if (definition.kind() != NativeStructuralPartCatalog.Kind.CELL_DOCK) {
@@ -93,5 +98,11 @@ final class M45FacePartSanitizer {
                 || cell.size() == 1
                 && cell.get("id") instanceof String itemId
                 && itemId.matches("[a-z0-9_.-]+:[a-z0-9/._-]+");
+    }
+
+    private static boolean routeActive(M45Runtime runtime, String routeId) {
+        return runtime.contains(routeId)
+                ? runtime.active(routeId)
+                : Ae2ExtensionRegistry.Host.routeActive(routeId);
     }
 }

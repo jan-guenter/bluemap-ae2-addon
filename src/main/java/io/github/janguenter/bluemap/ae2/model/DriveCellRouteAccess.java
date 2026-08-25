@@ -13,9 +13,20 @@ public interface DriveCellRouteAccess {
 
     boolean isActive(DriveCellOwner owner);
 
+    /** Data-only route lookup used by a frozen soft-dependent registration. */
+    default boolean isActive(String routeId) {
+        Objects.requireNonNull(routeId, "routeId");
+        return false;
+    }
+
     /** Route-local failure hook; the core-only implementation deliberately does nothing. */
     default void disable(DriveCellOwner owner) {
         Objects.requireNonNull(owner, "owner");
+    }
+
+    /** Route-local failure hook for a frozen soft-dependent registration. */
+    default void disable(String routeId) {
+        Objects.requireNonNull(routeId, "routeId");
     }
 
     /** Blocks routes whose renderer depends on the now-inactive native Drive. */
