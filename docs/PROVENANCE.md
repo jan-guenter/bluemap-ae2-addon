@@ -44,7 +44,7 @@ as a CI artifact or published.
 
 ## Applied Mekanistics exact evidence
 
-The `0.1.0-alpha.2` successor is additionally pinned to these operator-supplied
+Published `0.1.0-alpha.2` is additionally pinned to these operator-supplied
 All the Mons `1.2.0` runtime files:
 
 | Evidence input | Size | SHA-256 | Exact source correlation |
@@ -68,6 +68,22 @@ the exact operator-installed artifacts. The exact alpha.2 runtime gallery and
 owner visual review passed on 2026-08-19; the owner separately authorized
 publication. The owner-accepted alpha.1 section below stays historical and
 byte-bound.
+
+## Ars Energistique registration-hook evidence
+
+Version `0.1.0-alpha.3` adds an independently written data-only API. The Ars
+Energistique example records only owner-supplied identifiers and model paths;
+the host packages no Ars Energistique or Ars Nouveau class, source, model,
+texture, binary, or JAR. The soft-dependent add-on owns the exact artifact and
+resource gate and activates its immutable route only after that gate passes.
+
+Evidence `atm120-arseng-owner-accepted-2026-08-25` records the bounded staging
+facts: All the Mons `1.2.0` loaded exact Ars Energistique `2.1.1-beta` with AE2
+`19.2.17` and Ars Nouveau `5.13.0`; the owner accepted 25 cells, including
+three registered part types across six faces and five source cells in one
+Drive. The public BlueMap view was agent-sanity-checked and owner accepted.
+This record makes no production claim and adds no Ars artifact to the host's
+M45 verifier.
 
 ## All the Mons 1.2.0 M4/M5 exact evidence
 

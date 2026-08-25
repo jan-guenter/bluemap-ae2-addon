@@ -2,6 +2,23 @@
 
 ## Unreleased
 
+## [0.1.0-alpha.3] - 2026-08-25
+
+- Add a bounded data-only registration API for soft-dependent BlueMap add-ons
+  to contribute exact cable-bus part definitions and native Drive-cell model
+  mappings. The API accepts no renderer or resource callbacks.
+- Reject duplicate or reserved route, part, and item IDs atomically; freeze
+  definitions before resource rendering; keep owner-controlled route state
+  mutable after freeze; and isolate terminal failures to the owning route.
+- Add exact neutral P2P support for persisted `Short` frequencies and retain
+  existing output unchanged when no external definition is registered.
+- Document the exact Ars Energistique `2.1.1-beta` registration for three part
+  types and five source-cell mappings. All the Mons `1.2.0` staging loaded it
+  with AE2 `19.2.17` and Ars Nouveau `5.13.0`; the owner accepted 25 cells,
+  including all three parts across six faces and all five source cells in one
+  Drive, on 2026-08-25. This is bounded staging evidence, not a production
+  claim.
+
 ## [0.1.0-alpha.2] - 2026-08-19
 
 - Record exact schema-12 runtime validation and owner visual acceptance of the

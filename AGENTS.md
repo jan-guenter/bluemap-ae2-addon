@@ -398,16 +398,19 @@ and two opt-in exporter tests were intentionally skipped) and 180 pre-oracle
 Python tests. The frozen-oracle CPython 3.13.14 suite then passed 192/192 tests
 in 945.343 seconds with the generator/checksum closure.
 
-The unreleased `0.1.0-alpha.2` successor is a separate Applied Mekanistics
-candidate and does not inherit alpha.1 acceptance. It adds exact AppMek
+Published `0.1.0-alpha.2` is a separate Applied Mekanistics release and does
+not inherit alpha.1 acceptance. It adds exact AppMek
 `1.6.3` plus Mekanism `10.7.19` evidence, the one native-Drive-only
 `appmek-drive-cells` route, and schema 12. The schema adds bounded seam
 regressions for existing AE2 storage-bus and Mekanism pressurized-tube
 renderers without adding a seam route. The current verifier expects ten
 artifacts, twelve resource manifests/381 rows, and nine `m45*Jar` properties.
-Runtime lifecycle, owner review, release-candidate metadata, tagging, and
-publication remain blocked. Never bundle or reconstruct AppMek or Mekanism
-classes, assets, source, or binaries.
+Its runtime lifecycle, owner review, release metadata, tag, GitHub prerelease,
+attestations, and Maven package are complete. The `0.1.0-alpha.3` successor
+adds only bounded data registration hooks for soft-dependent add-ons. Its Ars
+Energistique staging acceptance is recorded separately and does not add Ars
+artifacts to the host verifier. Never bundle or reconstruct AppMek, Mekanism,
+Ars Energistique, or Ars Nouveau classes, assets, source, or binaries.
 
 The exact accepted local identities are:
 

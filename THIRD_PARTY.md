@@ -145,6 +145,7 @@ family projects reuse the retained LGPLv3/GPLv3 texts; Athena reuses the
 retained MIT text. The M45 exact-artifact/resource gate and bounded Java tests
 passed. The exact alpha.1 artifacts, schema-11 identities, isolated lifecycle,
 live-map evidence, and human visual review completed on 2026-08-12, and
-`v0.1.0-alpha.1` was published as an immutable prerelease. The separate
-Applied Mekanistics alpha.2 candidate described above remains pending runtime
-and owner acceptance.
+`v0.1.0-alpha.1` was published as an immutable prerelease. Applied Mekanistics
+alpha.2 subsequently passed its separate runtime and owner review and was
+published as immutable prerelease `v0.1.0-alpha.2`. The alpha.3 data-only API
+does not redistribute Ars Energistique or Ars Nouveau content.
