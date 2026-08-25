@@ -18,8 +18,12 @@ coordinate `io.github.jan-guenter:bluemap-ae2-addon:0.1.0-alpha.1`.
 
 The separate `0.1.0-alpha.2` Applied Mekanistics candidate passed its exact
 schema-12 runtime gate and owner visual review on 2026-08-19. The owner then
-separately authorized alpha.2 publication. Its evidence remains independent
-from alpha.1. The exact M0 runtime artifact was
+separately authorized alpha.2 publication. Immutable prerelease
+`v0.1.0-alpha.2`, its attestations, checksum-closed assets, and Maven package
+were published on 2026-08-20. Its evidence remains independent from alpha.1.
+The `0.1.0-alpha.3` registration-hook candidate was accepted in bounded Ars
+Energistique staging on 2026-08-25; this is not a production claim. The exact
+M0 runtime artifact was
 human accepted on 2026-08-04. The exact 161,930-byte M1 SNAPSHOT JAR with
 SHA-256
 `e02beee7fdafeba9c3ef0ea42deda0a7709cc70df23d4778cfb7a72b1fdaf2e1`
@@ -255,23 +259,25 @@ as complete before it has actually passed. For each milestone, record at least:
 - initial control/custom time, memory, triangle and material measurements;
 - exact tested JAR digest and rollback result.
 
-The workflows and public repository supported the immutable alpha.1 release;
-alpha.2 received separate owner authorization on 2026-08-19. Schema 10
+The workflows and public repository supported the immutable alpha.1 and
+alpha.2 releases. Schema 10
 remains the accepted S1 local-checkpoint projection; its technical lifecycle
 and bounded owner visual review passed on 2026-08-11. Schema 11 is the exact
 owner-accepted M4/M5 projection and its visual review passed on 2026-08-12.
 Schema 12 and every alpha.2 fixture and release input were revalidated for
-Applied Mekanistics before this successor publication attempt.
+Applied Mekanistics before publication. The alpha.3 host release uses the same
+exact ten-artifact verifier; the soft-dependent add-on owns its separate Ars
+artifact and resource gate.
 
 ## Version contract
 
-- Current owner-accepted release candidate version: `0.1.0-alpha.2`. Published
-  `0.1.0-alpha.1` is immutable and must never be rebuilt, overwritten, or
-  retagged as this successor.
-- The exact schema-12 Applied Mekanistics runtime validation, owner visual
-  acceptance, and separate alpha.2 release authorization completed on
-  2026-08-19. The published M0-M5/alpha.1 acceptance did not transfer to this
-  successor.
+- Current owner-accepted release candidate version: `0.1.0-alpha.3`. Published
+  `0.1.0-alpha.1` and `0.1.0-alpha.2` are immutable and must never be rebuilt,
+  overwritten, or retagged as this successor.
+- Evidence `atm120-arseng-owner-accepted-2026-08-25` records only the bounded
+  registration-hook staging acceptance documented in `STAGING.md`. Published
+  predecessor acceptance does not transfer to this successor, and the staging
+  record makes no production claim.
 - Release tag: exactly `v<addon_version>`.
 - Any pull request that changes `addon_version` must also update the changelog,
   compatibility, provenance and relevant runtime evidence.
@@ -335,8 +341,10 @@ remain distinct exact artifacts and must follow the two-pass gate below.
 Use exact Eclipse Temurin `21.0.12+8`, the exact clean BlueMap backport/API
 checkouts and the exact AE2 runtime artifact. Historical M3b/M3d gates retain
 their 2.2.33/1.6.11 inputs; the S1 gate uses the current All the Mons 1.2.0
-`nativeStructural*Jar` properties. The unreleased alpha.2 verifier requires
-all nine `m45*Jar` properties; the accepted alpha.1 history used seven:
+`nativeStructural*Jar` properties. The current verifier requires all nine
+`m45*Jar` properties; the accepted alpha.1 history used seven. Ars artifacts
+remain outside this host gate because the soft-dependent add-on owns their
+exact activation gate:
 
 ```bash
 python3 gallery/generate.py --check

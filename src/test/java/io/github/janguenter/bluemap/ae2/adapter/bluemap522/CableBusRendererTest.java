@@ -1242,6 +1242,37 @@ class CableBusRendererTest {
     }
 
     @Test
+    void missingExternalPartModelDisablesOnlyItsRouteBeforeFallback() {
+        M45Runtime runtime = activeM45Runtime();
+        NativeStructuralPartCatalog.Definition external =
+                new NativeStructuralPartCatalog.Definition(
+                        "arseng:cable_source_acceptor",
+                        NativeStructuralPartCatalog.Kind.STATIC,
+                        false,
+                        2,
+                        2D,
+                        14D,
+                        List.of("arseng:part/source_acceptor"),
+                        "arseng-2.1.1-beta"
+                );
+        java.util.concurrent.atomic.AtomicReference<String> disabled =
+                new java.util.concurrent.atomic.AtomicReference<>();
+
+        RuntimeException failure = assertThrows(RuntimeException.class, () ->
+                CableBusRenderer.missingSelectedPartResource(
+                        external,
+                        runtime,
+                        "missing selected model arseng:part/source_acceptor",
+                        disabled::set
+                ));
+
+        assertEquals("extension face-part callback failed", failure.getMessage());
+        assertEquals("arseng-2.1.1-beta", disabled.get());
+        assertTrue(runtime.active(M45Runtime.APPFLUX));
+        assertTrue(runtime.active(M45Runtime.MEGA_CELLS));
+    }
+
+    @Test
     void runtimeCoreFailuresImmediatelyBlockOnlyTheirDependentM45Routes()
             throws Exception {
         Fixture baseFailure = fixture(false, false, true);

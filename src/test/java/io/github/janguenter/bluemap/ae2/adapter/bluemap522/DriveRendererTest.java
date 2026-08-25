@@ -681,7 +681,7 @@ class DriveRendererTest {
             case APPLIED_FLUX -> M45Runtime.APPFLUX;
             case MEGA_CELLS -> M45Runtime.MEGA_CELLS;
             case APPLIED_MEKANISTICS -> M45Runtime.APPMEK_DRIVE_CELLS;
-            case AE2, EXTENDED_AE -> throw new IllegalArgumentException(
+            case AE2, EXTENDED_AE, EXTERNAL -> throw new IllegalArgumentException(
                     "owner has no extension route"
             );
         };

@@ -22,6 +22,7 @@ import de.bluecolored.bluemap.core.world.BlockEntity;
 import de.bluecolored.bluemap.core.world.BlockState;
 import de.bluecolored.bluemap.core.world.LightData;
 import de.bluecolored.bluemap.core.world.block.BlockNeighborhood;
+import io.github.janguenter.bluemap.ae2.api.Ae2ExtensionRegistry;
 import de.bluecolored.bluemap.core.world.block.ExtendedBlock;
 import io.github.janguenter.bluemap.ae2.activation.ExtensionRouteActivation;
 import io.github.janguenter.bluemap.ae2.activation.ProfileActivation;
@@ -236,10 +237,7 @@ final class CableBusRenderer implements BlockRenderer {
         } catch (MaxCapacityReachedException exception) {
             throw exception;
         } catch (ExtensionPartRouteFailure failure) {
-            m45Runtime.route(failure.routeId()).disable(
-                    ExtensionRouteActivation.Reason.RENDER_CALLBACK_FAILED,
-                    "extension-part-render-failed"
-            );
+            disableExtensionPartRoute(failure.routeId());
             fallback(
                     BoundedDiagnostics.Event.NATIVE_STRUCTURAL_RENDER_FAILED,
                     block,
@@ -297,7 +295,9 @@ final class CableBusRenderer implements BlockRenderer {
         this.nativeStructuralActivation = nativeStructuralActivation;
         this.m45Runtime = java.util.Objects.requireNonNull(m45Runtime, "m45Runtime");
         this.nativeStructuralDecoder = new NativeStructuralCableBusDecoder(
-                routeId -> this.m45Runtime.active(routeId)
+                routeId -> this.m45Runtime.contains(routeId)
+                        ? this.m45Runtime.active(routeId)
+                        : Ae2ExtensionRegistry.Host.routeActive(routeId)
         );
         this.stockRenderer = new ResourceModelRenderer(
                 resourcePack,
@@ -806,7 +806,12 @@ final class CableBusRenderer implements BlockRenderer {
                         snapshot.hasFacade(entry.getKey())
                 )) {
                     if (resolvedNativePartModel(modelPath) == null) {
-                        return false;
+                        return missingSelectedPartResource(
+                                definition,
+                                m45Runtime,
+                                "missing selected model " + modelPath,
+                                this::disableExtensionPartRoute
+                        );
                     }
                 }
                 if (definition.kind() == NativeStructuralPartCatalog.Kind.PLANE) {
@@ -823,7 +828,12 @@ final class CableBusRenderer implements BlockRenderer {
                         && resourcePack.getTextures().get(
                                 Key.parse(NativePartGeometry.P2P_FREQUENCY_TEXTURE)
                         ) == null) {
-                    return false;
+                    return missingSelectedPartResource(
+                            definition,
+                            m45Runtime,
+                            "missing neutral P2P frequency texture",
+                            this::disableExtensionPartRoute
+                    );
                 } else if (definition.kind() == NativeStructuralPartCatalog.Kind.CELL_DOCK
                         && !megaCellDockRenderSupport.resourcesSupported(entry.getValue())) {
                     return false;
@@ -847,6 +857,20 @@ final class CableBusRenderer implements BlockRenderer {
             }
         }
         return true;
+    }
+
+    static boolean missingSelectedPartResource(
+            NativeStructuralPartCatalog.Definition definition,
+            M45Runtime runtime,
+            String detail,
+            java.util.function.Consumer<String> routeDisabler
+    ) {
+        if (definition.isExtension()
+                && !runtime.contains(definition.extensionRouteId())) {
+            routeDisabler.accept(definition.extensionRouteId());
+            throw partFailure(definition, new IllegalStateException(detail));
+        }
+        return false;
     }
 
     private static BoundedDiagnostics.Event nativeEventFor(
@@ -2203,6 +2227,20 @@ final class CableBusRenderer implements BlockRenderer {
             return new ExtensionPartRouteFailure(definition.extensionRouteId(), cause);
         }
         return new IllegalStateException("native face-part callback failed", cause);
+    }
+
+    private void disableExtensionPartRoute(String routeId) {
+        if (m45Runtime.contains(routeId)) {
+            m45Runtime.route(routeId).disable(
+                    ExtensionRouteActivation.Reason.RENDER_CALLBACK_FAILED,
+                    "extension-part-render-failed"
+            );
+        } else {
+            Ae2ExtensionRegistry.Host.disableRoute(
+                    routeId,
+                    Ae2ExtensionRegistry.Host.acquireAccess()
+            );
+        }
     }
 
     private static final class ExtensionPartRouteFailure extends RuntimeException {

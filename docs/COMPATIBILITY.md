@@ -20,6 +20,8 @@ The local profile is intentionally pinned to one complete tuple:
 | ExtendedAE | `1.21-2.2.35-neoforge`, SHA-256 `14a2860fa2c747e9dda2279b8933fac6311fecfee166c765171022b902591c65` |
 | Applied Mekanistics | `1.6.3`, SHA-256 `8946fea39451dbce8e709dedbef40a52ba337bdf7a25ac0c4b503800b1bf0773` |
 | Mekanism | mod version `10.7.19`; exact `Mekanism-1.21.1-10.7.19.85.jar` SHA-256 `004dbc9f3106f4d192aeaa1ee1190dd16ec9ca8059ed3d093b80034f4c574f43` |
+| Ars Energistique soft-dependent add-on | exact version `2.1.1-beta`; separately gated before route activation |
+| Ars Nouveau dependency | exact version `5.13.0`; owned by the soft-dependent add-on gate |
 | Glassential | `3.4.5`, SHA-256 `1f0c8f7533bf3b2002575219ba795fd32a44cc5085c2710624ebbf69e6121471` |
 | BlueMap upstream | `5.22`, commit `fe5115d5548a30d34175b8e0449aaca280af199f` |
 | BlueMap backport | `5.22-agent.backport-5.22-mc1.21.1-2`, commit `9be321df995a1103808621d529eb72773e719d4d`; 6,467,235-byte NeoForge JAR SHA-256 `749f7647fa29764cea113114a7ab3259271bab3da22720989f2bd9fd1f3ba150` |
@@ -29,9 +31,25 @@ AE2's own runtime metadata permits NeoForge `[21.1.169,)`; this project has
 not generalized or tested that broader range. The narrower ATMons pin is the
 only runtime target.
 
-## Applied Mekanistics successor
+## Soft-dependent Ars Energistique registration
 
-Development version `0.1.0-alpha.2` adds one independently fail-closed route,
+Version `0.1.0-alpha.3` exposes immutable data-only registration for exact
+cable-bus parts and native Drive cells. Ars Energistique `2.1.1-beta` uses one
+route for three part types and five source-cell models. Its own BlueMap add-on
+must pass its exact AE2/Ars Nouveau/Ars Energistique artifact and resource gate
+before activating that route; this host does not generalize or replace that
+gate. Missing, late, duplicate, inactive, or failed registrations leave the
+accepted host routes unchanged.
+
+All the Mons `1.2.0` staging loaded exact Ars Energistique `2.1.1-beta`, AE2
+`19.2.17`, and Ars Nouveau `5.13.0`. On 2026-08-25 the owner accepted 25 cells,
+including all three registered parts across six faces and all five source
+cells in one Drive. The public view was agent-sanity-checked before owner
+review. This is bounded staging evidence and no production claim.
+
+## Applied Mekanistics release
+
+Published version `0.1.0-alpha.2` adds one independently fail-closed route,
 `appmek-drive-cells`. It requires the complete exact Applied Mekanistics and
 Mekanism files above, the accepted AE2 core, and native Drive. Ten chemical
 cell IDs map to five exact installed chassis models in native `ae2:drive`.
@@ -39,12 +57,13 @@ Chemical P2P, Extended Drive, ME Chest, and MEGA Cell Dock are outside scope.
 Schema-12 seam regressions cover existing parent storage-bus and pressurized-
 tube renderers without adding a production route.
 
-The successor verifier covers ten complete artifacts, twelve resource
+The alpha.2 verifier covers ten complete artifacts, twelve resource
 manifests with 381 rows, and the exact six-path/3,611-byte AppMek resource
 closure. Exact schema-12 staging and owner visual acceptance passed on
-2026-08-19, and the owner separately authorized publication. The accepted and published alpha.1 M4/M5
-record below remains immutable at eight routes, eight artifacts, eleven
-manifests, and 375 rows.
+2026-08-19, and the owner separately authorized publication. Immutable
+prerelease `v0.1.0-alpha.2` was published on 2026-08-20. The accepted and
+published alpha.1 M4/M5 record below remains immutable at eight routes, eight
+artifacts, eleven manifests, and 375 rows.
 
 The M0-M3f runtime and human-acceptance records below are deliberately
 historical: they bind All the Mons `1.1.1` at pack commit
@@ -282,8 +301,8 @@ enabled initial/restored, combined-disabled, crafting-disabled, and native-
 structural-disabled cold/warm lifecycle modes passed. This is an exact runtime
 compatibility result for that tuple, was owner visually accepted on
 2026-08-12, and was published as immutable prerelease `v0.1.0-alpha.1`; it is
-not a broader compatibility claim. The separate alpha.2 candidate is bounded
-to the exact AppMek/Mekanism tuple and its documented static coverage.
+not a broader compatibility claim. The separate published alpha.2 result is
+bounded to the exact AppMek/Mekanism tuple and its documented static coverage.
 
 ## Version behavior
 

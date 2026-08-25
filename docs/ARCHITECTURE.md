@@ -11,6 +11,7 @@ The current packages have deliberately narrow duties:
 
 | Package | Duty |
 | --- | --- |
+| `api` | Bounded data-only registration for soft-dependent add-ons: immutable cable-bus part and native-Drive cell definitions plus isolated route state |
 | `activation` | Family-wide core activation plus independently fail-closed accepted routes, eight published M4/M5 routes, and one unreleased AppMek route |
 | `adapter/bluemap522` | Exact BlueMap 5.22 registration, bounded cable-bus/Drive/Crafting Monitor/M3-completion/extension DTOs, native and extension neighborhood projection, resource routing, world access, geometry emission and original-resource fallback |
 | `diagnostics` | Bounded, location-free reason counters and one-time warnings |
@@ -27,6 +28,15 @@ to 128 MiB and decompressed gzip payloads to 256 MiB.
 AE2-family extensions live in separate internal profile packages in this one
 repository and JAR. An extension route may consume a small neutral core
 capability but cannot make the core profile depend on extension classes.
+
+External add-ons use only the public `api` package. Registration accepts no
+callbacks or renderer objects, is atomic, rejects built-in and cross-add-on ID
+collisions, and freezes before either AE2 resource extension starts rendering.
+Each returned route starts inactive. Its owner may activate it only after its
+own resource/artifact gate passes; a route-local failure disables only that
+route. With no external registrations, the frozen catalog is empty and the
+published profiles take their existing paths unchanged. The complete consumer
+contract is in [EXTENSION_API.md](EXTENSION_API.md).
 
 ## Activation sequence
 

@@ -5,6 +5,7 @@ package io.github.janguenter.bluemap.ae2.adapter.bluemap522;
 
 import de.bluecolored.bluemap.core.resources.pack.resourcepack.ResourcePack;
 import de.bluecolored.bluemap.core.util.Key;
+import io.github.janguenter.bluemap.ae2.api.Ae2ExtensionRegistry;
 import io.github.janguenter.bluemap.ae2.activation.CraftingRouteActivation;
 import io.github.janguenter.bluemap.ae2.activation.DriveRouteActivation;
 import io.github.janguenter.bluemap.ae2.activation.ExtendedAeDriveRouteActivation;
@@ -182,6 +183,9 @@ final class Ae2ResourceExtensionType implements ResourcePack.Extension<Ae2Resour
 
     @Override
     public Ae2ResourceExtension create(ResourcePack pack) {
+        Ae2ExtensionRegistry.Host.freezeForResourceRendering(
+                Ae2ExtensionRegistry.Host.acquireAccess()
+        );
         return new Ae2ResourceExtension(
                 pack,
                 activation,

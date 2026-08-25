@@ -1,5 +1,16 @@
 # Isolated cumulative AE2 staging evidence
 
+## Ars Energistique registration-hook acceptance
+
+Evidence `atm120-arseng-owner-accepted-2026-08-25` is bounded to disposable All
+the Mons `1.2.0` staging. The server loaded exact Ars Energistique
+`2.1.1-beta`, AE2 `19.2.17`, and Ars Nouveau `5.13.0`. The owner accepted 25
+cells on 2026-08-25: three registered cable-bus part types were reviewed across
+all six faces, and all five registered source cells were reviewed together in
+one Drive. The public BlueMap view was agent-sanity-checked before the owner's
+acceptance. This does not establish production behavior or broader version
+compatibility.
+
 ## M4/M5 accepted local checkpoint
 
 The All the Mons 1.2.0 M4/M5 candidate completed its exact reproducible-build,

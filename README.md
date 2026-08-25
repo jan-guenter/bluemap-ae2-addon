@@ -22,8 +22,9 @@ NeoForge JAR has SHA-256
 `749f7647fa29764cea113114a7ab3259271bab3da22720989f2bd9fd1f3ba150`.
 
 The owner accepted the exact `0.1.0-alpha.2` Applied Mekanistics review on
-2026-08-19 and separately authorized publication. This successor adds exact Applied
-Mekanistics `1.6.3` support against exact Mekanism `10.7.19` through the
+2026-08-19 and separately authorized publication. It was published as
+immutable prerelease `v0.1.0-alpha.2` on 2026-08-20. This successor adds exact
+Applied Mekanistics `1.6.3` support against exact Mekanism `10.7.19` through the
 independent `appmek-drive-cells` route: ten chemical-cell IDs map to five exact
 chassis models in native `ae2:drive` only. Its expanded verifier locks ten
 artifacts and twelve resource manifests with 381 rows. Schema-12 also carries
@@ -33,6 +34,14 @@ interface. The seven-anchor runtime gate passed with exact triangle counts
 `250/106/106/106/74/74/18`, zero fixture failures, and a naturally connected
 tube/interface seam. No AppMek or Mekanism class, asset, source, or binary is
 bundled.
+
+The owner accepted the `0.1.0-alpha.3` registration-hook staging on
+2026-08-25. Exact Ars Energistique `2.1.1-beta` loaded in All the Mons `1.2.0`
+with AE2 `19.2.17` and Ars Nouveau `5.13.0`. The 25 accepted cells included
+three externally registered part types across all six faces and five source
+cells in one native Drive. The public BlueMap view was sanity-checked by the
+agent and accepted by the owner. This evidence is bounded to disposable
+staging and is not a production claim.
 
 The published alpha.1 Java runtime audit and exact eight-artifact,
 eleven-manifest/375-row,
@@ -559,9 +568,9 @@ on 2026-08-12 and accepted the exact JAR, gallery, and map archive. The same
 message separately authorized publication. The exact release-version build
 was published as immutable prerelease `v0.1.0-alpha.1`.
 
-## Applied Mekanistics alpha.2 candidate
+## Applied Mekanistics alpha.2 release
 
-The unreleased successor adds one independently fail-closed route:
+Published prerelease `v0.1.0-alpha.2` adds one independently fail-closed route:
 
 | Route | Exact static coverage |
 | --- | --- |
@@ -580,11 +589,12 @@ state. The profile therefore uses the explicit `idle-off-unknown` policy and
 makes no live-network claim. Smart-cable overlays are the exact zero-channel
 static representation, not telemetry.
 
-The complete M0-M5 scope is human accepted. The exact `0.1.0-alpha.1`
-non-SNAPSHOT artifact completed the independent promotion workflow on
-2026-08-12: the protected tag, immutable GitHub prerelease, both JAR
-attestations, checksum-closed assets, and Maven package are published. Root
-workspace integration remains a separate coordination action.
+The complete M0-M5 scope is human accepted. The exact `0.1.0-alpha.1` and
+`0.1.0-alpha.2` non-SNAPSHOT artifacts completed the independent promotion
+workflow: their protected tags, immutable GitHub prereleases, both JAR
+attestations, checksum-closed assets, and Maven packages are published. The
+`0.1.0-alpha.3` registration-hook candidate carries separate bounded staging
+acceptance. Root workspace integration remains a separate coordination action.
 This is an unofficial community add-on, is not affiliated with or endorsed by
 BlueMap or Applied Energistics 2, and is not recommended for production.
 
@@ -607,9 +617,10 @@ direct original-resource fallback for every unsupported condition
 ```
 
 The production JAR contains no AE2-family mod, Athena, Minecraft, NeoForge,
-BlueMap or BlueNBT classes or assets. See [architecture](docs/ARCHITECTURE.md),
-[compatibility](docs/COMPATIBILITY.md), [coverage](docs/COVERAGE.md), and
-[provenance](docs/PROVENANCE.md).
+BlueMap or BlueNBT classes or assets. Soft-dependent BlueMap add-ons can use
+the bounded [data-only extension API](docs/EXTENSION_API.md). See
+[architecture](docs/ARCHITECTURE.md), [compatibility](docs/COMPATIBILITY.md),
+[coverage](docs/COVERAGE.md), and [provenance](docs/PROVENANCE.md).
 
 ## Build
 

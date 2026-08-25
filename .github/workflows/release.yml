@@ -427,7 +427,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          notes="Owner-accepted exact-version All the Mons 1.2.0 release for AE2 19.2.17, the pinned M4/M5 extensions, and Applied Mekanistics 1.6.3 against Mekanism 10.7.19. Coverage is limited to the documented static profiles; this is not a general compatibility claim or a production recommendation."
+          notes="Owner-accepted exact-version All the Mons 1.2.0 release for AE2 19.2.17, the pinned M4/M5 extensions, Applied Mekanistics 1.6.3 against Mekanism 10.7.19, and bounded data-only hooks used by the separately gated Ars Energistique add-on. Coverage is limited to the documented static profiles and accepted staging slice; this is not a general compatibility claim or a production recommendation."
           if gh release view "${RELEASE_TAG}" >/dev/null 2>&1; then
             test "$(gh release view "${RELEASE_TAG}" \
               --json isDraft --jq '.isDraft')" = true

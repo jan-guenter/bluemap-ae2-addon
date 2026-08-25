@@ -3,6 +3,8 @@
  */
 package io.github.janguenter.bluemap.ae2.model;
 
+import io.github.janguenter.bluemap.ae2.api.Ae2ExtensionRegistry;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -48,13 +50,43 @@ public final class DriveCellCatalog {
         }
         Objects.requireNonNull(routeAccess, "routeAccess");
         DriveCellOwner owner = extensionOwner(itemId);
-        if (owner == null || !routeActive(routeAccess, owner)) {
+        if (owner != null) {
+            if (!routeActive(routeAccess, owner)) {
+                return Optional.empty();
+            }
+            try {
+                return ExtensionDriveCellCatalog.findNative(owner, itemId);
+            } catch (RuntimeException | LinkageError exception) {
+                disableSafely(routeAccess, owner);
+                return Optional.empty();
+            }
+        }
+
+        Ae2ExtensionRegistry.RegisteredCell external = Ae2ExtensionRegistry.Host
+                .nativeDriveCell(itemId).orElse(null);
+        if (external == null) {
+            return Optional.empty();
+        }
+        return resolveExternal(external, routeAccess);
+    }
+
+    static Optional<DriveCellDefinition> resolveExternal(
+            Ae2ExtensionRegistry.RegisteredCell external,
+            DriveCellRouteAccess routeAccess
+    ) {
+        Objects.requireNonNull(external, "external");
+        Objects.requireNonNull(routeAccess, "routeAccess");
+        if (!routeActive(routeAccess, external.routeId())) {
             return Optional.empty();
         }
         try {
-            return ExtensionDriveCellCatalog.findNative(owner, itemId);
+            return Optional.of(new DriveCellDefinition(
+                    external.definition().itemId(),
+                    external.definition().modelId(),
+                    external.routeId()
+            ));
         } catch (RuntimeException | LinkageError exception) {
-            disableSafely(routeAccess, owner);
+            disableSafely(routeAccess, external.routeId());
             return Optional.empty();
         }
     }
@@ -82,6 +114,23 @@ public final class DriveCellCatalog {
 
     public static Set<String> ids() {
         return IDS;
+    }
+
+    /** Built-in core and bundled-extension collision boundary for the public API. */
+    public static boolean isKnownItemId(String itemId) {
+        if (BY_ID.containsKey(itemId)) {
+            return true;
+        }
+        for (DriveCellOwner owner : List.of(
+                DriveCellOwner.APPLIED_FLUX,
+                DriveCellOwner.MEGA_CELLS,
+                DriveCellOwner.APPLIED_MEKANISTICS
+        )) {
+            if (ExtensionDriveCellCatalog.findNative(owner, itemId).isPresent()) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /** The 12 occupied-slot models: 11 registrations and AE2's generic default. */
@@ -205,6 +254,29 @@ public final class DriveCellCatalog {
     ) {
         try {
             routeAccess.disable(owner);
+        } catch (RuntimeException | LinkageError ignored) {
+            // A broken optional route hook cannot make the accepted core catalog unavailable.
+        }
+    }
+
+    private static boolean routeActive(
+            DriveCellRouteAccess routeAccess,
+            String routeId
+    ) {
+        try {
+            return routeAccess.isActive(routeId);
+        } catch (RuntimeException | LinkageError exception) {
+            disableSafely(routeAccess, routeId);
+            return false;
+        }
+    }
+
+    private static void disableSafely(
+            DriveCellRouteAccess routeAccess,
+            String routeId
+    ) {
+        try {
+            routeAccess.disable(routeId);
         } catch (RuntimeException | LinkageError ignored) {
             // A broken optional route hook cannot make the accepted core catalog unavailable.
         }

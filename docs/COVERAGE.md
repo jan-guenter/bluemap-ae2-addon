@@ -1,8 +1,23 @@
 # Coverage
 
+## `0.1.0-alpha.3` soft-dependent registration coverage
+
+The data-only API admits exact cable-bus part definitions and native Drive-cell
+model mappings without arbitrary callbacks. One registration is atomic;
+duplicate or reserved route, part, and item IDs reject it. Definitions freeze
+before resource rendering, route failure stays isolated, and an empty registry
+preserves all released profiles unchanged. Neutral P2P definitions retain only
+persisted `Short` frequency values.
+
+The exact Ars Energistique `2.1.1-beta` example contains one static part, two
+P2P parts, and five source cells. All the Mons `1.2.0` staging with AE2
+`19.2.17` and Ars Nouveau `5.13.0` covered 25 owner-reviewed cells: all three
+parts across six faces and all five cells together in one Drive. This accepted
+staging slice makes no production or general compatibility claim.
+
 ## `0.1.0-alpha.2` Applied Mekanistics coverage
 
-The successor candidate adds exact Applied Mekanistics `1.6.3` support only
+The published alpha.2 release adds exact Applied Mekanistics `1.6.3` support only
 for the exact All the Mons `1.2.0` tuple. `appmek-drive-cells` adds five
 ordinary and five portable chemical cells, mapped to five exact chassis
 models, in native `ae2:drive` only. Unknown IDs, malformed/count-not-one slot

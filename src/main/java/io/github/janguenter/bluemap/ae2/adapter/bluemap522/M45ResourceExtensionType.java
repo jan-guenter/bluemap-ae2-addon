@@ -5,6 +5,7 @@ package io.github.janguenter.bluemap.ae2.adapter.bluemap522;
 
 import de.bluecolored.bluemap.core.resources.pack.resourcepack.ResourcePack;
 import de.bluecolored.bluemap.core.util.Key;
+import io.github.janguenter.bluemap.ae2.api.Ae2ExtensionRegistry;
 
 import java.util.Objects;
 
@@ -27,6 +28,9 @@ final class M45ResourceExtensionType
 
     @Override
     public M45ResourceExtension create(ResourcePack pack) {
+        Ae2ExtensionRegistry.Host.freezeForResourceRendering(
+                Ae2ExtensionRegistry.Host.acquireAccess()
+        );
         return new M45ResourceExtension(pack, runtime);
     }
 }

@@ -72,7 +72,7 @@ final class ExtensionDriveCellCatalog {
             case APPLIED_FLUX -> AppFluxHolder.DEFINITIONS;
             case MEGA_CELLS -> MegaCellsHolder.DEFINITIONS;
             case APPLIED_MEKANISTICS -> AppMekHolder.DEFINITIONS;
-            case AE2, EXTENDED_AE -> throw new IllegalArgumentException(
+            case AE2, EXTENDED_AE, EXTERNAL -> throw new IllegalArgumentException(
                     "owner does not use an extension Drive route"
             );
         };

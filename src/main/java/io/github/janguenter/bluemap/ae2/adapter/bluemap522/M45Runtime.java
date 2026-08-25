@@ -49,6 +49,10 @@ final class M45Runtime {
         return route(routeId).isActive();
     }
 
+    boolean contains(String routeId) {
+        return routes.containsKey(routeId);
+    }
+
     List<ExtensionRouteActivation> routes() {
         return List.copyOf(routes.values());
     }

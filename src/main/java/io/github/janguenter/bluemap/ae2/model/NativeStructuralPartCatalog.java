@@ -3,6 +3,8 @@
  */
 package io.github.janguenter.bluemap.ae2.model;
 
+import io.github.janguenter.bluemap.ae2.api.Ae2ExtensionRegistry;
+import io.github.janguenter.bluemap.ae2.api.CableBusPartKind;
 import io.github.janguenter.bluemap.ae2.profile.extendedae.ExtendedAe2235Catalog;
 
 import java.util.Collections;
@@ -41,13 +43,25 @@ public final class NativeStructuralPartCatalog {
     /** Core plus exact extension definitions; route activation is checked by the caller. */
     public static Optional<Definition> findAny(String id) {
         Definition definition = DEFINITIONS.get(id);
-        return Optional.ofNullable(
-                definition == null ? EXTENSION_DEFINITIONS.get(id) : definition
-        );
+        if (definition == null) {
+            definition = EXTENSION_DEFINITIONS.get(id);
+        }
+        if (definition != null) {
+            return Optional.of(definition);
+        }
+        return Ae2ExtensionRegistry.Host.part(id).map(NativeStructuralPartCatalog::external);
     }
 
     public static Set<String> extensionIds() {
-        return EXTENSION_DEFINITIONS.keySet();
+        LinkedHashMap<String, Boolean> ids = new LinkedHashMap<>();
+        EXTENSION_DEFINITIONS.keySet().forEach(id -> ids.put(id, Boolean.TRUE));
+        Ae2ExtensionRegistry.Host.partIds().forEach(id -> ids.put(id, Boolean.TRUE));
+        return Set.copyOf(ids.keySet());
+    }
+
+    /** Built-in core and bundled-extension collision boundary for the public API. */
+    public static boolean isKnownId(String id) {
+        return DEFINITIONS.containsKey(id) || EXTENSION_DEFINITIONS.containsKey(id);
     }
 
     public static Definition require(String id) {
@@ -56,9 +70,29 @@ public final class NativeStructuralPartCatalog {
             definition = EXTENSION_DEFINITIONS.get(id);
         }
         if (definition == null) {
+            definition = Ae2ExtensionRegistry.Host.part(id)
+                    .map(NativeStructuralPartCatalog::external)
+                    .orElse(null);
+        }
+        if (definition == null) {
             throw new IllegalArgumentException("unsupported native face part: " + id);
         }
         return definition;
+    }
+
+    static Definition external(Ae2ExtensionRegistry.RegisteredPart registered) {
+        io.github.janguenter.bluemap.ae2.api.CableBusPartDefinition definition =
+                registered.definition();
+        return new Definition(
+                definition.partId(),
+                definition.kind() == CableBusPartKind.P2P ? Kind.P2P : Kind.STATIC,
+                false,
+                definition.cableConnectionLength(),
+                definition.facadeCutoutMin16(),
+                definition.facadeCutoutMax16(),
+                definition.modelPaths(),
+                registered.routeId()
+        );
     }
 
     private static Map<String, Definition> build() {

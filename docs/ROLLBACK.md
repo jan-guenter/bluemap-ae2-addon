@@ -154,5 +154,8 @@ its previous accepted rollback checkpoint. S1 subsequently passed its All the
 Mons 1.2.0 rollback lifecycle and bounded owner visual review and became the
 next exact accepted local rollback/checkpoint. M4/M5 later became the accepted
 successor and was published as immutable prerelease `v0.1.0-alpha.1`; the
-separate alpha.2 candidate remains pending runtime and owner acceptance.
+separate alpha.2 release was subsequently owner accepted and published as
+immutable prerelease `v0.1.0-alpha.2`. The alpha.3 external-registration path
+is removal-safe: without the soft-dependent add-on, the frozen registry is
+empty and released host profiles remain unchanged.
 A successful staging lifecycle is not a production deployment recommendation.
