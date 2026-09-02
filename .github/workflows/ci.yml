@@ -50,13 +50,16 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
-      - name: Verify exact detached BlueMap build identity
+      - name: Materialize exact BlueMap feature-branch identity
         run: |
           git -C .ci/bluemap fetch --force --tags origin
           git -C .ci/bluemap/api fetch --force --tags origin
-          test "$(git -C .ci/bluemap rev-parse --abbrev-ref HEAD)" = "HEAD"
+          git -C .ci/bluemap switch -C \
+            feature/backport-5.23-stateless-java-web-server
           test "$(git -C .ci/bluemap rev-parse HEAD)" = \
             "7e07f4e74ec1e92a6ead9aa1e66054af3e133aac"
+          test "$(git -C .ci/bluemap branch --show-current)" = \
+            "feature/backport-5.23-stateless-java-web-server"
           test "$(git -C .ci/bluemap/api rev-parse HEAD)" = \
             "285c9a60eff3ac2b0cab308ce1058d1565be0971"
 
