@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "unpublished-migration-candidate",
+  "status": "owner-accepted-release-candidate",
   "published": false,
   "version": "0.1.0-alpha.4",
   "release_date": "2026-09-02",
@@ -53,6 +53,31 @@
       "sha256": "253df62be4a4ba77eb5d3de05d1e85173d04ca0c535c8963dcd7be3698b1075c"
     }
   },
+  "combined_integration_acceptance": {
+    "atmons_version": "1.2.0",
+    "accepted_on": "2026-09-02",
+    "owner_visual_acceptance": true,
+    "candidate_manifest": {
+      "generated_at": "2026-09-02T03:59:44.239548Z",
+      "sha256": "37edfde8510131ba513e9c46092552ce524b733307490a2a562bd90f0db8a514",
+      "integration_summary": "51/51"
+    },
+    "override_lock_sha256": "90d5b236b36e6c4f92c573591c0fe6fbfa85199cda263e04173241500c26627e",
+    "gallery_layout_sha256": "4b96b7745f757023efbafb46b24899f4977ba03ad92139edba353b01d373a2d5",
+    "gallery_archive_sha256": "965a172ec54c843b0abadfbe3819cf2572d114e5b7ffb4f6e0e07f9214975363",
+    "gallery_composition_manifest_sha256": "ffa07f7cdf4b8ef7abb882e5bfac40beab613cf7f489d142cdf891880fd3fcbd",
+    "source_candidate_artifact": {
+      "file_name": "bluemap-ae2-addon-0.1.0-alpha.4.jar",
+      "size": 1254922,
+      "sha256": "41684478ad59c5d36baae99f1f6bd3f61bf6a5a92df0bbc66d93ca310b74bc99",
+      "source_commit": "756c918098961e13f24eb18d1d6454262b0e6df8"
+    },
+    "staged_overlay_artifact": {
+      "file_name": "bluemap-ae2-addon-0.1.0-alpha.3.jar",
+      "size": 1254969,
+      "sha256": "701ea88de986b249ec4691f922f42ff362b7c5d71df1853f2076a82f809d6289"
+    }
+  },
   "preserved_contract": {
     "gallery_cases": 162,
     "source_anchors": 1373,
@@ -71,7 +96,7 @@
     "sources_jar_exact_byte_gate": true,
     "publication_metadata_exact_byte_gate": true,
     "exact_input_gate": true,
-    "combined_runtime_review": false,
-    "owner_visual_acceptance_for_alpha_4": false
+    "combined_runtime_review": true,
+    "owner_visual_acceptance_for_alpha_4": true
   }
 }
