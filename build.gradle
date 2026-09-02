@@ -2761,7 +2761,7 @@ tasks.register('verifyProvenance') {
         def adaptationLicenses = manifest.local_adaptations*.spdx
         def currentClosure = manifest.current_m45_closure
         if (sha256(file('provenance/upstreams.json')) !=
-                '2f17df6178e367001c804878ed85cc8f06064078807b555fb25f546ff72dfe38' ||
+                '4e4d2a5025b1fa940f7e179773647634a0524e9eeb7e4e047905227454721d94' ||
                 sha256(file('src/main/resources/bluemap-ae2/support-matrix.json')) !=
                         '2c1dfd869a1bd5a97e099b9cdc455723f893177a76939f851d0865cff5a5f882' ||
                 manifest.schema_version != 1 ||
