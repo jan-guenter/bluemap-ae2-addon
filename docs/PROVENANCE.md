@@ -12,8 +12,8 @@ packaged in either the production or sources JAR.
 
 ## Exact current runtime evidence
 
-The unpublished `0.1.0-alpha.4` migration candidate compiles against BlueMap
-feature-backport commit `7e07f4e74ec1e92a6ead9aa1e66054af3e133aac` and exact BlueMapAPI commit
+The owner-accepted `0.1.0-alpha.4` migration candidate compiles against
+BlueMap feature-backport commit `7e07f4e74ec1e92a6ead9aa1e66054af3e133aac` and exact BlueMapAPI commit
 `285c9a60eff3ac2b0cab308ce1058d1565be0971`. Its shared Adapter API source is
 the pinned gitlink at commit `e81f08bc4bfbf02d810ec8949a019130e2e61634`
 and source tree `2f974c9bb2ba13888d69682f86f30f58922d30eb`. The shared MIT source is

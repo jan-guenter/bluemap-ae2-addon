@@ -11,8 +11,9 @@
   `e81f08bc4bfbf02d810ec8949a019130e2e61634` for runtime admission,
   identity-safe registry insertion, and resource-extension factories.
 - Preserve the accepted AE2 and extension route behavior, profiles, and
-  gallery contract. This is an unpublished integration-review candidate, not
-  an owner-accepted or releasable artifact.
+  gallery contract. The owner accepted the exact native-5.23 artifact in the
+  combined 51-add-on All the Mons 1.2.0 review on 2026-09-02 and separately
+  authorized publication.
 
 ## [0.1.0-alpha.3] - 2026-08-25
 

@@ -5,13 +5,16 @@ whose geometry is normally constructed by Minecraft client code.
 
 ## Current status
 
-**Version `0.1.0-alpha.4` is an unpublished native-5.23 integration-review
+**Version `0.1.0-alpha.4` is the owner-accepted native-5.23 release
 candidate.** It targets BlueMap backport commit
 `7e07f4e74ec1e92a6ead9aa1e66054af3e133aac`, BlueMapAPI commit
 `285c9a60eff3ac2b0cab308ce1058d1565be0971`, and shared Adapter API commit
 `e81f08bc4bfbf02d810ec8949a019130e2e61634`. It preserves the accepted
-rendering and gallery contract but has not received owner acceptance and must
-not be tagged or released.
+rendering and gallery contract. The owner accepted its exact 1,254,922-byte
+production JAR with SHA-256
+`41684478ad59c5d36baae99f1f6bd3f61bf6a5a92df0bbc66d93ca310b74bc99`
+in the combined 51-add-on All the Mons 1.2.0 review on 2026-09-02 and
+separately authorized publication through the protected release workflow.
 
 **M4/M5 is the complete owner-accepted All the Mons 1.2.0 local checkpoint.
 Its reproducible artifacts, schema-11 evidence, isolated technical lifecycle,
