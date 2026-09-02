@@ -3,7 +3,7 @@
  */
 package io.github.janguenter.bluemap.ae2;
 
-import io.github.janguenter.bluemap.ae2.adapter.bluemap522.AdapterCompatibility;
+import io.github.janguenter.bluemap.addon.adapter.api.bluemap523.BlueMapRuntimeCompatibility;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -20,13 +20,13 @@ public final class BlueMapAe2Addon implements Runnable {
     @Override
     public void run() {
         try {
-            if (!AdapterCompatibility.currentRuntimeSupported()) {
+            if (!BlueMapRuntimeCompatibility.matchesCurrent()) {
                 inactive("unsupported BlueMap internal ABI", null);
                 return;
             }
 
             Class<?> adapterType = Class.forName(
-                    "io.github.janguenter.bluemap.ae2.adapter.bluemap522.BlueMap522Adapter",
+                    "io.github.janguenter.bluemap.ae2.adapter.bluemap523.BlueMap523Adapter",
                     true,
                     BlueMapAe2Addon.class.getClassLoader()
             );

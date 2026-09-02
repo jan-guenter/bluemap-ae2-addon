@@ -41,16 +41,14 @@ public final class Ae2ExtensionRegistry {
     /** Host-only bridge used by the AE2 adapter after all add-on entrypoints ran. */
     public static final class Host {
 
-        private static final String AE2_RESOURCE_EXTENSION_TYPE =
-                "io.github.janguenter.bluemap.ae2.adapter.bluemap522."
-                        + "Ae2ResourceExtensionType";
-        private static final String M45_RESOURCE_EXTENSION_TYPE =
-                "io.github.janguenter.bluemap.ae2.adapter.bluemap522."
-                        + "M45ResourceExtensionType";
+        private static final String AE2_ADAPTER =
+                "io.github.janguenter.bluemap.ae2.adapter.bluemap523.BlueMap523Adapter";
+        private static final String M45_ADAPTER =
+                "io.github.janguenter.bluemap.ae2.adapter.bluemap523.M45Adapter";
         private static final String CABLE_BUS_RENDERER =
-                "io.github.janguenter.bluemap.ae2.adapter.bluemap522.CableBusRenderer";
+                "io.github.janguenter.bluemap.ae2.adapter.bluemap523.CableBusRenderer";
         private static final String DRIVE_ROUTE_ACCESS =
-                "io.github.janguenter.bluemap.ae2.adapter.bluemap522."
+                "io.github.janguenter.bluemap.ae2.adapter.bluemap523."
                         + "ExtensionDriveCellRouteAccess";
 
         private Host() {
@@ -68,7 +66,7 @@ public final class Ae2ExtensionRegistry {
                 throw new SecurityException("AE2 registry host class loader mismatch");
             }
             return switch (caller.getName()) {
-                case AE2_RESOURCE_EXTENSION_TYPE, M45_RESOURCE_EXTENSION_TYPE ->
+                case AE2_ADAPTER, M45_ADAPTER ->
                         new HostAccess(true, false);
                 case CABLE_BUS_RENDERER, DRIVE_ROUTE_ACCESS ->
                         new HostAccess(false, true);

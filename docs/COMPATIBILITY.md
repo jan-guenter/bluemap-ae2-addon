@@ -24,7 +24,7 @@ The local profile is intentionally pinned to one complete tuple:
 | Ars Nouveau dependency | exact version `5.13.0`; owned by the soft-dependent add-on gate |
 | Glassential | `3.4.5`, SHA-256 `1f0c8f7533bf3b2002575219ba795fd32a44cc5085c2710624ebbf69e6121471` |
 | BlueMap upstream | `5.22`, commit `fe5115d5548a30d34175b8e0449aaca280af199f` |
-| BlueMap backport | `5.22-agent.backport-5.22-mc1.21.1-2`, commit `9be321df995a1103808621d529eb72773e719d4d`; 6,467,235-byte NeoForge JAR SHA-256 `749f7647fa29764cea113114a7ab3259271bab3da22720989f2bd9fd1f3ba150` |
+| BlueMap backport | native 5.23 feature backport commit `7e07f4e74ec1e92a6ead9aa1e66054af3e133aac`; 6,545,661-byte NeoForge JAR SHA-256 `86a0323d24f472e425dda4d4e6bba2d7d8ce8315ad009930a67131128c715e62` |
 | BlueMapAPI fork | commit `285c9a60eff3ac2b0cab308ce1058d1565be0971` |
 
 AE2's own runtime metadata permits NeoForge `[21.1.169,)`; this project has

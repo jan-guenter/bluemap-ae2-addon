@@ -2,6 +2,18 @@
 
 ## Unreleased
 
+## [0.1.0-alpha.4] - 2026-09-02
+
+- Migrate the exact adapter boundary to the BlueMap 5.23 feature backport at
+  commit `7e07f4e74ec1e92a6ead9aa1e66054af3e133aac`, retaining the exact
+  BlueMapAPI commit `285c9a60eff3ac2b0cab308ce1058d1565be0971`.
+- Consume the shared BlueMap 5.23 Adapter API at commit
+  `e81f08bc4bfbf02d810ec8949a019130e2e61634` for runtime admission,
+  identity-safe registry insertion, and resource-extension factories.
+- Preserve the accepted AE2 and extension route behavior, profiles, and
+  gallery contract. This is an unpublished integration-review candidate, not
+  an owner-accepted or releasable artifact.
+
 ## [0.1.0-alpha.3] - 2026-08-25
 
 - Add a bounded data-only registration API for soft-dependent BlueMap add-ons

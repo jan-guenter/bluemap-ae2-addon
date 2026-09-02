@@ -70,11 +70,10 @@ artifact, resource-manifest, and catalog identities are recorded in
 `provenance/upstreams.json` and `docs/PROVENANCE.md`.
 
 BlueMap is copyright Blue (Lukas Rieger) and contributors and is distributed
-under the MIT License. The current runtime host is exact backport
-`5.22-agent.backport-5.22-mc1.21.1-2` at commit
-`9be321df995a1103808621d529eb72773e719d4d`; its 6,467,235-byte NeoForge JAR
-has SHA-256
-`749f7647fa29764cea113114a7ab3259271bab3da22720989f2bd9fd1f3ba150`.
+under the MIT License. The current runtime host is the native-5.23 feature
+backport at commit `7e07f4e74ec1e92a6ead9aa1e66054af3e133aac`; its
+6,545,661-byte NeoForge JAR has SHA-256
+`86a0323d24f472e425dda4d4e6bba2d7d8ce8315ad009930a67131128c715e62`.
 The accepted M0-M3f runtime record instead remains bound to historical
 backport commit `fe79cf5b9f4d8ca28f4e41c2aeb9ef792e336a8d`.
 This project adapts exact-ABI integration, ambient-
@@ -82,6 +81,10 @@ occlusion, map-color and original-resource-fallback patterns into its local
 LGPL adapter but does not bundle BlueMap source or binaries. The complete MIT
 copyright and permission notice is retained in `LICENSES/MIT.txt` and in the
 production and sources JARs.
+
+The add-on compiles and packages the four MIT-licensed shared Adapter API
+classes from commit `e81f08bc4bfbf02d810ec8949a019130e2e61634`. The complete
+Adapter API MIT license is packaged as `META-INF/LICENSE-bluemap-addon-adapter-api`.
 
 ## Modification notice
 

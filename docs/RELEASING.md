@@ -2,6 +2,10 @@
 
 ## Current publication gate
 
+Version `0.1.0-alpha.4` is an unpublished native-5.23 migration candidate.
+It has no owner acceptance, release manifest, tag, or publication authority.
+It must pass combined review before any release preparation begins.
+
 M4/M5 is the complete owner-accepted All the Mons 1.2.0 local checkpoint. Its
 exact M45 verifier, two byte-identical builds, final schema-11
 evidence, deterministic live-map capture, and isolated technical lifecycle

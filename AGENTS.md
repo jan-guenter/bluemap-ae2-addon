@@ -24,9 +24,9 @@ Portfolio evidence remains in the parent workspace under
 | ExtendedAE | `1.21-2.2.35-neoforge`, SHA-256 `14a2860fa2c747e9dda2279b8933fac6311fecfee166c765171022b902591c65` |
 | ExtendedAE source | tag `1.21-2.2.35-neoforge`, commit `3776bc854458301bbcc9a44a8238d70a0e3dc00d` |
 | Glassential | `3.4.5`, SHA-256 `1f0c8f7533bf3b2002575219ba795fd32a44cc5085c2710624ebbf69e6121471` |
-| BlueMap upstream | `5.22`, commit `fe5115d5548a30d34175b8e0449aaca280af199f` |
-| BlueMap backport | `5.22-agent.backport-5.22-mc1.21.1-2`, commit `9be321df995a1103808621d529eb72773e719d4d`; 6,467,235-byte NeoForge JAR SHA-256 `749f7647fa29764cea113114a7ab3259271bab3da22720989f2bd9fd1f3ba150` |
+| BlueMap backport | native 5.23 feature backport commit `7e07f4e74ec1e92a6ead9aa1e66054af3e133aac`; 6,545,661-byte NeoForge JAR SHA-256 `86a0323d24f472e425dda4d4e6bba2d7d8ce8315ad009930a67131128c715e62` |
 | BlueMapAPI fork | commit `285c9a60eff3ac2b0cab308ce1058d1565be0971` |
+| Shared Adapter API | commit `e81f08bc4bfbf02d810ec8949a019130e2e61634`, source tree `2f974c9bb2ba13888d69682f86f30f58922d30eb` |
 
 The human-accepted M0-M3f artifacts remain historical All the Mons `1.1.1`
 (pack commit `94a224acf6eace3edf7ea64e6033b458f5bda288`) / NeoForge
@@ -446,7 +446,7 @@ verified after publication. Root workspace integration remains separate.
 - Never bundle BlueMap, BlueNBT, AE2, Minecraft, NeoForge, modpack resources,
   worlds, screenshots, chunks or third-party JARs.
 - Compile against the exact Java 21 BlueMap backport and keep internal calls
-  inside `adapter/bluemap522`.
+  inside `adapter/bluemap523`.
 - Unknown BlueMap/AE2 builds stay inactive. Unsupported or typed-malformed
   block data that reaches the add-on callback uses the direct original-resource
   fallback without blocking that tile. Raw NBT corruption before BlueMap's
@@ -454,7 +454,8 @@ verified after publication. Root workspace integration remains separate.
 - Register the bounded cable-bus, native Drive, Extended Drive and Crafting
   Monitor DTOs before BlueNBT freezes its resolver, but do not deserialize NBT
   in the add-on entrypoint.
-- Registry insertion is verified by object identity; BlueMap 5.22's registry
+- Registry insertion is verified by object identity through the shared 5.23
+  Adapter API; BlueMap's registry
   return value is not trusted.
 - The cable-bus transient policy is `idle-off-unknown`; Drive LEDs use
   `static-offline-unknown`. Never claim live power, channels, connection or
