@@ -11681,11 +11681,12 @@ class AnalyzerTest(unittest.TestCase):
         self.assertEqual(1, provenance["schema_version"])
         self.assertEqual("LGPL-3.0-only", provenance["project_license"])
         self.assertEqual(
-            "9be321df995a1103808621d529eb72773e719d4d",
+            "7e07f4e74ec1e92a6ead9aa1e66054af3e133aac",
             provenance["bluemap"]["backport_commit"],
         )
         source_root_candidates = (
             PROJECT_ROOT.parent / "bluemap-backport",
+            PROJECT_ROOT.parent.parent / "bluemap",
             PROJECT_ROOT / ".ci" / "bluemap",
         )
         source_root = next(

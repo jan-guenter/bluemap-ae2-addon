@@ -14,6 +14,10 @@ base {
     archivesName = artifact_id
 }
 
+sourceSets {
+    main.java.srcDir 'modules/bluemap-addon-adapter-api/src/main/java'
+}
+
 repositories {
     mavenCentral()
     maven {
@@ -59,7 +63,7 @@ tasks.register('testRuntimeEvidenceAnalyzer', Exec) {
             '-s', 'tools/tests', '-p', 'test_*.py', '-v'
 }
 
-def expectedBlueMapCommit = '9be321df995a1103808621d529eb72773e719d4d'
+def expectedBlueMapCommit = '7e07f4e74ec1e92a6ead9aa1e66054af3e133aac'
 def expectedBlueMapApiCommit = '285c9a60eff3ac2b0cab308ce1058d1565be0971'
 def blueMapSourceDir = providers.gradleProperty('bluemapSourcePath')
         .map { file(it) }
@@ -107,6 +111,10 @@ tasks.named('jar', Jar).configure {
         into 'META-INF'
         rename { 'LICENSE-bluemap-ae2-addon' }
     }
+    from('modules/bluemap-addon-adapter-api/LICENSE') {
+        into 'META-INF'
+        rename { 'LICENSE-bluemap-addon-adapter-api' }
+    }
     from('NOTICE.md') {
         into 'META-INF'
         rename { 'NOTICE-bluemap-ae2-addon.md' }
@@ -128,6 +136,10 @@ tasks.named('sourcesJar', Jar).configure {
         into 'META-INF'
         rename { 'LICENSE-bluemap-ae2-addon' }
     }
+    from('modules/bluemap-addon-adapter-api/LICENSE') {
+        into 'META-INF'
+        rename { 'LICENSE-bluemap-addon-adapter-api' }
+    }
     from('NOTICE.md') {
         into 'META-INF'
         rename { 'NOTICE-bluemap-ae2-addon.md' }
@@ -145,6 +157,34 @@ tasks.named('sourcesJar', Jar).configure {
 }
 
 def productionJar = tasks.named('jar', Jar).flatMap { it.archiveFile }
+def sharedAdapterApiPackage =
+        'io/github/janguenter/bluemap/addon/adapter/api/bluemap523/'
+def sharedAdapterApiClasses = [
+        'BlueMapRuntimeCompatibility.class',
+        'RegistryGuard.class',
+        'ResourceExtensionType.class',
+        'SyntheticDispatch.class'
+].collect { sharedAdapterApiPackage + it }
+def sharedAdapterApiSources = [
+        'BlueMapRuntimeCompatibility.java',
+        'RegistryGuard.java',
+        'ResourceExtensionType.java',
+        'SyntheticDispatch.java'
+].collect { sharedAdapterApiPackage + it }
+def legacyLocalAdapterPackage =
+        'io/github/janguenter/bluemap/ae2/adapter/bluemap522/'
+def currentLocalAdapterPackage =
+        'io/github/janguenter/bluemap/ae2/adapter/bluemap523/'
+def displacedAdapterClasses = [
+        'AdapterCompatibility.class',
+        'Ae2ResourceExtensionType.class',
+        'M45ResourceExtensionType.class'
+].collect { currentLocalAdapterPackage + it }
+def displacedAdapterSources = [
+        'AdapterCompatibility.java',
+        'Ae2ResourceExtensionType.java',
+        'M45ResourceExtensionType.java'
+].collect { currentLocalAdapterPackage + it }
 
 tasks.register('verifyProductionJar') {
     dependsOn tasks.named('jar')
@@ -223,13 +263,14 @@ tasks.register('verifyProductionJar') {
                             'required-resources.tsv',
                     'bluemap-ae2/support-matrix.json',
                     'META-INF/LICENSE-bluemap-ae2-addon',
+                    'META-INF/LICENSE-bluemap-addon-adapter-api',
                     'META-INF/LICENSES/GPL-3.0-only.txt',
                     'META-INF/LICENSES/LGPL-3.0-only.txt',
                     'META-INF/LICENSES/MIT.txt',
                     'META-INF/NOTICE-bluemap-ae2-addon.md',
                     'META-INF/THIRD_PARTY-bluemap-ae2-addon.md',
                     'META-INF/bluemap-ae2/upstreams.json'
-            ]
+            ] + sharedAdapterApiClasses
             def missing = requiredEntries.findAll { !entries.contains(it) }
             if (!missing.isEmpty()) {
                 throw new GradleException("Production JAR is missing required entries: ${missing}")
@@ -2477,7 +2518,11 @@ tasks.register('verifyProductionJar') {
                         it.startsWith('assets/expandedae/') ||
                         it.startsWith('assets/advanced_ae/') ||
                         it.startsWith('assets/appmek/') ||
-                        it.startsWith('assets/mekanism/')
+                        it.startsWith('assets/mekanism/') ||
+                        it.startsWith(legacyLocalAdapterPackage) ||
+                        displacedAdapterClasses.contains(it) ||
+                        (it.startsWith(sharedAdapterApiPackage) &&
+                                !sharedAdapterApiClasses.contains(it))
             }
             if (!forbidden.isEmpty()) {
                 throw new GradleException("Production JAR contains forbidden entries: ${forbidden}")
@@ -2487,14 +2532,16 @@ tasks.register('verifyProductionJar') {
                 !(it == 'META-INF/MANIFEST.MF') &&
                         !(it in requiredEntries) &&
                         !(it.startsWith('io/github/janguenter/bluemap/ae2/') &&
-                                it.endsWith('.class'))
+                                it.endsWith('.class')) &&
+                        !(sharedAdapterApiClasses.contains(it))
             }
             if (!unexpected.isEmpty()) {
                 throw new GradleException("Production JAR contains unexpected entries: ${unexpected}")
             }
 
             def projectClasses = entries.findAll {
-                it.startsWith('io/github/janguenter/bluemap/ae2/') && it.endsWith('.class')
+                (it.startsWith('io/github/janguenter/bluemap/ae2/') ||
+                        sharedAdapterApiClasses.contains(it)) && it.endsWith('.class')
             }
             if (projectClasses.isEmpty()) {
                 throw new GradleException('Production JAR contains no project classes')
@@ -2615,6 +2662,7 @@ tasks.register('verifySourcesJar') {
                             'required-resources.tsv',
                     'bluemap-ae2/support-matrix.json',
                     'META-INF/LICENSE-bluemap-ae2-addon',
+                    'META-INF/LICENSE-bluemap-addon-adapter-api',
                     'META-INF/LICENSES/GPL-3.0-only.txt',
                     'META-INF/LICENSES/LGPL-3.0-only.txt',
                     'META-INF/LICENSES/MIT.txt',
@@ -2640,7 +2688,11 @@ tasks.register('verifySourcesJar') {
                         it.startsWith('assets/expandedae/') ||
                         it.startsWith('assets/advanced_ae/') ||
                         it.startsWith('assets/appmek/') ||
-                        it.startsWith('assets/mekanism/')
+                        it.startsWith('assets/mekanism/') ||
+                        it.startsWith(legacyLocalAdapterPackage) ||
+                        displacedAdapterSources.contains(it) ||
+                        (it.startsWith(sharedAdapterApiPackage) &&
+                                !sharedAdapterApiSources.contains(it))
             }
             if (!forbiddenThirdParty.isEmpty()) {
                 throw new GradleException(
@@ -2709,7 +2761,7 @@ tasks.register('verifyProvenance') {
         def adaptationLicenses = manifest.local_adaptations*.spdx
         def currentClosure = manifest.current_m45_closure
         if (sha256(file('provenance/upstreams.json')) !=
-                '2f17df6178e367001c804878ed85cc8f06064078807b555fb25f546ff72dfe38' ||
+                '4e4d2a5025b1fa940f7e179773647634a0524e9eeb7e4e047905227454721d94' ||
                 sha256(file('src/main/resources/bluemap-ae2/support-matrix.json')) !=
                         '2c1dfd869a1bd5a97e099b9cdc455723f893177a76939f851d0865cff5a5f882' ||
                 manifest.schema_version != 1 ||
@@ -3914,7 +3966,7 @@ tasks.register('verifyPublicationPom') {
                 pom.version.text() != project.version.toString() ||
                 pom.name.text() != addon_name ||
                 pom.description.text() !=
-                        'BlueMap 5.22 renderer add-on for Applied Energistics 2' ||
+                        'BlueMap 5.23 renderer add-on for Applied Energistics 2' ||
                 pom.url.text() != 'https://github.com/jan-guenter/bluemap-ae2-addon' ||
                 pom.licenses.license.url.text() !=
                         'https://spdx.org/licenses/LGPL-3.0-only.html' ||
@@ -3947,7 +3999,7 @@ publishing {
 
             pom {
                 name = addon_name
-                description = 'BlueMap 5.22 renderer add-on for Applied Energistics 2'
+                description = 'BlueMap 5.23 renderer add-on for Applied Energistics 2'
                 url = 'https://github.com/jan-guenter/bluemap-ae2-addon'
                 licenses {
                     license {

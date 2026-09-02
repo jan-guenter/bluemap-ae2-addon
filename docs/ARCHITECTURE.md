@@ -4,8 +4,8 @@
 
 This project is a plain BlueMap add-on. It is not a NeoForge mod and has no
 runtime linkage to AE2-family mod, Athena, or Minecraft classes. The only
-production integration surface is BlueMap 5.22's internal renderer, resource-
-pack and block-entity registries, contained under `adapter/bluemap522`.
+production integration surface is the exact BlueMap 5.23 feature-backport renderer, resource-
+pack and block-entity registries, contained under `adapter/bluemap523`.
 
 The current packages have deliberately narrow duties:
 
@@ -13,7 +13,7 @@ The current packages have deliberately narrow duties:
 | --- | --- |
 | `api` | Bounded data-only registration for soft-dependent add-ons: immutable cable-bus part and native-Drive cell definitions plus isolated route state |
 | `activation` | Family-wide core activation plus independently fail-closed accepted routes, eight published M4/M5 routes, and one unreleased AppMek route |
-| `adapter/bluemap522` | Exact BlueMap 5.22 registration, bounded cable-bus/Drive/Crafting Monitor/M3-completion/extension DTOs, native and extension neighborhood projection, resource routing, world access, geometry emission and original-resource fallback |
+| `adapter/bluemap523` | Exact BlueMap 5.23 registration, bounded cable-bus/Drive/Crafting Monitor/M3-completion/extension DTOs, native and extension neighborhood projection, resource routing, world access, geometry emission and original-resource fallback |
 | `diagnostics` | Bounded, location-free reason counters and one-time warnings |
 | `model` | BlueMap-independent cable-bus/native-structural/Drive/glass/crafting/quantum/M3-completion and extension catalogs/snapshots, strict decoders, topology, bay mapping, position RNG and neutral geometry |
 | `profile` | Exact AE2 19.2.17 plus exact All the Mons 1.2.0 AppliedFlux, ME Requester, Expanded AE, MEGA Cells, Advanced AE/Athena, ExtendedAE, Applied Mekanistics and Mekanism artifact/resource identities, operator disablement and milestone-bounded activation |
@@ -40,9 +40,10 @@ contract is in [EXTENSION_API.md](EXTENSION_API.md).
 
 ## Activation sequence
 
-1. `BlueMapAe2Addon` checks the audited BlueMap 5.22 internal ABI before
+1. `BlueMapAe2Addon` uses the shared Adapter API to check the audited BlueMap
+   5.23 feature-backport ABI before
    loading the adapter. An unknown or incomplete ABI remains inactive.
-2. `BlueMap522Adapter` registers the bounded `ae2:cable_bus`, `ae2:drive`,
+2. `BlueMap523Adapter` registers the bounded `ae2:cable_bus`, `ae2:drive`,
    `extendedae:ex_drive` and Crafting Monitor DTOs plus the block-only
    M3c/M3d/M3e/M3f renderers, the S1 native-structural cable-bus route and
    their bounded DTOs before any

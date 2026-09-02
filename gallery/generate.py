@@ -1827,19 +1827,20 @@ CURRENT_SUPPORT_MATRIX_SIZE_BYTES = 37_498
 CURRENT_SUPPORT_MATRIX_SHA256 = (
     "2c1dfd869a1bd5a97e099b9cdc455723f893177a76939f851d0865cff5a5f882"
 )
-CURRENT_PROVENANCE_SIZE_BYTES = 134_092
+CURRENT_PROVENANCE_SIZE_BYTES = 134_512
 CURRENT_PROVENANCE_SHA256 = (
-    "2f17df6178e367001c804878ed85cc8f06064078807b555fb25f546ff72dfe38"
+    "4e4d2a5025b1fa940f7e179773647634a0524e9eeb7e4e047905227454721d94"
 )
 CURRENT_ACCEPTED_S1_SUPPORT_PROJECTION_SHA256 = (
     "8d594a89eb71dfb4905b2e2799554b65e4787b175d0323e984e5f6053b8efc94"
 )
 # This current-companion semantic projection intentionally includes the
-# additive schema-12 AppMek/Mekanism provenance.  The historical accepted S1
+# additive schema-12 AppMek/Mekanism provenance and native-5.23 host pin. The
+# historical accepted S1
 # bytes remain separately frozen by S1_PROVENANCE_SIZE_BYTES/SHA256 above and
 # in the byte-exact schema-11 manifest projection.
 CURRENT_ACCEPTED_S1_PROVENANCE_PROJECTION_SHA256 = (
-    "441dad9d4253d6e2079cf885260022f8ce3d33d8d2a03f63c648d733f09c89b5"
+    "8f0a5bc64e4f085bf5719937a85333cb12f14901eb9f06089cd9ddf8b42ec431"
 )
 CURRENT_ACCEPTED_S1_PROFILE_IDS = (
     "ae2-quartz-glass",

@@ -1,12 +1,13 @@
 # Third-party software
 
-The production JAR contains the project's LGPL-covered adaptation of the
-source behavior recorded below, but no third-party classes, binaries,
-textures, models, source files, or JARs.
+The production JAR contains the project's LGPL-covered adaptation and four
+MIT-licensed shared Adapter API classes, but no upstream mod classes,
+binaries, textures, models, source files, or JARs.
 
 | Project | Use | Version/evidence | License | Bundled |
 | --- | --- | --- | --- | --- |
-| BlueMap | Compile/runtime host through internal interfaces | upstream `5.22`; current backport `5.22-agent.backport-5.22-mc1.21.1-2`, commit `9be321df995a1103808621d529eb72773e719d4d`, 6,467,235-byte NeoForge JAR SHA-256 `749f7647fa29764cea113114a7ab3259271bab3da22720989f2bd9fd1f3ba150` | MIT | No |
+| BlueMap | Compile/runtime host through internal interfaces | native 5.23 feature backport commit `7e07f4e74ec1e92a6ead9aa1e66054af3e133aac`, 6,545,661-byte NeoForge JAR SHA-256 `86a0323d24f472e425dda4d4e6bba2d7d8ce8315ad009930a67131128c715e62` | MIT | No |
+| BlueMap Add-on Adapter API | Shared runtime admission, registry, extension-factory, and synthetic-dispatch helpers | commit `e81f08bc4bfbf02d810ec8949a019130e2e61634`, source tree `2f974c9bb2ba13888d69682f86f30f58922d30eb` | MIT | Four classes and corresponding sources |
 | BlueNBT | Runtime NBT deserialization supplied by BlueMap | `3.5.1` | MIT | No |
 | Applied Energistics 2 | Installed resources, persisted cable/facade/Drive/crafting/quantum/paint formats, adapted cable/native-Drive behavior, exact M2 facade evidence, exact M3c connected-quartz-glass evidence, exact M3d formed-crafting evidence, exact M3e quantum evidence, exact M3f paint/Sky Stone chest/crank/inscriber/spatial-pylon evidence, and exact S1 native face-part/facade/attached-device structural evidence | `19.2.17`, runtime SHA-256 `460d779a0609b81409907d9956de8f6f70a1b0912257e3e5c3c7e75ac9630e95`, sources SHA-256 `d2f451203cb61c2d21fae52c683083d2f72441ca7d26725f4df5934290492e6a`; tag commit `79ee2c704ad62941a426c26b1cb1f76ef5b2ee5a` | implementation LGPL-3.0-or-later; API MIT; assets CC BY-NC-SA 3.0; text CC0 | No |
 | Applied Mekanistics | Exact unreleased ten-cell/five-chassis native-Drive resource and model-registration evidence; resources remain operator installed | `1.6.3`, 149,709 bytes, SHA-256 `8946fea39451dbce8e709dedbef40a52ba337bdf7a25ac0c4b503800b1bf0773`; tag commit `137f24bb9a46775ddd5a620055270b5e8a540f5a` | code LGPL-3.0-or-later; assets CC BY-NC-SA 3.0 | No |

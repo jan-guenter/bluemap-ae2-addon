@@ -1,24 +1,24 @@
 {
   "bluemap": {
-    "backport_commit": "9be321df995a1103808621d529eb72773e719d4d",
+    "backport_commit": "7e07f4e74ec1e92a6ead9aa1e66054af3e133aac",
     "bundled": false,
     "license": "MIT",
     "source_blobs": {
-      "common/webapp/src/js/map/TileLoader.js": "9aadafada2532d568ce4aaa18b0a140d146389a3",
+      "common/webapp/src/js/map/TileLoader.js": "2cede24f163d6ca33e82add355208186684677c6",
       "common/webapp/src/js/map/hires/PRBMLoader.js": "d3808561af460e14d9563f98162c11710aca8d9f",
       "core/src/main/java/de/bluecolored/bluemap/core/resources/adapter/KeyAdapter.java": "f4bb2aa464d7f09080d485ceea70e2e2e474880b",
       "core/src/main/java/de/bluecolored/bluemap/core/resources/adapter/ResourcesGson.java": "53d7b767a3af1e9b6dbda453c6d40bba18db0bd2",
       "core/src/main/java/de/bluecolored/bluemap/core/resources/adapter/Vector2iAdapter.java": "e67325af81a68ff31af937c9092eae118ef692ad",
       "core/src/main/java/de/bluecolored/bluemap/core/map/MapSettingsSerializer.java": "c84caf52c9e4646ab74f1cc1195cc8234256f75e",
       "core/src/main/java/de/bluecolored/bluemap/core/map/TextureGallery.java": "6197684b916551eeb8e10703e8b8378a9543fd51",
-      "core/src/main/java/de/bluecolored/bluemap/core/map/hires/HiresModelManager.java": "dcd6085a2bb856b4ce4737ab41e73c38339b58fc",
+      "core/src/main/java/de/bluecolored/bluemap/core/map/hires/HiresModelManager.java": "a37337c299251fa22481836c7bc8ae23cb4044b3",
       "core/src/main/java/de/bluecolored/bluemap/core/map/hires/PRBMWriter.java": "902b60695e2292a5362b74fdf2b28af34cc74991",
       "core/src/main/java/de/bluecolored/bluemap/core/map/hires/block/BlockRenderPass.java": "29fd49a9468eb76c50c9a3b68cefc9be61150708",
       "core/src/main/java/de/bluecolored/bluemap/core/resources/pack/resourcepack/texture/Texture.java": "10b6b7ed17fafd012db460cd7d22fc549bfb1ff2",
       "core/src/main/java/de/bluecolored/bluemap/core/storage/compression/BufferedCompression.java": "1ae1375298445230ca546c10c81685fa8514a8c0",
       "core/src/main/java/de/bluecolored/bluemap/core/storage/compression/Compression.java": "905837c8532be4bb407dd5ac3b55bb834fd6d7c9",
-      "core/src/main/java/de/bluecolored/bluemap/core/storage/file/FileGridStorage.java": "8dcaaffca4b3c78e88d3115214f6c8e9435a8f01",
-      "core/src/main/java/de/bluecolored/bluemap/core/storage/file/FileItemStorage.java": "1604b35a0ade97968d9cedde247e66097390440e",
+      "core/src/main/java/de/bluecolored/bluemap/core/storage/file/FileGridStorage.java": "2febcd0de833d991dbe33b8c2b82af85a8e76945",
+      "core/src/main/java/de/bluecolored/bluemap/core/storage/file/FileItemStorage.java": "d5d6830d97edfc4709814724a3de6b1b8cbf761c",
       "core/src/main/java/de/bluecolored/bluemap/core/storage/file/FileMapStorage.java": "58dce1add285372a36a880f7a3184650b6586d82",
       "core/src/main/java/de/bluecolored/bluemap/core/util/Grid.java": "c7d94929e21936c8fd4f9f1b91a395daa5ed4b90",
       "core/src/main/java/de/bluecolored/bluemap/core/util/Key.java": "edce0205a38ff0d72868c33d59011fd96fe34d26"
@@ -33,7 +33,7 @@
     "texture-gallery ordinal to resourcePath mapping"
   ],
   "local": "tools/analyze_prbm.py",
-  "modified_on": "2026-08-03",
+  "modified_on": "2026-09-02",
   "project_license": "LGPL-3.0-only",
   "schema_version": 1
 }

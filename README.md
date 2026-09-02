@@ -1,9 +1,20 @@
 # BlueMap AE2 Add-on
 
-A BlueMap 5.22 add-on for statically rendering Applied Energistics 2 blocks
+A BlueMap 5.23 add-on for statically rendering Applied Energistics 2 blocks
 whose geometry is normally constructed by Minecraft client code.
 
 ## Current status
+
+**Version `0.1.0-alpha.4` is the owner-accepted native-5.23 release
+candidate.** It targets BlueMap backport commit
+`7e07f4e74ec1e92a6ead9aa1e66054af3e133aac`, BlueMapAPI commit
+`285c9a60eff3ac2b0cab308ce1058d1565be0971`, and shared Adapter API commit
+`e81f08bc4bfbf02d810ec8949a019130e2e61634`. It preserves the accepted
+rendering and gallery contract. The owner accepted its exact 1,254,922-byte
+production JAR with SHA-256
+`41684478ad59c5d36baae99f1f6bd3f61bf6a5a92df0bbc66d93ca310b74bc99`
+in the combined 51-add-on All the Mons 1.2.0 review on 2026-09-02 and
+separately authorized publication through the protected release workflow.
 
 **M4/M5 is the complete owner-accepted All the Mons 1.2.0 local checkpoint.
 Its reproducible artifacts, schema-11 evidence, isolated technical lifecycle,
@@ -15,11 +26,10 @@ target is All the Mons `1.2.0` at pack commit
 `21.1.248`, Java `21`, AE2 `19.2.17`, AppliedFlux
 `1.21-2.1.5-neoforge`, ME Requester `1.21.1-1.4.3`, Expanded AE `2.1.1`,
 MEGA Cells `4.11.0`, Advanced AE `1.6.12-1.21.1`, Athena `4.0.6`, ExtendedAE
-`1.21-2.2.35-neoforge`, and BlueMap backport
-`5.22-agent.backport-5.22-mc1.21.1-2` at commit
-`9be321df995a1103808621d529eb72773e719d4d`. Its canonical 6,467,235-byte
+`1.21-2.2.35-neoforge`, and the native-5.23 BlueMap feature backport at commit
+`7e07f4e74ec1e92a6ead9aa1e66054af3e133aac`. Its canonical 6,545,661-byte
 NeoForge JAR has SHA-256
-`749f7647fa29764cea113114a7ab3259271bab3da22720989f2bd9fd1f3ba150`.
+`86a0323d24f472e425dda4d4e6bba2d7d8ce8315ad009930a67131128c715e62`.
 
 The owner accepted the exact `0.1.0-alpha.2` Applied Mekanistics review on
 2026-08-19 and separately authorized publication. It was published as
@@ -603,7 +613,7 @@ BlueMap or Applied Energistics 2, and is not recommended for production.
 ```text
 BlueMap add-on entrypoint
         |
-exact BlueMap 5.22 adapter and inactive-by-default hooks
+exact BlueMap 5.23 adapter and inactive-by-default hooks
         |
 exact AE2 19.2.17, S1 and nine All the Mons 1.2.0 extension/dependency gates
         |

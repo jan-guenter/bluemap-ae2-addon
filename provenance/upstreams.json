@@ -525,6 +525,14 @@
     "family_private_scope": "AE2 facade clipping, aperture, stilt, join, topology, and occlusion algorithms",
     "production_runtime": "deferred until a third consumer passes a separate promotion ADR"
   },
+  "shared_adapter_api": {
+    "repository": "https://github.com/jan-guenter/bluemap-addon-adapter-api",
+    "commit": "e81f08bc4bfbf02d810ec8949a019130e2e61634",
+    "source_tree": "2f974c9bb2ba13888d69682f86f30f58922d30eb",
+    "license": "MIT",
+    "bundled": true,
+    "scope": "runtime admission, identity-safe registry insertion, keyed resource-extension factories, and synthetic dispatch"
+  },
   "ae2": {
     "repository": "https://github.com/AppliedEnergistics/Applied-Energistics-2",
     "evidence_tier": "T4_SOURCE_CORRELATED",
@@ -1831,8 +1839,8 @@
     "backport_repository": "https://github.com/jan-guenter/BlueMap",
     "upstream_version": "5.22",
     "upstream_commit": "fe5115d5548a30d34175b8e0449aaca280af199f",
-    "backport_version": "5.22-agent.backport-5.22-mc1.21.1-2",
-    "backport_commit": "9be321df995a1103808621d529eb72773e719d4d",
+    "backport_version": "5.22-feature.backport-5.23-stateless-java-web-server-46",
+    "backport_commit": "7e07f4e74ec1e92a6ead9aa1e66054af3e133aac",
     "api_commit": "285c9a60eff3ac2b0cab308ce1058d1565be0971",
     "license": "MIT",
     "bundled": false,
@@ -1868,7 +1876,7 @@
       "upstream_license_note": "Applied Mekanistics declares code LGPL-3.0-or-later and assets CC BY-NC-SA 3.0. Mekanism declares MIT. Every exact resource remains operator installed; only identifiers, sizes, digests, and independently authored semantic signatures are retained."
     },
     {
-      "local": "tools/ae2_m3_completion_contract.py, tools/generate_ae2_m3_completion_profile.py, tools/verify_m3_completion_artifact.py, src/main/java/io/github/janguenter/bluemap/ae2/profile/Ae219217M3CompletionProfile.java, and the M3f completion implementation files under activation, model, and adapter/bluemap522",
+      "local": "tools/ae2_m3_completion_contract.py, tools/generate_ae2_m3_completion_profile.py, tools/verify_m3_completion_artifact.py, src/main/java/io/github/janguenter/bluemap/ae2/profile/Ae219217M3CompletionProfile.java, and the M3f completion implementation files under activation, model, and adapter/bluemap523",
       "upstream_files": [
         "src/main/java/appeng/block/paint/PaintSplotches.java",
         "src/main/java/appeng/block/paint/PaintSplotchesBakedModel.java",
@@ -1907,7 +1915,7 @@
       "upstream_license_note": "AE2 implementation sources are LGPL-3.0-or-later. Models and textures remain operator-installed CC BY-NC-SA 3.0 resources and are referenced only by identifiers, byte sizes, and digests."
     },
     {
-      "local": "tools/ae2_crafting_contract.py, tools/generate_ae2_crafting_profile.py, tools/verify_crafting_artifact.py, src/main/java/io/github/janguenter/bluemap/ae2/profile/Ae219217CraftingProfile.java, and the M3d crafting implementation files under activation, model, and adapter/bluemap522",
+      "local": "tools/ae2_crafting_contract.py, tools/generate_ae2_crafting_profile.py, tools/verify_crafting_artifact.py, src/main/java/io/github/janguenter/bluemap/ae2/profile/Ae219217CraftingProfile.java, and the M3d crafting implementation files under activation, model, and adapter/bluemap523",
       "upstream_files": [
         "src/main/java/appeng/block/AEBaseBlock.java",
         "src/main/java/appeng/block/crafting/AbstractCraftingUnitBlock.java",
@@ -1929,7 +1937,7 @@
       "upstream_license_note": "AE2 implementation sources, MEGA Cells, Expanded AE, Advanced AE and ExtendedAE declare LGPLv3-family terms. The local adaptation remains LGPL-3.0-only; upstream assets and exact evidence artifacts remain operator installed and are referenced only by identifiers, byte sizes, and digests."
     },
     {
-      "local": "tools/ae2_quartz_glass_contract.py, tools/verify_quartz_glass_artifact.py, src/main/java/io/github/janguenter/bluemap/ae2/profile/Ae219217QuartzGlassProfile.java, and the M3c quartz-glass implementation files under activation, model, and adapter/bluemap522",
+      "local": "tools/ae2_quartz_glass_contract.py, tools/verify_quartz_glass_artifact.py, src/main/java/io/github/janguenter/bluemap/ae2/profile/Ae219217QuartzGlassProfile.java, and the M3c quartz-glass implementation files under activation, model, and adapter/bluemap523",
       "upstream_files": [
         "src/main/java/appeng/decorative/solid/QuartzGlassBlock.java",
         "src/main/java/appeng/decorative/solid/QuartzLampBlock.java",
@@ -1947,7 +1955,7 @@
       "upstream_license_note": "AE2 implementation sources are LGPL-3.0-or-later. Models and textures remain operator-installed CC BY-NC-SA 3.0 resources and are referenced only by identifiers, byte sizes, and digests."
     },
     {
-      "local": "tools/extendedae_contract.py, tools/verify_extendedae_artifact.py, src/main/java/io/github/janguenter/bluemap/ae2/profile/extendedae, and the ExtendedAe implementation files under activation, model, and adapter/bluemap522",
+      "local": "tools/extendedae_contract.py, tools/verify_extendedae_artifact.py, src/main/java/io/github/janguenter/bluemap/ae2/profile/extendedae, and the ExtendedAe implementation files under activation, model, and adapter/bluemap523",
       "upstream_files": [
         "src/main/java/com/glodblock/github/extendedae/common/blocks/BlockExDrive.java",
         "src/main/java/com/glodblock/github/extendedae/common/tileentities/TileExDrive.java",
@@ -2002,7 +2010,7 @@
       "upstream_license_note": "AE2 implementation sources are LGPL-3.0-or-later; the referenced AEColor and AECable API sources are MIT. Complete notices are retained."
     },
     {
-      "local": "src/main/java/io/github/janguenter/bluemap/ae2/model/CableBusDecoder.java and src/main/java/io/github/janguenter/bluemap/ae2/adapter/bluemap522/Ae2CableBusBlockEntityData.java",
+      "local": "src/main/java/io/github/janguenter/bluemap/ae2/model/CableBusDecoder.java and src/main/java/io/github/janguenter/bluemap/ae2/adapter/bluemap523/Ae2CableBusBlockEntityData.java",
       "upstream_files": [
         "src/main/java/appeng/parts/CableBusContainer.java",
         "src/main/java/appeng/blockentity/networking/CableBusBlockEntity.java",
@@ -2017,7 +2025,7 @@
       "spdx": "LGPL-3.0-only"
     },
     {
-      "local": "src/main/java/io/github/janguenter/bluemap/ae2/model/PartOrientation.java, src/main/java/io/github/janguenter/bluemap/ae2/model/FacadeGeometry.java, and the M2 paths in src/main/java/io/github/janguenter/bluemap/ae2/adapter/bluemap522",
+      "local": "src/main/java/io/github/janguenter/bluemap/ae2/model/PartOrientation.java, src/main/java/io/github/janguenter/bluemap/ae2/model/FacadeGeometry.java, and the M2 paths in src/main/java/io/github/janguenter/bluemap/ae2/adapter/bluemap523",
       "upstream_files": [
         "src/main/java/appeng/api/orientation/BlockOrientation.java",
         "src/main/java/appeng/client/render/cablebus/QuadRotator.java",
@@ -2069,7 +2077,7 @@
       "upstream_license_note": "AE2 cable-bus, facade, part and block-entity implementation sources are LGPL-3.0-or-later; AECableType and AEPartIds are MIT. Complete notices are retained, and upstream assets remain operator-installed."
     },
     {
-      "local": "src/main/java/io/github/janguenter/bluemap/ae2/adapter/bluemap522",
+      "local": "src/main/java/io/github/janguenter/bluemap/ae2/adapter/bluemap523",
       "upstream_files": [
         "common/src/main/java/de/bluecolored/bluemap/common/addons/AddonLoader.java",
         "core/src/main/java/de/bluecolored/bluemap/core/map/hires/block/BlockRenderer.java",

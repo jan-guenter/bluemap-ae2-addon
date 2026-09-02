@@ -2,6 +2,14 @@
 
 ## Current publication gate
 
+Version `0.1.0-alpha.4` is the owner-accepted native-5.23 release candidate.
+The owner accepted its exact 1,254,922-byte production JAR with SHA-256
+`41684478ad59c5d36baae99f1f6bd3f61bf6a5a92df0bbc66d93ca310b74bc99`
+in the combined 51-add-on All the Mons 1.2.0 review on 2026-09-02 and
+separately authorized publication. The committed release-candidate manifest
+binds the four exact promotion artifacts. Tagging and publication still must
+complete through the protected workflow below.
+
 M4/M5 is the complete owner-accepted All the Mons 1.2.0 local checkpoint. Its
 exact M45 verifier, two byte-identical builds, final schema-11
 evidence, deterministic live-map capture, and isolated technical lifecycle
@@ -271,13 +279,14 @@ artifact and resource gate.
 
 ## Version contract
 
-- Current owner-accepted release candidate version: `0.1.0-alpha.3`. Published
-  `0.1.0-alpha.1` and `0.1.0-alpha.2` are immutable and must never be rebuilt,
-  overwritten, or retagged as this successor.
-- Evidence `atm120-arseng-owner-accepted-2026-08-25` records only the bounded
-  registration-hook staging acceptance documented in `STAGING.md`. Published
-  predecessor acceptance does not transfer to this successor, and the staging
-  record makes no production claim.
+- Current owner-accepted release candidate version: `0.1.0-alpha.4`. Published
+  `0.1.0-alpha.1`, `0.1.0-alpha.2`, and `0.1.0-alpha.3` are immutable and must
+  never be rebuilt, overwritten, or retagged as this successor.
+- Evidence `atm120-native-523-integration-owner-accepted-2026-09-02` records
+  the exact alpha.4 production artifact accepted in the combined 51-add-on
+  All the Mons 1.2.0 review. The exact source candidate, staged overlay,
+  manifest, lock, gallery, and composition identities are recorded in
+  `provenance/release.json`.
 - Release tag: exactly `v<addon_version>`.
 - Any pull request that changes `addon_version` must also update the changelog,
   compatibility, provenance and relevant runtime evidence.

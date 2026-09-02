@@ -28,6 +28,20 @@ class ReleasePromotionContractTest(unittest.TestCase):
         self.assertNotIn("java-version: '21'", CI)
         self.assertNotIn("java-version: '21'", RELEASE)
 
+    def test_exact_bluemap_commit_is_built_with_its_feature_branch_identity(self):
+        branch = "feature/backport-5.23-stateless-java-web-server"
+        commit = "7e07f4e74ec1e92a6ead9aa1e66054af3e133aac"
+        api_commit = "285c9a60eff3ac2b0cab308ce1058d1565be0971"
+
+        for workflow in (CI, RELEASE):
+            self.assertIn("Materialize exact BlueMap feature-branch identity", workflow)
+            self.assertIn(f"ref: {commit}", workflow)
+            self.assertIn("git -C .ci/bluemap switch -C", workflow)
+            self.assertIn(branch, workflow)
+            self.assertIn("git -C .ci/bluemap branch --show-current", workflow)
+            self.assertIn(api_commit, workflow)
+            self.assertNotIn("Verify exact detached BlueMap build identity", workflow)
+
     def test_release_candidate_schema_and_artifacts_are_closed(self):
         self.assertIn(
             '"release-candidates/${project.version}.json"', BUILD

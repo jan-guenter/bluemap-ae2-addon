@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "status": "owner-accepted-release-candidate",
+  "published": false,
+  "version": "0.1.0-alpha.4",
+  "release_date": "2026-09-02",
+  "repository": "https://github.com/jan-guenter/bluemap-ae2-addon",
+  "tag": "v0.1.0-alpha.4",
+  "maven_coordinate": "io.github.jan-guenter:bluemap-ae2-addon:0.1.0-alpha.4",
+  "bluemap": {
+    "version": "5.22-feature.backport-5.23-stateless-java-web-server-46",
+    "commit": "7e07f4e74ec1e92a6ead9aa1e66054af3e133aac",
+    "api_commit": "285c9a60eff3ac2b0cab308ce1058d1565be0971"
+  },
+  "adapter_api": {
+    "version": "0.1.0-alpha.2",
+    "commit": "e81f08bc4bfbf02d810ec8949a019130e2e61634",
+    "source_tree": "2f974c9bb2ba13888d69682f86f30f58922d30eb",
+    "source_files_compiled": 4,
+    "module_jar_installed": false,
+    "module_jar_bundled": false,
+    "module_jar_nested": false,
+    "local_adapter_package": "io.github.janguenter.bluemap.ae2.adapter.bluemap523"
+  },
+  "previous_owner_accepted_release": {
+    "version": "0.1.0-alpha.3",
+    "tag": "v0.1.0-alpha.3",
+    "commit": "575c05222c7322421c30cb1158a2054dc04aa564",
+    "production_jar_size": 1252649,
+    "production_jar_sha256": "f7014e1c60bdf02fa22583a7b5b5cbf6f3076a0b2371601360775507d473a12d",
+    "visual_acceptance": true,
+    "accepted_on": "2026-08-25"
+  },
+  "candidate_artifacts": {
+    "production_jar": {
+      "file_name": "bluemap-ae2-addon-0.1.0-alpha.4.jar",
+      "size": 1254922,
+      "sha256": "41684478ad59c5d36baae99f1f6bd3f61bf6a5a92df0bbc66d93ca310b74bc99"
+    },
+    "sources_jar": {
+      "file_name": "bluemap-ae2-addon-0.1.0-alpha.4-sources.jar",
+      "size": 557535,
+      "sha256": "e89a86793ca6070cfb888306aa8f7e43fa7ad85ae5d3a1ab12c837ee99dd3927"
+    },
+    "pom": {
+      "file_name": "bluemap-ae2-addon-0.1.0-alpha.4.pom",
+      "size": 1619,
+      "sha256": "f669e57f1b5f994c542aa28bcd99b2dc1291b77c7134970d81f3b04cd4ea94ed"
+    },
+    "gradle_module": {
+      "file_name": "bluemap-ae2-addon-0.1.0-alpha.4.module.json",
+      "size": 2794,
+      "sha256": "253df62be4a4ba77eb5d3de05d1e85173d04ca0c535c8963dcd7be3698b1075c"
+    }
+  },
+  "combined_integration_acceptance": {
+    "atmons_version": "1.2.0",
+    "accepted_on": "2026-09-02",
+    "owner_visual_acceptance": true,
+    "candidate_manifest": {
+      "generated_at": "2026-09-02T03:59:44.239548Z",
+      "sha256": "37edfde8510131ba513e9c46092552ce524b733307490a2a562bd90f0db8a514",
+      "integration_summary": "51/51"
+    },
+    "override_lock_sha256": "90d5b236b36e6c4f92c573591c0fe6fbfa85199cda263e04173241500c26627e",
+    "gallery_layout_sha256": "4b96b7745f757023efbafb46b24899f4977ba03ad92139edba353b01d373a2d5",
+    "gallery_archive_sha256": "965a172ec54c843b0abadfbe3819cf2572d114e5b7ffb4f6e0e07f9214975363",
+    "gallery_composition_manifest_sha256": "ffa07f7cdf4b8ef7abb882e5bfac40beab613cf7f489d142cdf891880fd3fcbd",
+    "source_candidate_artifact": {
+      "file_name": "bluemap-ae2-addon-0.1.0-alpha.4.jar",
+      "size": 1254922,
+      "sha256": "41684478ad59c5d36baae99f1f6bd3f61bf6a5a92df0bbc66d93ca310b74bc99",
+      "source_commit": "756c918098961e13f24eb18d1d6454262b0e6df8"
+    },
+    "staged_overlay_artifact": {
+      "file_name": "bluemap-ae2-addon-0.1.0-alpha.3.jar",
+      "size": 1254969,
+      "sha256": "701ea88de986b249ec4691f922f42ff362b7c5d71df1853f2076a82f809d6289"
+    }
+  },
+  "preserved_contract": {
+    "gallery_cases": 162,
+    "source_anchors": 1373,
+    "gallery_sources_changed": false,
+    "exact_mod_profiles_changed": false,
+    "renderer_behavior_changed": false,
+    "public_extension_api_changed": false
+  },
+  "verification": {
+    "java_tests": 590,
+    "java_tests_passed": 588,
+    "intentional_exporter_skips": 2,
+    "python_oracle_tests": 194,
+    "python_oracle_seconds": 1097.499,
+    "production_jar_exact_byte_gate": true,
+    "sources_jar_exact_byte_gate": true,
+    "publication_metadata_exact_byte_gate": true,
+    "exact_input_gate": true,
+    "combined_runtime_review": true,
+    "owner_visual_acceptance_for_alpha_4": true
+  }
+}
