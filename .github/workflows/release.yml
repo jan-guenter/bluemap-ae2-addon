@@ -71,6 +71,13 @@ jobs:
         run: |
           git -C .ci/bluemap fetch --force --tags origin
           git -C .ci/bluemap/api fetch --force --tags origin
+          # Preserve the accepted native-5.23 build identifier in this clone only.
+          # Later fork release tags point at the same source but change git describe.
+          while IFS= read -r tag; do
+            git -C .ci/bluemap tag --delete "${tag}"
+          done < <(git -C .ci/bluemap tag --list 'v*-agent.backport-*')
+          test "$(git -C .ci/bluemap describe --tags --abbrev=0)" = 'v5.22'
+          test "$(git -C .ci/bluemap rev-list --count v5.22..HEAD)" = '46'
           git -C .ci/bluemap switch -C \
             feature/backport-5.23-stateless-java-web-server
           test "$(git -C .ci/bluemap rev-parse HEAD)" = \
